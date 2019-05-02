@@ -19,20 +19,20 @@ namespace MapEditor.mapgen
 		private CellularAutomata denseFloorCA;
 		
 		// Floor types
-		const string BASE_FLOOR = "GrassSparse2";
-		const string PATH_FLOOR = "DirtDark2";
-		const string DENSE_FLOOR = "GrassDense";
-		const string BLEND_EDGE = "BlendEdge";
+		//const string BASE_FLOOR = "GrassSparse2";
+		//const string PATH_FLOOR = "DirtDark2";
+		//const string DENSE_FLOOR = "GrassDense";
+		//const string BLEND_EDGE = "BlendEdge";
 		// Wall types
-		const string WALL1 = "DecidiousWallGreen";
-		const string WALL2 = "DecidiousWallBrown";
+		//const string WALL1 = "DecidiousWallGreen";
+		//const string WALL2 = "DecidiousWallBrown";
 		
 		public override void Generate(MapHelper hmap, BackgroundWorker worker)
 		{
 			baseFloorCA = new CellularAutomata(Generator.GenRandom, Generator.BOUNDARY);
 			denseFloorCA = new CellularAutomata(Generator.GenRandom, Generator.BOUNDARY);
-			// Stage1: Base floor
-			currentAction = "Generating sparse grass";
+            // Stage1: Base floor
+            currentAction = "Generating sparse grass";
 			baseFloorCA.SetupCA(2, 1, 0.048f);
 			int ticks = 23;// 23-25 
 			for (int i = 0; i < ticks; i++)
@@ -40,10 +40,10 @@ namespace MapEditor.mapgen
 				baseFloorCA.DoSimulationTick();
 				worker.ReportProgress(GeneratorUtil.CalcPercent(i, ticks));
 			}
-			// Stage2: Copy floor onto map
-			currentAction = "Importing generated tiles";
+            // Stage2: Copy floor onto map
+            currentAction = "Importing generated tiles";
 			bool[,] baseFloorMap = baseFloorCA.GetCellMap();
-			hmap.SetTileMaterial(BASE_FLOOR);
+			hmap.SetTileMaterial(Generator.GenConfig.BASE_FLOOR);
 			for (int x = 0; x < Generator.BOUNDARY; x++)
 			{
 				worker.ReportProgress(GeneratorUtil.CalcPercent(x, Generator.BOUNDARY));
@@ -52,8 +52,8 @@ namespace MapEditor.mapgen
 					if (baseFloorMap[x, y]) hmap.PlaceTileSnap(x, y);
 				}
 			}
-			// Stage3: Generate sparse grass
-			currentAction = "Generating dense grass";
+            // Stage3: Generate sparse grass
+            currentAction = "Generating dense grass";
 			denseFloorCA.SetupCA(6, 5, 0.75f);
 			ticks = 18;
 			for (int i = 0; i < ticks; i++)
@@ -61,9 +61,9 @@ namespace MapEditor.mapgen
 				denseFloorCA.DoSimulationTick();
 				worker.ReportProgress(GeneratorUtil.CalcPercent(i, ticks));
 			}
-			// Stage4: Import sparse grass
-			bool[,] grassMap = denseFloorCA.GetCellMap();
-			hmap.SetTileMaterial(DENSE_FLOOR);
+            // Stage4: Import sparse grass
+            bool[,] grassMap = denseFloorCA.GetCellMap();
+			hmap.SetTileMaterial(Generator.GenConfig.DENSE_FLOOR);
 			for (int x = 0; x < Generator.BOUNDARY; x++)
 			{
 				worker.ReportProgress(GeneratorUtil.CalcPercent(x, Generator.BOUNDARY));
@@ -72,8 +72,8 @@ namespace MapEditor.mapgen
 			    	if (grassMap[x, y] && baseFloorMap[x, y]) hmap.PlaceTileSnap(x, y);
 				}
 			}
-			// Stage5: Make pathes
-			currentAction = "Generating pathes";
+            // Stage5: Make pathes
+            currentAction = "Generating pathes";
 			baseFloorCA.SetCellMap(baseFloorMap);
 			baseFloorCA.BirthCellLimit = 9;
 			baseFloorCA.DeathCellLimit = 6;
@@ -83,10 +83,10 @@ namespace MapEditor.mapgen
 				baseFloorCA.DoSimulationTick();
 				worker.ReportProgress(GeneratorUtil.CalcPercent(i, ticks));
 			}
-			// Stage6: Import pathes
-			currentAction = "Importing generated tiles";
+            // Stage6: Import pathes
+            currentAction = "Importing generated tiles";
 			bool[,] pathesMap = baseFloorCA.GetCellMap();
-			hmap.SetTileMaterial(PATH_FLOOR);
+			hmap.SetTileMaterial(Generator.GenConfig.PATH_FLOOR);
 			for (int x = 0; x < Generator.BOUNDARY; x++)
 			{
 				worker.ReportProgress(GeneratorUtil.CalcPercent(x, Generator.BOUNDARY));
@@ -95,27 +95,29 @@ namespace MapEditor.mapgen
 			    	if (pathesMap[x, y] && baseFloorMap[x, y]) hmap.PlaceTileSnap(x, y);
 				}
 			}
-			// Stage7: Blend pathes
-			currentAction = "Blending (Path)";
-			hmap.SetTileMaterial(PATH_FLOOR);
-			hmap.SetEdgeMaterial(BLEND_EDGE);
-			hmap.SetAutoblendIgnore(DENSE_FLOOR); // Densegrass overrides
+            // Stage7: Blend pathes
+            currentAction = "Blending (Path)";
+			hmap.SetTileMaterial(Generator.GenConfig.PATH_FLOOR);
+			hmap.SetEdgeMaterial(Generator.GenConfig.BLEND_EDGE);
+			hmap.SetAutoblendIgnore(Generator.GenConfig.DENSE_FLOOR); // Densegrass overrides
 			GeneratorUtil.BlendAllTiles(hmap);
-			// Stage8: Blend dense grass
-			currentAction = "Blending (Dense grass)";
-			hmap.SetTileMaterial(DENSE_FLOOR);
-			hmap.SetEdgeMaterial(BLEND_EDGE);
+            // Stage8: Blend dense grass
+            currentAction = "Blending (Dense grass)";
+			hmap.SetTileMaterial(Generator.GenConfig.DENSE_FLOOR);
+			hmap.SetEdgeMaterial(Generator.GenConfig.BLEND_EDGE);
 			hmap.SetAutoblendIgnore(null);
 			GeneratorUtil.BlendAllTiles(hmap);
-			// Stage9: Scan tiles
-			currentAction = "Scanning area (floodfill)";
+            // Stage9: Scan tiles
+            currentAction = "Scanning area (floodfill)";
 			// This array will be used later for generating polygons
 			List<HashSet<Point>> TileGroupedArea = new List<HashSet<Point>>();
 			for (int x = 0; x <= Generator.BOUNDARY; x++)
 			{
-				worker.ReportProgress(GeneratorUtil.CalcPercent(x, Generator.BOUNDARY));
+                if (Generator.IsCancelled) return;
+                worker.ReportProgress(GeneratorUtil.CalcPercent(x, Generator.BOUNDARY));
 			    for (int y = 0; y <= Generator.BOUNDARY; y++)
 				{
+                    if (Generator.IsCancelled) return;
 			    	if (hmap.GetTile(x, y) != null)
 			    	{
 			    		bool search = true;
@@ -141,15 +143,15 @@ namespace MapEditor.mapgen
 			    	}
 				}
 			}
-			// Stage10: Build walls
-			currentAction = "Building void walls";
-			hmap.SetWallMaterial(WALL1);
+            // Stage10: Build walls
+            currentAction = "Building void walls";
+			hmap.SetWallMaterial(Generator.GenConfig.WALL);
 			GeneratorUtil.MakeWallsAroundTiles(hmap);
-			// Stage11: Smooth walls
-			currentAction = "Smoothing walls";
+            // Stage11: Smooth walls
+            currentAction = "Smoothing walls";
 			GeneratorUtil.ReorientWalls2(hmap, Generator.GenConfig.Allow3SideWalls);
-			// Stage12: Populate (optional)
-			if (Generator.GenConfig.PopulateMap)
+            // Stage12: Populate (optional)
+            if (Generator.GenConfig.PopulateMap)
 			{
 				currentAction = "Populating (objects)";
 				Populate.PopulateCrossroad(hmap);

@@ -114,7 +114,7 @@ namespace MapEditor
 		{
 			Map.Object o = new Map.Object();
 			o.Extent = 0;
-			ObjectPropertiesDialog propDlg = new ObjectPropertiesDialog();
+            ObjectPropertiesDialog propDlg = new ObjectPropertiesDialog();
 			propDlg.Object = o;
 			propDlg.ShowDialog();
 			obj.InventoryList.Add(propDlg.Object);

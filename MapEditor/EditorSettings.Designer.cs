@@ -12,7 +12,7 @@ namespace MapEditor {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "10.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class EditorSettings : global::System.Configuration.ApplicationSettingsBase {
         
         private static EditorSettings defaultInstance = ((EditorSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new EditorSettings())));
@@ -320,6 +320,152 @@ namespace MapEditor {
             }
             set {
                 this["Script_CodeFont"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Draw_Teleports {
+            get {
+                return ((bool)(this["Draw_Teleports"]));
+            }
+            set {
+                this["Draw_Teleports"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Minimap_Show {
+            get {
+                return ((bool)(this["Minimap_Show"]));
+            }
+            set {
+                this["Minimap_Show"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Minimap_Autohide {
+            get {
+                return ((bool)(this["Minimap_Autohide"]));
+            }
+            set {
+                this["Minimap_Autohide"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Minimap_Autoalpha {
+            get {
+                return ((bool)(this["Minimap_Autoalpha"]));
+            }
+            set {
+                this["Minimap_Autoalpha"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Save_AutoIncrement {
+            get {
+                return ((bool)(this["Save_AutoIncrement"]));
+            }
+            set {
+                this["Save_AutoIncrement"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Script_ColorSyntax {
+            get {
+                return ((bool)(this["Script_ColorSyntax"]));
+            }
+            set {
+                this["Script_ColorSyntax"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Script_ShowHelp {
+            get {
+                return ((bool)(this["Script_ShowHelp"]));
+            }
+            set {
+                this["Script_ShowHelp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Script_LightTheme {
+            get {
+                return ((bool)(this["Script_LightTheme"]));
+            }
+            set {
+                this["Script_LightTheme"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Draw_ColorWalls {
+            get {
+                return ((bool)(this["Draw_ColorWalls"]));
+            }
+            set {
+                this["Draw_ColorWalls"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>Empty</string>\r\n</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection RecentFiles {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["RecentFiles"]));
+            }
+            set {
+                this["RecentFiles"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsMaximized {
+            get {
+                return ((bool)(this["IsMaximized"]));
+            }
+            set {
+                this["IsMaximized"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Size SaveSize {
+            get {
+                return ((global::System.Drawing.Size)(this["SaveSize"]));
+            }
+            set {
+                this["SaveSize"] = value;
             }
         }
     }

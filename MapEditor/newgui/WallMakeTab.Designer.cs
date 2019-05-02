@@ -37,7 +37,7 @@ namespace MapEditor.newgui
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WallMakeTab));
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblWalltype = new System.Windows.Forms.Label();
             this.comboWallSet = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.numMapGroup = new System.Windows.Forms.NumericUpDown();
@@ -50,16 +50,15 @@ namespace MapEditor.newgui
             this.labelSep2 = new System.Windows.Forms.Label();
             this.AutoWalltBtn = new System.Windows.Forms.RadioButton();
             this.PlaceWalltBtn = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cmdWallChange = new System.Windows.Forms.Button();
             this.checkBlackWalls = new System.Windows.Forms.CheckBox();
-            this.Picker = new System.Windows.Forms.CheckBox();
             this.RecLinePanel = new System.Windows.Forms.Panel();
             this.smartDraw = new System.Windows.Forms.CheckBox();
             this.RecWall = new System.Windows.Forms.CheckBox();
             this.LineWall = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.WallProp = new System.Windows.Forms.Panel();
-            this.ok = new System.Windows.Forms.Button();
+            this.cmdCancel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.openWallBox = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -67,8 +66,11 @@ namespace MapEditor.newgui
             this.numericCloseDelay = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.checkDestructable = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.polygonGroup = new System.Windows.Forms.NumericUpDown();
+            this.checkWindow = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Bucket = new System.Windows.Forms.CheckBox();
+            this.Picker = new System.Windows.Forms.CheckBox();
             this.wallBtn1 = new System.Windows.Forms.Button();
             this.wallBtn4 = new System.Windows.Forms.Button();
             this.wallBtn2 = new System.Windows.Forms.Button();
@@ -95,13 +97,14 @@ namespace MapEditor.newgui
             this.wallBtnContainer.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lblWalltype
             // 
-            this.label1.Location = new System.Drawing.Point(10, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Wall type:";
+            this.lblWalltype.AutoSize = true;
+            this.lblWalltype.Location = new System.Drawing.Point(13, 11);
+            this.lblWalltype.Name = "lblWalltype";
+            this.lblWalltype.Size = new System.Drawing.Size(54, 13);
+            this.lblWalltype.TabIndex = 0;
+            this.lblWalltype.Text = "Wall type:";
             // 
             // comboWallSet
             // 
@@ -109,47 +112,46 @@ namespace MapEditor.newgui
             this.comboWallSet.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboWallSet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboWallSet.FormattingEnabled = true;
-            this.comboWallSet.Location = new System.Drawing.Point(89, 4);
+            this.comboWallSet.Location = new System.Drawing.Point(69, 7);
             this.comboWallSet.MaxDropDownItems = 16;
             this.comboWallSet.Name = "comboWallSet";
-            this.comboWallSet.Size = new System.Drawing.Size(112, 21);
+            this.comboWallSet.Size = new System.Drawing.Size(136, 21);
             this.comboWallSet.TabIndex = 1;
             this.comboWallSet.SelectedIndexChanged += new System.EventHandler(this.UpdateBtnImages);
-            this.comboWallSet.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WallSetFirst);
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(71, 131);
+            this.label2.Location = new System.Drawing.Point(13, 129);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 18);
+            this.label2.Size = new System.Drawing.Size(151, 20);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Minimap group:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label2.Text = "Polygon/Minimap Group:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // numMapGroup
             // 
-            this.numMapGroup.Location = new System.Drawing.Point(160, 129);
+            this.numMapGroup.Location = new System.Drawing.Point(138, 131);
             this.numMapGroup.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.numMapGroup.Name = "numMapGroup";
-            this.numMapGroup.Size = new System.Drawing.Size(46, 20);
+            this.numMapGroup.Size = new System.Drawing.Size(59, 20);
             this.numMapGroup.TabIndex = 3;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(1, 161);
+            this.label3.Location = new System.Drawing.Point(13, 149);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 18);
+            this.label3.Size = new System.Drawing.Size(56, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Variation:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // numWallVari
             // 
-            this.numWallVari.Location = new System.Drawing.Point(61, 160);
+            this.numWallVari.Location = new System.Drawing.Point(64, 150);
             this.numWallVari.Maximum = new decimal(new int[] {
             14,
             0,
@@ -162,7 +164,7 @@ namespace MapEditor.newgui
             // 
             // numWallVariMax
             // 
-            this.numWallVariMax.Location = new System.Drawing.Point(159, 160);
+            this.numWallVariMax.Location = new System.Drawing.Point(64, 170);
             this.numWallVariMax.Maximum = new decimal(new int[] {
             14,
             0,
@@ -181,20 +183,19 @@ namespace MapEditor.newgui
             this.autovari.CheckState = System.Windows.Forms.CheckState.Checked;
             this.autovari.Location = new System.Drawing.Point(11, 101);
             this.autovari.Name = "autovari";
-            this.autovari.Size = new System.Drawing.Size(91, 17);
+            this.autovari.Size = new System.Drawing.Size(92, 17);
             this.autovari.TabIndex = 11;
-            this.autovari.Text = "Auto variation";
+            this.autovari.Text = "Auto Variation";
             this.autovari.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(126, 162);
+            this.label4.Location = new System.Drawing.Point(13, 169);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 13);
+            this.label4.Size = new System.Drawing.Size(55, 20);
             this.label4.TabIndex = 12;
             this.label4.Text = "Max:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelSep1
             // 
@@ -244,47 +245,34 @@ namespace MapEditor.newgui
             this.PlaceWalltBtn.UseVisualStyleBackColor = true;
             this.PlaceWalltBtn.CheckedChanged += new System.EventHandler(this.PlaceWalltBtn_CheckedChanged);
             // 
-            // button1
+            // cmdWallChange
             // 
-            this.button1.Location = new System.Drawing.Point(8, 130);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(66, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Properties";
-            this.toolTip1.SetToolTip(this.button1, "Set a wall properties and then select a wall you wish to affect.");
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.cmdWallChange.Location = new System.Drawing.Point(115, 163);
+            this.cmdWallChange.Name = "cmdWallChange";
+            this.cmdWallChange.Size = new System.Drawing.Size(86, 24);
+            this.cmdWallChange.TabIndex = 20;
+            this.cmdWallChange.Text = "Wall Change";
+            this.toolTip1.SetToolTip(this.cmdWallChange, "Change a wall\'s properties in this mode");
+            this.cmdWallChange.UseVisualStyleBackColor = true;
+            this.cmdWallChange.Click += new System.EventHandler(this.cmdWallChange_Click);
             // 
             // checkBlackWalls
             // 
             this.checkBlackWalls.AutoSize = true;
             this.checkBlackWalls.Location = new System.Drawing.Point(115, 101);
             this.checkBlackWalls.Name = "checkBlackWalls";
-            this.checkBlackWalls.Size = new System.Drawing.Size(86, 17);
+            this.checkBlackWalls.Size = new System.Drawing.Size(87, 17);
             this.checkBlackWalls.TabIndex = 21;
-            this.checkBlackWalls.Text = "Fast prewiev";
+            this.checkBlackWalls.Text = "Fast Preview";
             this.checkBlackWalls.UseVisualStyleBackColor = true;
             this.checkBlackWalls.CheckedChanged += new System.EventHandler(this.UpdateBtnImages);
-            // 
-            // Picker
-            // 
-            this.Picker.Appearance = System.Windows.Forms.Appearance.Button;
-            this.Picker.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Picker.BackgroundImage")));
-            this.Picker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Picker.Location = new System.Drawing.Point(171, 29);
-            this.Picker.Name = "Picker";
-            this.Picker.Size = new System.Drawing.Size(30, 30);
-            this.Picker.TabIndex = 37;
-            this.toolTip1.SetToolTip(this.Picker, "Wall Picker (Ctrl+A)");
-            this.Picker.UseVisualStyleBackColor = true;
-            this.Picker.CheckedChanged += new System.EventHandler(this.Picker_CheckedChanged);
             // 
             // RecLinePanel
             // 
             this.RecLinePanel.Controls.Add(this.smartDraw);
             this.RecLinePanel.Controls.Add(this.RecWall);
             this.RecLinePanel.Controls.Add(this.LineWall);
-            this.RecLinePanel.Location = new System.Drawing.Point(7, 28);
+            this.RecLinePanel.Location = new System.Drawing.Point(7, 30);
             this.RecLinePanel.Name = "RecLinePanel";
             this.RecLinePanel.Size = new System.Drawing.Size(162, 30);
             this.RecLinePanel.TabIndex = 38;
@@ -292,27 +280,27 @@ namespace MapEditor.newgui
             // 
             // smartDraw
             // 
-            this.smartDraw.AutoSize = true;
-            this.smartDraw.Location = new System.Drawing.Point(76, 8);
+            this.smartDraw.Appearance = System.Windows.Forms.Appearance.Button;
+            this.smartDraw.Location = new System.Drawing.Point(55, 3);
             this.smartDraw.Name = "smartDraw";
-            this.smartDraw.Size = new System.Drawing.Size(81, 17);
+            this.smartDraw.Size = new System.Drawing.Size(75, 25);
             this.smartDraw.TabIndex = 39;
             this.smartDraw.Text = "Smart Draw";
+            this.smartDraw.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTip1.SetToolTip(this.smartDraw, "Shift");
             this.smartDraw.UseVisualStyleBackColor = true;
-            this.smartDraw.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // RecWall
             // 
             this.RecWall.Appearance = System.Windows.Forms.Appearance.Button;
             this.RecWall.BackgroundImage = global::MapEditor.Properties.Resources.RecWall;
             this.RecWall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.RecWall.Location = new System.Drawing.Point(36, 3);
+            this.RecWall.Location = new System.Drawing.Point(30, 3);
             this.RecWall.Name = "RecWall";
             this.RecWall.Size = new System.Drawing.Size(25, 25);
             this.RecWall.TabIndex = 1;
             this.toolTip1.SetToolTip(this.RecWall, "Oriented Rectangle - Draws a 45 degree oriented wall rectangle by dragging the mo" +
-                    "use. (Ctrl+R)");
+        "use. (Ctrl+R)");
             this.RecWall.UseVisualStyleBackColor = true;
             this.RecWall.CheckedChanged += new System.EventHandler(this.RecWall_CheckedChanged);
             this.RecWall.EnabledChanged += new System.EventHandler(this.LineWall_EnabledChanged);
@@ -341,29 +329,30 @@ namespace MapEditor.newgui
             // 
             // WallProp
             // 
-            this.WallProp.Controls.Add(this.ok);
+            this.WallProp.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.WallProp.Controls.Add(this.cmdCancel);
             this.WallProp.Controls.Add(this.groupBox2);
             this.WallProp.Controls.Add(this.checkDestructable);
-            this.WallProp.Controls.Add(this.label7);
             this.WallProp.Controls.Add(this.polygonGroup);
+            this.WallProp.Controls.Add(this.checkWindow);
+            this.WallProp.Controls.Add(this.label7);
             this.WallProp.Location = new System.Drawing.Point(4, 1);
             this.WallProp.Name = "WallProp";
             this.WallProp.Size = new System.Drawing.Size(209, 189);
             this.WallProp.TabIndex = 40;
             this.toolTip1.SetToolTip(this.WallProp, "Sets the properties of the selected wall. \r\n(only displays the properties of the " +
-                    "selected wall while holding Shift)");
+        "selected wall while holding Shift)");
             this.WallProp.Visible = false;
-            this.WallProp.Paint += new System.Windows.Forms.PaintEventHandler(this.WallProp_Paint);
             // 
-            // ok
+            // cmdCancel
             // 
-            this.ok.Location = new System.Drawing.Point(143, 162);
-            this.ok.Name = "ok";
-            this.ok.Size = new System.Drawing.Size(55, 23);
-            this.ok.TabIndex = 5;
-            this.ok.Text = "Cancel";
-            this.ok.UseVisualStyleBackColor = true;
-            this.ok.Click += new System.EventHandler(this.ok_Click);
+            this.cmdCancel.Location = new System.Drawing.Point(111, 162);
+            this.cmdCancel.Name = "cmdCancel";
+            this.cmdCancel.Size = new System.Drawing.Size(86, 24);
+            this.cmdCancel.TabIndex = 5;
+            this.cmdCancel.Text = "Cancel";
+            this.cmdCancel.UseVisualStyleBackColor = true;
+            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
             // groupBox2
             // 
@@ -378,7 +367,6 @@ namespace MapEditor.newgui
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Secret Wall";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // openWallBox
             // 
@@ -409,7 +397,7 @@ namespace MapEditor.newgui
             "UnkFlag8"});
             this.checkListFlags.Location = new System.Drawing.Point(77, 26);
             this.checkListFlags.Name = "checkListFlags";
-            this.checkListFlags.Size = new System.Drawing.Size(104, 64);
+            this.checkListFlags.Size = new System.Drawing.Size(106, 64);
             this.checkListFlags.TabIndex = 2;
             this.toolTip1.SetToolTip(this.checkListFlags, resources.GetString("checkListFlags.ToolTip"));
             this.checkListFlags.SelectedIndexChanged += new System.EventHandler(this.checkListFlags_SelectedIndexChanged);
@@ -420,7 +408,7 @@ namespace MapEditor.newgui
             // 
             this.numericCloseDelay.Location = new System.Drawing.Point(131, 97);
             this.numericCloseDelay.Name = "numericCloseDelay";
-            this.numericCloseDelay.Size = new System.Drawing.Size(49, 20);
+            this.numericCloseDelay.Size = new System.Drawing.Size(52, 20);
             this.numericCloseDelay.TabIndex = 1;
             this.numericCloseDelay.Value = new decimal(new int[] {
             3,
@@ -430,43 +418,34 @@ namespace MapEditor.newgui
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 101);
+            this.label6.Location = new System.Drawing.Point(19, 100);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(94, 13);
+            this.label6.Size = new System.Drawing.Size(112, 17);
             this.label6.TabIndex = 0;
             this.label6.Text = "Open/close delay:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // checkDestructable
             // 
-            this.checkDestructable.Location = new System.Drawing.Point(14, 161);
+            this.checkDestructable.AutoSize = true;
+            this.checkDestructable.Location = new System.Drawing.Point(14, 149);
             this.checkDestructable.Name = "checkDestructable";
-            this.checkDestructable.Size = new System.Drawing.Size(95, 19);
+            this.checkDestructable.Size = new System.Drawing.Size(86, 17);
             this.checkDestructable.TabIndex = 4;
             this.checkDestructable.Text = "Destructable";
             this.toolTip1.SetToolTip(this.checkDestructable, "Wall can be destroed");
             this.checkDestructable.UseVisualStyleBackColor = true;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 139);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(125, 13);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Polygon (Minimap) Group";
-            this.toolTip1.SetToolTip(this.label7, "Determines polygon where this wall will be displayed on the minimap.");
-            // 
             // polygonGroup
             // 
-            this.polygonGroup.Location = new System.Drawing.Point(143, 136);
+            this.polygonGroup.Location = new System.Drawing.Point(134, 130);
             this.polygonGroup.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.polygonGroup.Name = "polygonGroup";
-            this.polygonGroup.Size = new System.Drawing.Size(48, 20);
+            this.polygonGroup.Size = new System.Drawing.Size(59, 20);
             this.polygonGroup.TabIndex = 2;
             this.toolTip1.SetToolTip(this.polygonGroup, "Determines polygon where this wall will be displayed on the minimap.");
             this.polygonGroup.Value = new decimal(new int[] {
@@ -474,6 +453,53 @@ namespace MapEditor.newgui
             0,
             0,
             0});
+            // 
+            // checkWindow
+            // 
+            this.checkWindow.AutoSize = true;
+            this.checkWindow.Location = new System.Drawing.Point(14, 167);
+            this.checkWindow.Name = "checkWindow";
+            this.checkWindow.Size = new System.Drawing.Size(65, 17);
+            this.checkWindow.TabIndex = 6;
+            this.checkWindow.Text = "Window";
+            this.toolTip1.SetToolTip(this.checkWindow, "Wall can be destroed");
+            this.checkWindow.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(4, 131);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(131, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Polygon/Minimap Group:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.toolTip1.SetToolTip(this.label7, "Determines polygon where this wall will be displayed on the minimap.");
+            // 
+            // Bucket
+            // 
+            this.Bucket.Appearance = System.Windows.Forms.Appearance.Button;
+            this.Bucket.BackgroundImage = global::MapEditor.Properties.Resources.bucketPaint;
+            this.Bucket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Bucket.Location = new System.Drawing.Point(146, 30);
+            this.Bucket.Name = "Bucket";
+            this.Bucket.Size = new System.Drawing.Size(30, 30);
+            this.Bucket.TabIndex = 41;
+            this.toolTip1.SetToolTip(this.Bucket, "Wall Paint Bucket");
+            this.Bucket.UseVisualStyleBackColor = true;
+            this.Bucket.CheckedChanged += new System.EventHandler(this.Bucket_CheckedChanged);
+            // 
+            // Picker
+            // 
+            this.Picker.Appearance = System.Windows.Forms.Appearance.Button;
+            this.Picker.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Picker.BackgroundImage")));
+            this.Picker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Picker.Location = new System.Drawing.Point(175, 30);
+            this.Picker.Name = "Picker";
+            this.Picker.Size = new System.Drawing.Size(30, 30);
+            this.Picker.TabIndex = 37;
+            this.toolTip1.SetToolTip(this.Picker, "Wall Picker (Ctrl+A)");
+            this.Picker.UseVisualStyleBackColor = true;
+            this.Picker.CheckedChanged += new System.EventHandler(this.Picker_CheckedChanged);
             // 
             // wallBtn1
             // 
@@ -485,7 +511,6 @@ namespace MapEditor.newgui
             this.wallBtn1.Size = new System.Drawing.Size(64, 80);
             this.wallBtn1.TabIndex = 0;
             this.wallBtn1.UseVisualStyleBackColor = false;
-            this.wallBtn1.Click += new System.EventHandler(this.wallBtn1_Click);
             // 
             // wallBtn4
             // 
@@ -497,7 +522,6 @@ namespace MapEditor.newgui
             this.wallBtn4.Size = new System.Drawing.Size(64, 80);
             this.wallBtn4.TabIndex = 1;
             this.wallBtn4.UseVisualStyleBackColor = false;
-            this.wallBtn4.Click += new System.EventHandler(this.wallBtn4_Click);
             // 
             // wallBtn2
             // 
@@ -629,7 +653,6 @@ namespace MapEditor.newgui
             this.wallBtnContainer.Name = "wallBtnContainer";
             this.wallBtnContainer.Size = new System.Drawing.Size(208, 418);
             this.wallBtnContainer.TabIndex = 8;
-            this.wallBtnContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.wallBtnContainer_Paint);
             // 
             // wallBtn8
             // 
@@ -658,11 +681,12 @@ namespace MapEditor.newgui
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.WallProp);
+            this.Controls.Add(this.Bucket);
             this.Controls.Add(this.RecLinePanel);
             this.Controls.Add(this.Picker);
             this.Controls.Add(this.checkBlackWalls);
             this.Controls.Add(this.AutoWalltBtn);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cmdWallChange);
             this.Controls.Add(this.PlaceWalltBtn);
             this.Controls.Add(this.buttonMode);
             this.Controls.Add(this.labelSep2);
@@ -670,21 +694,19 @@ namespace MapEditor.newgui
             this.Controls.Add(this.numMapGroup);
             this.Controls.Add(this.numWallVari);
             this.Controls.Add(this.numWallVariMax);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.autovari);
             this.Controls.Add(this.wallBtnContainer);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboWallSet);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblWalltype);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Name = "WallMakeTab";
             this.Size = new System.Drawing.Size(216, 614);
-            this.Load += new System.EventHandler(this.WallMakeTab_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numMapGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWallVari)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWallVariMax)).EndInit();
             this.RecLinePanel.ResumeLayout(false);
-            this.RecLinePanel.PerformLayout();
             this.WallProp.ResumeLayout(false);
             this.WallProp.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -701,7 +723,7 @@ namespace MapEditor.newgui
         private System.Windows.Forms.NumericUpDown numMapGroup;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.ComboBox comboWallSet;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblWalltype;
         public System.Windows.Forms.NumericUpDown numWallVariMax;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelSep1;
@@ -709,7 +731,7 @@ namespace MapEditor.newgui
         public SwitchModeButton buttonMode;
         public System.Windows.Forms.RadioButton AutoWalltBtn;
         public System.Windows.Forms.RadioButton PlaceWalltBtn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cmdWallChange;
         private System.Windows.Forms.CheckBox checkBlackWalls;
         public System.Windows.Forms.CheckBox Picker;
         private System.Windows.Forms.Panel RecLinePanel;
@@ -726,7 +748,7 @@ namespace MapEditor.newgui
         public System.Windows.Forms.CheckBox checkDestructable;
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.NumericUpDown polygonGroup;
-        private System.Windows.Forms.Button ok;
+        private System.Windows.Forms.Button cmdCancel;
         public System.Windows.Forms.Panel WallProp;
         private System.Windows.Forms.Button wallBtn1;
         private System.Windows.Forms.Button wallBtn4;
@@ -743,5 +765,7 @@ namespace MapEditor.newgui
         private System.Windows.Forms.Panel wallBtnContainer;
         private System.Windows.Forms.Button wallBtn8;
         public System.Windows.Forms.CheckBox autovari;
+        public System.Windows.Forms.CheckBox checkWindow;
+        public System.Windows.Forms.CheckBox Bucket;
     }
 }

@@ -117,19 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="aboutLabel.Text" xml:space="preserve">
-    <value>                          Nox Map Editor
-                                   by
-                             Eric Litak
-                          Andrew Wesie
-                             *Templar*
-                           Joshua Statzer</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>                          NoxEdit2014
-             fork by AngryKirC / KirConjurer
-                   (kirillmurz@yandex.ru)
-                              SuperJack
-                                Protokol</value>
-  </data>
 </root>

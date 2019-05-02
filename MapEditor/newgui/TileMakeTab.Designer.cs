@@ -35,7 +35,7 @@ namespace MapEditor.newgui
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TileMakeTab));
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTileType = new System.Windows.Forms.Label();
             this.comboTileType = new System.Windows.Forms.ComboBox();
             this.listTileImages = new System.Windows.Forms.ListView();
             this.BrushSize = new System.Windows.Forms.NumericUpDown();
@@ -50,6 +50,7 @@ namespace MapEditor.newgui
             this.PlaceTileBtn = new System.Windows.Forms.RadioButton();
             this.Picker = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.Bucket = new System.Windows.Forms.CheckBox();
             this.miniEdges = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.edgeBox = new System.Windows.Forms.ComboBox();
@@ -59,14 +60,14 @@ namespace MapEditor.newgui
             this.miniEdges.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lblTileType
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tile type:";
+            this.lblTileType.AutoSize = true;
+            this.lblTileType.Location = new System.Drawing.Point(13, 11);
+            this.lblTileType.Name = "lblTileType";
+            this.lblTileType.Size = new System.Drawing.Size(50, 13);
+            this.lblTileType.TabIndex = 0;
+            this.lblTileType.Text = "Tile type:";
             // 
             // comboTileType
             // 
@@ -74,10 +75,10 @@ namespace MapEditor.newgui
             this.comboTileType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboTileType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTileType.FormattingEnabled = true;
-            this.comboTileType.Location = new System.Drawing.Point(77, 7);
+            this.comboTileType.Location = new System.Drawing.Point(69, 7);
             this.comboTileType.MaxDropDownItems = 20;
             this.comboTileType.Name = "comboTileType";
-            this.comboTileType.Size = new System.Drawing.Size(128, 21);
+            this.comboTileType.Size = new System.Drawing.Size(136, 21);
             this.comboTileType.TabIndex = 1;
             this.comboTileType.SelectedIndexChanged += new System.EventHandler(this.UpdateListView);
             // 
@@ -116,7 +117,6 @@ namespace MapEditor.newgui
             0,
             0,
             0});
-            this.BrushSize.ValueChanged += new System.EventHandler(this.BrushSize_ValueChanged);
             // 
             // label3
             // 
@@ -127,7 +127,6 @@ namespace MapEditor.newgui
             this.label3.TabIndex = 8;
             this.label3.Text = "Brush size:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // comboIgnoreTile
             // 
@@ -153,7 +152,6 @@ namespace MapEditor.newgui
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Auto Brush Options";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // WallBlockBrush
             // 
@@ -182,12 +180,11 @@ namespace MapEditor.newgui
             this.labelSep1.Name = "labelSep1";
             this.labelSep1.Size = new System.Drawing.Size(201, 2);
             this.labelSep1.TabIndex = 17;
-            this.labelSep1.Click += new System.EventHandler(this.labelSep1_Click);
             // 
             // checkAutoVari
             // 
-            this.checkAutoVari.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkAutoVari.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkAutoVari.AutoSize = true;
             this.checkAutoVari.Checked = true;
             this.checkAutoVari.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -236,13 +233,26 @@ namespace MapEditor.newgui
             this.Picker.Appearance = System.Windows.Forms.Appearance.Button;
             this.Picker.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Picker.BackgroundImage")));
             this.Picker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Picker.Location = new System.Drawing.Point(175, 33);
+            this.Picker.Location = new System.Drawing.Point(175, 30);
             this.Picker.Name = "Picker";
             this.Picker.Size = new System.Drawing.Size(30, 30);
             this.Picker.TabIndex = 38;
-            this.toolTip1.SetToolTip(this.Picker, "Tile Picker. (Ctrl+A)");
+            this.toolTip1.SetToolTip(this.Picker, "Tile Picker (Ctrl+A)");
             this.Picker.UseVisualStyleBackColor = true;
             this.Picker.CheckedChanged += new System.EventHandler(this.Picker_CheckedChanged);
+            // 
+            // Bucket
+            // 
+            this.Bucket.Appearance = System.Windows.Forms.Appearance.Button;
+            this.Bucket.BackgroundImage = global::MapEditor.Properties.Resources.bucketPaint;
+            this.Bucket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Bucket.Location = new System.Drawing.Point(146, 30);
+            this.Bucket.Name = "Bucket";
+            this.Bucket.Size = new System.Drawing.Size(30, 30);
+            this.Bucket.TabIndex = 40;
+            this.toolTip1.SetToolTip(this.Bucket, "Tile Paint Bucket");
+            this.Bucket.UseVisualStyleBackColor = true;
+            this.Bucket.CheckedChanged += new System.EventHandler(this.Bucket_CheckedChanged);
             // 
             // miniEdges
             // 
@@ -286,12 +296,12 @@ namespace MapEditor.newgui
             this.buttonMode.Text = " ";
             this.buttonMode.UseVisualStyleBackColor = true;
             this.buttonMode.Visible = false;
-            this.buttonMode.Click += new System.EventHandler(this.buttonMode_Click);
             // 
             // TileMakeTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Bucket);
             this.Controls.Add(this.miniEdges);
             this.Controls.Add(this.Picker);
             this.Controls.Add(this.BrushSize);
@@ -303,11 +313,10 @@ namespace MapEditor.newgui
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.listTileImages);
             this.Controls.Add(this.comboTileType);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTileType);
             this.Controls.Add(this.checkAutoVari);
             this.Name = "TileMakeTab";
             this.Size = new System.Drawing.Size(216, 617);
-            this.Load += new System.EventHandler(this.TileMakeTab_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BrushSize)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -319,7 +328,7 @@ namespace MapEditor.newgui
 		}
 		private System.Windows.Forms.ListView listTileImages;
 		public System.Windows.Forms.ComboBox comboTileType;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTileType;
         public System.Windows.Forms.NumericUpDown BrushSize;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.ComboBox comboIgnoreTile;
@@ -336,5 +345,6 @@ namespace MapEditor.newgui
         private System.Windows.Forms.GroupBox miniEdges;
         public System.Windows.Forms.ComboBox edgeBox;
         private System.Windows.Forms.Label label2;
-	}
+        public System.Windows.Forms.CheckBox Bucket;
+    }
 }

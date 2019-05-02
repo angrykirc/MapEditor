@@ -68,8 +68,30 @@ namespace MapEditor.render
                 }
 			}
 		}
-		
-		private Bitmap TileGenTexture(Map.Tile tile)
+        public void UpdateCanvasWithFakeTiles(Rectangle clip)
+        {
+            // update tile list
+            bool prevMode = EditorSettings.Default.Edit_PreviewMode;
+            foreach (Map.Tile tile in mapRenderer.FakeTiles.Values)
+            {
+                int x = tile.Location.X * squareSize;
+                int y = tile.Location.Y * squareSize;
+
+                // filter seen tiles
+                if (clip.Contains(x, y))
+                {
+                    Bitmap texture = null;
+                    if (prevMode)
+                    {
+                        // generate texture
+                        texture = TileGenTexture(tile, true);
+                    }
+                    visibleTiles.Add(new TileDrawData(tile, texture));
+                }
+            }
+        }
+
+        private Bitmap TileGenTexture(Map.Tile tile, bool transparent = false)
         {
         	if (tile == null) return null;
         	int index = (int)ThingDb.FloorTiles[tile.graphicId].Variations[tile.Variation];
@@ -98,6 +120,15 @@ namespace MapEditor.render
                      
 	            }
             }
+
+            if (transparent)
+            {
+                var bmpShader = new BitmapShader(image);
+                bmpShader.LockBitmap();
+                bmpShader.MakeSemitransparent();
+                image = bmpShader.UnlockBitmap();
+            }
+
 			return image;
         }
 		
@@ -119,7 +150,7 @@ namespace MapEditor.render
                 swCorner = new PointF(nwCorner.X + squareSize, nwCorner.Y + squareSize);
                 seCorner = new PointF(neCorner.X + squareSize, neCorner.Y + squareSize);
 
-                if (EditorSettings.Default.Edit_PreviewMode && tdd.Tile.graphicId != 25)
+                if ((EditorSettings.Default.Edit_PreviewMode && tdd.Tile.graphicId != 25) || (MainWindow.Instance.imgMode))
                 {
                 	// draw tile+edges texture
                     if (tdd.Texture != null)
@@ -130,30 +161,14 @@ namespace MapEditor.render
 	            		g.DrawImage(tdd.Texture, gX, gY, 46F, 46F);
                 	}
                 }
-                //string TileName = MainWindow.Instance.mapView.TileMakeNewCtrl.comboTileType.SelectedText;
-               // int usingTileMaterial = (byte)Array.IndexOf(ThingDb.FloorTileNames.ToArray(), TileName);
-
-                /*
-                int selectedIndex = MainWindow.Instance.mapView.TileMakeNewCtrl.comboTileType.SelectedIndex;
-                string tileName = MainWindow.Instance.mapView.TileMakeNewCtrl.comboTileType.Items[selectedIndex].ToString();
-                int usingTileMaterial = ThingDb.FloorTileNames.IndexOf(tileName);
-                */
-
-
-
-
-                //MessageBox.Show(usingTileMaterial.ToString());
                 else
                 {
                     Brush tembrush = new SolidBrush(tile.col);
                    
-
                     if (MainWindow.Instance.mapView.EdgeMakeNewCtrl.ignoreAllBox.Checked && EditorSettings.Default.Edit_PreviewMode)
                     {
-
                         Color temColor = Color.FromArgb(160, 10, 10, 10);
                         tembrush = new SolidBrush(temColor);
-
                     }
                     g.FillPolygon(tembrush, new PointF[] { nwCorner, neCorner, seCorner, swCorner });
                     if (EditorSettings.Default.Edit_PreviewMode)
@@ -179,28 +194,12 @@ namespace MapEditor.render
                 
                 for (i = 0; i < tile.EdgeTiles.Count; i++)
                 {
-                   
-                   
                     edge = (Map.Tile.EdgeTile)tile.EdgeTiles[i];
                     int graphId = edge.Graphic;
                     Color col;
-                    /*
-                    if (ThingDb.FloorTiles[graphId].hascolor)
-                        col = ThingDb.FloorTiles[graphId].col;
-                    else
-                        col = Color.Aqua;
-                    */
-                   
-
-                 // MessageBox.Show(graphId + " " + tile.graphicId +" "+ col.ToString());
-
-
-
-
                     const int diam = 4;
                     PointF ellTL = new PointF(center.X - diam / 2f, center.Y - diam / 2f);
                     col = Color.FromArgb(unchecked((int)((uint)Map.tilecolors[graphId])));
-                    
                     
                     if(graphId == tile.graphicId)
                         col = Color.Aqua;
@@ -314,16 +313,12 @@ namespace MapEditor.render
                             g.DrawLine(new Pen(col, 4), nwCorner2, swCorner2);
                             break;
                         case Map.Tile.EdgeTile.Direction.NE_Tip:
-
                             using (m)
                             {
-
                                 PointF centerTR = new PointF(ellTL.X + 2, ellTL.Y - (squareSize - 4));
 
                                 m.RotateAt(45, centerTR);
                                 g.Transform = m;
-
-
 
                                 g.DrawRectangle(new Pen(col, 3), centerTR.X, centerTR.Y, 2, 2);
                                 g.ResetTransform();
@@ -333,13 +328,10 @@ namespace MapEditor.render
                         case Map.Tile.EdgeTile.Direction.SE_Tip:
                             using (m)
                             {
-
                                 PointF centerTR = new PointF(ellTL.X + (squareSize-(float)1.5), ellTL.Y+(float)0.5);
 
                                 m.RotateAt(45, centerTR);
                                 g.Transform = m;
-
-
 
                                 g.DrawRectangle(new Pen(col, 2), centerTR.X, centerTR.Y, 2, 2);
                                 g.ResetTransform();
@@ -350,13 +342,10 @@ namespace MapEditor.render
                         case Map.Tile.EdgeTile.Direction.SW_Tip:
                             using (m)
                             {
-
                                 PointF centerTR = new PointF(ellTL.X + 2, ellTL.Y + (squareSize - 2));
 
                                 m.RotateAt(45, centerTR);
                                 g.Transform = m;
-
-
 
                                 g.DrawRectangle(new Pen(col, 3), centerTR.X, centerTR.Y, 2, 2);
                                 g.ResetTransform();
@@ -365,18 +354,14 @@ namespace MapEditor.render
                         case Map.Tile.EdgeTile.Direction.NW_Tip:
                             using (m)
                             {
-
                                 PointF centerTR = new PointF(ellTL.X - (squareSize-5), ellTL.Y+(float)0.5);
 
                                 m.RotateAt(45, centerTR);
                                 g.Transform = m;
 
-
-
                                 g.DrawRectangle(new Pen(col, 3), centerTR.X, centerTR.Y, 2, 2);
                                 g.ResetTransform();
                             }
-                            
                             break;
                         default: break;
                     }

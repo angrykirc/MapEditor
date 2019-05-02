@@ -1,0 +1,138 @@
+<ThemeCategories>
+
+<Category Name="All Objects">
+<Include Rule="ANYTHING"/>
+</Category>
+
+<Category Name="Arena Stuff">
+<Include Rule="OBJECT_CLASS">FOOD</Include>
+<Include Rule="OBJECT_CLASS">WEAPON</Include>
+<Include Rule="OBJECT_CLASS">WAND</Include>
+<Include Rule="OBJECT_CLASS">ARMOR</Include>
+
+<Exclude Rule="OBJECT_CLASS">MISSILE</Exclude>
+<Exclude Rule="NAME_EQUAL">Staff</Exclude>
+<Exclude Rule="NAME_EQUAL">DemonsBreathWand</Exclude>
+<Exclude Rule="NAME_EQUAL">RedPotion2</Exclude>
+<Exclude Rule="NAME_EQUAL">PoisonWand</Exclude>
+<Exclude Rule="NAME_EQUAL">MissileWand</Exclude>
+<Exclude Rule="NAME_EQUAL">SummoningWand</Exclude>
+<Exclude Rule="NAME_EQUAL">Chainmail</Exclude>
+<Exclude Rule="NAME_EQUAL">Dagger</Exclude>
+<Exclude Rule="NAME_EQUAL">WebWand</Exclude>
+<Exclude Rule="NAME_BEGIN">YellowPotion</Exclude>
+<Exclude Rule="NAME_BEGIN">WhitePotion</Exclude>
+<Exclude Rule="NAME_BEGIN">BlackPotion</Exclude>
+</Category>
+
+<Category Name="Entities">
+<Include Rule="OBJECT_CLASS">MONSTER</Include>
+</Category>
+
+<Category Name="Plants">
+<Include Rule="NAME_BEGIN">Plant</Include>
+<Include Rule="NAME_BEGIN">Bush</Include>
+<Include Rule="NAME_BEGIN">Stump</Include>
+<Include Rule="NAME_BEGIN">Mushroom</Include>
+<Include Rule="NAME_BEGIN">Flowers</Include>
+<Include Rule="NAME_BEGIN">Foliage</Include>
+<Include Rule="NAME_BEGIN">Grass</Include>
+<Include Rule="NAME_BEGIN">Garden</Include>
+<Include Rule="NAME_BEGIN">OgreStraw</Include>
+</Category>
+
+<Category Name="Light">
+<Include Rule="NAME_CONTAIN">Candle</Include>
+<Include Rule="NAME_CONTAIN">Torch</Include>
+<Include Rule="NAME_CONTAIN">Brazier</Include>
+<Include Rule="NAME_CONTAIN">Fireplace</Include>
+<Include Rule="NAME_CONTAIN">ColorLight</Include>
+<Include Rule="NAME_CONTAIN">InvisibleLight</Include>
+<Include Rule="NAME_CONTAIN">FairyJar</Include>
+<Include Rule="NAME_CONTAIN">Lantern</Include>
+<Include Rule="NAME_CONTAIN">Nightstand</Include>
+<Include Rule="NAME_CONTAIN">Stove</Include>
+<Include Rule="NAME_CONTAIN">Lamp</Include>
+<Include Rule="NAME_CONTAIN">Cauldron</Include>
+<Include Rule="NAME_CONTAIN">FlameBasin</Include>
+<Include Rule="NAME_EQUAL">CrystalBall</Include>
+</Category>
+
+<Category Name="Furniture">
+<Include Rule="NAME_CONTAIN">Table</Include>
+<Include Rule="NAME_CONTAIN">Chair</Include>
+<Include Rule="NAME_CONTAIN">Nightstand</Include>
+<Include Rule="NAME_CONTAIN">Rug</Include>
+<Include Rule="NAME_CONTAIN">Workstation</Include>
+<Include Rule="NAME_CONTAIN">Desk</Include>
+<Include Rule="NAME_CONTAIN">Bench</Include>
+<Include Rule="NAME_CONTAIN">Bookcase</Include>
+<Include Rule="NAME_CONTAIN">Stool</Include>
+<Include Rule="NAME_CONTAIN">Shelves</Include>
+<Include Rule="NAME_CONTAIN">Bellow</Include>
+<Include Rule="NAME_CONTAIN">Bed</Include>
+<Include Rule="NAME_CONTAIN">Cot</Include>
+<Include Rule="NAME_CONTAIN">Pelt</Include>
+</Category>
+
+<Category Name="Decorations">
+<Include Rule="NAME_CONTAIN">StarChart</Include>
+<Include Rule="NAME_CONTAIN">Hanging</Include>
+<Include Rule="NAME_CONTAIN">Shelf</Include>
+<Include Rule="NAME_CONTAIN">WallTrophy</Include>
+<Include Rule="NAME_CONTAIN">CrossedWeapons</Include>
+<Include Rule="NAME_CONTAIN">Zodiac</Include>
+<Include Rule="NAME_CONTAIN">Painting</Include>
+<Include Rule="NAME_CONTAIN">WallSkull</Include>
+<Include Rule="NAME_CONTAIN">Tapestry</Include>
+<Include Rule="NAME_CONTAIN">Mirror</Include>
+
+<Exclude Rule="NAME_CONTAIN">Lantern</Exclude>
+</Category>
+
+<Category Name="Armor">
+<Include Rule="OBJECT_CLASS">ARMOR</Include>
+</Category>
+
+<Category Name="Ambient">
+<Include Rule="NAME_BEGIN">Amb</Include>
+</Category>
+
+<Category Name="Doors">
+<Include Rule="OBJECT_CLASS">DOOR</Include>
+</Category>
+
+<Category Name="Triggers">
+<Include Rule="OBJECT_CLASS">TRIGGER</Include>
+</Category>
+<!-- Сундуки -->
+<Category Name="Containers">
+<Include Rule="NAME_CONTAIN">Chest</Include>
+<Include Rule="NAME_CONTAIN">Barrel</Include>
+<Include Rule="NAME_BEGIN">Coffin</Include>
+<Exclude Rule="OBJECT_CLASS">TREASURE</Exclude>
+<Exclude Rule="NAME_CONTAIN">Breaking</Exclude>
+</Category>
+
+<Category Name="Readables">
+<Include Rule="OBJECT_CLASS">READABLE</Include>
+</Category>
+
+<Category Name="Transport">
+<Include Rule="OBJECT_CLASS">ELEVATOR</Include>
+<Include Rule="OBJECT_CLASS">ELEVATOR_SHAFT</Include>
+<Include Rule="OBJECT_CLASS">HOLE</Include>
+<Include Rule="OBJECT_CLASS">TRANSPORTER</Include>
+</Category>
+
+<Category Name="Trees">
+<Include Rule="NAME_CONTAIN">Tree</Include>
+<Include Rule="NAME_BEGIN">Aspen</Include>
+<Include Rule="NAME_BEGIN">Conifer</Include>
+</Category>
+<!-- Land of the dead -->
+<Category Name="LOTD">
+<Include Rule="NAME_BEGIN">LOTD</Include>
+<Include Rule="NAME_BEGIN">L.O.T.D</Include>
+</Category>
+</ThemeCategories>

@@ -866,6 +866,7 @@ namespace MapEditor.XferGui
             this.SoundSet.Name = "SoundSet";
             this.SoundSet.Size = new System.Drawing.Size(104, 21);
             this.SoundSet.TabIndex = 10;
+            this.SoundSet.SelectedIndexChanged += new System.EventHandler(this.SoundSet_IndexChanged);
             // 
             // MonsterEdit
             // 

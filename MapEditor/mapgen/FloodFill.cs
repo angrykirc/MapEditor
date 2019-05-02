@@ -28,15 +28,11 @@ namespace MapEditor.mapgen
 		{
 			return tilesScanned;
 		}
-		
 		public void DeleteResultTiles()
 		{
 			foreach (Point pt in tilesScanned)
-			{
 				hmap.RemoveTile(pt.X, pt.Y);
-			}
 		}
-		
 		public void PerformFloodFill(int x, int y)
 		{
 			Queue<Point> toscan = new Queue<Point>();

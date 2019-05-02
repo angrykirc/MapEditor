@@ -23,12 +23,7 @@ namespace MapEditor.MapInt
     public class MapInterface
     {
         // Singleton
-        //private Point? mousePos = null;
         private static MapInterface _instance = new MapInterface();
-        /*
-        const int HISTORY_LIMIT = 8;
-        private Queue<Operation> history;
-        */
         public static ArrayList RecSelected = new ArrayList();
         public static PointF SelectedPolyPoint;
         public static Rectangle selectedArea;
@@ -138,10 +133,11 @@ namespace MapEditor.MapInt
         /// <summary>
         /// Attempts to load a map by its filename. Passing null string will result in loading a blank map
         /// </summary>
-        public static void SwitchMap(String fileName)
-        {   mapView.done = false;
+        public static void SwitchMap(string fileName)
+        {
+            mapView.done = false;
             Stream stream = null;
-            
+
             // Check if requested loading a blank map
             if (fileName == null)
             {
@@ -158,7 +154,7 @@ namespace MapEditor.MapInt
                 }
                 // Open resource stream
                 stream = asm.GetManifestResourceStream(name);
-                
+
             }
             else
             {
@@ -191,27 +187,28 @@ namespace MapEditor.MapInt
             _instance._Map = map;
             // update mapinfo
             MainWindow.Instance.UpdateMapInfo();
+
+            //// clear Undo slate
             mapView.TimeManager.Clear();
             mapView.currentStep = 0;
-            
-            mapView.undo.Enabled = false;
-            mapView.redo.Enabled = false;
-            MainWindow.Instance.undo.Enabled = false;
-            MainWindow.Instance.redo.Enabled = false;
+            mapView.cmdUndo.Enabled = false;
+            mapView.cmdRedo.Enabled = false;
+            MainWindow.Instance.miniUndo.Enabled = false;
+            MainWindow.Instance.miniRedo.Enabled = false;
+
             SelectedWaypoint = null;
+            SelectedWaypoints = new List<Map.Waypoint>();
             MainWindow.Instance.Cursor = Cursors.Default;
             if (mapView.PolygonEditDlg.Visible) mapView.PolygonEditDlg.Visible = false;
             MainWindow.Instance.Reload();
-
-            //mapView
+            if (fileName != null) MainWindow.Instance.StoreRecentItem(fileName);
         }
 
-        #region Wall operations
+        #region Wall Operations
         public static bool WallPlace(int x, int y)
         {
             return WallPlace(new Point(x, y));
         }
-
         public static bool WallPlace(Point pt, bool fromBrush = false)
         {
             if (pt.X <= 0 || pt.Y <= 0 || pt.X >= 255 || pt.Y >= 255) return false;
@@ -228,7 +225,7 @@ namespace MapEditor.MapInt
 
             if (oldWall != null)
             {
-               
+
 
                 if (!mapView.WallMakeNewCtrl.smartDraw.Checked)
                 {
@@ -246,12 +243,10 @@ namespace MapEditor.MapInt
             if (!fromBrush) OpUpdatedWalls = true;
             return true;
         }
-
         public static bool WallRemove(int x, int y)
         {
             return WallRemove(new Point(x, y));
         }
-
         public static bool WallRemove(Point pt)
         {
             if (TheMap.Walls.ContainsKey(pt))
@@ -262,24 +257,24 @@ namespace MapEditor.MapInt
             }
             return false;
         }
-
         public static bool WallChange(int x, int y)
         {
             return WallChange(new Point(x, y));
         }
-
         public static bool WallChange(Point pt, bool removeProp = false)
         {
             if (TheMap.Walls.ContainsKey(pt))
             {
-
                 if (removeProp)
                 {
-
-                    if (!TheMap.Walls[pt].Destructable && TheMap.Walls[pt].Secret_ScanFlags == 0 && TheMap.Walls[pt].Secret_WallState == 0)
+                    if (!TheMap.Walls[pt].Destructable
+                        && !TheMap.Walls[pt].Window
+                        && TheMap.Walls[pt].Secret_ScanFlags == 0
+                        && TheMap.Walls[pt].Secret_WallState == 0)
                         return false;
 
                     TheMap.Walls[pt].Destructable = false;
+                    TheMap.Walls[pt].Window = false;
                     TheMap.Walls[pt].Secret_ScanFlags = 0;
                     TheMap.Walls[pt].Secret_WallState = 0;
                     OpUpdatedWalls = true;
@@ -296,9 +291,8 @@ namespace MapEditor.MapInt
                     if (mapView.WallMakeNewCtrl.checkListFlags.GetItemChecked(2)) flagsSelected += 4;
                     if (mapView.WallMakeNewCtrl.checkListFlags.GetItemChecked(3)) flagsSelected += 8;
 
-
-
                     if (mapView.WallMakeNewCtrl.checkDestructable.Checked == wall.Destructable &&
+                        mapView.WallMakeNewCtrl.checkWindow.Checked == wall.Window &&
                         mapView.WallMakeNewCtrl.polygonGroup.Value == wall.Minimap &&
                         mapView.WallMakeNewCtrl.numericCloseDelay.Value == wall.Secret_OpenWaitSeconds &&
                         flagsSelected == wall.Secret_ScanFlags &&
@@ -317,24 +311,15 @@ namespace MapEditor.MapInt
             return false;
         }
 
-        /// ////////////////////////////////////
-        /// <summary>
-
-        /// </summary>
-        /// <param name="pt"></param>
-        /// <returns></returns>
         public static Map.Wall WallGet(Point pt)
         {
             if (!TheMap.Walls.ContainsKey(pt)) return null;
             return TheMap.Walls[pt];
         }
-
         public static Point WallSnap(Point pt)
         {
             return new Point((pt.X / 23) * 23, (pt.Y / 23) * 23);
         }
-
-
         public static Point Rotate(Point point, Point pivot, double angleDegree)
         {
 
@@ -391,7 +376,7 @@ namespace MapEditor.MapInt
         {
             Point MouseKeep = MapView.GetNearestWallPoint(mapView.mouseKeep, true);
             Point MouseKeepOff = MapView.GetNearestWallPoint(mapView.mouseKeepOff, true);
-            
+
             bool fake = true;
             Point mousePos;
             Point mouseDest = new Point();
@@ -478,6 +463,7 @@ namespace MapEditor.MapInt
             }
 
         }
+
         public static Map.Wall GetWallInList(Point pt)
         {
             foreach (var wall in mapView.MapRenderer.FakeWalls)
@@ -489,7 +475,6 @@ namespace MapEditor.MapInt
             }
             return null;
         }
-
         public static bool GetLastWalls(Map.Wall wall)
         {
             foreach (Map.Wall thatwall in mapView.LastWalls)
@@ -503,9 +488,6 @@ namespace MapEditor.MapInt
             }
             return false;
         }
-
-
-
         public static Map.Wall WallAutoBrush(Point pt, bool recur, bool fake = false, Point fix = new Point(), Point fxOrigin = new Point())
         {
             int maxWallList = 3;
@@ -532,11 +514,11 @@ namespace MapEditor.MapInt
                 OldWall2 = OldWall.Facing.ToString();
             }
             //Map.Wall OldWall = null;
-            
-           // if(recur && fix.IsEmpty)
-                //OldWall = WallGet(pt);
 
-            
+            // if(recur && fix.IsEmpty)
+            //OldWall = WallGet(pt);
+
+
             ArrayList OldWall3 = new ArrayList();
 
             if (wall != null)
@@ -545,11 +527,11 @@ namespace MapEditor.MapInt
                 OldWall3.Add((byte)WallGet(pt).Variation);
                 OldWall3.Add((Map.Wall.WallFacing)WallGet(pt).Facing);
             }
-            
-           // if(OldWall != null)
-           
-               // MessageBox.Show(OldWall.Facing.ToString() + " " + OldWall.ToString());
-            if (fake) 
+
+            // if(OldWall != null)
+
+            // MessageBox.Show(OldWall.Facing.ToString() + " " + OldWall.ToString());
+            if (fake)
             {
                 if (!fix.IsEmpty)
                 {
@@ -696,10 +678,10 @@ namespace MapEditor.MapInt
                 WallAutoBrush(new Point(pt.X + 1, pt.Y - 1), false, fake);
                 WallAutoBrush(new Point(pt.X - 1, pt.Y + 1), false, fake);
             }
-            
-           int seed = Environment.TickCount & Int32.MaxValue;
-           Random rnd = new Random((wall.Location.X + wall.Location.Y + (int)DateTime.Now.Ticks + seed));
-           int wall_Variation = (byte)rnd.Next((int)mapView.WallMakeNewCtrl.numWallVari.Value, (int)mapView.WallMakeNewCtrl.numWallVariMax.Value + 1);
+
+            int seed = Environment.TickCount & Int32.MaxValue;
+            Random rnd = new Random((wall.Location.X + wall.Location.Y + (int)DateTime.Now.Ticks + seed));
+            int wall_Variation = (byte)rnd.Next((int)mapView.WallMakeNewCtrl.numWallVari.Value, (int)mapView.WallMakeNewCtrl.numWallVariMax.Value + 1);
 
             if (wmm != null && wpm != null && wmp != null && wpp != null)
             {
@@ -724,7 +706,7 @@ namespace MapEditor.MapInt
                 else
                 {
                     wall.Facing = Map.Wall.WallFacing.EAST_T;
-                    
+
                     wall.Variation = 0;
                 }
                 if (OldWall == null)
@@ -797,10 +779,10 @@ namespace MapEditor.MapInt
             }
 
             // Normal
-           // if (OldWall != null)
-               // MessageBox.Show("PO RECUR "+OldWall.Facing.ToString() + " " + OldWall.ToString());
+            // if (OldWall != null)
+            // MessageBox.Show("PO RECUR "+OldWall.Facing.ToString() + " " + OldWall.ToString());
 
-            
+
             if (wmp != null || wmp != null)
             {
 
@@ -822,28 +804,28 @@ namespace MapEditor.MapInt
                 }
 
                 //if (OldWall != null)
-                   // MessageBox.Show("PO RECUR1 " + OldWall.Facing.ToString() + " " + OldWall.ToString());
+                // MessageBox.Show("PO RECUR1 " + OldWall.Facing.ToString() + " " + OldWall.ToString());
 
 
                 wall.Facing = Map.Wall.WallFacing.NORTH;
 
-               // if (OldWall != null)
-                  //  MessageBox.Show("PO RECUR2 " + OldWall.Facing.ToString() + " " + OldWall.ToString());
+                // if (OldWall != null)
+                //  MessageBox.Show("PO RECUR2 " + OldWall.Facing.ToString() + " " + OldWall.ToString());
 
-               // if (OldWall2 != null)
-                   // MessageBox.Show("PO RECUR :WALL2:: " + OldWall2);
+                // if (OldWall2 != null)
+                // MessageBox.Show("PO RECUR :WALL2:: " + OldWall2);
 
-              //  if (OldWall != null)
-                    //MessageBox.Show("PO RECUR :WALL3333:: " + OldWall3[3].ToString());
+                //  if (OldWall != null)
+                //MessageBox.Show("PO RECUR :WALL3333:: " + OldWall3[3].ToString());
 
                 if (mapView.WallMakeNewCtrl.wallFacing > 1 && wall.Variation < 1 && !wall.Window && mapView.WallMakeNewCtrl.autovari.Checked && !mapView.WallMakeNewCtrl.started)
                     wall.Variation = (byte)wall_Variation;
 
-               // if (OldWall != null)
-                   // MessageBox.Show(OldWall.Facing.ToString() + " " + OldWall.ToString() + " " + wall.Facing.ToString());
-                
-                
-                
+                // if (OldWall != null)
+                // MessageBox.Show(OldWall.Facing.ToString() + " " + OldWall.ToString() + " " + wall.Facing.ToString());
+
+
+
                 if (OldWall == null)
                 {
                     OpUpdatedWalls = true;
@@ -874,10 +856,10 @@ namespace MapEditor.MapInt
                 wall.Facing = Map.Wall.WallFacing.WEST;
                 if (mapView.WallMakeNewCtrl.wallFacing > 1 && wall.Variation < 1 && !wall.Window && mapView.WallMakeNewCtrl.autovari.Checked && !mapView.WallMakeNewCtrl.started)
                     wall.Variation = (byte)wall_Variation;
-                
-                
-               // if (OldWall != null)
-                   // MessageBox.Show(OldWall.Facing.ToString() + " " + OldWall.ToString() + " " + wall.Facing.ToString());
+
+
+                // if (OldWall != null)
+                // MessageBox.Show(OldWall.Facing.ToString() + " " + OldWall.ToString() + " " + wall.Facing.ToString());
                 if (OldWall == null)
                 {
                     OpUpdatedWalls = true;
@@ -894,17 +876,29 @@ namespace MapEditor.MapInt
             else if (wall.Facing != (Map.Wall.WallFacing)OldWall3[2] || wall.matId != (byte)OldWall3[0] || (byte)OldWall3[1] != wall.Variation) OpUpdatedWalls = true;
             return wall;//false
         }
-
-
         #endregion
 
-        #region Floor operations
+        #region Floor Operations
+        public bool ContainsTile(Point tilePoint)
+        {
+            int panelVisibleH = mapView.scrollPanel.Height;
+            int panelVisibleW = mapView.scrollPanel.Width;
+            Rectangle visibleArea = new Rectangle(-mapView.mapPanel.Location.X - 48, -mapView.mapPanel.Location.Y - 48, panelVisibleW + 48, panelVisibleH + 48);
+            foreach (Point tila in TheMap.Tiles.Keys)
+            {
+                if (!visibleArea.Contains(tila.X, tila.Y)) continue;
 
+
+                if (tilePoint.Equals(tila))
+                    return true;
+
+            }
+            return false;
+        }
         public static bool FloorPlace(int x, int y)
         {
             return FloorPlace(new Point(x, y));
         }
-
         public static bool FloorPlace(Point pt)
         {
             bool added = false;
@@ -966,12 +960,10 @@ namespace MapEditor.MapInt
 
             return false;
         }
-
         public static bool FloorRemove(int x, int y)
         {
             return FloorRemove(new Point(x, y));
         }
-
         public static bool FloorRemove(Point pt)
         {
             bool removed = false;
@@ -1021,7 +1013,6 @@ namespace MapEditor.MapInt
             }
             return false;
         }
-
         public static bool FloorAutoBrush(int x, int y)
         {
             var edge = mapView.EdgeMakeNewCtrl.GetEdge();
@@ -1070,19 +1061,17 @@ namespace MapEditor.MapInt
             //  OpUpdatedTiles = true;
             return true;
         }
-
         public static bool FloorAutoBrush(Point pt)
         {
             return FloorAutoBrush(pt.X, pt.Y);
         }
         #endregion
 
-        #region Edge operations
+        #region Edge Operations
         public static bool EdgePlace(int x, int y)
         {
             return EdgePlace(new Point(x, y));
         }
-
         public static bool EdgePlace(Point pt)
         {
             if (TheMap.Tiles.ContainsKey(pt))
@@ -1117,7 +1106,6 @@ namespace MapEditor.MapInt
         {
             return EdgeRemove(new Point(x, y));
         }
-
         public static bool EdgeRemove(Point pt)
         {
             if (TheMap.Tiles.ContainsKey(pt))
@@ -1155,168 +1143,11 @@ namespace MapEditor.MapInt
         }
         #endregion
 
+        #region Object Operations
         private MapObjectCollection _SelectedObjects = new MapObjectCollection();
-
         public static MapObjectCollection SelectedObjects
         {
-            get
-            {
-                return _instance._SelectedObjects;
-            }
-        }
-
-        #region Object operations
-        public static int FindUnusedExtent()
-        {
-            int result = 3; // 2 = host player
-            while (result != int.MaxValue)
-            {
-                bool found = false;
-
-                // check if there are no objects with this extent
-                foreach (Map.Object obj in TheMap.Objects)
-                {
-                    if (obj.Extent == result)
-                    {
-                        found = true; break;
-                    }
-                }
-
-                if (found) result++;
-                else break; // found unused
-            }
-            return result;
-        }
-
-        public static Map.Object ObjectPlace(string type, float x, float y)
-        {
-            OpUpdatedObjects = true;
-            return ObjectPlace(type, new PointF(x, y));
-        }
-
-        public static Map.Object ObjectPlace(string type, PointF loc)
-        {
-            if (!ThingDb.Things.ContainsKey(type)) return null;
-
-            Map.Object result = new Map.Object();
-            result.Name = type;
-            result.Location = loc;
-            result.Extent = FindUnusedExtent();
-
-            // смотрим нету ли редактора, устанавливаем стандартные значения
-            XferEditor editor = XferEditors.GetEditorForXfer(ThingDb.Things[type].Xfer);
-            if (editor != null) editor.SetDefaultData(result);
-            else result.NewDefaultExtraData();
-
-
-            if (ThingDb.Things[type].Xfer == "DoorXfer")
-            {
-                int dorDir = (int)mapView.delta;
-                NoxShared.ObjDataXfer.DoorXfer door = result.GetExtraData<NoxShared.ObjDataXfer.DoorXfer>();
-                door.Direction = (NoxShared.ObjDataXfer.DoorXfer.DOORS_DIR)dorDir;
-            }
-            else if (ThingDb.Things[type].Xfer == "MonsterXfer")
-            {
-                int dir = (int)mapView.delta;
-                NoxShared.ObjDataXfer.MonsterXfer m = result.GetExtraData<NoxShared.ObjDataXfer.MonsterXfer>();
-                m.DirectionId = (byte)dir;
-            }
-            else if (ThingDb.Things[type].Xfer == "NPCXfer")
-            {
-                int dir = (int)mapView.delta;
-                NoxShared.ObjDataXfer.NPCXfer npc = result.GetExtraData<NoxShared.ObjDataXfer.NPCXfer>();
-                npc.DirectionId = (byte)dir;
-            }
-            else if (ThingDb.Things[type].Xfer == "SentryXfer")
-            {
-                float dir = mapView.delta;
-                NoxShared.ObjDataXfer.SentryXfer s = result.GetExtraData<NoxShared.ObjDataXfer.SentryXfer>();
-                s.BasePosRadian = (float)dir;
-            }
-
-
-            TheMap.Objects.Add(result);
-            return result;
-        }
-
-        public static bool ObjectRemove(Map.Object obj)
-        {
-            if (TheMap.Objects.Contains(obj))
-            {
-                TheMap.Objects.Remove(obj);
-                OpUpdatedObjects = true;
-                return true;
-            }
-            return false;
-        }
-        public static void ObjectSelect45Rectangle(Point pt)
-        {
-
-            if (SelectedObjects.Origin != null)
-               return;
-
-            Point MousePoint = mapView.mouseKeep;
-            if (MapInterface.CurrentMode == EditMode.OBJECT_SELECT && !mapView.picking && !MousePoint.IsEmpty)
-            {
-                if (mapView.select45Box.Checked)
-                    pt = Rotate(pt, MousePoint, -45);
-
-                Point a = MousePoint;
-                Point b = new Point(pt.X, MousePoint.Y);
-                Point c = pt;
-                Point d = new Point(MousePoint.X, pt.Y);
-
-                if (mapView.select45Box.Checked)
-                {
-                    b = Rotate(b, a, 45);
-                    c = Rotate(c, a, 45);
-                    d = Rotate(d, a, 45);
-                }
-                selected45Area[0] = a;
-                selected45Area[1] = b;
-                selected45Area[2] = c;
-                selected45Area[3] = d;
-                //int size = Math.Abs(MapInterface.selected45Area[0].X - MapInterface.selected45Area[2].X);
-                if (mapView.Get45RecSize() >= 5)
-                    ObjectSelect(pt);
-            }
-        }
-        /*
-        public static void ObjectSelectRectangle(Point pt)
-        {
-            Point MouseKeep = mapView.mouseKeep;
-            if (MapInterface.CurrentMode == EditMode.OBJECT_SELECT && !mapView.picking && !MouseKeep.IsEmpty)
-            {
-                if (selectedArea.IsEmpty && SelectedObjects.Items.Count > 0 && !KeyHelper.ShiftKey)
-                    return;
-
-                selectedArea = new Rectangle((int)(Math.Min(MouseKeep.X, pt.X)),
-                (int)(Math.Min(MouseKeep.Y, pt.Y)),
-                (int)(Math.Abs(MouseKeep.X - pt.X)),
-                (int)(Math.Abs(MouseKeep.Y - pt.Y)));
-
-                if (selectedArea.Height >= 3 || selectedArea.Width >= 3)
-                    ObjectSelect(pt, selectedArea);
-            }
-
-
-        }
-        */
-        public bool ContainsTile(Point tilePoint)
-        {
-            int panelVisibleH = mapView.scrollPanel.Height;
-            int panelVisibleW = mapView.scrollPanel.Width;
-            Rectangle visibleArea = new Rectangle(-mapView.mapPanel.Location.X - 48, -mapView.mapPanel.Location.Y - 48, panelVisibleW + 48, panelVisibleH + 48);
-            foreach (Point tila in TheMap.Tiles.Keys)
-            {
-                if (!visibleArea.Contains(tila.X, tila.Y)) continue;
-
-
-                if (tilePoint.Equals(tila))
-                    return true;
-
-            }
-            return false;
+            get { return _instance._SelectedObjects; }
         }
 
         public static Map.Object ObjectSelect(Point pt)
@@ -1347,7 +1178,7 @@ namespace MapEditor.MapInt
                 {
                     Point topLeft = new Point((int)center.X - 8, (int)center.Y - 8);
                     Rectangle smallRec = new Rectangle(topLeft, new Size(2 * 8, 2 * 8));//55
-                    
+
 
                     if (mapView.Get45RecSize() >= 5)
                     {
@@ -1426,7 +1257,7 @@ namespace MapEditor.MapInt
                         {
                             if (tt.HasClassFlag(ThingDb.Thing.ClassFlags.TRIGGER))
                             {
-                                
+
                                 NoxShared.ObjDataXfer.TriggerXfer trigger = obj.GetExtraData<NoxShared.ObjDataXfer.TriggerXfer>();
 
                                 t = new Point((int)(center.X - (trigger.SizeX / 2)), (int)(center.Y - (trigger.SizeY / 2)));
@@ -1435,7 +1266,7 @@ namespace MapEditor.MapInt
                                 ExtentX = trigger.SizeX;
                             }
                         }
-                        
+
                         Point[] pointss = new Point[6];
                         Point point1 = new Point(t.X, t.Y);
                         Point point2 = new Point(p.X, p.Y);
@@ -1498,6 +1329,180 @@ namespace MapEditor.MapInt
 
             return closest;
         }
+        public static Map.Object ObjectPlace(string type, float x, float y)
+        {
+            OpUpdatedObjects = true;
+            return ObjectPlace(type, new PointF(x, y));
+        }
+        public static Map.Object ObjectPlace(string type, PointF loc)
+        {
+            if (!ThingDb.Things.ContainsKey(type)) return null;
+
+            Map.Object result = new Map.Object();
+            result.Name = type;
+            result.Location = loc;
+            result.Extent = GetNextObjectExtent();
+
+            // смотрим нету ли редактора, устанавливаем стандартные значения
+            XferEditor editor = XferEditors.GetEditorForXfer(ThingDb.Things[type].Xfer);
+            if (editor != null) editor.SetDefaultData(result);
+            else result.NewDefaultExtraData();
+
+
+            if (ThingDb.Things[type].Xfer == "DoorXfer")
+            {
+                int dorDir = (int)mapView.delta;
+                NoxShared.ObjDataXfer.DoorXfer door = result.GetExtraData<NoxShared.ObjDataXfer.DoorXfer>();
+                door.Direction = (NoxShared.ObjDataXfer.DoorXfer.DOORS_DIR)dorDir;
+            }
+            else if (ThingDb.Things[type].Xfer == "MonsterXfer")
+            {
+                int dir = (int)mapView.delta;
+                NoxShared.ObjDataXfer.MonsterXfer m = result.GetExtraData<NoxShared.ObjDataXfer.MonsterXfer>();
+                m.DirectionId = (byte)dir;
+            }
+            else if (ThingDb.Things[type].Xfer == "NPCXfer")
+            {
+                int dir = (int)mapView.delta;
+                NoxShared.ObjDataXfer.NPCXfer npc = result.GetExtraData<NoxShared.ObjDataXfer.NPCXfer>();
+                npc.DirectionId = (byte)dir;
+            }
+            else if (ThingDb.Things[type].Xfer == "SentryXfer")
+            {
+                float dir = mapView.delta;
+                NoxShared.ObjDataXfer.SentryXfer s = result.GetExtraData<NoxShared.ObjDataXfer.SentryXfer>();
+                s.BasePosRadian = (float)dir;
+            }
+
+
+            TheMap.Objects.Add(result);
+            return result;
+        }
+        public static bool ObjectRemove(Map.Object obj)
+        {
+            if (TheMap.Objects.Contains(obj))
+            {
+                TheMap.Objects.Remove(obj);
+                OpUpdatedObjects = true;
+                return true;
+            }
+            return false;
+        }
+        public static void ObjectSelect45Rectangle(Point pt)
+        {
+            if (SelectedObjects.Origin != null)
+                return;
+
+            Point MousePoint = mapView.mouseKeep;
+            if (MapInterface.CurrentMode == EditMode.OBJECT_SELECT && !mapView.picking && !MousePoint.IsEmpty)
+            {
+                SetSelect45Area(pt);
+                //int size = Math.Abs(MapInterface.selected45Area[0].X - MapInterface.selected45Area[2].X);
+                if (mapView.Get45RecSize() >= 5)
+                    ObjectSelect(pt);
+            }
+        }
+        public static void SetSelect45Area(Point pt)
+        {
+            var origin = mapView.mouseKeep;
+            if (mapView.select45Box.Checked)
+                pt = Rotate(pt, origin, -45);
+
+            Point a = origin;
+            Point b = new Point(pt.X, origin.Y);
+            Point c = pt;
+            Point d = new Point(origin.X, pt.Y);
+
+            if (mapView.select45Box.Checked)
+            {
+                b = Rotate(b, a, 45);
+                c = Rotate(c, a, 45);
+                d = Rotate(d, a, 45);
+            }
+            selected45Area[0] = a;
+            selected45Area[1] = b;
+            selected45Area[2] = c;
+            selected45Area[3] = d;
+        }
+
+        public static int GetNextObjectExtent()
+        {
+            int result = 3; // 2 = host player
+            while (result != int.MaxValue)
+            {
+                bool found = false;
+
+                // check if there are no objects with this extent
+                foreach (Map.Object obj in TheMap.Objects)
+                {
+                    if (obj.Extent == result)
+                    {
+                        found = true; break;
+                    }
+                }
+
+                if (found) result++;
+                else break; // found unused
+            }
+            return result;
+        }
+        public static int FixObjectExtents()
+        {
+            Dictionary<int, int> dictionary1 = new Dictionary<int, int>();
+            int num1 = 0;
+            foreach (Map.Object obj in TheMap.Objects)
+            {
+                int extent = obj.Extent;
+                if (dictionary1.ContainsKey(extent))
+                {
+                    Dictionary<int, int> dictionary2;
+                    int index;
+                    (dictionary2 = dictionary1)[index = extent] = dictionary2[index] + 1;
+                }
+                else
+                    dictionary1[extent] = 1;
+            }
+            foreach (KeyValuePair<int, int> keyValuePair in dictionary1)
+            {
+                if (keyValuePair.Value > 1)
+                {
+                    bool flag = false;
+                    foreach (Map.Object object1 in TheMap.Objects)
+                    {
+                        if (object1.Extent == keyValuePair.Key)
+                        {
+                            if (!flag && (ThingDb.Things[object1.Name].Xfer == "TransporterXfer"
+                                || ThingDb.Things[object1.Name].Xfer == "ElevatorXfer"
+                                || ThingDb.Things[object1.Name].Xfer == "ElevatorShaftXfer"))
+                            {
+                                foreach (Map.Object object2 in TheMap.Objects)
+                                {
+                                    if ((ThingDb.Things[object2.Name].Xfer == "ElevatorXfer"
+                                        || ThingDb.Things[object2.Name].Xfer == "ElevatorShaftXfer")
+                                        && object2.GetExtraData<NoxShared.ObjDataXfer.ElevatorXfer>().ExtentLink > 0)
+                                    {
+                                        flag = true;
+                                        break;
+                                    }
+                                    if (ThingDb.Things[object2.Name].Xfer == "TransporterXfer"
+                                        && object2.GetExtraData<NoxShared.ObjDataXfer.TransporterXfer>().ExtentLink > 0)
+                                    {
+                                        flag = true;
+                                        break;
+                                    }
+                                }
+                                if (flag)
+                                    continue;
+                            }
+                            int extent = object1.Extent;
+                            object1.Extent = GetNextObjectExtent();
+                            ++num1;
+                        }
+                    }
+                }
+            }
+            return num1;
+        }
 
         public static bool LineIntersectsRect(Point p1, Point p2, Rectangle r)
         {
@@ -1541,41 +1546,6 @@ namespace MapEditor.MapInt
 
             return true;
         }
-
-        public static Point Rotate(Point point, PointF pivot, double angleSet)
-        {
-            double angle = angleSet * Math.PI / 180;
-            double cos = Math.Cos(angle);
-            double sin = Math.Sin(angle);
-            float dx = point.X - pivot.X;
-            float dy = point.Y - pivot.Y;
-            double x = cos * dx - sin * dy + pivot.X;
-            double y = sin * dx + cos * dy + pivot.Y;
-
-            Point result = new Point((int)Math.Round(x), (int)Math.Round(y));
-            return result;
-        }
-        /*
-        public static Boolean checkPointInDoor(int rx, int ry, int rw, int rh, int px, int py)
-        {
-
-            double rotRad = (Math.PI * 45) / 180;
-            int dx = px - rx;
-            int dy = py - ry;
-            double h1 = Math.Sqrt(dx * dx + dy * dy);
-
-            double currA = Math.Atan2(dy, dx);
-            double newA = currA - rotRad;
-            double x2 = Math.Cos(newA) * h1;
-            double y2 = Math.Sin(newA) * h1;
-
-            if (x2 > -0.5 * rw && x2 < 0.5 * rw && y2 > -0.5 * rh && y2 < 0.5 * rh)
-                return true;
-
-            return false;
-
-        }
-        */
         public static bool PointInPolygon(Point p, Point[] poly)
         {
             Point p1, p2;
@@ -1613,26 +1583,35 @@ namespace MapEditor.MapInt
 
             return inside;
         }
+        public static Point Rotate(Point point, PointF pivot, double angleSet)
+        {
+            double angle = angleSet * Math.PI / 180;
+            double cos = Math.Cos(angle);
+            double sin = Math.Sin(angle);
+            float dx = point.X - pivot.X;
+            float dy = point.Y - pivot.Y;
+            double x = cos * dx - sin * dy + pivot.X;
+            double y = sin * dx + cos * dy + pivot.Y;
 
+            Point result = new Point((int)Math.Round(x), (int)Math.Round(y));
+            return result;
+        }
         #endregion
 
-        private Map.Waypoint _SelectedWaypoint = null;
-
-        public static Map.Waypoint SelectedWaypoint
-        {
-            get
-            {
-                return _instance._SelectedWaypoint;
-            }
-            set
-            {
-                _instance._SelectedWaypoint = value;
-            }
-        }
-
-        #region Waypoint operations
+        #region Waypoint Operations
         const byte WaypointFlag = 128;
         const double selectRadius = MapView.objectSelectionRadius * MapView.objectSelectionRadius;
+
+        private Map.Waypoint _SelectedWaypoint = null;
+        public static Map.Waypoint SelectedWaypoint
+        {
+            get { return _instance._SelectedWaypoint; }
+            set { _instance._SelectedWaypoint = value; }
+        }
+        public static List<Map.Waypoint> SelectedWaypoints
+        {
+            get; set;
+        }
 
         public static Map.Waypoint WaypointSelect(Point pt)
         {
@@ -1652,38 +1631,12 @@ namespace MapEditor.MapInt
 
             return closest;
         }
-
-        public static void WaypointEnable()
-        {
-            //int count = TheMap.Waypoints.Count - 1;
-            //int inx = 0;
-
-            foreach (Map.Waypoint wp in TheMap.Waypoints)
-            {
-
-                wp.connections.Clear();
-
-                /*
-                if (count == inx)
-                {
-                    WaypointRemove(wp);
-                    return;
-                }
-                inx++;
-                */
-                // wp.Flags = 1;
-            }
-            TheMap.Waypoints.num_wp.Clear();
-            TheMap.Waypoints.Clear();
-        }
-
-
-
         public static bool WaypointRemove(Map.Waypoint wp)
         {
             if (TheMap.Waypoints.Contains(wp))
             {
                 if (wp == SelectedWaypoint) SelectedWaypoint = null;
+                SelectedWaypoints.Remove(wp);
                 TheMap.Waypoints.Remove(wp);
                 TheMap.Waypoints.num_wp.Remove(wp.Number);
                 OpUpdatedWaypoints = true;
@@ -1691,19 +1644,39 @@ namespace MapEditor.MapInt
             }
             return false;
         }
-
         public static Map.Waypoint WaypointPlace(string name, PointF loc, bool enabled)
         {
-            int i;
-            for (i = 1; TheMap.Waypoints.num_wp.ContainsKey(i); i++) ;
-            Map.Waypoint wp = new Map.Waypoint("", loc, i);
+            Map.Waypoint wp = new Map.Waypoint("", loc, GetNextWaypointNumber());
             wp.Flags = enabled ? 1 : 0;
             TheMap.Waypoints.Add(wp);
             TheMap.Waypoints.num_wp.Add(wp.Number, wp);
             OpUpdatedWaypoints = true;
             return wp;
         }
+        public static int GetNextWaypointNumber()
+        {
+            int i;
+            for (i = 1; TheMap.Waypoints.num_wp.ContainsKey(i); i++);
+            return i;
+        }
 
+        public static void WaypointSelectAll()
+        {
+            SelectedWaypoints.Clear();
+            foreach (Map.Waypoint wp in TheMap.Waypoints)
+                SelectedWaypoints.Add(wp);
+        }
+        public static void WaypointEnableAll()
+        {
+            foreach (Map.Waypoint wp in TheMap.Waypoints)
+                wp.Flags = 1;
+        }
+
+        public static void WaypointClearPaths()
+        {
+            foreach (Map.Waypoint wp in TheMap.Waypoints)
+                wp.connections.Clear();
+        }
         public static bool WaypointConnect(Map.Waypoint wp, Map.Waypoint proxyWP = null)
         {
 
@@ -1731,7 +1704,7 @@ namespace MapEditor.MapInt
                     mapView.ApplyStore();
                     destWaypoint.AddConnByNum(wp, WaypointFlag);
                     OpUpdatedWaypoints = true;
-                   // MessageBox.Show("sdsd");
+                    // MessageBox.Show("sdsd");
 
                 }
                 if (mapView.doubleWp.Checked && proxyWP == null)
@@ -1743,7 +1716,6 @@ namespace MapEditor.MapInt
             }
             return false;
         }
-
         public static bool WaypointUnconnect(Map.Waypoint wp)
         {
 
@@ -1779,7 +1751,7 @@ namespace MapEditor.MapInt
         {
             double closestDistance = Double.MaxValue;
             int i = 0;
-            int page = MainWindow.Instance.tabControl1.SelectedIndex;
+            int page = MainWindow.Instance.panelTabs.SelectedIndex;
 
             double selRadius = (page == 1 ? 1500 : selectRadius);
             //MessageBox.Show(selRadius.ToString());
@@ -1810,13 +1782,13 @@ namespace MapEditor.MapInt
         public static PointF PolyPointSnap(Point pt)
         {
             double closestDistance = Double.MaxValue;
-            int page = MainWindow.Instance.tabControl1.SelectedIndex;
+            int page = MainWindow.Instance.panelTabs.SelectedIndex;
             Map.Polygon SelectedPolygon = MainWindow.Instance.mapView.PolygonEditDlg.SelectedPolygon;
             double selRadius = (page == 1 ? 100 : 200);
             List<PointF> pointsMini = new List<PointF>();
             foreach (Map.Polygon poly in TheMap.Polygons)
             {
-                
+
                 if (poly != SelectedPolygon)
                 {
 
@@ -1933,16 +1905,13 @@ namespace MapEditor.MapInt
                 case EditMode.WAYPOINT_PLACE:
                     mapView.waypointName.Text = "";
                     WaypointPlace(mapView.waypointName.Text, new PointF(pt.X, pt.Y), mapView.waypointEnabled.Checked);
-                    
+
                     break;
                 case EditMode.WAYPOINT_CONNECT:
                 case EditMode.WAYPOINT_SELECT:
                     // Connect previously selected waypoint and one that is under cursor currently
                     if (CurrentMode == EditMode.WAYPOINT_CONNECT)
                     {
-
-                        // if (SelectedWaypoint == null)
-                        //SelectedWaypoint = WaypointSelect(pt);
                         if (KeyHelper.ShiftKey) // Shift unconnects (reverse)
                             WaypointUnconnect(WaypointSelect(pt));
                         else
@@ -1956,10 +1925,11 @@ namespace MapEditor.MapInt
                         mapView.waypointName.Text = SelectedWaypoint.Name;
                         mapView.waypointEnabled.Checked = SelectedWaypoint.Flags > 0;
                     }
+                    else
+                        SelectedWaypoints.Clear();
                     break;
             }
         }
-
         public static void HandleRMouseClick(Point pt)
         {
             Point wallPt = MapView.GetNearestWallPoint(pt);
@@ -1998,34 +1968,5 @@ namespace MapEditor.MapInt
 
             }
         }
-        /*
-        public void PerformOperation(Operation o)
-        {
-             add to history
-            if (history.Count >= HISTORY_LIMIT) RemoveLast(history);
-            history.Enqueue(o);
-            // execute implementation
-            o.Perform(this);
-        }
-		
-        private void RemoveLast(Queue<Operation> q)
-        {
-            var first = q.Peek();
-            Operation current = null;
-            while (true) {
-                current = q.Dequeue();
-                if (q.Peek() == first) {
-                    break;
-                }
-                q.Enqueue(current);
-            }
-        }
-        */
-    }
-
-    public interface Operation
-    {
-        bool Perform(MapInterface i);
-        void Undo(MapInterface i);
     }
 }

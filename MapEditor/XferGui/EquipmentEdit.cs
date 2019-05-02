@@ -5,15 +5,14 @@
  */
 using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using MapEditor.render;
 using NoxShared;
 using NoxShared.ObjDataXfer;
 
 namespace MapEditor.XferGui
 {
-	/// <summary>
-	/// Description of EquipmentEdit.
-	/// </summary>
 	public partial class EquipmentEdit : XferEditor
 	{
 		#region (Enchantment Ids)
@@ -183,9 +182,12 @@ namespace MapEditor.XferGui
 										"UserMaterialColor31",
 										"UserMaterialColor32"
 		};
-		#endregion
-		
-		public EquipmentEdit()
+        #endregion
+
+        private bool pausePreview = true;
+        private bool randClicked = false;
+
+        public EquipmentEdit()
 		{
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
@@ -198,18 +200,75 @@ namespace MapEditor.XferGui
 			enchantment3.Items.AddRange(ENCHANTMENTS);
 			enchantment4.Items.AddRange(ENCHANTMENTS);
 		}
-		
-		public override void SetDefaultData(Map.Object obj)
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        public override void SetDefaultData(Map.Object obj)
 		{
 			base.SetDefaultData(obj);
 			
 			// Default values for armor and weapons
 			ThingDb.Thing tt = ThingDb.Things[obj.Name];
-			if (tt.Xfer == "WeaponXfer")
-				obj.GetExtraData<WeaponXfer>().DefaultsFor(tt);
-			else if (tt.Xfer == "ArmorXfer")
-				obj.GetExtraData<ArmorXfer>().Durability = (short) tt.Health;
+            if (tt.Xfer == "WeaponXfer")
+            {
+                obj.GetExtraData<WeaponXfer>().Durability = GetDurability(tt);
+                obj.GetExtraData<WeaponXfer>().DefaultsFor(tt);
+            }
+            else if (tt.Xfer == "ArmorXfer")
+                obj.GetExtraData<ArmorXfer>().Durability = GetDurability(tt);
+				
 		}
+        private short GetDurability(ThingDb.Thing thing)
+        {
+            // Maps will crash without proper durability, pulled from Westwood maps
+            short result = (short) thing.Health;
+
+            // Armor
+            if (thing.Name == "OrnateHelm") result = 850;
+            else if (thing.Name == "SteelHelm") result = 675;
+            else if (thing.Name == "Breastplate") result = 800;
+            else if (thing.Name == "PlateLeggings") result = 700;
+            else if (thing.Name == "PlateArms") result = 600;
+            else if (thing.Name == "PlateBoots") result = 700;
+            else if (thing.Name == "MedievalCloak") result = 200;
+            else if (thing.Name == "ChainCoif") result = 325;
+            else if (thing.Name == "ChainLeggings") result = 325;
+            else if (thing.Name == "ChainTunic") result = 400;
+            else if (thing.Name == "ConjurerHelm") result = 500;
+            else if (thing.Name == "LeatherHelm") result = 200;
+            else if (thing.Name == "LeatherArmbands") result = 200;
+            else if (thing.Name == "LeatherArmoredBoots") result = 300;
+            else if (thing.Name == "LeatherLeggings") result = 200;
+            else if (thing.Name == "LeatherArmor") result = 300;
+            else if (thing.Name == "LeatherBoots") result = 200;
+            else if (thing.Name == "WizardRobe") result = 325;
+            else if (thing.Name == "WizardHelm") result = 350;
+
+            // Weapons
+            else if (thing.Name == "SteelShield") result = 300;
+            else if (thing.Name == "WoodenShield") result = 200;
+            else if (thing.Name == "OgreAxe") result = 50;
+            else if (thing.Name == "Sword") result = 160; // 200
+            else if (thing.Name == "Longsword") result = 180;
+            else if (thing.Name == "MorningStar") result = 200; // 250
+            else if (thing.Name == "BattleAxe") result = 220;
+            else if (thing.Name == "RoundChakram") result = 300;
+            else if (thing.Name == "WarHammer") result = 350;
+            else if (thing.Name == "GreatSword") result = 400;
+            else if (thing.Name == "DeathRayWand") result = 70;
+            else if (thing.Name == "LesserFireballWand") result = 100;
+            else if (thing.Name == "FireStormWand") result = 100;
+            else if (thing.Name == "ForceWand") result = 110;
+            else if (thing.Name == "StaffWooden") result = 120;
+            else if (thing.Name == "InfinitePainWand") result = 80;
+            else if (thing.Name == "CrossBow") result = 500;
+            else if (thing.Name == "Bow") result = 500;
+
+            return result;
+        }
 		
 		public override void SetObject(Map.Object obj)
 		{
@@ -258,8 +317,8 @@ namespace MapEditor.XferGui
 					enchantment4.Text = team.Enchantments[3];
 					break;
 			}
+            pausePreview = false;
 		}
-		
 		public override Map.Object GetObject()
 		{
 			ThingDb.Thing tt = ThingDb.Things[obj.Name];
@@ -307,10 +366,125 @@ namespace MapEditor.XferGui
 			}
 			return obj;
 		}
+        public Map.Object GetClonedObject()
+        {
+            Map.Object newObj = new Map.Object(obj.Name, new PointF(5, 5));
+            ThingDb.Thing tt = ThingDb.Things[newObj.Name];
+            WeaponXfer weapon; ArmorXfer armor; AmmoXfer ammo; TeamXfer team;
 
+            var enchants = new string[] { enchantment1.Text, enchantment2.Text, enchantment3.Text, enchantment4.Text };
+
+            switch (tt.Xfer)
+            {
+                case "WeaponXfer":
+                    weapon = newObj.GetExtraData<WeaponXfer>();
+                    weapon.Enchantments = enchants;
+                    weapon.Durability = (short)durability.Value;
+                    if (ammoMin.Enabled && ammoMax.Enabled)
+                    {
+                        weapon.WandChargesCurrent = (byte)ammoMin.Value;
+                        weapon.WandChargesLimit = (byte)ammoMax.Value;
+                    }
+                    break;
+                case "ArmorXfer":
+                    armor = newObj.GetExtraData<ArmorXfer>();
+                    armor.Enchantments = enchants;
+                    armor.Durability = (short)durability.Value;
+                    break;
+                case "AmmoXfer":
+                    ammo = newObj.GetExtraData<AmmoXfer>();
+                    ammo.Enchantments = enchants;
+                    ammo.AmmoCurrent = (byte)ammoMin.Value;
+                    ammo.AmmoLimit = (byte)ammoMax.Value;
+                    break;
+                case "TeamXfer":
+                    team = newObj.GetExtraData<TeamXfer>();
+                    team.Enchantments = enchants;
+                    break;
+            }
+            return newObj;
+        }
+
+        #region Preview Events
+        private void picRender_Click(object sender, EventArgs e)
+        {
+            if (picRender.BackColor == Color.Black)
+                picRender.BackColor = Color.White;
+            else
+                picRender.BackColor = Color.Black;
+        }
+        private void picRenderOrig_Click(object sender, EventArgs e)
+        {
+            if (picRenderOrig.BackColor == Color.Black)
+                picRenderOrig.BackColor = Color.White;
+            else
+                picRenderOrig.BackColor = Color.Black;
+        }
         private void EquipmentEdit_Load(object sender, EventArgs e)
         {
-
+            SetPreviews();
         }
-	}
+        private void EquipmentEdit_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (randClicked)
+            {
+                e.Cancel = true;
+                randClicked = false;
+            }
+        }
+        private void enchantment1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetPreviews();
+        }
+        private void enchantment2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetPreviews();
+        }
+        private void enchantment3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetPreviews();
+        }
+        private void enchantment4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetPreviews();
+        }
+        private void buttonRandomize_Click(object sender, EventArgs e)
+        {
+            pausePreview = true;
+            randClicked = true;
+            var rand = new Random();
+            enchantment1.SelectedIndex = rand.Next(0, enchantment1.Items.Count);
+            enchantment2.SelectedIndex = rand.Next(0, enchantment2.Items.Count);
+            enchantment3.SelectedIndex = rand.Next(0, enchantment3.Items.Count);
+            enchantment4.SelectedIndex = rand.Next(0, enchantment4.Items.Count);
+            pausePreview = false;
+            SetPreviews();
+        }
+        
+        private void SetPreviews()
+        {
+            var img = GetPreview();
+            if (img != null)
+            {
+                picRenderOrig.BackgroundImage = img;
+                picRender.BackgroundImage = ImageHelper.ResizeImage(img, new Size(90, 90), true);
+            }
+        }
+        private Bitmap GetPreview()
+        {
+            if (obj == null)
+                return null;
+            if (pausePreview)
+                return null;
+
+            var newObj = GetClonedObject();
+            var tt = ThingDb.Things[newObj.Name];
+
+            var r = new ObjectRenderer(MainWindow.Instance.mapView.MapRenderer);
+            Bitmap img = r.GetObjectImageSpecial(newObj, tt, false);
+
+            return img;
+        }
+        #endregion
+    }
 }

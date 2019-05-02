@@ -4,18 +4,27 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace MapEditor
 {
-	public class AboutDialog : System.Windows.Forms.Form
-	{
-		private System.ComponentModel.IContainer components = null;
+	public class AboutDialog : Form
+    {
+		private IContainer components = null;
 
 		public AboutDialog()
 		{
 			InitializeComponent();
-            versionLabel.Text = "Version: 1.0b";// lets call it like that, its more user friendly// string.Format("Version: {0}", Assembly.GetExecutingAssembly().GetName().Version);
+            lblVersion.Text = string.Format("Nox Map Editor {0} by:", GetVersion());
 		}
+
+        // ** Change version number under Project > MapEditor Properties > Application (tab) > Assembly Information (button) > File Version **
+        public static string GetVersion()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            return fvi.FileVersion;
+        }
 
 		protected override void Dispose( bool disposing )
 		{
@@ -36,46 +45,37 @@ namespace MapEditor
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutDialog));
-            this.aboutLabel = new System.Windows.Forms.Label();
-            this.versionLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
+            this.lblAbout = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // aboutLabel
+            // lblVersion
             // 
-            this.aboutLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.aboutLabel.Location = new System.Drawing.Point(12, 97);
-            this.aboutLabel.Name = "aboutLabel";
-            this.aboutLabel.Size = new System.Drawing.Size(241, 84);
-            this.aboutLabel.TabIndex = 0;
-            this.aboutLabel.Text = resources.GetString("aboutLabel.Text");
+            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.Location = new System.Drawing.Point(12, 14);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(241, 25);
+            this.lblVersion.TabIndex = 1;
+            this.lblVersion.Text = "Nox Map Editor x.y by:";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // versionLabel
+            // lblAbout
             // 
-            this.versionLabel.Location = new System.Drawing.Point(12, 188);
-            this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(241, 22);
-            this.versionLabel.TabIndex = 1;
-            this.versionLabel.Text = "-version-";
-            this.versionLabel.Click += new System.EventHandler(this.versionLabel_Click);
-            // 
-            // label1
-            // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(241, 76);
-            this.label1.TabIndex = 2;
-            this.label1.Text = resources.GetString("label1.Text");
+            this.lblAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAbout.Location = new System.Drawing.Point(12, 45);
+            this.lblAbout.Name = "lblAbout";
+            this.lblAbout.Size = new System.Drawing.Size(241, 142);
+            this.lblAbout.TabIndex = 2;
+            this.lblAbout.Text = "Eric Litak\r\nAndrew Wesie\r\nTemplar\r\nJoshua Statzer\r\nAngryKirC\r\nSuperJack\r\nProtokol" +
+    "\r\nKITTY";
+            this.lblAbout.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // AboutDialog
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(265, 217);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.versionLabel);
-            this.Controls.Add(this.aboutLabel);
+            this.ClientSize = new System.Drawing.Size(265, 193);
+            this.Controls.Add(this.lblAbout);
+            this.Controls.Add(this.lblVersion);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -84,23 +84,13 @@ namespace MapEditor
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "About";
-            this.Load += new System.EventHandler(this.AboutDialog_Load);
             this.ResumeLayout(false);
 
 		}
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label versionLabel;
-		private System.Windows.Forms.Label aboutLabel;
+
+        private Label lblAbout;
+        private Label lblVersion;
 		#endregion
 
-        private void versionLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AboutDialog_Load(object sender, EventArgs e)
-        {
-
-        }
 	}
 }

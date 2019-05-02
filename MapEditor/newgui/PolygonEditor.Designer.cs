@@ -180,9 +180,9 @@ namespace MapEditor.newgui
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(143, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 12);
+            this.label2.Size = new System.Drawing.Size(106, 12);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Shift+Rclick to add a point";
+            this.label2.Text = "Shift+Click to add a point";
             // 
             // LockedBox
             // 

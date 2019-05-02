@@ -978,6 +978,7 @@ namespace MapEditor.XferGui
             this.MinimizeBox = false;
             this.Name = "ColorLightEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "ColorLight Editor";
             this.Load += new System.EventHandler(this.ColorLightEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();

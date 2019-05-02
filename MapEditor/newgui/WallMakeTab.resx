@@ -120,6 +120,12 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="checkListFlags.ToolTip" xml:space="preserve">
+    <value>Scripted - Use this option if you want to manipulate with this wall in your scripts.
+Auto-Open - Wall opens automaticaly when player gets near to it.
+Auto-Close - Wall closes automaticaly if it is open.
+UnkFla8 - Unknown</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="Picker.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -146,12 +152,6 @@
         Hl5hUVkY7wGd8AHDh45r4WsOfxcGt2/3JufZqvngsV/CohieBVtbJ+FSyh88DO2Zse5RT9vf6G8UISzm
         GPkkPMI+B8jQLq90uSj6v0UJi6XykDDwgQhdKiy2juTQvy6TTbWIyiPRAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="checkListFlags.ToolTip" xml:space="preserve">
-    <value>Scripted - Use this option if you want to manipulate with this wall in your scripts.
-Auto-Open - Wall opens automaticaly when player gets near to it.
-Auto-Close - Wall closes automaticaly if it is open.
-UnkFla8 - Unknown</value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>46</value>

@@ -22,5 +22,11 @@ namespace MapEditor.mapgen
 		public MapPreset MapType;
 		public bool Allow3SideWalls;
 		public bool PopulateMap;
+        public bool Randomize;
+        public string BASE_FLOOR;
+        public string DENSE_FLOOR;
+        public string PATH_FLOOR;
+        public string BLEND_EDGE;
+        public string WALL;
 	}
 }

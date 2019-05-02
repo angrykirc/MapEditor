@@ -28,17 +28,11 @@ namespace MapEditor.newgui
         private int tileTypeID;
         public bool AutoVari
         {
-            get
-            {
-                return checkAutoVari.Checked;
-            }
+            get { return checkAutoVari.Checked; }
         }
 
         public TileMakeTab()
         {
-            //
-            // The InitializeComponent() call is required for Windows Forms designer support.
-            //
             InitializeComponent();
             // setup listview handlers
             listTileImages.RetrieveVirtualItem += new RetrieveVirtualItemEventHandler(listTileImages_RetrieveVirtualItem);
@@ -47,7 +41,6 @@ namespace MapEditor.newgui
             BrushSize.MouseWheel += new MouseEventHandler(BrushSizeMouseWheel);
             buttons[0] = PlaceTileBtn;
             buttons[1] = AutoTileBtn;
-
         }
 
         public void SetMapView(MapView view)
@@ -68,13 +61,9 @@ namespace MapEditor.newgui
             sortedEdgeNames.Sort();
             edgeBox.Items.AddRange(sortedEdgeNames.ToArray());
             edgeBox.SelectedIndex = 0;
-
-
-
-
         }
 
-        void listTileImages_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
+        private void listTileImages_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
             ListViewItem item = new ListViewItem("", e.ItemIndex);
             item.BackColor = Color.White;
@@ -96,11 +85,9 @@ namespace MapEditor.newgui
             return ThingDb.FloorTiles[ttype].Variations;
         }
 
-        void UpdateListView(object sender, EventArgs e)
+        private void UpdateListView(object sender, EventArgs e)
         {
-          
             // принуждаем обновить данные
-          
             tileVariation = 0;
             tileTypeID = GetSelTileTypeIndex();
             listTileImages.VirtualListSize = 0;
@@ -166,7 +153,7 @@ namespace MapEditor.newgui
             return new Map.Tile(loc, (byte)tileTypeID, vari);
         }
 
-        void ChangeTileType(object sender, EventArgs e)
+        private void ChangeTileType(object sender, EventArgs e)
         {
             if (listTileImages.SelectedIndices.Count > 0)
             {
@@ -181,15 +168,6 @@ namespace MapEditor.newgui
             if (e.Delta >= 90 && BrushSize.Value < 6) BrushSize.Value += 1;
             if (e.Delta <= 90 && BrushSize.Value > 1) BrushSize.Value -= 1;
         }
-        private void TileMakeTab_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonMode_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void PlaceTileBtn_CheckedChanged(object sender, EventArgs e)
         {
@@ -200,7 +178,6 @@ namespace MapEditor.newgui
             Picker.Checked = false;
             MapInterface.CurrentMode = (EditMode)radioButton.Tag;
 
-
             if (PlaceTileBtn.Checked)
             {
                 miniEdges.Enabled = false;
@@ -210,7 +187,6 @@ namespace MapEditor.newgui
             {
                 miniEdges.Enabled = true;
                 groupBox1.Enabled = true;
-
             }
         }
 
@@ -218,28 +194,27 @@ namespace MapEditor.newgui
         {
             mapView.picking = true;
             Cursor myCursor = new Cursor("picker.cur");
-            //this.Cursor = myCursor;
-            //MainWindow.Instance.Cursor = myCursor;
+
             mapView.mapPanel.Cursor = myCursor;
-
         }
-
-        private void labelSep1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Picker_CheckedChanged(object sender, EventArgs e)
         {
             if (Picker.Checked)
                 mapView.Picker.Checked = true;
-                else
+            else
             {
                 mapView.Picker.Checked = false;
                 mapView.picking = false;
-
-
             }
+        }
+        private void Bucket_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Bucket.Checked)
+                mapView.mapPanel.Cursor = new Cursor(new System.IO.MemoryStream(Properties.Resources.bucket));
+            else
+                mapView.mapPanel.Cursor = Cursors.Default;
+
+            mapView.tileBucket = Bucket.Checked;
         }
 
         private int GetSelEdgeTypeIndex()
@@ -247,30 +222,10 @@ namespace MapEditor.newgui
             return ThingDb.EdgeTileNames.IndexOf(sortedEdgeNames[edgeBox.SelectedIndex]);
         }
 
-        private void BrushSize_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void edgeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             if (mapView.EdgeMakeNewCtrl.comboEdgeType.Items.Count > 0)
             mapView.EdgeMakeNewCtrl.comboEdgeType.SelectedIndex = edgeBox.SelectedIndex;
-
         }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-      
     }
 }

@@ -42,10 +42,10 @@ namespace MapEditor
                 pickupBox.Text = obj.pickup_func;
 
 
- 
+
                 // AngryKirC: ставим флаг?
-                flagsListBox.SetItemChecked(0, (obj.CreateFlags & 1) == 1); // BELOW
-                flagsListBox.SetItemChecked(1, (obj.CreateFlags & 0x1000000) == 0x1000000); // ENABLED
+                flagsListBox.SetItemChecked(0, (obj.CreateFlags & 0x1000000) == 0x1000000); // ENABLED
+                flagsListBox.SetItemChecked(1, (obj.CreateFlags & 1) == 1); // BELOW
                 flagsListBox.SetItemChecked(2, (obj.CreateFlags & 0x20) == 0x20); // DESTROYED
                 flagsListBox.SetItemChecked(3, (obj.CreateFlags & 0x40) == 0x40); // NO_COLLIDE
                 flagsListBox.SetItemChecked(4, (obj.CreateFlags & 0x100) == 0x100); // EQUIPPED
@@ -243,7 +243,7 @@ namespace MapEditor
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 19);
             this.label5.TabIndex = 17;
-            this.label5.Text = "Team ?";
+            this.label5.Text = "Team:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // teamBox
@@ -367,8 +367,8 @@ namespace MapEditor
             // 
             this.flagsListBox.FormattingEnabled = true;
             this.flagsListBox.Items.AddRange(new object[] {
-            "BELOW",
             "ENABLED",
+            "BELOW",
             "DESTROYED",
             "NO_COLLIDE",
             "EQUIPPED",
@@ -468,7 +468,7 @@ namespace MapEditor
             obj.pickup_func = pickupBox.Text;
 			obj.AnimFlags = UInt16.Parse(animFlBox.Text, System.Globalization.NumberStyles.HexNumber);
 
-            uint[] flags = { 1, 0x1000000, 0x20, 0x40, 0x100, 0x8000, 2, 0x10000000, 0x2000, 0x4000, 0x10000, 0x40000, 0x100000, 0x800000, 0x2000000, 0x4000000, 0x20000000, 0x400000, 0x40000000, 0x80000000 };
+            uint[] flags = { 0x1000000, 1, 0x20, 0x40, 0x100, 0x8000, 2, 0x10000000, 0x2000, 0x4000, 0x10000, 0x40000, 0x100000, 0x800000, 0x2000000, 0x4000000, 0x20000000, 0x400000, 0x40000000, 0x80000000 };
 
            
             obj.CreateFlags = 0;
@@ -482,12 +482,14 @@ namespace MapEditor
 
 		private void nameBox_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			objPs = ((ThingDb.Thing)ThingDb.Things[nameBox.Text]);
+			objPs = ThingDb.Things[nameBox.Text];
             
 			if (nameBox.Text != obj.Name)
             {
 				obj.Name = nameBox.Text;
-				obj.NewDefaultExtraData();
+                XferEditor editor = XferEditors.GetEditorForXfer(ThingDb.Things[nameBox.Text].Xfer);
+                if (editor != null) editor.SetDefaultData(obj);
+                else obj.NewDefaultExtraData();
             }
             xtraBox.Checked = (obj.Terminator > 0);
 		}

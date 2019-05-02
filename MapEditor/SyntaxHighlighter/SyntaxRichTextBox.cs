@@ -51,15 +51,15 @@ namespace SyntaxHighlighter
             if (!m_bPaint)
                 return;
             m_bPaint = false;
+            if (Settings.ColorSyntax)
                 ProcessLine();
 			m_bPaint = true;
 		}
-		/// <summary>
-		/// Process a line.
-		/// </summary>
-		private void ProcessLine()
-		{
-           
+        /// <summary>
+        /// Process a line.
+        /// </summary>
+        private void ProcessLine()
+        {
             if (recur)
                 return;
 
@@ -71,17 +71,17 @@ namespace SyntaxHighlighter
             if (indx == 0 && selstart == 0 && Text.Length < 1)
             {
                 SelectionStart = 0;
-            goto sem;
-            } 
+                goto sem;
+            }
             start = Lines[indx].Length;
             int lastpos = SelectionStart;
-            
-            
+
+
             int selend = selstart + start;
 
             SelectionStart = selstart;
             SelectionLength = start;
-            SelectionColor = Color.Black;
+            SelectionColor = Settings.DefaultColor;
 
             List<string> strs = Settings.Keywords2;
             Color KeyCol = Settings.Keyword2Color;
@@ -105,7 +105,7 @@ namespace SyntaxHighlighter
                 int texstart = Find("\"", selstart, selend, RichTextBoxFinds.None);
                 if (texstart > 0)
                 {
-                    int texend = Find("\"", texstart+1, selend, RichTextBoxFinds.None);
+                    int texend = Find("\"", texstart + 1, selend, RichTextBoxFinds.None);
                     if (texend > 0)
                     {
                         int len = texend - texstart;
@@ -132,40 +132,33 @@ namespace SyntaxHighlighter
                 }
             }
 
-            
-    
-    SelectionStart = lastpos;
-    sem:
-    recur = false;
-    SelectionLength = 0;
+            SelectionStart = lastpos;
+            sem:
+            recur = false;
+            SelectionLength = 0;
+            SelectionColor = Settings.DefaultColor; // Selected text
+        }
 
-    
-    SelectionColor = Color.Black; // Selected text
-
-
-
-}
-
-public void ProcessBox()
-{
-    int start = 0;
-    foreach (string str in Lines)
-    {
-        SelectionStart = start;
-        ProcessLine();
-        start += str.Length+1;
-    }
-    SelectionStart = start;
-    ProcessLine();
-    SelectionStart = 0;
-    SelectionLength = 0;
-    return;
-}
-/// <summary>
-/// Process a regular expression.
-/// </summary>
-/// <param name="strRegex">The regular expression.</param>
-/// <param name="color">The color.</param>
+        public void ProcessBox()
+        {
+            int start = 0;
+            foreach (string str in Lines)
+            {
+                SelectionStart = start;
+                ProcessLine();
+                start += str.Length + 1;
+            }
+            SelectionStart = start;
+            ProcessLine();
+            SelectionStart = 0;
+            SelectionLength = 0;
+            return;
+        }
+        /// <summary>
+        /// Process a regular expression.
+        /// </summary>
+        /// <param name="strRegex">The regular expression.</param>
+        /// <param name="color">The color.</param>
         private void ProcessRegex(string strRegex, Color color)
         {
 
@@ -249,6 +242,8 @@ public void ProcessBox()
 		bool m_bEnableStrings = true;
 
 		#region Properties
+        public bool ColorSyntax { get; set; }
+        public Color DefaultColor { get; set; }
 		/// <summary>
 		/// A list containing all keywords.
 		/// </summary>

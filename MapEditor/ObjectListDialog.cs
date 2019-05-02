@@ -6,12 +6,12 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using MapEditor.MapInt;
 using NoxShared;
+using System.Collections.Generic;
+using NoxShared.ObjDataXfer;
+
 namespace MapEditor
 {
-	/// <summary>
-	/// Summary description for ObjectListDialog.
-	/// </summary>
-	public class ObjectListDialog : System.Windows.Forms.Form
+	public class ObjectListDialog : Form
     {
         private IContainer components;
 
@@ -31,18 +31,31 @@ namespace MapEditor
 				objList.Columns.Add("Y-Coor.",Type.GetType("System.Single"));
                 objList.Columns.Add("Name", Type.GetType("System.Object"));
 				objList.Columns.Add("Scr. Name", Type.GetType("System.String"));
-                
+                objList.Columns.Add("Enchant1", Type.GetType("System.String"));
+                objList.Columns.Add("Enchant2", Type.GetType("System.String"));
+                objList.Columns.Add("Enchant3", Type.GetType("System.String"));
+                objList.Columns.Add("Enchant4", Type.GetType("System.String"));
+
                 foreach (Map.Object obj in value)
                 {
-                    objList.Rows.Add(new Object[] {obj.Extent, obj.Location.X, obj.Location.Y, obj, obj.Scr_Name });
+                    var enchants = GetEnchants(obj);
+                    if (enchants == null)
+                        objList.Rows.Add(new object[] { obj.Extent, obj.Location.X, obj.Location.Y, obj, obj.Scr_Name, "", "", "", "" });
+                    else
+                        objList.Rows.Add(new object[] { obj.Extent, obj.Location.X, obj.Location.Y, obj, obj.Scr_Name, enchants[0], enchants[1], enchants[2], enchants[3] });
+
                     dataGrid1.DataSource = objList;
                 }
 			}
 		}
         public Map.ObjectTable objTable2;
         private Timer Helpmark;
-		public MapView Map;
-       	public ObjectListDialog()
+        private ToolStripMenuItem applyChangesToolStripMenuItem;
+        private ToolStripMenuItem onlyAppliesToScriptEnchantsToolStripMenuItem;
+        public MapView Map;
+        public Map.ObjectTable Result { get; set; }
+
+        public ObjectListDialog()
 		{
 			//
 			// Required for Windows Form Designer support
@@ -55,10 +68,7 @@ namespace MapEditor
 		
 		}
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
 			if( disposing )
 			{
@@ -82,8 +92,10 @@ namespace MapEditor
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.goToObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.applyChangesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGrid1 = new System.Windows.Forms.DataGridView();
             this.Helpmark = new System.Windows.Forms.Timer(this.components);
+            this.onlyAppliesToScriptEnchantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).BeginInit();
             this.SuspendLayout();
@@ -92,7 +104,9 @@ namespace MapEditor
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.goToObjectToolStripMenuItem,
-            this.editObjectToolStripMenuItem});
+            this.editObjectToolStripMenuItem,
+            this.applyChangesToolStripMenuItem,
+            this.onlyAppliesToScriptEnchantsToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
@@ -108,20 +122,31 @@ namespace MapEditor
             resources.ApplyResources(this.editObjectToolStripMenuItem, "editObjectToolStripMenuItem");
             this.editObjectToolStripMenuItem.Click += new System.EventHandler(this.editObjectToolStripMenuItem_Click);
             // 
+            // applyChangesToolStripMenuItem
+            // 
+            this.applyChangesToolStripMenuItem.Name = "applyChangesToolStripMenuItem";
+            resources.ApplyResources(this.applyChangesToolStripMenuItem, "applyChangesToolStripMenuItem");
+            this.applyChangesToolStripMenuItem.Click += new System.EventHandler(this.applyChangesToolStripMenuItem_Click);
+            // 
             // dataGrid1
             // 
             this.dataGrid1.AllowUserToAddRows = false;
             this.dataGrid1.AllowUserToDeleteRows = false;
+            this.dataGrid1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resources.ApplyResources(this.dataGrid1, "dataGrid1");
+            this.dataGrid1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGrid1.Name = "dataGrid1";
-            this.dataGrid1.ReadOnly = true;
-            this.dataGrid1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid1_CellContentClick);
             // 
             // Helpmark
             // 
             this.Helpmark.Interval = 120;
             this.Helpmark.Tick += new System.EventHandler(this.Helpmark_Tick);
+            // 
+            // onlyAppliesToScriptEnchantsToolStripMenuItem
+            // 
+            resources.ApplyResources(this.onlyAppliesToScriptEnchantsToolStripMenuItem, "onlyAppliesToScriptEnchantsToolStripMenuItem");
+            this.onlyAppliesToScriptEnchantsToolStripMenuItem.Name = "onlyAppliesToScriptEnchantsToolStripMenuItem";
             // 
             // ObjectListDialog
             // 
@@ -131,7 +156,6 @@ namespace MapEditor
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ObjectListDialog";
             this.ShowInTaskbar = false;
-            this.Load += new System.EventHandler(this.ObjectListDialog_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).EndInit();
@@ -145,20 +169,14 @@ namespace MapEditor
 		{
 			Map.CenterAtPoint(new Point((int)((float)objList.Rows[dataGrid1.CurrentRow.Index]["X-Coor."]), (int)((float)objList.Rows[dataGrid1.CurrentRow.Index]["Y-Coor."])));
 		
-           
         }
-        private void dataGrid1_Navigate(object sender, NavigateEventArgs ne)
-        {
-            MessageBox.Show("NAV");
-        }
-
-        void dataGrid1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dataGrid1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             DatatableSync();
 
         }
 
-        void DatatableSync()
+        private void DatatableSync()
         {
 
             if (dataGrid1.SortedColumn == null || dataGrid1.SortedColumn.Name.Length <= 0) return;
@@ -176,9 +194,6 @@ namespace MapEditor
 
         private void goToObjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
-
             Point target = new Point((int)((float)objList.Rows[dataGrid1.CurrentRow.Index]["X-Coor."]), (int)((float)objList.Rows[dataGrid1.CurrentRow.Index]["Y-Coor."]));
             Map.CenterAtPoint(target);
             Helpmark.Enabled = true;
@@ -187,33 +202,6 @@ namespace MapEditor
             Map.SelectedObjects.Items.Clear();
             Map.SelectedObjects.Items.Add(P);
         }
-
-        private void deleteObjectToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           
-            // map.RemoveObject(new Point((int)((float)objList.Rows[dataGrid1.CurrentRowIndex]["X-Coor."]), (int)((float)objList.Rows[dataGrid1.CurrentRowIndex]["Y-Coor."])));
-            /*
-            int i = 0;
-            foreach (Map.Object obj in MapInterface.TheMap.Objects)
-            {
-                i++;
-                int bob = Convert.ToInt32((objList.Rows[dataGrid1.CurrentRow.Index][0]));
-                if (i == bob)
-                {
-                    MapInterface.ObjectRemove(obj);
-                    break;
-
-                }
-            }
-            */
-
-        }
-
-        private void ObjectListDialog_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void editObjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListSortDirection sorted = ListSortDirection.Ascending;
@@ -232,45 +220,38 @@ namespace MapEditor
                     dataGrid1.Sort(dataGrid1.Columns[setting.Name], sorted);
 
             }
-                if (curIndex >= 0)
-                {
-                    dataGrid1.ClearSelection();
-                    dataGrid1.Rows[curIndex].Selected = true;
-                    dataGrid1.CurrentCell = dataGrid1.Rows[curIndex].Cells[0];
-                }
-
+            if (curIndex >= 0)
+            {
+                dataGrid1.ClearSelection();
+                dataGrid1.Rows[curIndex].Selected = true;
+                dataGrid1.CurrentCell = dataGrid1.Rows[curIndex].Cells[0];
+            }
 
             DatatableSync();
-            
-
-
         }
-
-        private void dataGrid1_CurrentCellChanged(object sender, EventArgs e)
+        private void deleteObjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // MessageBox.Show("CEL");
-        }
+            // map.RemoveObject(new Point((int)((float)objList.Rows[dataGrid1.CurrentRowIndex]["X-Coor."]), (int)((float)objList.Rows[dataGrid1.CurrentRowIndex]["Y-Coor."])));
+            /*
+            int i = 0;
+            foreach (Map.Object obj in MapInterface.TheMap.Objects)
+            {
+                i++;
+                int bob = Convert.ToInt32((objList.Rows[dataGrid1.CurrentRow.Index][0]));
+                if (i == bob)
+                {
+                    MapInterface.ObjectRemove(obj);
+                    break;
 
-        private void dataGrid1_ParentRowsLabelStyleChanged(object sender, EventArgs e)
-        {
-            MessageBox.Show("LABELCHANGED");
-        }
-
-        private void dataGrid1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGrid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+                }
+            }
+            */
         }
 
         private void transparentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Opacity = 0.50;
+            Opacity = 0.50;
         }
-
         private void Helpmark_Tick(object sender, EventArgs e)
         {
             Map.higlightRad -= 30;
@@ -280,5 +261,160 @@ namespace MapEditor
             Map.higlightRad = 150;
             Helpmark.Enabled = false;
         }
-	}
+
+        private void applyChangesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGrid1.CommitEdit(DataGridViewDataErrorContexts.CurrentCellChange);
+
+            // Find and return changes
+            int c = 0;
+            for (int i = 0; i < dataGrid1.Rows.Count; i++)
+            {
+                var name = dataGrid1[3, i].Value.ToString();
+                var newScrName = dataGrid1[4, i].Value.ToString();
+                Map.Object newObj = (Map.Object) objList.Rows[i][3];
+                int j = objTable2.IndexOf(newObj);
+                Map.Object oldObj = (Map.Object) objTable2[j];
+
+                // Set new script name
+                if (oldObj.Scr_Name != newScrName)
+                {
+                    ((Map.Object) objTable2[j]).Scr_Name = newScrName;
+                    // Check 'Extra Bytes'
+                    if (oldObj.Terminator == 0x00)
+                        ((Map.Object)objTable2[j]).Terminator = 0xFF;
+                    c++;
+                }
+
+                var enchants = GetEnchants(oldObj);
+                if (enchants == null)
+                    continue;
+
+                string[] ench = new string[4];
+                ench[0] = dataGrid1[5, i].Value.ToString();
+                ench[1] = dataGrid1[6, i].Value.ToString();
+                ench[2] = dataGrid1[7, i].Value.ToString();
+                ench[3] = dataGrid1[8, i].Value.ToString();
+
+                for (int k = 0; k < 4; k++)
+                {
+                    // Ignore all whitespace
+                    if (ench[k] == "")
+                        continue;
+                    if (ench[k].Trim() == "")
+                    {
+                        ench[k] = "";
+                        continue;
+                    }
+
+                    // Ensure valid enchant and proper case
+                    var isValid = GetValidEnchant(ench[k]);
+                    if (isValid != "-1")
+                        ench[k] = isValid;
+                    else
+                        ench[k] = "";
+                }
+
+                // Set new enchants
+                if (enchants != ench)
+                    objTable2[j] = SetEnchants(oldObj, ench);
+            }
+
+            // Pass new object table back to MainWindow
+            Result = null;
+            if (c > 0)
+                Result = objTable2;
+
+            DialogResult = DialogResult.OK;
+            Hide();
+        }
+        private string[] GetEnchants(Map.Object obj)
+        {
+            ThingDb.Thing tt = ThingDb.Things[obj.Name];
+            WeaponXfer weapon; ArmorXfer armor; AmmoXfer ammo; TeamXfer team;
+            string[] enchants = new string[4];
+            switch (tt.Xfer)
+            {
+                case "WeaponXfer":
+                    weapon = obj.GetExtraData<WeaponXfer>();
+                    enchants[0] = weapon.Enchantments[0];
+                    enchants[1] = weapon.Enchantments[1];
+                    enchants[2] = weapon.Enchantments[2];
+                    enchants[3] = weapon.Enchantments[3];
+                    break;
+                case "ArmorXfer":
+                    armor = obj.GetExtraData<ArmorXfer>();
+                    enchants[0] = armor.Enchantments[0];
+                    enchants[1] = armor.Enchantments[1];
+                    enchants[2] = armor.Enchantments[2];
+                    enchants[3] = armor.Enchantments[3];
+                    break;
+                case "AmmoXfer":
+                    ammo = obj.GetExtraData<AmmoXfer>();
+                    enchants[0] = ammo.Enchantments[0];
+                    enchants[1] = ammo.Enchantments[1];
+                    enchants[2] = ammo.Enchantments[2];
+                    enchants[3] = ammo.Enchantments[3];
+                    break;
+                case "TeamXfer":
+                    team = obj.GetExtraData<TeamXfer>();
+                    enchants[0] = team.Enchantments[0];
+                    enchants[1] = team.Enchantments[1];
+                    enchants[2] = team.Enchantments[2];
+                    enchants[3] = team.Enchantments[3];
+                    break;
+                default:
+                    enchants = null;
+                    break;
+            }
+            return enchants;
+        }
+        private Map.Object SetEnchants(Map.Object obj, string[] enchants)
+        {
+            ThingDb.Thing tt = ThingDb.Things[obj.Name];
+            WeaponXfer weapon; ArmorXfer armor; AmmoXfer ammo; TeamXfer team;
+
+            switch (tt.Xfer)
+            {
+                case "WeaponXfer":
+                    weapon = obj.GetExtraData<WeaponXfer>();
+                    weapon.Enchantments[0] = enchants[0];
+                    weapon.Enchantments[1] = enchants[1];
+                    weapon.Enchantments[2] = enchants[2];
+                    weapon.Enchantments[3] = enchants[3];
+                    break;
+                case "ArmorXfer":
+                    armor = obj.GetExtraData<ArmorXfer>();
+                    armor.Enchantments[0] = enchants[0];
+                    armor.Enchantments[1] = enchants[1];
+                    armor.Enchantments[2] = enchants[2];
+                    armor.Enchantments[3] = enchants[3];
+                    break;
+                case "AmmoXfer":
+                    ammo = obj.GetExtraData<AmmoXfer>();
+                    ammo.Enchantments[0] = enchants[0];
+                    ammo.Enchantments[1] = enchants[1];
+                    ammo.Enchantments[2] = enchants[2];
+                    ammo.Enchantments[3] = enchants[3];
+                    break;
+                case "TeamXfer":
+                    team = obj.GetExtraData<TeamXfer>();
+                    team.Enchantments[0] = enchants[0];
+                    team.Enchantments[1] = enchants[1];
+                    team.Enchantments[2] = enchants[2];
+                    team.Enchantments[3] = enchants[3];
+                    break;
+            }
+            return obj;
+        }
+        private string GetValidEnchant(string enchant)
+        {
+            foreach (var validEnch in XferGui.EquipmentEdit.ENCHANTMENTS)
+            {
+                if (validEnch.ToUpper() == enchant.ToUpper())
+                    return validEnch;
+            }
+            return "-1";
+        }
+    }
 }

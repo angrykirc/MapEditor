@@ -40,7 +40,7 @@ namespace NoxShared.ObjDataXfer
 		public void DefaultsFor(ThingDb.Thing thing)
 		{
 			// Durability
-			Durability = (short) thing.Health;
+			//Durability = (short) thing.Health;
 			// Handle magic staves
 			if (thing.HasClassFlag(ThingDb.Thing.ClassFlags.WAND) && !thing.Subclass[(int) ThingDb.Thing.SubclassBitIndex.STAFF])
 			{

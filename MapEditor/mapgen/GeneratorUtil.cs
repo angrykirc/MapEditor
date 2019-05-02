@@ -26,7 +26,8 @@ namespace MapEditor.mapgen
 			BackgroundWorker worker = Generator.Worker;
 			for (int x = 0; x <= Generator.BOUNDARY; x++)
 			{
-				worker.ReportProgress(CalcPercent(x, Generator.BOUNDARY));
+                if (worker == null) return;
+                worker.ReportProgress(CalcPercent(x, Generator.BOUNDARY));
 			    for (int y = 0; y <= Generator.BOUNDARY; y++)
 				{
 			    	hmap.TileAutoBlend(x, y);
@@ -42,7 +43,8 @@ namespace MapEditor.mapgen
 			Map.Wall wall, nUp, nDown, nRight, nLeft;
 			for (int x = 0; x < Generator.BOUNDARY; x++)
 			{
-				worker.ReportProgress(CalcPercent(x, Generator.BOUNDARY));
+                if (worker == null) return;
+                worker.ReportProgress(CalcPercent(x, Generator.BOUNDARY));
 				for (int y = 0 ; y < Generator.BOUNDARY; y++)
 				{
 					wall = hmap.GetWall(x, y);
@@ -91,6 +93,7 @@ namespace MapEditor.mapgen
 			Map.Wall wall;
 			for (int x = 0; x <= Generator.BOUNDARY + 1; x++)
 			{
+                if (worker == null) return;
 				worker.ReportProgress(CalcPercent(x, Generator.BOUNDARY));
 				for (int y = 0 ; y <= Generator.BOUNDARY + 1; y++)
 				{
@@ -181,7 +184,8 @@ namespace MapEditor.mapgen
 			Map.Tile tile;
 			for (int x = 0; x <= Generator.BOUNDARY; x++)
 			{
-				worker.ReportProgress(CalcPercent(x, Generator.BOUNDARY));
+                if (worker == null) return;
+                worker.ReportProgress(CalcPercent(x, Generator.BOUNDARY));
 				for (int y = 0 ; y <= Generator.BOUNDARY; y++)
 				{
 					tile = hmap.GetTile(x, y);

@@ -19,7 +19,7 @@ namespace MapEditor.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -63,10 +63,1665 @@ namespace MapEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap _0deg {
+            get {
+                object obj = ResourceManager.GetObject("_0deg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap _45deg {
+            get {
+                object obj = ResourceManager.GetObject("_45deg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 Object(String)\fs24\par
+        ///\par
+        ///\i RETURNS: OBJECT\i0\par
+        ///\par
+        ///References the object with the script name mentioned in $arg1. To use any object in a script, you must reference it with this function first.\par
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string _object {
+            get {
+                return ResourceManager.GetString("_object", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sb100\sa100\f0\fs52 AggressionLevel(object,float)\fs24  \par
+        ///\i RETURNS: VOID\i0\par
+        ///Makes $arg1 aggressive.\par
+        ///$arg2 is almost always f0.83. f0.5 was found once. Other arguments [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string aggressionlevel {
+            get {
+                return ResourceManager.GetString("aggressionlevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red70\green130\blue180;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sb100\sa100\f0\fs52 AreOwnedBy(object_group,object)\fs24  \par
+        ///\i RETURNS: BOOLEAN\i0\par
+        ///Checks if $arg1 are owned by $arg2.\par
+        ///Found by FF&amp;InvisiblePoint\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string areownedby {
+            get {
+                return ResourceManager.GetString("areownedby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 Attack(Object,Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Causes $arg1 to attack $arg2.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 Attack\cf0 (\cf1 Object\cf0 (\cf2 &quot;SpiderHost&quot;\cf0 ),\cf [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string attack {
+            get {
+                return ResourceManager.GetString("attack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fmodern\fprq1\fcharset238{\*\fname Courier New;}Courier New CE;}{\f3\fswiss\fprq2\fcharset0 Arial;}{\f4\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red70\green130\blue180;\red0\green0\blue0;\red164\green21\blue21;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sb100\sa100\f0\fs52 AudioEvent(string,waypoint)\fs24  \par
+        ///\i RETURNS:  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string audioevent {
+            get {
+                return ResourceManager.GetString("audioevent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red70\green130\blue180;}
+        ///{\*\generator Msftedit 5.41.15.1507;}\viewkind4\uc1\pard\sb100\sa100\f0\fs52 AutoSave()\fs24  \par
+        ///\i RETURNS: VOID\i0\par
+        ///Forces the player to autosave. Solo only.\par
+        ///Found by FF&amp;InvisiblePoint\fs18\par
+        ///\i\fs24 EXAMPLE:\par
+        ///\pard\nowidctlpar\cf1\i0\f1\fs20 AutoSave\cf0 ()\f2\par
+        ///}
+        ///.
+        /// </summary>
+        public static string autosave {
+            get {
+                return ResourceManager.GetString("autosave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\froman\fprq2\fcharset0 Times New Roman;}{\f4\fnil\fprq1\fcharset0 Courier New;}{\f5\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue255;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sb100\sa100\f0\fs52 AwardSpell(object,string)\fs24  \par
+        ///\i RETURNS: VOID\i0 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string awardspell {
+            get {
+                return ResourceManager.GetString("awardspell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red164\green21\blue21;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sb100\sa100\f0\fs52 BecomeEnemy(object)\fs24  \par
+        ///\i RETURNS: VOID\i0\par
+        ///Cancels BecomePet()\par
+        ///Found by BURN3R\fs18\par
+        ///\i\fs24 EXAMPLE:\par
+        ///\pard\nowidctlpar\cf1\i0\f1\fs20 BecomeEnemy\c [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string becomeenemy {
+            get {
+                return ResourceManager.GetString("becomeenemy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red164\green21\blue21;\red0\green0\blue0;\red0\green0\blue255;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sb100\sa100\f0\fs52 BecomePet(object)\fs24  \par
+        ///\i RETURNS: VOID\i0\par
+        ///Makes $arg1 friendly. This will also make $arg1&apos;s health visible by showing a hea [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string becomepet {
+            get {
+                return ResourceManager.GetString("becomepet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 Blind()\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///The lights dim down. The stage gets set. The host (and ONLY the host) is unable to see.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 Blind\cf0 ()\cf0\f2\par
+        ///}
+        ///.
+        /// </summary>
+        public static string blind {
+            get {
+                return ResourceManager.GetString("blind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] bucket {
+            get {
+                object obj = ResourceManager.GetObject("bucket", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap bucketPaint {
+            get {
+                object obj = ResourceManager.GetObject("bucketPaint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff3\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\froman\fprq0\fcharset0 Times New Roman;}{\f4\fswiss\fprq0\fcharset0 Arial;}{\f5\fmodern\fprq1\fcharset0 Courier New;}{\f6\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f7\fnil\fprq2\fcharset0 Mangal;}{\f8\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red0\green128\blue128;\red164\green21\blue21;\red0\green0\blue255;\red255\green0\blue0 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string canceldialog {
+            get {
+                return ResourceManager.GetString("canceldialog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 CancelTimer(Timer)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Stops $arg1 from launching its function, if it&apos;s a timer.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 Gvar\cf0 4 \cf1 =\cf0  \cf2 SecondTimer\cf0 (1,5)\pa [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string canceltimer {
+            get {
+                return ResourceManager.GetString("canceltimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fmodern\fprq1\fcharset238{\*\fname Courier New;}Courier New CE;}{\f3\fnil\fprq1\fcharset0 Courier New;}{\f4\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 CastSpellAt(String,Object,Float,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Cas [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string castspellat {
+            get {
+                return ResourceManager.GetString("castspellat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fmodern\fprq1\fcharset238{\*\fname Courier New;}Courier New CE;}{\f3\fnil\fprq1\fcharset0 Courier New;}{\f4\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red164\green21\blue21;\red0\green0\blue255;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 CastSpellFrom(String,Float,Float,Float,Float)\fs24\par
+        ///\par
+        ///\i RETUR [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string castspellfrom {
+            get {
+                return ResourceManager.GetString("castspellfrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fmodern\fprq1\fcharset238{\*\fname Courier New;}Courier New CE;}{\f3\fnil\fprq1\fcharset0 Courier New;}{\f4\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 CastSpellOn(String,Object,Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Casts the  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string castspellon {
+            get {
+                return ResourceManager.GetString("castspellon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fmodern\fprq1\fcharset238{\*\fname Courier New;}Courier New CE;}{\f3\fnil\fprq1\fcharset0 Courier New;}{\f4\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 CastSpellTo(String,Float,Float,Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Casts [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string castspellto {
+            get {
+                return ResourceManager.GetString("castspellto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ThemeCategories&gt;
+        ///
+        ///&lt;Category Name=&quot;All Objects&quot;&gt;
+        ///&lt;Include Rule=&quot;ANYTHING&quot;/&gt;
+        ///&lt;/Category&gt;
+        ///
+        ///&lt;Category Name=&quot;Arena Stuff&quot;&gt;
+        ///&lt;Include Rule=&quot;OBJECT_CLASS&quot;&gt;FOOD&lt;/Include&gt;
+        ///&lt;Include Rule=&quot;OBJECT_CLASS&quot;&gt;WEAPON&lt;/Include&gt;
+        ///&lt;Include Rule=&quot;OBJECT_CLASS&quot;&gt;WAND&lt;/Include&gt;
+        ///&lt;Include Rule=&quot;OBJECT_CLASS&quot;&gt;ARMOR&lt;/Include&gt;
+        ///
+        ///&lt;Exclude Rule=&quot;OBJECT_CLASS&quot;&gt;MISSILE&lt;/Exclude&gt;
+        ///&lt;Exclude Rule=&quot;NAME_EQUAL&quot;&gt;Staff&lt;/Exclude&gt;
+        ///&lt;Exclude Rule=&quot;NAME_EQUAL&quot;&gt;DemonsBreathWand&lt;/Exclude&gt;
+        ///&lt;Exclude Rule=&quot;NAME_EQUAL&quot;&gt;RedPotion2&lt;/Exclude&gt;
+        ///&lt;Excl [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string categories {
+            get {
+                return ResourceManager.GetString("categories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 ChangeGold(Object,Int)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Gives $arg1 the amount of gold specified in $arg2. $arg1 may also lose gold by putting NEG before $arg2.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 Cha [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string changegold {
+            get {
+                return ResourceManager.GetString("changegold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 ChangeScore(Object,Int)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Gives $arg1 an amount of points specified by $arg2.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 ChangeScore\cf2 (\cf3 Gvar\cf2 1,3 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string changescore {
+            get {
+                return ResourceManager.GetString("changescore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue255;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 Chat(Object,String)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes $arg1 to say the string mentioned in $arg2 in a speech bubble. If you don&apos;t use a default string (like &quot;GeneralPrint:WellSign&quot;) it will p [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string chat {
+            get {
+                return ResourceManager.GetString("chat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 ChatTimer(Object,String,Int)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Causes $arg1 to say the string mentioned in $arg2 in a speech bubble for the amount of frames mentioned in $arg3. If you don&apos;t use a default str [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string chattimer {
+            get {
+                return ResourceManager.GetString("chattimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fmodern\fprq1\fcharset0 Courier New;}{\f4\fnil\fprq2\fcharset0 Mangal;}{\f5\fnil\fprq0\fcharset128 Mangal;}{\f6\fnil\fprq2\fcharset0 Microsoft YaHei;}}
+        ///{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\stylesheet{\s0\snext0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af0\langfe [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string checkitem {
+            get {
+                return ResourceManager.GetString("checkitem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fprq0\fcharset0 Arial;}{\f4\fmodern\fprq1\fcharset0 Courier New;}{\f5\froman\fprq2\fcharset128 Times New Roman;}{\f6\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f7\fnil\fprq2\fcharset0 Mangal;}{\f8\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\stylesheet{\s [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string checkobjecttype {
+            get {
+                return ResourceManager.GetString("checkobjecttype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red164\green21\blue21;\red128\green128\blue128;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 ClearOwner(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Clears $arg1 of having any owner.\par
+        ///\fs18 (Thanks to Larboss)\fs24\par
+        ///\par
+        ///\i EXAMP [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string clearowner {
+            get {
+                return ResourceManager.GetString("clearowner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 ClearPrint(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Destroys all print messages currently on $arg1&apos;s screen.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 ClearPrint\cf0 (\cf2 Gvar\cf0 1)\par
+        ///\cf1 ClearPrint [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string clearprint {
+            get {
+                return ResourceManager.GetString("clearprint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap color_picker {
             get {
                 object obj = ResourceManager.GetObject("color_picker", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 Create(String,Waypoint)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Creates the object stated in $arg1 at the location of $arg2. Objects created with this function can&apos;t be involved in script wi [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string create {
+            get {
+                return ResourceManager.GetString("create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 CreatureGroupHunt(ObjectGroup)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes all creatures in $arg1 to hunt. The creatures will hunt when they have no action to execute.\pa [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string creaturegrouphunt {
+            get {
+                return ResourceManager.GetString("creaturegrouphunt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 CreatureGroupIdle(ObjectGroup)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes all creatures in $arg1 to enter an idle state. The creatures will still act normally, but stay  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string creaturegroupidle {
+            get {
+                return ResourceManager.GetString("creaturegroupidle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 CreatureHunt(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes $arg1 to hunt. The creature will hunt when it has no action to execute.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 CreatureHu [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string creaturehunt {
+            get {
+                return ResourceManager.GetString("creaturehunt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 CreatureIdle(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes $arg1 to enter an idle state. The creature will still act normally, but stays perfectly still when it has no action to execute [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string creatureidle {
+            get {
+                return ResourceManager.GetString("creatureidle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 CurrentHealth(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: INTEGER\i0\par
+        ///\par
+        ///Retrieves the amount of health $arg1 currently has.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\f1\fs20 var1 \cf1 =\cf0  \cf2 CurrentHeal [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string currenthealth {
+            get {
+                return ResourceManager.GetString("currenthealth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue255;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 Damage(Object,Object,Value,Int)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Damages $arg1, with $arg2 as the deliverer, for the amount specified in $arg3 and the type specified in $arg4.\par
+        ///\p [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string damage {
+            get {
+                return ResourceManager.GetString("damage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fmodern\fprq1\fcharset0 Courier New;}{\f4\fnil\fprq2\fcharset0 Mangal;}{\f5\fnil\fprq0\fcharset128 Mangal;}{\f6\fnil\fprq2\fcharset0 Microsoft YaHei;}}
+        ///{\colortbl;\red0\green0\blue0;\red51\green153\blue255;\red153\green153\blue153;\red128\green128\blue128;}
+        ///{\stylesheet{\s0\snext0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af0 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string deathscreen {
+            get {
+                return ResourceManager.GetString("deathscreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 Delete(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Deletes $arg1. This only works on objects, not waypoints (of course).\par
+        ///\par
+        ///\i EXAMPLE:\par
+        ///\cf1\i0\f1\fs20 Delete\cf0 (\cf1 Obje [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string delete {
+            get {
+                return ResourceManager.GetString("delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fmodern\fprq1\fcharset0 Courier New;}{\f4\fnil\fprq2\fcharset0 Mangal;}{\f5\fnil\fprq0\fcharset128 Mangal;}{\f6\fnil\fprq2\fcharset0 Microsoft YaHei;}}
+        ///{\colortbl;\red0\green0\blue0;\red128\green128\blue128;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\stylesheet{\s0\snext0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af0\lang [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string deleteobjecttimer {
+            get {
+                return ResourceManager.GetString("deleteobjecttimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 DestroyChat(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Destroys $arg1&apos;s speech bubble, if he is speaking.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 DestroyChat\cf0 (\cf2 Gvar\cf0 27)\par
+        ///\cf1 DestroyChat\c [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string destroychat {
+            get {
+                return ResourceManager.GetString("destroychat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 DestroyEveryChat()\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Destroys all speech bubbles.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 DestroyEveryChat\cf0 ()\cf0\f2\par
+        ///}
+        ///.
+        /// </summary>
+        public static string destroyeverychat {
+            get {
+                return ResourceManager.GetString("destroyeverychat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 Distance(Float,Float,Float,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: FLOAT\par
+        ///\i0\par
+        ///Determines the distance between the coordinates specified by $arg1 and $arg2, and the coordinates specified by $arg3 and $arg4.\par
+        ///\par        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string distance {
+            get {
+                return ResourceManager.GetString("distance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fprq0\fcharset0 Arial;}{\f4\fmodern\fprq1\fcharset0 Courier New;}{\f5\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f6\fnil\fprq2\fcharset0 Mangal;}{\f7\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red128\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\stylesheet{\s0\snext0\nowidctlpar{\*\hyphen2\hyphlead2\hypht [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string drop {
+            get {
+                return ResourceManager.GetString("drop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\fswiss\fprq2\fcharset0 Arial;}{\f2\froman\fprq2\fcharset0 Times New Roman;}{\f3\fmodern\fprq1\fcharset0 Courier New;}}
+        ///{\colortbl ;\red0\green128\blue128;\red164\green21\blue21;\red0\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sb100\sa100\f0\fs52 Effect(string, float, float, float, float)\fs24  \par
+        ///\i RETURNS: VOID\i0\par
+        ///Triggers the effect $arg1  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string effect {
+            get {
+                return ResourceManager.GetString("effect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue255;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 Enchant(Object,String,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Enchants $arg1 with the enchantment mentioned in $arg2 for a time specified by $arg3. Make sure you spell the enchantment [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string enchant {
+            get {
+                return ResourceManager.GetString("enchant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue255;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 EnchantOff(Object,String)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Strips $arg1 of the enchantment specified in $arg2, if it has that enchantment.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string enchantoff {
+            get {
+                return ResourceManager.GetString("enchantoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fmodern\fprq1\fcharset0 Courier New;}{\f4\fnil\fprq2\fcharset0 Mangal;}{\f5\fnil\fprq0\fcharset128 Mangal;}{\f6\fnil\fprq2\fcharset0 Microsoft YaHei;}}
+        ///{\colortbl;\red0\green0\blue0;\red51\green153\blue255;\red128\green128\blue128;}
+        ///{\stylesheet{\s0\snext0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af0\langfe2052\dbch\af0\afs2 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string endgame {
+            get {
+                return ResourceManager.GetString("endgame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff3\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\froman\fprq0\fcharset0 Times New Roman;}{\f4\fmodern\fprq1\fcharset0 Courier New;}{\f5\fnil\fprq2\fcharset0 Mangal;}{\f6\fnil\fprq0\fcharset128 Mangal;}{\f7\fnil\fprq2\fcharset0 Microsoft YaHei;}}
+        ///{\colortbl;\red0\green0\blue0;\red0\green128\blue128;\red164\green21\blue21;\red0\green0\blue255;\red128\green128\blue128;}
+        ///{\stylesheet{\s0\snext0{\*\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string enforcetalk {
+            get {
+                return ResourceManager.GetString("enforcetalk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 FloatToString(Float)\fs24\par
+        ///\par
+        ///\i RETURNS: STRING\i0\par
+        ///\par
+        ///Turns $arg1 into a string, then declares it. This can be useful for displaying an important variable&apos;s state, because if you try to display a variable [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string floattostring {
+            get {
+                return ResourceManager.GetString("floattostring", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 Follow(Object,Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Causes $arg1 to follow $arg2. After this command, $arg1 won&apos;t listen to its other senses (like attacking) unless instructed to, or [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string follow {
+            get {
+                return ResourceManager.GetString("follow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 FrameTimer(Int,Int)\fs24\par
+        ///\par
+        ///\i RETURNS: CALL FUNCTION\i0\par
+        ///\par
+        ///Creates a timer which waits for $arg1 frames before calling script number $arg2\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 FrameTimer\cf2 (200,5) [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string frametimer {
+            get {
+                return ResourceManager.GetString("frametimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 Frozen(Object,Boolean)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Freezes $arg1, making it unable to commit to any actions, provided that $arg2 represents Gvar2, or &quot;true&quot;; i [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string frozen {
+            get {
+                return ResourceManager.GetString("frozen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap gear {
+            get {
+                object obj = ResourceManager.GetObject("gear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetAnswer(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: BYTE\par
+        ///\i0\par
+        ///Retrieves the answer given to $arg1 during conversation. This command is used in conjunction with SetDialog() and TellStory(), when  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string getanswer {
+            get {
+                return ResourceManager.GetString("getanswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetCaller()\fs24\par
+        ///\par
+        ///\i RETURNS: POINTER\par
+        ///\i0\par
+        ///Finds the pointer that called the function currently running. Note that it may be another function that called it. Bears similarities to Gvar1.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string getcaller {
+            get {
+                return ResourceManager.GetString("getcaller", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetDirection(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: BYTE\i0\par
+        ///\par
+        ///Retrieves the direction $arg1 is currently facing, then declares it. 0 starts at due east, then increases as the target turns clockwise, up to  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string getdirection {
+            get {
+                return ResourceManager.GetString("getdirection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue0;\red0\green128\blue128;\red0\green0\blue255;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetElevatorStatus(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: INTEGER\i0\par
+        ///\par
+        ///Retrieves the current status of an elevator, and returns an integer. This command is meant to be used on [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string getelevatorstatus {
+            get {
+                return ResourceManager.GetString("getelevatorstatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetGold(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: INTEGER\par
+        ///\i0\par
+        ///Retrieves the amount of gold $arg1 currently has.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 GetGold\cf0 (\cf2 Gvar\cf0 1)\par
+        ///\cf1 GetGold\cf0 (\cf1 GetH [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string getgold {
+            get {
+                return ResourceManager.GetString("getgold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset238{\*\fname Times New Roman;}Times New Roman CE;}{\f1\froman\fprq2\fcharset0 Times New Roman;}{\f2\fmodern\fprq1\fcharset0 Courier New;}{\f3\fmodern\fprq1\fcharset238{\*\fname Courier New;}Courier New CE;}{\f4\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red0\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1029\f0\fs52 GetHolder\lang1033\f1 (Object)\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string getholder {
+            get {
+                return ResourceManager.GetString("getholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetHost()\fs24\par
+        ///\par
+        ///\i RETURNS: POINTER\i0\par
+        ///\par
+        ///Determines the host of the game, then declares it.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 GetHost\cf0 ()\f2\par
+        ///}
+        ///.
+        /// </summary>
+        public static string gethost {
+            get {
+                return ResourceManager.GetString("gethost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red0\green128\blue128;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetLastItem(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: OBJECT\i0\par
+        ///\par
+        ///Retrieves the last item in $arg1&apos;s inventory. This command is often best used in conjunction with GetPrev [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string getlastitem {
+            get {
+                return ResourceManager.GetString("getlastitem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetObjectX(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: FLOAT\i0\par
+        ///\par
+        ///Determines the X-coordinate of $arg1, then declares it.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\f1\fs20 var0 \cf1 = \cf2 GetObjectX\cf0 (\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string getobjectx {
+            get {
+                return ResourceManager.GetString("getobjectx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetObjectY(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: FLOAT\i0\par
+        ///\par
+        ///Determines the Y-coordinate of $arg1, then declares it.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\f1\fs20 var0 \cf1 = \cf2 GetObjectY\cf0 (\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string getobjecty {
+            get {
+                return ResourceManager.GetString("getobjecty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red0\green128\blue128;\red0\green128\blue0;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetPreviousItem(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: OBJECT\i0\par
+        ///\par
+        ///Retrieves the item before $arg1 in someone&apos;s inventory. This command should always [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string getpreviousitem {
+            get {
+                return ResourceManager.GetString("getpreviousitem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue0;\red0\green128\blue128;\red0\green0\blue255;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetQuestBoolStatus(String)\fs24\par
+        ///\par
+        ///\i RETURNS: INTEGER\i0\par
+        ///\par
+        ///Retrieves the current state of $arg1, and returns it as an boolean. In the Solo campaigns, these are co [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string getquestboolstatus {
+            get {
+                return ResourceManager.GetString("getquestboolstatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue0;\red0\green128\blue128;\red0\green0\blue255;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetQuestStatus(String)\fs24\par
+        ///\par
+        ///\i RETURNS: INTEGER\i0\par
+        ///\par
+        ///Retrieves the current state of $arg1, and returns it as an integer. In the Solo campaigns, these are common [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string getqueststatus {
+            get {
+                return ResourceManager.GetString("getqueststatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetScore(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: INTEGER\i0\par
+        ///\par
+        ///Retrieves the amount of points $arg1 currently has.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 GetScore\cf0 (\cf2 Gvar\cf0 1\cf0 )\cf0\f2\par
+        ///}
+        ///.
+        /// </summary>
+        public static string getscore {
+            get {
+                return ResourceManager.GetString("getscore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetTrigger()\fs24\par
+        ///\par
+        ///\i RETURNS: POINTER\par
+        ///\i0\par
+        ///Finds the pointer that was the trigger for the function currently running. Note that the trigger may have been another function. Bears similarities to Gvar0.\par
+        ///\par
+        ///\i EXAMPLE: [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string gettrigger {
+            get {
+                return ResourceManager.GetString("gettrigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetWaypointX(Waypoint)\fs24\par
+        ///\par
+        ///\i RETURNS: FLOAT\i0\par
+        ///\par
+        ///Determines the X-coordinate of $arg1, then declares it.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\f1\fs20 var0 \cf1 = \cf2 GetWaypointX\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string getwaypointx {
+            get {
+                return ResourceManager.GetString("getwaypointx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 GetWaypointY(Waypoint)\fs24\par
+        ///\par
+        ///\i RETURNS: FLOAT\i0\par
+        ///\par
+        ///Determines the Y-coordinate of $arg1, then declares it.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\f1\fs20 var0 \cf1 = \cf2 GetWaypointY\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string getwaypointy {
+            get {
+                return ResourceManager.GetString("getwaypointy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red164\green21\blue21;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 GiveXp(Object,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Gives $arg1 the amount of experience points specified in $arg2. The amount of experience collected in this way will also affect the outcome of gold cr [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string givexp {
+            get {
+                return ResourceManager.GetString("givexp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 GoBackHome(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Sends $arg1 back to the location where it was originally created.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 GoBackHome\cf0 (\cf1  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string gobackhome {
+            get {
+                return ResourceManager.GetString("gobackhome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GroupAggressionLevel(ObjectGroup,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Changes the aggression of all objects in $arg1. f0.83 is the most common &quot;aggressive&quot; level, while f0 implies non-ag [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string groupaggressionlevel {
+            get {
+                return ResourceManager.GetString("groupaggressionlevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 GroupAttack(ObjectGroup,Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes all creatures in $arg1 to attack $arg2. Although they will attack, their aggression level won&apos; [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string groupattack {
+            get {
+                return ResourceManager.GetString("groupattack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GroupDamage(ObjectGroup,Pointer,Value,Int)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Damages every object in $arg1, with $arg2 as the deliverer, for the amount specified in $arg3 and the type specified in $ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string groupdamage {
+            get {
+                return ResourceManager.GetString("groupdamage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GroupDelete(Group)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Deletes the entities in $arg1, and likely the group itself. This can be used for object and waypoint groups.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 GroupDelete\c [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string groupdelete {
+            get {
+                return ResourceManager.GetString("groupdelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GroupEnchant(ObjectGroup,String,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Enchants each object in $arg1 with the enchantment mentioned in $arg2 for a time specified by $arg3. Make sure you spell the enchantme [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string groupenchant {
+            get {
+                return ResourceManager.GetString("groupenchant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GroupFollow(ObjectGroup,Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes all creatures in $arg1 to follow $arg2. After this command, none of the creatures will listen to any of their senses  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string groupfollow {
+            get {
+                return ResourceManager.GetString("groupfollow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GroupHitFarLocation(ObjectGroup,Float,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes all creatures in $arg1 to use a ranged attack on the location specified by the coor [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string grouphitfarlocation {
+            get {
+                return ResourceManager.GetString("grouphitfarlocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GroupHitLocation(ObjectGroup,Float,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes all creatures in $arg1 to melee attack the location specified by the coordinates $arg2 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string grouphitlocation {
+            get {
+                return ResourceManager.GetString("grouphitlocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GroupIdleLevel(ObjectGroup,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes all creatures in $arg1 to lose their aggression when their health is below the percent specified in $arg2.\par
+        ///\pa [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string groupidlelevel {
+            get {
+                return ResourceManager.GetString("groupidlelevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GroupLookAtDirection(ObjectGroup,Int)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes $arg1 to look in a direction indicated by $arg2\par
+        ///\par
+        ///The directions:\par
+        ///\fs16 0 = NW\par
+        ///1 = N\par
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string grouplookatdirection {
+            get {
+                return ResourceManager.GetString("grouplookatdirection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red255\green0\blue0;\red0\green0\blue0;\red128\green128\blue128;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GroupMove(ObjectGroup,Waypoint)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Moves $arg1 to $arg2 (and keeps moving if the waypoint is linked to another)\par
+        ///\par
+        ///\cf1\i\fs16 N [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string groupmove {
+            get {
+                return ResourceManager.GetString("groupmove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GroupPauseObject(ObjectGroup,Integer)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Temporarily stops all creatures in $arg1 from moving for the number of frames specified in $arg2.\par
+        ///\par
+        ///\i EXAMPL [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string grouppauseobject {
+            get {
+                return ResourceManager.GetString("grouppauseobject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GroupRunAway(ObjectGroup,Object,Integer)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes all creatures in $arg1 to run away from $arg2 for the number of frames specified in $ar [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string grouprunaway {
+            get {
+                return ResourceManager.GetString("grouprunaway", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fprq0\fcharset0 Arial;}{\f4\fmodern\fprq1\fcharset0 Courier New;}{\f5\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f6\fnil\fprq2\fcharset0 Mangal;}{\f7\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red0\green128\blue128;\red0\green0\blue255;\red255\green0\blue0;\red128\green128\blue128;}
+        ///{\stylesheet{\s0\snext0\nowidctlpar{\*\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string groupwalk {
+            get {
+                return ResourceManager.GetString("groupwalk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 GroupWander(ObjectGroup)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes all objects in $arg1 to walk around aimlessly. This is good for setting up wandering patrols.\par
+        ///\par [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string groupwander {
+            get {
+                return ResourceManager.GetString("groupwander", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 HasEnchant(Object,String)\fs24\par
+        ///\par
+        ///\i RETURNS: BOOLEAN\i0\par
+        ///\par
+        ///Checks whether or not $arg1 currently has the enchantment mentioned in $arg2.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 i [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string hasenchant {
+            get {
+                return ResourceManager.GetString("hasenchant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 HasItem(Object,Object)\fs24\par
+        ///\par
+        ///\i RETURNS: BOOLEAN\i0\par
+        ///\par
+        ///Checks whether or not $arg1 currently possesses the item recognized in $arg2.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string hasitem {
+            get {
+                return ResourceManager.GetString("hasitem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap hidePreview {
+            get {
+                object obj = ResourceManager.GetObject("hidePreview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 HitFarLocation(Object,Float,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes $arg1 to use a ranged attack at the location specified by the coordinates $arg2 and $arg3. If [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string hitfarlocation {
+            get {
+                return ResourceManager.GetString("hitfarlocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 HitLocation(Object,Float,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes $arg1 to melee attack the location specified by the coordinates $arg2 and $arg3. If $arg1 cannot [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string hitlocation {
+            get {
+                return ResourceManager.GetString("hitlocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 IdleLevel(Object,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes $arg1 to lose its aggression when its health is below the percent specified in $arg2.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string idlelevel {
+            get {
+                return ResourceManager.GetString("idlelevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 ImmediateBlind()\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Similar to Blind(), but its effects are immediate.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 ImmediateBlind\cf0 ()\cf0\f2\par
+        ///}
+        ///.
+        /// </summary>
+        public static string immediateblind {
+            get {
+                return ResourceManager.GetString("immediateblind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 IntToString(Int)\fs24\par
+        ///\par
+        ///\i RETURNS: STRING\i0\par
+        ///\par
+        ///Turns $arg1 into a string, then declares it. This can be useful for displaying an important variable&apos;s state, because if you try to display a variable wit [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string inttostring {
+            get {
+                return ResourceManager.GetString("inttostring", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fmodern\fprq1\fcharset0 Courier New;}{\f4\fnil\fprq2\fcharset0 Mangal;}{\f5\fnil\fprq0\fcharset128 Mangal;}{\f6\fnil\fprq2\fcharset0 Microsoft YaHei;}}
+        ///{\colortbl;\red0\green0\blue0;\red128\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\stylesheet{\s0\snext0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af0\langfe [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string isattackedby {
+            get {
+                return ResourceManager.GetString("isattackedby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 IsCaller(Pointer)\fs24\par
+        ///\par
+        ///\i RETURNS: BOOLEAN\par
+        ///\i0\par
+        ///Determines whether or not $arg1 is the pointer that called the script, and returns it as a boolean flag.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 if  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string iscaller {
+            get {
+                return ResourceManager.GetString("iscaller", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 IsLocked(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: BOOLEAN\i0\par
+        ///\par
+        ///Checks to see if $arg1 is locked. If so, the statement will be &quot;true&quot;; otherwise, it&apos;s &quot;false&quot;. This will work with any kind of lock, not just m [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string islocked {
+            get {
+                return ResourceManager.GetString("islocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fprq0\fcharset0 Arial;}{\f4\fmodern\fprq1\fcharset0 Courier New;}{\f5\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f6\fnil\fprq2\fcharset0 Mangal;}{\f7\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\stylesheet{\s0\snext0\nowidctlpar{\*\hyphen2\hyphlead2\hypht [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string ison {
+            get {
+                return ResourceManager.GetString("ison", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red0\green128\blue128;\red0\green0\blue0;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 IsOwnedBy(Object,Object)\fs24\par
+        ///\par
+        ///\i RETURNS: BOOLEAN\i0\par
+        ///\par
+        ///Determines whether or not $arg1 is currently being &quot;owned&quot; by $arg2, and returns it as a boolean flag.\pa [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string isownedby {
+            get {
+                return ResourceManager.GetString("isownedby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 IsSpotted(Object,Object)\fs24\par
+        ///\par
+        ///\i RETURNS: BOOLEAN\par
+        ///\i0\par
+        ///Checks whether or not $arg1 can see $arg2 (or vise versa?)\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 if not\cf0  \cf2 IsSp [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string isspotted {
+            get {
+                return ResourceManager.GetString("isspotted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fprq0\fcharset0 Arial;}{\f4\fmodern\fprq1\fcharset0 Courier New;}{\f5\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f6\fnil\fprq2\fcharset0 Mangal;}{\f7\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\stylesheet{\s0\snext0\nowidctlpar{\*\hyphen2\hyphlead2\hypht [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string istalking {
+            get {
+                return ResourceManager.GetString("istalking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 IsTrigger(Pointer)\fs24\par
+        ///\par
+        ///\i RETURNS: BOOLEAN\par
+        ///\i0\par
+        ///Determines whether or not $arg1 is the pointer that triggered the script, and returns it as a boolean flag.\par
+        ///\par
+        ///\i EXAMPLE: [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string istrigger {
+            get {
+                return ResourceManager.GetString("istrigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 IsWaypointOn(Waypoint)\fs24\par
+        ///\par
+        ///\i RETURNS: BOOLEAN\i0\par
+        ///\par
+        ///Checks to see if $arg1 is &quot;on&quot; or not. If so, the statement is &quot;true&quot;; otherwise, it&apos;s &quot;false&quot;.\par
+        ///\i\fs20 FOUND BY GURFAN M [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string iswaypointon {
+            get {
+                return ResourceManager.GetString("iswaypointon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red255\green0\blue0;\red0\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 JournalDelete(Object,String)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Deletes the most recent of the entries specified in $arg2 in $arg1&apos;s journal. If the entry doesn&apos;t exist,  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string journaldelete {
+            get {
+                return ResourceManager.GetString("journaldelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red255\green0\blue0;\red0\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 JournalEdit(Object,String,Byte)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Changes the state of the entry specified in $arg2 in $arg1&apos;s journal to that of $arg3. This command&apos;s u [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string journaledit {
+            get {
+                return ResourceManager.GetString("journaledit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red255\green0\blue0;\red0\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 JournalEntry(Object,String,Byte)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Adds the entry specified in $arg2 to $arg1&apos;s journal. How it&apos;s represented in one&apos;s journal depends on [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string journalentry {
+            get {
+                return ResourceManager.GetString("journalentry", resourceCulture);
             }
         }
         
@@ -81,12 +1736,1328 @@ namespace MapEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 LockDoor(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Locks $arg1. This doesn&apos;t do anything if the object is not a door.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 LockDoor\cf0 (\cf1 Object\cf0 (\cf2 &quot;FrontGat [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string lockdoor {
+            get {
+                return ResourceManager.GetString("lockdoor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 LookAtDirection(Object,Int)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes $arg1 to look in a direction indicated by $arg2\par
+        ///\par
+        ///The directions:\par
+        ///\fs16 0 = NW\par
+        ///1 = N\par
+        ///2 = NE\par [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string lookatdirection {
+            get {
+                return ResourceManager.GetString("lookatdirection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 LookAtObject(Object,Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Causes $arg1 to look at $arg2.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 LookAtObject\cf0 (\cf1 Object\cf0 (\cf2 &quot;TheOgreB [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string lookatobject {
+            get {
+                return ResourceManager.GetString("lookatobject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 LookWithAngle(Object,Byte)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes $arg1 to look in the direction specified in $arg2. To determine the direction of the byte, 0 starts at due east, then increases as [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string lookwithangle {
+            get {
+                return ResourceManager.GetString("lookwithangle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fprq0\fcharset0 Arial;}{\f4\fmodern\fprq1\fcharset0 Courier New;}{\f5\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f6\fnil\fprq2\fcharset0 Mangal;}{\f7\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\stylesheet{\s0\snext0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\h [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string makeenemy {
+            get {
+                return ResourceManager.GetString("makeenemy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fmodern\fprq1\fcharset0 Courier New;}{\f4\fnil\fprq2\fcharset0 Mangal;}{\f5\fnil\fprq0\fcharset128 Mangal;}{\f6\fnil\fprq2\fcharset0 Microsoft YaHei;}}
+        ///{\colortbl;\red0\green0\blue0;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\stylesheet{\s0\snext0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af0\langfe2052\dbch\af0\afs24\l [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string makefriendly {
+            get {
+                return ResourceManager.GetString("makefriendly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 MaxHealth(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: INTEGER\i0\par
+        ///\par
+        ///Retrieves the maximum health value of $arg1 (without resorting to RottenMeat)\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf0\f1\fs20 var1 \cf1 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string maxhealth {
+            get {
+                return ResourceManager.GetString("maxhealth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red255\green0\blue0;\red0\green0\blue0;\red128\green128\blue128;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 Move(Object,Waypoint)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Moves $arg1 to $arg2 (and keeps moving if the waypoint is linked to another)\par
+        ///\par
+        ///\cf1\i\fs16 NOTE: ONLY  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string move {
+            get {
+                return ResourceManager.GetString("move", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 MoveObject(Object,Float,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Instantaneously moves $arg1 to the coordinates indicated by $arg2 and $arg3.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 MoveObject\c [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string moveobject {
+            get {
+                return ResourceManager.GetString("moveobject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 MoveWaypoint(Waypoint,Float,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Instantaneously moves $arg1 to the coordinates indicated by $arg2 and $arg3.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\f [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string movewaypoint {
+            get {
+                return ResourceManager.GetString("movewaypoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 Music(Byte,Integer)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Plays the music represented by the number in $arg1 at the volume of $arg2. The highest volume value is 100, while the lowest is 0 (silence). Whenever the m [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string music {
+            get {
+                return ResourceManager.GetString("music", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fmodern\fprq1\fcharset0 Courier New;}{\f4\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f5\fnil\fprq2\fcharset0 Mangal;}{\f6\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red51\green153\blue255;\red128\green128\blue128;}
+        ///{\stylesheet{\s0\snext0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af0\langfe2052\dbch\af0\afs2 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string nowallsound {
+            get {
+                return ResourceManager.GetString("nowallsound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] nsc {
+            get {
+                object obj = ResourceManager.GetObject("nsc", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] nsdc {
+            get {
+                object obj = ResourceManager.GetObject("nsdc", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 ObjectGroup(String)\fs24\par
+        ///\par
+        ///\i RETURNS: OBJECT GROUP\par
+        ///\i0\par
+        ///Declares the object group mentioned in $arg1.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 Gvar\cf0 5 \cf1 =\cf0  \cf2 Object [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string objectgroup {
+            get {
+                return ResourceManager.GetString("objectgroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 ObjectGroupOff(ObjectGroup)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Disables all objects in the group mentioned in $arg1.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 ObjectGroupOff\cf2 (\cf1 Obj [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string objectgroupoff {
+            get {
+                return ResourceManager.GetString("objectgroupoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 ObjectGroupOn(ObjectGroup)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Enables all objects in the group mentioned in $arg1.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 ObjectGroupOn\cf2 (\cf1 Object [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string objectgroupon {
+            get {
+                return ResourceManager.GetString("objectgroupon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 ObjectGroupToggle(ObjectGroup)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Toggles each object in $arg1 between &quot;enabled&quot; and &quot;disabled&quot;. Note that each object in the group will be toggled seperatel [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string objectgrouptoggle {
+            get {
+                return ResourceManager.GetString("objectgrouptoggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 ObjectOff(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Deactivates $arg1 and prevents it from functioning properly. It&apos;s commonly used on elevators and switches, but it can also be used for creatures.\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string objectoff {
+            get {
+                return ResourceManager.GetString("objectoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 ObjectOn(Object)\par
+        ///\fs24\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Activates $arg1 and allows it to act as it&apos;s supposed to\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 ObjectOn\cf0 (\cf1 Object\cf0 (\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string objecton {
+            get {
+                return ResourceManager.GetString("objecton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 ObjectToggle(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Toggles $arg1&apos;s state between &quot;on&quot; and &quot;off&quot;. Good for scripts involving more than one use.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 ObjectToggle\cf0 (\cf1 Objec [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string objecttoggle {
+            get {
+                return ResourceManager.GetString("objecttoggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 PauseObject(Object,Integer)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Temporarily stops $arg1 from moving for the number of frames specified in $arg2.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 P [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string pauseobject {
+            get {
+                return ResourceManager.GetString("pauseobject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 Pickup(Object,Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes $arg1 to pick up the item specified in $arg2, no matter where it is (unless it is being held by anothe [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string pickup {
+            get {
+                return ResourceManager.GetString("pickup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 Print(String)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Prints the string mentioned in $arg1 on the caller&apos;s screen. If you don&apos;t use a default string (like &quot;GeneralPrint:WellSign&quot;) it will print &quot;MISSING:&apos;CScrFunc.c:(your stri [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string print {
+            get {
+                return ResourceManager.GetString("print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 PrintToAll(String)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Prints the string mentioned in $arg1 on everyone&apos;s screen. If you don&apos;t use a default string (like &quot;GeneralPrint:WellSign&quot;) it will print &quot;MISSING:&apos;CScrFunc.c:(your s [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string printtoall {
+            get {
+                return ResourceManager.GetString("printtoall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 PushObject(Object,Float,Float,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Pushes $arg1 at a speed of $arg2 from the coordinates indicated by $arg3 and $arg4.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string pushobject {
+            get {
+                return ResourceManager.GetString("pushobject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fprq0\fcharset0 Arial;}{\f4\fmodern\fprq1\fcharset0 Courier New;}{\f5\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f6\fnil\fprq2\fcharset0 Mangal;}{\f7\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red128\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\stylesheet{\s0\snext0\nowidctlpar{\*\hyphen2\hyphlead2\hypht [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string pushobjectto {
+            get {
+                return ResourceManager.GetString("pushobjectto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 Raise(Object,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Raises $arg1 to the altitude specified in $arg2, where they will fall to the ground. Mostly good for aesthetic purposes only.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string raise {
+            get {
+                return ResourceManager.GetString("raise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red255\green0\blue0;\red128\green128\blue128;\red0\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 RaiseZombie(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Raises $arg1 from the dead, if it is a zombie.\par
+        ///\par
+        ///\cf1\i\fs20 (NOTE: ZOMBIES WHOSE SCRIPT NAME IS IN THE FORMAT &quot;MAPNAME:OBJEC [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string raisezombie {
+            get {
+                return ResourceManager.GetString("raisezombie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fprq0\fcharset0 Arial;}{\f4\fmodern\fprq1\fcharset0 Courier New;}{\f5\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f6\fnil\fprq2\fcharset0 Mangal;}{\f7\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red255\green0\blue0;\red128\green128\blue128;\red0\green0\blue255;}
+        ///{\stylesheet{\s0\snext0\nowidctlpar{\*\hyphen2\hyphlead2\hypht [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string raisezombiegroup {
+            get {
+                return ResourceManager.GetString("raisezombiegroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 Random(Int,Int)\fs24\par
+        ///\par
+        ///\i RETURNS: INTEGER\i0\par
+        ///\par
+        ///Picks a random integer between $arg1 and $arg2, then declares it.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\f1\fs20 var0 \cf1 = \cf2 Random\cf0 (1,10)\f2\par
+        ///}
+        ///.
+        /// </summary>
+        public static string random {
+            get {
+                return ResourceManager.GetString("random", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 RandomFloat(Float,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: FLOAT\i0\par
+        ///\par
+        ///Picks a random number between $arg1 and $arg2, then declares it.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\f1\fs20 var1 \cf1 = \cf2 RandomFloat\cf0 (\cf1 f\cf0 1,\cf1 f\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string randomfloat {
+            get {
+                return ResourceManager.GetString("randomfloat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap RecWall {
             get {
                 object obj = ResourceManager.GetObject("RecWall", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap redo {
+            get {
+                object obj = ResourceManager.GetObject("redo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap redoDisabled {
+            get {
+                object obj = ResourceManager.GetObject("redoDisabled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fprq0\fcharset0 Arial;}{\f4\fmodern\fprq1\fcharset0 Courier New;}{\f5\fnil\fprq0\fcharset0 Roboto{\*\falt sans-serif};}{\f6\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f7\fnil\fprq2\fcharset0 Mangal;}{\f8\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\stylesheet{\s0\snext0\nowid [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string resetqueststatus {
+            get {
+                return ResourceManager.GetString("resetqueststatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 RestoreHealth(Object,Int)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Restores health to $arg1 for the amount specified by $arg2.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 RestoreHealth\cf0 (\cf2 Gvar\cf0 1,\cf1 Max [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string restorehealth {
+            get {
+                return ResourceManager.GetString("restorehealth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 RunAway(Object,Object,Integer)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes $arg1 to run away from $arg2 for the number of frames specified in $arg3.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string runaway {
+            get {
+                return ResourceManager.GetString("runaway", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap save {
+            get {
+                object obj = ResourceManager.GetObject("save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 SecondTimer(Int,Int)\fs24\par
+        ///\par
+        ///\i RETURNS: CALL FUNCTION\i0\par
+        ///\par
+        ///Creates a timer which waits for $arg1 seconds before calling script number $arg2\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 SecondTimer\cf2 (3,5 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string secondtimer {
+            get {
+                return ResourceManager.GetString("secondtimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 SetDialog(Object,String,Byte,Byte)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Makes $arg1 a conversable object. The kind of conversation had with $arg1 depends on the contents of $arg2; if it is  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string setdialog {
+            get {
+                return ResourceManager.GetString("setdialog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fmodern\fprq1\fcharset0 Courier New;}{\f4\fnil\fprq2\fcharset0 Mangal;}{\f5\fnil\fprq0\fcharset128 Mangal;}{\f6\fnil\fprq2\fcharset0 Microsoft YaHei;}}
+        ///{\colortbl;\red0\green0\blue0;\red0\green128\blue128;\red0\green0\blue255;\red255\green0\blue0;\red128\green128\blue128;}
+        ///{\stylesheet{\s0\snext0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctl [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string setgroupguardspot {
+            get {
+                return ResourceManager.GetString("setgroupguardspot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red164\green21\blue21;\red0\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 SetGroupOwner(Object,ObjectGroup)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Makes $arg1 the &quot;owner&quot; of $arg2. This makes all objects in $arg2 &quot;friendl [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string setgroupowner {
+            get {
+                return ResourceManager.GetString("setgroupowner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fprq0\fcharset0 Arial;}{\f4\fmodern\fprq1\fcharset0 Courier New;}{\f5\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f6\fnil\fprq2\fcharset0 Mangal;}{\f7\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red0\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;\red128\green128\blue128;}
+        ///{\stylesheet{\s0\snext0\nowidctlpar{\*\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string setgrouppathflag {
+            get {
+                return ResourceManager.GetString("setgrouppathflag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 SetGroupGuardSpot(ObjectGroup,Float,Float,Float,Float,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes all creatures in $arg1 to move to the coordinates indicated by $arg2 and $arg3, to sur [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string setguardgroupspot {
+            get {
+                return ResourceManager.GetString("setguardgroupspot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 SetGuardSpot(Object,Float,Float,Float,Float,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes $arg1 to move the coordinates indicated by $arg2 and $arg3, and to survey t [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string setguardspot {
+            get {
+                return ResourceManager.GetString("setguardspot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\froman\fprq2\fcharset128 Times New Roman;}{\f4\fswiss\fprq2\fcharset128 Arial;}{\f5\fmodern\fprq1\fcharset0 Courier New;}{\f6\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f7\fnil\fprq2\fcharset0 Mangal;}{\f8\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red128\green128\blue128;}
+        ///{\stylesheet{\s0\snext0{\*\hyphen2\hyphlead2\hyphtrail2 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string sethalberd {
+            get {
+                return ResourceManager.GetString("sethalberd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red255\green0\blue0;\red128\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 SetOwner(Object,Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Makes $arg1 the &quot;owner&quot; of $arg2. This makes $arg2 &quot;friendly&quot; to $arg1 if it is a monster, and will accredit  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string setowner {
+            get {
+                return ResourceManager.GetString("setowner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 SetPathFlag(Object,Byte)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Changes $arg1&apos;s path flag to the number specified in $arg2. 128 is the default hunting flag, so pick one different from that one. [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string setpathflag {
+            get {
+                return ResourceManager.GetString("setpathflag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 SetProperty(Object,Int,Int)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Creates a situation where when $arg1 is in the state of $arg2, the function dictated by $arg3 will be called. This is the best way to control cre [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string setproperty {
+            get {
+                return ResourceManager.GetString("setproperty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 SetQuestBoolStatus(Boolean,String)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Changes the current state of $arg2 between &quot;true&quot; and &quot;false&quot; based on the value of $arg1. In the  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string setquestboolstatus {
+            get {
+                return ResourceManager.GetString("setquestboolstatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue0;\red0\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 SetQuestStatus(Integer,String)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Sets the current state of $arg2 to the value specified in $arg1. In the Solo campaigns, these are commonly used as variables  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string setqueststatus {
+            get {
+                return ResourceManager.GetString("setqueststatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fmodern\fprq1\fcharset0 Courier New;}{\f4\fnil\fprq2\fcharset0 Mangal;}{\f5\fnil\fprq0\fcharset128 Mangal;}{\f6\fnil\fprq2\fcharset0 Microsoft YaHei;}}
+        ///{\colortbl;\red0\green0\blue0;\red0\green128\blue128;\red0\green0\blue255;\red255\green0\blue0;\red128\green128\blue128;}
+        ///{\stylesheet{\s0\snext0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctl [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string setshopkeepertext {
+            get {
+                return ResourceManager.GetString("setshopkeepertext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap showPreview {
+            get {
+                object obj = ResourceManager.GetObject("showPreview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fprq0\fcharset0 Arial;}{\f4\fmodern\fprq1\fcharset0 Courier New;}{\f5\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f6\fnil\fprq2\fcharset0 Mangal;}{\f7\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red128\green128\blue128;\red0\green0\blue255;}
+        ///{\stylesheet{\s0\snext0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\h [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string specialtimer {
+            get {
+                return ResourceManager.GetString("specialtimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fmodern\fprq1\fcharset0 Courier New;}{\f4\fnil\fprq2\fcharset0 Mangal;}{\f5\fnil\fprq0\fcharset128 Mangal;}{\f6\fnil\fprq2\fcharset0 Microsoft YaHei;}}
+        ///{\colortbl;\red0\green0\blue0;\red51\green153\blue255;\red204\green204\blue204;\red153\green153\blue153;\red128\green128\blue128;}
+        ///{\stylesheet{\s0\snext0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0} [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string startupscreen {
+            get {
+                return ResourceManager.GetString("startupscreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0\adeflang1025
+        ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fprq0\fcharset0 Arial;}{\f4\fmodern\fprq1\fcharset0 Courier New;}{\f5\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f6\fnil\fprq2\fcharset0 Mangal;}{\f7\fnil\fprq0\fcharset128 Mangal;}}
+        ///{\colortbl;\red0\green0\blue0;\red128\green128\blue128;\red164\green21\blue21;\red0\green0\blue255;}
+        ///{\stylesheet{\s0\snext0\nowidctlpar{\*\hyphen2\hyphlead2\hyp [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string stopscript {
+            get {
+                return ResourceManager.GetString("stopscript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue255;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 StoryPic(Object,String)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Gives $arg1 the picture specified in $arg2 when being talked to.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 StoryPic\cf0 (\cf2  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string storypic {
+            get {
+                return ResourceManager.GetString("storypic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 TellStory(String,String)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Tells the story referred to in $arg2. The use of $arg1 is currently unnoticed, but it is typically &quot;SwordsmanHurt&quot;.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string tellstory {
+            get {
+                return ResourceManager.GetString("tellstory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap transTile {
+            get {
+                object obj = ResourceManager.GetObject("transTile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 TrapSpells(Object,String,String,String)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Sets up the spells indicated in $arg2, $arg3, and $arg4 to be triggered when the bomber specifi [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string trapspells {
+            get {
+                return ResourceManager.GetString("trapspells", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 UnBlind()\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///The lights beam up. The stage is set. The host (and ONLY the host) is able to see again. To be used after Blind() or ImmediateBlind().\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 UnBli [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string unblind {
+            get {
+                return ResourceManager.GetString("unblind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap undo {
+            get {
+                object obj = ResourceManager.GetObject("undo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap undoDisabled {
+            get {
+                object obj = ResourceManager.GetObject("undoDisabled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 UnlockDoor(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Unlocks $arg1. This doesn&apos;t do anything if the object is not a door.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 UnlockDoor\cf0 (\cf1 Object\cf0 (\cf2 &quot;TreeFortDoor&quot;\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string unlockdoor {
+            get {
+                return ResourceManager.GetString("unlockdoor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 Walk(Object,Float,Float)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\par
+        ///\i0\par
+        ///Makes $arg1 walk towards the coordinates indicated by $arg2 and $arg3.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 Walk\cf0 (\c [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string walk {
+            get {
+                return ResourceManager.GetString("walk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red255\green0\blue0;\red0\green0\blue0;\red0\green0\blue255;\red128\green128\blue128;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 Wall(int,int)\fs72\par
+        ///\fs24\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Indicates a pointer to a wall indicated by $arg1 (wall coordinate X) and $arg2 (wall coordinate Y)\par
+        ///\par
+        ///\cf1 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string wall {
+            get {
+                return ResourceManager.GetString("wall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red164\green21\blue21;\red128\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 WallBreak(Wall)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Breaks the wall indicated in $arg1\par
+        ///\par
+        ///\cf1\i NOTE: ONLY BREAKABLE WALLS CAN BREAK WITH THIS FUNCTION\i0\par [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string wallbreak {
+            get {
+                return ResourceManager.GetString("wallbreak", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 WallClose(Wall)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Closes a wall indicated in $arg1\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 WallClose\cf2 (\cf1 Wall\cf2 (\cf3 &quot;Secr [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string wallclose {
+            get {
+                return ResourceManager.GetString("wallclose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 WallGroup(String)\fs24\par
+        ///\par
+        ///\i RETURNS: WALL GROUP\par
+        ///\i0\par
+        ///Declares the wall group mentioned in $arg1.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 Gvar\cf0 6 \cf1 =\cf0  \cf2 WallGroup\cf [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string wallgroup {
+            get {
+                return ResourceManager.GetString("wallgroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red255\green0\blue0;\red128\green128\blue128;\red0\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 WallGroupBreak(Wall)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Breaks the wall group indicated in $arg1\par
+        ///\par
+        ///\cf1\i NOTE: ONLY BREAKABLE WALLS CAN BREAK WITH THIS FUNCTI [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string wallgroupbreak {
+            get {
+                return ResourceManager.GetString("wallgroupbreak", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 WallGroupClose(WallGroup)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Closes a wall group indicated in $arg1\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 WallGroupClose\cf2 (\cf1 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string wallgroupclose {
+            get {
+                return ResourceManager.GetString("wallgroupclose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 WallGroupOpen(WallGroup)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Opens a wall group indicated in $arg1\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 WallGroupOpen\cf2 (\cf1 Wa [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string wallgroupopen {
+            get {
+                return ResourceManager.GetString("wallgroupopen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 WallGroupToggle(WallGroup)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Toggles a wall group indicated in $arg1 between opened and closed\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\f [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string wallgrouptoggle {
+            get {
+                return ResourceManager.GetString("wallgrouptoggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 WallOpen(Wall)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Opens a wall indicated in $arg1\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 WallOpen\cf2 (\cf1 Wall\cf2 (\cf3 &quot;SecretW [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string wallopen {
+            get {
+                return ResourceManager.GetString("wallopen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red255\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 WallToggle(Wall)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Toggles a wall indicated in $arg1 between opened and closed\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 WallToggle\c [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string walltoggle {
+            get {
+                return ResourceManager.GetString("walltoggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 Wander(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Causes $arg1 to walk around aimlessly. This is good for setting up wandering NPC&apos;s and patrols.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 Wander\cf0 (\cf1 Object\cf0 (\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string wander {
+            get {
+                return ResourceManager.GetString("wander", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 Waypoint(String)\fs24\par
+        ///\par
+        ///\i RETURNS: WAYPOINT\par
+        ///\i0\par
+        ///Declares the waypoint mentioned in $arg1. This command must be used if you want to refer to a waypoint.\par
+        ///\par
+        ///\i EXAMPLE:\i0 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string waypoint {
+            get {
+                return ResourceManager.GetString("waypoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 WaypointGroup(String)\fs24\par
+        ///\par
+        ///\i RETURNS: WAYPOINT GROUP\par
+        ///\i0\par
+        ///Declares the waypoint group mentioned in $arg1.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 Gvar\cf0 23 = \cf2 WaypointG [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string waypointgroup {
+            get {
+                return ResourceManager.GetString("waypointgroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 WaypointGroupOff(WaypointGroup)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Deactivates the waypoints in $arg1 and disallows the path flags and blink spots associated with them. This is useful when cutting off paths with walls fo [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string waypointgroupoff {
+            get {
+                return ResourceManager.GetString("waypointgroupoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 WaypointGroupOn(WaypointGroup)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Activates the waypoints in $arg1\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 WaypointGroupOn\cf0 (\cf1 Waypoint\cf0 (\cf2 &quot;AllTheWaypoints&quot;\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string waypointgroupon {
+            get {
+                return ResourceManager.GetString("waypointgroupon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red255\green0\blue0;}
+        ///{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\lang1033\f0\fs52 WaypointGroupToggle(WaypointGroup)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Toggles the states of the waypoints in $arg1 between &quot;on&quot; and &quot;off&quot;. Each waypoint has a separate state, so they toggle separately.\par
+        ///\line\i EXAMP [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string waypointgrouptoggle {
+            get {
+                return ResourceManager.GetString("waypointgrouptoggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 WaypointOff(Waypoint)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Deactivates $arg1 and disallows the path flags and blink spot associated with it. This is useful when cutting off paths with walls for an occasion (l [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string waypointoff {
+            get {
+                return ResourceManager.GetString("waypointoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 WaypointOn(Waypoint)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Activates $arg1 so it can be used as a waypoint again\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 WaypointOn\cf0 (\cf1 Waypoint\cf0 (\cf2 &quot;BossBeat1&quot;\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string waypointon {
+            get {
+                return ResourceManager.GetString("waypointon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red128\green128\blue128;\red164\green21\blue21;\red0\green0\blue0;\red0\green0\blue255;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 WaypointToggle(Waypoint)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Toggles $arg1&apos;s status between &quot;on&quot; and &quot;off&quot;.\par
+        ///\par
+        ///\i EXAMPLE:\i0\par
+        ///\cf1\f1\fs20 WaypointToggle\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string waypointtoggle {
+            get {
+                return ResourceManager.GetString("waypointtoggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fprq1\fcharset0 Courier New;}{\f2\fswiss\fcharset0 Arial;}}
+        ///{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red164\green21\blue21;}
+        ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs52 ZombieStayDown(Object)\fs24\par
+        ///\par
+        ///\i RETURNS: VOID\i0\par
+        ///\par
+        ///Forces $arg1, when injured, to stay grounded permanently (if it is a zombie). The effect of this command is negated if the zombie i [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string zombiestaydown {
+            get {
+                return ResourceManager.GetString("zombiestaydown", resourceCulture);
             }
         }
     }

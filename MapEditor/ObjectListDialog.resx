@@ -121,13 +121,40 @@
     <value>0, 0</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="goToObjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 20</value>
+  </data>
+  <data name="goToObjectToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Go to Object</value>
+  </data>
+  <data name="editObjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 20</value>
+  </data>
+  <data name="editObjectToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Edit Object</value>
+  </data>
+  <data name="applyChangesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 20</value>
+  </data>
+  <data name="applyChangesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Apply Changes</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="onlyAppliesToScriptEnchantsToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="onlyAppliesToScriptEnchantsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 20</value>
+  </data>
+  <data name="onlyAppliesToScriptEnchantsToolStripMenuItem.Text" xml:space="preserve">
+    <value>(Only applies to Script/Enchants)</value>
+  </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 24</value>
+    <value>819, 24</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -146,18 +173,6 @@
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="goToObjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 20</value>
-  </data>
-  <data name="goToObjectToolStripMenuItem.Text" xml:space="preserve">
-    <value>Go to Object</value>
-  </data>
-  <data name="editObjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 20</value>
-  </data>
-  <data name="editObjectToolStripMenuItem.Text" xml:space="preserve">
-    <value>Edit Object</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="dataGrid1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -166,7 +181,7 @@
     <value>0, 24</value>
   </data>
   <data name="dataGrid1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 289</value>
+    <value>819, 289</value>
   </data>
   <data name="dataGrid1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -196,7 +211,7 @@
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>560, 313</value>
+    <value>819, 313</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Object List</value>
@@ -213,11 +228,23 @@
   <data name="&gt;&gt;editObjectToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;applyChangesToolStripMenuItem.Name" xml:space="preserve">
+    <value>applyChangesToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;applyChangesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;Helpmark.Name" xml:space="preserve">
     <value>Helpmark</value>
   </data>
   <data name="&gt;&gt;Helpmark.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;onlyAppliesToScriptEnchantsToolStripMenuItem.Name" xml:space="preserve">
+    <value>onlyAppliesToScriptEnchantsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;onlyAppliesToScriptEnchantsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ObjectListDialog</value>

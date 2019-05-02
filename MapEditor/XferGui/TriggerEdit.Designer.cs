@@ -41,11 +41,11 @@ namespace MapEditor.XferGui
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.scriptCollided = new System.Windows.Forms.TextBox();
+            this.scriptCollided = new System.Windows.Forms.ComboBox();
+            this.scriptReleased = new System.Windows.Forms.ComboBox();
+            this.scriptActivated = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.scriptReleased = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.scriptActivated = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -73,7 +73,6 @@ namespace MapEditor.XferGui
             this.groupBoxArea.TabIndex = 0;
             this.groupBoxArea.TabStop = false;
             this.groupBoxArea.Text = "Trigger/PressurePlate only";
-            this.groupBoxArea.Enter += new System.EventHandler(this.groupBoxArea_Enter);
             // 
             // plateEdgeColor
             // 
@@ -148,10 +147,10 @@ namespace MapEditor.XferGui
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.scriptCollided);
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.scriptReleased);
-            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.scriptActivated);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(12, 10);
             this.groupBox2.Name = "groupBox2";
@@ -162,10 +161,30 @@ namespace MapEditor.XferGui
             // 
             // scriptCollided
             // 
-            this.scriptCollided.Location = new System.Drawing.Point(89, 62);
+            this.scriptCollided.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.scriptCollided.FormattingEnabled = true;
+            this.scriptCollided.Location = new System.Drawing.Point(63, 63);
             this.scriptCollided.Name = "scriptCollided";
-            this.scriptCollided.Size = new System.Drawing.Size(114, 20);
-            this.scriptCollided.TabIndex = 5;
+            this.scriptCollided.Size = new System.Drawing.Size(138, 21);
+            this.scriptCollided.TabIndex = 7;
+            // 
+            // scriptReleased
+            // 
+            this.scriptReleased.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.scriptReleased.FormattingEnabled = true;
+            this.scriptReleased.Location = new System.Drawing.Point(63, 39);
+            this.scriptReleased.Name = "scriptReleased";
+            this.scriptReleased.Size = new System.Drawing.Size(138, 21);
+            this.scriptReleased.TabIndex = 6;
+            // 
+            // scriptActivated
+            // 
+            this.scriptActivated.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.scriptActivated.FormattingEnabled = true;
+            this.scriptActivated.Location = new System.Drawing.Point(63, 16);
+            this.scriptActivated.Name = "scriptActivated";
+            this.scriptActivated.Size = new System.Drawing.Size(138, 21);
+            this.scriptActivated.TabIndex = 5;
             // 
             // label5
             // 
@@ -175,13 +194,6 @@ namespace MapEditor.XferGui
             this.label5.TabIndex = 4;
             this.label5.Text = "Touched";
             // 
-            // scriptReleased
-            // 
-            this.scriptReleased.Location = new System.Drawing.Point(89, 39);
-            this.scriptReleased.Name = "scriptReleased";
-            this.scriptReleased.Size = new System.Drawing.Size(114, 20);
-            this.scriptReleased.TabIndex = 3;
-            // 
             // label4
             // 
             this.label4.Location = new System.Drawing.Point(6, 42);
@@ -189,13 +201,6 @@ namespace MapEditor.XferGui
             this.label4.Size = new System.Drawing.Size(77, 23);
             this.label4.TabIndex = 2;
             this.label4.Text = "Released";
-            // 
-            // scriptActivated
-            // 
-            this.scriptActivated.Location = new System.Drawing.Point(89, 16);
-            this.scriptActivated.Name = "scriptActivated";
-            this.scriptActivated.Size = new System.Drawing.Size(114, 20);
-            this.scriptActivated.TabIndex = 1;
             // 
             // label3
             // 
@@ -216,7 +221,6 @@ namespace MapEditor.XferGui
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Allowed Activators";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // label6
             // 
@@ -252,7 +256,6 @@ namespace MapEditor.XferGui
             this.flagsBox.Name = "flagsBox";
             this.flagsBox.Size = new System.Drawing.Size(199, 94);
             this.flagsBox.TabIndex = 2;
-            this.flagsBox.SelectedIndexChanged += new System.EventHandler(this.flagsBox_SelectedIndexChanged);
             // 
             // buttonOK
             // 
@@ -279,12 +282,10 @@ namespace MapEditor.XferGui
             this.Name = "TriggerEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "TriggerXfer";
-            this.Load += new System.EventHandler(this.TriggerEdit_Load);
             this.groupBoxArea.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sizeY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeX)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -293,12 +294,9 @@ namespace MapEditor.XferGui
 		}
 		private System.Windows.Forms.Button buttonOK;
 		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.TextBox scriptReleased;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.TextBox scriptCollided;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TextBox scriptActivated;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.Button plateEdgeColor;
 		private System.Windows.Forms.Label label1;
@@ -309,5 +307,8 @@ namespace MapEditor.XferGui
         private System.Windows.Forms.CheckedListBox flagsBox;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label6;
-	}
+        private System.Windows.Forms.ComboBox scriptCollided;
+        private System.Windows.Forms.ComboBox scriptReleased;
+        private System.Windows.Forms.ComboBox scriptActivated;
+    }
 }

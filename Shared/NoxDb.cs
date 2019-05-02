@@ -29,9 +29,7 @@ namespace NoxShared
 		/// </summary>
 		static bool CheckThingDb()
 		{
-           
             return File.Exists(NoxPath + directorySeparator + "video.bag");
-
 		}
 		
 		/// <summary>

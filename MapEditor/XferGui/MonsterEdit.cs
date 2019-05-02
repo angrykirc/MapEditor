@@ -123,21 +123,23 @@ namespace MapEditor.XferGui
 				npcGroup.Enabled = false;
 			else
 			{
-
                 string xferSound = "";
 
 				monsterAlwaysPeaceful = true;
-                if (Xfer.MaidenVoiceSet != null)
+                if (tt.Subclass[(int)ThingDb.Thing.SubclassBitIndex.FEMALE_NPC])
                 {
                     npcSoundSet.Text = Xfer.MaidenVoiceSet;
                     xferSound = Xfer.MaidenVoiceSet.ToUpper();
                 }
-                else if (Xfer.WoundedNPCVoiceSet != null)
+                else if (tt.Subclass[(int)ThingDb.Thing.SubclassBitIndex.WOUNDED_NPC])
                 {
                     npcSoundSet.Text = Xfer.WoundedNPCVoiceSet;
                     xferSound = Xfer.WoundedNPCVoiceSet.ToUpper();
                 }
-               
+
+                var extraVoices = new string[] { "AirshipCaptain", "AlbinoSpider", "Archer", "Bat", "Bear", "Bear2", "Beholder", "BlackBear", "BlackWidow", "BlackWolf", "Bomber", "BomberBlue", "BomberGreen", "BomberYellow", "CarnivorousPlant", "Demon", "EmberDemon", "EvilCherub", "FireSprite", "FishBig", "FishSmall", "FlyingGolem", "Ghost", "GiantLeech", "Goon", "GreenFrog", "GruntAxe", "Hecubah", "HecubahWithOrb", "Horrendous", "Imp", "Lich", "LichLord", "MechanicalGolem", "MeleeDemon", "Mimic", "NPCWizard", "OgreBrute", "OgreWarlord", "Rat", "Scorpion", "Shade", "Skeleton", "SkeletonLord", "SmallAlbinoSpider", "SmallSpider", "Spider", "SpittingSpider", "StoneGolem", "StrongWizardWhite", "Swordsman", "TalkingSkull", "Troll", "Urchin", "UrchinShaman", "VileZombie", "Wasp", "WeirdlingBeast", "WhiteWolf", "WillOWisp", "Wizard", "WizardGreen", "WizardRed", "WizardWhite", "Wolf", "WoundedApprentice", "WoundedConjurer", "WoundedWarrior", "Zombie", };
+                SoundSet.Items.AddRange(extraVoices);
+
                 foreach (string item in SoundSet.Items)
                 {
                     string itemSound = item.ToUpper();
@@ -148,14 +150,8 @@ namespace MapEditor.XferGui
                         break;
                     }
                 }
-            
-            
-            
-            
-            
             }
 		}
-		
 		private void OutputFormData()
 		{
 			Xfer.DirectionId = (byte) Array.IndexOf(MonsterXfer.NOX_DIRECT_NAMES, (string) directionSelector.SelectedItem);
@@ -202,6 +198,12 @@ namespace MapEditor.XferGui
 			if (tt.Subclass[(int) ThingDb.Thing.SubclassBitIndex.WOUNDED_NPC])
 				Xfer.WoundedNPCVoiceSet = npcSoundSet.Text;
 		}
+        private void SoundSet_IndexChanged(object sender, EventArgs e)
+        {
+            if (SoundSet.SelectedItem == null)
+                return;
+            npcSoundSet.Text = SoundSet.SelectedItem.ToString();
+        }
 		
 		private void ButtonSaveChangesClick(object sender, EventArgs e)
 		{
@@ -209,7 +211,6 @@ namespace MapEditor.XferGui
 			OutputFormData();
 			Close();
 		}
-		
 		private void ButtonCancelClick(object sender, EventArgs e)
 		{
 			DialogResult = DialogResult.Cancel;
@@ -273,7 +274,6 @@ namespace MapEditor.XferGui
 				}
 			}
 		}
-		
 		void SpellsetAddSpellClick(object sender, EventArgs e)
 		{
 			MonsterSpellForm form = new MonsterSpellForm();
@@ -284,7 +284,6 @@ namespace MapEditor.XferGui
 				Xfer.KnownSpells.Add(entry);
 			}
 		}
-		
 		void CallScriptEditorClick(object sender, EventArgs e)
 		{
 			MonsterScriptForm form = new MonsterScriptForm();
@@ -294,7 +293,6 @@ namespace MapEditor.XferGui
 				Xfer.ScriptEvents = form.GetScriptStrings();
 			}
 		}
-		
 		void CallShopEditorClick(object sender, EventArgs e)
 		{
 			ShopEditForm form = new ShopEditForm();

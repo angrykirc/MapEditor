@@ -35,7 +35,7 @@ namespace MapEditor.newgui
 		{
             this.components = new System.ComponentModel.Container();
             this.comboEdgeType = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblEdgeType = new System.Windows.Forms.Label();
             this.listEdgeImages = new System.Windows.Forms.ListView();
             this.ignoreAllBox = new System.Windows.Forms.CheckBox();
             this.AutoEgeBox = new System.Windows.Forms.CheckBox();
@@ -52,20 +52,21 @@ namespace MapEditor.newgui
             this.comboEdgeType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboEdgeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboEdgeType.FormattingEnabled = true;
-            this.comboEdgeType.Location = new System.Drawing.Point(88, 8);
+            this.comboEdgeType.Location = new System.Drawing.Point(69, 7);
             this.comboEdgeType.MaxDropDownItems = 20;
             this.comboEdgeType.Name = "comboEdgeType";
-            this.comboEdgeType.Size = new System.Drawing.Size(121, 21);
+            this.comboEdgeType.Size = new System.Drawing.Size(136, 21);
             this.comboEdgeType.TabIndex = 3;
             this.comboEdgeType.SelectedIndexChanged += new System.EventHandler(this.UpdateListView);
             // 
-            // label1
+            // lblEdgeType
             // 
-            this.label1.Location = new System.Drawing.Point(8, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 23);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Edge type:";
+            this.lblEdgeType.AutoSize = true;
+            this.lblEdgeType.Location = new System.Drawing.Point(13, 11);
+            this.lblEdgeType.Name = "lblEdgeType";
+            this.lblEdgeType.Size = new System.Drawing.Size(58, 13);
+            this.lblEdgeType.TabIndex = 2;
+            this.lblEdgeType.Text = "Edge type:";
             // 
             // listEdgeImages
             // 
@@ -135,11 +136,11 @@ namespace MapEditor.newgui
             this.Picker.Appearance = System.Windows.Forms.Appearance.Button;
             this.Picker.BackgroundImage = global::MapEditor.Properties.Resources.color_picker;
             this.Picker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Picker.Location = new System.Drawing.Point(179, 37);
+            this.Picker.Location = new System.Drawing.Point(175, 30);
             this.Picker.Name = "Picker";
             this.Picker.Size = new System.Drawing.Size(30, 30);
             this.Picker.TabIndex = 39;
-            this.toolTip1.SetToolTip(this.Picker, "Tile Picker. (Ctrl+A)");
+            this.toolTip1.SetToolTip(this.Picker, "Edge Picker (Ctrl+A)");
             this.Picker.UseVisualStyleBackColor = true;
             this.Picker.CheckedChanged += new System.EventHandler(this.Picker_CheckedChanged);
             // 
@@ -152,7 +153,7 @@ namespace MapEditor.newgui
             this.Controls.Add(this.AutoEdgeGrp);
             this.Controls.Add(this.listEdgeImages);
             this.Controls.Add(this.comboEdgeType);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblEdgeType);
             this.Name = "EdgeMakeTab";
             this.Size = new System.Drawing.Size(216, 543);
             this.Load += new System.EventHandler(this.EdgeMakeTab_Load);
@@ -163,7 +164,7 @@ namespace MapEditor.newgui
 
 		}
 		private System.Windows.Forms.ListView listEdgeImages;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblEdgeType;
         public System.Windows.Forms.CheckBox ignoreAllBox;
         public System.Windows.Forms.CheckBox AutoEgeBox;
         public System.Windows.Forms.CheckBox preserveBox;

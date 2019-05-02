@@ -93,7 +93,16 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\NoxShared.csproj">
@@ -152,6 +161,9 @@
     <Compile Include="MapInt\MapInterface.cs" />
     <Compile Include="MapView.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Minimap.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="newgui\BrushSettings.cs">
       <SubType>Form</SubType>
@@ -249,7 +261,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="render\ImageHelper.cs" />
+    <Compile Include="render\MapImageObjectFilter.cs" />
     <Compile Include="render\BitmapShader.cs" />
+    <Compile Include="render\CustomRenderObject.cs" />
+    <Compile Include="render\FakeWallObject.cs" />
     <Compile Include="render\MapViewRenderer.cs" />
     <Compile Include="render\MinimapRenderer.cs" />
     <Compile Include="render\ObjectRenderer.cs" />
@@ -267,11 +283,11 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ScriptFunctionList.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="SyntaxHighlighter\Properties\AssemblyInfo.cs" />
     <Compile Include="SyntaxHighlighter\SyntaxRichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WizardForm\AssemblyInfo.cs" />
     <Compile Include="WizardForm\WizardForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -417,6 +433,9 @@
     <Compile Include="XferGui\XferEditor.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="Minimap.resx">
+      <DependentUpon>Minimap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="newgui\BrushSettings.resx">
       <DependentUpon>BrushSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -588,7 +607,7 @@
       <DependentUpon>TriggerEdit.cs</DependentUpon>
     </EmbeddedResource>
     <AppDesigner Include="Properties\" />
-    <EmbeddedResource Include="bundled\BlankMap.map" />
+    <EmbeddedResource Include="Resources\BlankMap.map" />
     <EmbeddedResource Include="XferGui\XferEditor.resx">
       <DependentUpon>XferEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -598,10 +617,187 @@
       <LastGenOutput>EditorSettings.Designer.cs</LastGenOutput>
     </None>
     <None Include="MapEditor_TemporaryKey.pfx" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\functiondescs\aggressionlevel.rtf" />
+    <None Include="Resources\functiondescs\areownedby.rtf" />
+    <None Include="Resources\functiondescs\attack.rtf" />
+    <None Include="Resources\functiondescs\audioevent.rtf" />
+    <None Include="Resources\functiondescs\autosave.rtf" />
+    <None Include="Resources\functiondescs\awardspell.rtf" />
+    <None Include="Resources\functiondescs\becomeenemy.rtf" />
+    <None Include="Resources\functiondescs\becomepet.rtf" />
+    <None Include="Resources\functiondescs\blind.rtf" />
+    <None Include="Resources\functiondescs\canceldialog.rtf" />
+    <None Include="Resources\functiondescs\canceltimer.rtf" />
+    <None Include="Resources\functiondescs\castspellat.rtf" />
+    <None Include="Resources\functiondescs\castspellfrom.rtf" />
+    <None Include="Resources\functiondescs\castspellon.rtf" />
+    <None Include="Resources\functiondescs\castspellto.rtf" />
+    <None Include="Resources\functiondescs\changegold.rtf" />
+    <None Include="Resources\functiondescs\changescore.rtf" />
+    <None Include="Resources\functiondescs\chat.rtf" />
+    <None Include="Resources\functiondescs\chattimer.rtf" />
+    <None Include="Resources\functiondescs\checkitem.rtf" />
+    <None Include="Resources\functiondescs\checkobjecttype.rtf" />
+    <None Include="Resources\functiondescs\clearowner.rtf" />
+    <None Include="Resources\functiondescs\clearprint.rtf" />
+    <None Include="Resources\functiondescs\create.rtf" />
+    <None Include="Resources\functiondescs\creaturegrouphunt.rtf" />
+    <None Include="Resources\functiondescs\creaturegroupidle.rtf" />
+    <None Include="Resources\functiondescs\creaturehunt.rtf" />
+    <None Include="Resources\functiondescs\creatureidle.rtf" />
+    <None Include="Resources\functiondescs\currenthealth.rtf" />
+    <None Include="Resources\functiondescs\damage.rtf" />
+    <None Include="Resources\functiondescs\deathscreen.rtf" />
+    <None Include="Resources\functiondescs\delete.rtf" />
+    <None Include="Resources\functiondescs\deleteobjecttimer.rtf" />
+    <None Include="Resources\functiondescs\destroychat.rtf" />
+    <None Include="Resources\functiondescs\destroyeverychat.rtf" />
+    <None Include="Resources\functiondescs\distance.rtf" />
+    <None Include="Resources\functiondescs\drop.rtf" />
+    <None Include="Resources\functiondescs\effect.rtf" />
+    <None Include="Resources\functiondescs\enchant.rtf" />
+    <None Include="Resources\functiondescs\enchantoff.rtf" />
+    <None Include="Resources\functiondescs\endgame.rtf" />
+    <None Include="Resources\functiondescs\enforcetalk.rtf" />
+    <None Include="Resources\functiondescs\floattostring.rtf" />
+    <None Include="Resources\functiondescs\follow.rtf" />
+    <None Include="Resources\functiondescs\frametimer.rtf" />
+    <None Include="Resources\functiondescs\frozen.rtf" />
+    <None Include="Resources\functiondescs\getanswer.rtf" />
+    <None Include="Resources\functiondescs\getcaller.rtf" />
+    <None Include="Resources\functiondescs\getdirection.rtf" />
+    <None Include="Resources\functiondescs\getelevatorstatus.rtf" />
+    <None Include="Resources\functiondescs\getgold.rtf" />
+    <None Include="Resources\functiondescs\getholder.rtf" />
+    <None Include="Resources\functiondescs\gethost.rtf" />
+    <None Include="Resources\functiondescs\getlastitem.rtf" />
+    <None Include="Resources\functiondescs\getobjectx.rtf" />
+    <None Include="Resources\functiondescs\getobjecty.rtf" />
+    <None Include="Resources\functiondescs\getpreviousitem.rtf" />
+    <None Include="Resources\functiondescs\getquestboolstatus.rtf" />
+    <None Include="Resources\functiondescs\getqueststatus.rtf" />
+    <None Include="Resources\functiondescs\getscore.rtf" />
+    <None Include="Resources\functiondescs\gettrigger.rtf" />
+    <None Include="Resources\functiondescs\getwaypointx.rtf" />
+    <None Include="Resources\functiondescs\getwaypointy.rtf" />
+    <None Include="Resources\functiondescs\givexp.rtf" />
+    <None Include="Resources\functiondescs\gobackhome.rtf" />
+    <None Include="Resources\functiondescs\groupaggressionlevel.rtf" />
+    <None Include="Resources\functiondescs\groupattack.rtf" />
+    <None Include="Resources\functiondescs\groupdamage.rtf" />
+    <None Include="Resources\functiondescs\groupdelete.rtf" />
+    <None Include="Resources\functiondescs\groupenchant.rtf" />
+    <None Include="Resources\functiondescs\groupfollow.rtf" />
+    <None Include="Resources\functiondescs\grouphitfarlocation.rtf" />
+    <None Include="Resources\functiondescs\grouphitlocation.rtf" />
+    <None Include="Resources\functiondescs\groupidlelevel.rtf" />
+    <None Include="Resources\functiondescs\grouplookatdirection.rtf" />
+    <None Include="Resources\functiondescs\groupmove.rtf" />
+    <None Include="Resources\functiondescs\grouppauseobject.rtf" />
+    <None Include="Resources\functiondescs\grouprunaway.rtf" />
+    <None Include="Resources\functiondescs\groupwalk.rtf" />
+    <None Include="Resources\functiondescs\groupwander.rtf" />
+    <None Include="Resources\functiondescs\hasenchant.rtf" />
+    <None Include="Resources\functiondescs\hasitem.rtf" />
+    <None Include="Resources\functiondescs\hitfarlocation.rtf" />
+    <None Include="Resources\functiondescs\hitlocation.rtf" />
+    <None Include="Resources\functiondescs\idlelevel.rtf" />
+    <None Include="Resources\functiondescs\immediateblind.rtf" />
+    <None Include="Resources\functiondescs\inttostring.rtf" />
+    <None Include="Resources\functiondescs\isattackedby.rtf" />
+    <None Include="Resources\functiondescs\iscaller.rtf" />
+    <None Include="Resources\functiondescs\islocked.rtf" />
+    <None Include="Resources\functiondescs\ison.rtf" />
+    <None Include="Resources\functiondescs\isownedby.rtf" />
+    <None Include="Resources\functiondescs\isspotted.rtf" />
+    <None Include="Resources\functiondescs\istalking.rtf" />
+    <None Include="Resources\functiondescs\istrigger.rtf" />
+    <None Include="Resources\functiondescs\iswaypointon.rtf" />
+    <None Include="Resources\functiondescs\journaldelete.rtf" />
+    <None Include="Resources\functiondescs\journaledit.rtf" />
+    <None Include="Resources\functiondescs\journalentry.rtf" />
+    <None Include="Resources\functiondescs\lockdoor.rtf" />
+    <None Include="Resources\functiondescs\lookatdirection.rtf" />
+    <None Include="Resources\functiondescs\lookatobject.rtf" />
+    <None Include="Resources\functiondescs\lookwithangle.rtf" />
+    <None Include="Resources\functiondescs\makeenemy.rtf" />
+    <None Include="Resources\functiondescs\makefriendly.rtf" />
+    <None Include="Resources\functiondescs\maxhealth.rtf" />
+    <None Include="Resources\functiondescs\move.rtf" />
+    <None Include="Resources\functiondescs\moveobject.rtf" />
+    <None Include="Resources\functiondescs\movewaypoint.rtf" />
+    <None Include="Resources\functiondescs\music.rtf" />
+    <None Include="Resources\functiondescs\nowallsound.rtf" />
+    <None Include="Resources\functiondescs\object.rtf" />
+    <None Include="Resources\functiondescs\objectgroup.rtf" />
+    <None Include="Resources\functiondescs\objectgroupoff.rtf" />
+    <None Include="Resources\functiondescs\objectgroupon.rtf" />
+    <None Include="Resources\functiondescs\objectgrouptoggle.rtf" />
+    <None Include="Resources\functiondescs\objectoff.rtf" />
+    <None Include="Resources\functiondescs\objecton.rtf" />
+    <None Include="Resources\functiondescs\objecttoggle.rtf" />
+    <None Include="Resources\functiondescs\pauseobject.rtf" />
+    <None Include="Resources\functiondescs\pickup.rtf" />
+    <None Include="Resources\functiondescs\print.rtf" />
+    <None Include="Resources\functiondescs\printtoall.rtf" />
+    <None Include="Resources\functiondescs\pushobject.rtf" />
+    <None Include="Resources\functiondescs\pushobjectto.rtf" />
+    <None Include="Resources\functiondescs\raise.rtf" />
+    <None Include="Resources\functiondescs\raisezombie.rtf" />
+    <None Include="Resources\functiondescs\raisezombiegroup.rtf" />
+    <None Include="Resources\functiondescs\random.rtf" />
+    <None Include="Resources\functiondescs\randomfloat.rtf" />
+    <None Include="Resources\functiondescs\resetqueststatus.rtf" />
+    <None Include="Resources\functiondescs\restorehealth.rtf" />
+    <None Include="Resources\functiondescs\runaway.rtf" />
+    <None Include="Resources\functiondescs\secondtimer.rtf" />
+    <None Include="Resources\functiondescs\setdialog.rtf" />
+    <None Include="Resources\functiondescs\setgroupguardspot.rtf" />
+    <None Include="Resources\functiondescs\setgroupowner.rtf" />
+    <None Include="Resources\functiondescs\setgrouppathflag.rtf" />
+    <None Include="Resources\functiondescs\setguardgroupspot.rtf" />
+    <None Include="Resources\functiondescs\setguardspot.rtf" />
+    <None Include="Resources\functiondescs\sethalberd.rtf" />
+    <None Include="Resources\functiondescs\setowner.rtf" />
+    <None Include="Resources\functiondescs\setpathflag.rtf" />
+    <None Include="Resources\functiondescs\setproperty.rtf" />
+    <None Include="Resources\functiondescs\setquestboolstatus.rtf" />
+    <None Include="Resources\functiondescs\setqueststatus.rtf" />
+    <None Include="Resources\functiondescs\setshopkeepertext.rtf" />
+    <None Include="Resources\functiondescs\specialtimer.rtf" />
+    <None Include="Resources\functiondescs\startupscreen.rtf" />
+    <None Include="Resources\functiondescs\stopscript.rtf" />
+    <None Include="Resources\functiondescs\storypic.rtf" />
+    <None Include="Resources\functiondescs\tellstory.rtf" />
+    <None Include="Resources\functiondescs\trapspells.rtf" />
+    <None Include="Resources\functiondescs\unblind.rtf" />
+    <None Include="Resources\functiondescs\unlockdoor.rtf" />
+    <None Include="Resources\functiondescs\walk.rtf" />
+    <None Include="Resources\functiondescs\wall.rtf" />
+    <None Include="Resources\functiondescs\wallbreak.rtf" />
+    <None Include="Resources\functiondescs\wallclose.rtf" />
+    <None Include="Resources\functiondescs\wallgroup.rtf" />
+    <None Include="Resources\functiondescs\wallgroupbreak.rtf" />
+    <None Include="Resources\functiondescs\wallgroupclose.rtf" />
+    <None Include="Resources\functiondescs\wallgroupopen.rtf" />
+    <None Include="Resources\functiondescs\wallgrouptoggle.rtf" />
+    <None Include="Resources\functiondescs\wallopen.rtf" />
+    <None Include="Resources\functiondescs\walltoggle.rtf" />
+    <None Include="Resources\functiondescs\wander.rtf" />
+    <None Include="Resources\functiondescs\waypoint.rtf" />
+    <None Include="Resources\functiondescs\waypointgroup.rtf" />
+    <None Include="Resources\functiondescs\waypointgroupoff.rtf" />
+    <None Include="Resources\functiondescs\waypointgroupon.rtf" />
+    <None Include="Resources\functiondescs\waypointgrouptoggle.rtf" />
+    <None Include="Resources\functiondescs\waypointoff.rtf" />
+    <None Include="Resources\functiondescs\waypointon.rtf" />
+    <None Include="Resources\functiondescs\waypointtoggle.rtf" />
+    <None Include="Resources\functiondescs\zombiestaydown.rtf" />
     <None Include="ScriptCompiler\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="SyntaxHighlighter\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="WizardForm\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
@@ -630,6 +826,22 @@
     <None Include="bin\Debug\picker.cur" />
     <Content Include="icon.ico" />
     <None Include="Resources\LineWall.png" />
+    <None Include="Resources\45deg.png" />
+    <None Include="Resources\hidePreview.png" />
+    <None Include="Resources\redo.png" />
+    <None Include="Resources\showPreview.png" />
+    <None Include="Resources\undo.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\redoDisabled.png" />
+    <None Include="Resources\undoDisabled.png" />
+    <None Include="Resources\0deg.png" />
+    <None Include="Resources\bucket.cur" />
+    <None Include="Resources\bucketPaint.png" />
+    <Content Include="Resources\categories.xml" />
+    <None Include="Resources\nsc.exe" />
+    <None Include="Resources\nsdc.exe" />
+    <None Include="Resources\gear.png" />
+    <None Include="Resources\transTile.png" />
     <Content Include="ScriptCompiler\ScriptCompiler.csproj" />
     <Content Include="SyntaxHighlighter\SyntaxHighlighter.csproj" />
     <Content Include="WizardForm\WizardForm.csproj" />
@@ -652,6 +864,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bundled\" />
     <Folder Include="ScriptCompiler\bin\Debug\" />
     <Folder Include="ScriptCompiler\obj\Debug\TempPE\" />
     <Folder Include="SyntaxHighlighter\bin\Debug\" />

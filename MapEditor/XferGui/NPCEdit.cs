@@ -92,7 +92,10 @@ namespace MapEditor.XferGui
 			poisonPower.Value = Xfer.PoisonLevel;
 			npcUnknown.Text = Xfer.NPCSpeed.ToString(numberFormat);
 			npcStrength.Value = Xfer.NPCStrength;
-			//npcSoundSet.Text = Xfer.NPCVoiceSet;
+            //npcSoundSet.Text = Xfer.NPCVoiceSet;
+
+            var extraVoices = new string[] { "AirshipCaptain", "AlbinoSpider", "Archer", "Bat", "Bear", "Bear2", "Beholder", "BlackBear", "BlackWidow", "BlackWolf", "Bomber", "BomberBlue", "BomberGreen", "BomberYellow", "CarnivorousPlant", "Demon", "EmberDemon", "EvilCherub", "FireSprite", "FishBig", "FishSmall", "FlyingGolem", "Ghost", "GiantLeech", "Goon", "GreenFrog", "GruntAxe", "Hecubah", "HecubahWithOrb", "Horrendous", "Imp", "Lich", "LichLord", "MechanicalGolem", "MeleeDemon", "Mimic", "NPCWizard", "OgreBrute", "OgreWarlord", "Rat", "Scorpion", "Shade", "Skeleton", "SkeletonLord", "SmallAlbinoSpider", "SmallSpider", "Spider", "SpittingSpider", "StoneGolem", "StrongWizardWhite", "Swordsman", "TalkingSkull", "Troll", "Urchin", "UrchinShaman", "VileZombie", "Wasp", "WeirdlingBeast", "WhiteWolf", "WillOWisp", "Wizard", "WizardGreen", "WizardRed", "WizardWhite", "Wolf", "WoundedApprentice", "WoundedConjurer", "WoundedWarrior", "Zombie", };
+            SoundSet.Items.AddRange(extraVoices);
 
             string xferSound = Xfer.NPCVoiceSet.ToUpper();
             foreach (string item in SoundSet.Items)

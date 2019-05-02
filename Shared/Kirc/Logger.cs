@@ -59,8 +59,11 @@ namespace NoxShared
 			
 			try
 			{
-				// Create new file (replacing existing one)
-				Output = File.CreateText(Path.Combine(Environment.CurrentDirectory, LOG_FILE_NAME));
+                // Create new file (replacing existing one)
+                //var exePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                //var exePath = Environment.CurrentDirectory;
+
+                Output = File.CreateText(Path.Combine(System.Windows.Forms.Application.StartupPath, LOG_FILE_NAME));
 				
 				// Configure output stream
 				//Output.Encoding = LOG_TEXT_ENCODING;
@@ -70,7 +73,7 @@ namespace NoxShared
 				Initialized = true;
 				
 				// Write start string
-				Log(String.Format("Logfile opened {0}", DateTime.UtcNow.ToLongDateString()));
+				Log(string.Format("Logfile opened {0}", DateTime.UtcNow.ToLongDateString()));
 			}
 			catch (Exception)
 			{

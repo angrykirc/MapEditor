@@ -175,6 +175,7 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.settings</DependentUpon>
       <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="StringDb.cs">
       <SubType>Code</SubType>

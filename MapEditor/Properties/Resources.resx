@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="RecWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RecWall.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -128,7 +128,7 @@
   <data name="color_picker" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
-        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAABuuAAAbrgGMXXP4AAAAGXRFWHRTb2Z0d2FyZQB3d3cu
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAButAAAbrQEh5FKVAAAAGXRFWHRTb2Z0d2FyZQB3d3cu
         aW5rc2NhcGUub3Jnm+48GgAABIJJREFUaEPV2MlrJGUYx/HJzLhFzRgx7rsmUXFBQVGJK4qDC+q4oYhE
         chGj5OYpf4SI+QMEQUUQNSeXQ6LZIXr04MENUW9mDwYtv9+yKunlSXc6JtXpFz5018NM6vdWvV31VB1K
         kqSlhcVWEhZbSVhsJWGxlYTFVhIWi8Q4H2/iG6ziB3yIE9G/rxQWi8J4Aitw45/sU39nn+/jWPR/c2Gx
@@ -150,5 +150,581 @@
         Hl5hUVkY7wGd8AHDh45r4WsOfxcGt2/3JufZqvngsV/CohieBVtbJ+FSyh88DO2Zse5RT9vf6G8UISzm
         GPkkPMI+B8jQLq90uSj6v0UJi6XykDDwgQhdKiy2juTQvy6TTbWIyiPRAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="hidePreview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hidePreview.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="redo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\redo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="showPreview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\showPreview.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="undo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\undo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_45deg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\45deg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="redoDisabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\redoDisabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="undoDisabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\undoDisabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_0deg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\0deg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bucket" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bucket.cur;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="bucketPaint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bucketPaint.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="categories" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\categories.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="nsc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nsc.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="nsdc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nsdc.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="gear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gear.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="transTile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\transTile.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="aggressionlevel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\aggressionlevel.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="areownedby" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\areownedby.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="attack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\attack.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="audioevent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\audioevent.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="autosave" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\autosave.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="awardspell" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\awardspell.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="becomeenemy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\becomeenemy.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="becomepet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\becomepet.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="blind" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\blind.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="canceldialog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\canceldialog.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="canceltimer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\canceltimer.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="castspellat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\castspellat.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="castspellfrom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\castspellfrom.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="castspellon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\castspellon.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="castspellto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\castspellto.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="changegold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\changegold.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="changescore" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\changescore.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="chat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\chat.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="chattimer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\chattimer.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="checkitem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\checkitem.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="checkobjecttype" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\checkobjecttype.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="clearowner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\clearowner.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="clearprint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\clearprint.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="create" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\create.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="creaturegrouphunt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\creaturegrouphunt.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="creaturegroupidle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\creaturegroupidle.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="creaturehunt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\creaturehunt.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="creatureidle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\creatureidle.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="currenthealth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\currenthealth.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="damage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\damage.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="deathscreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\deathscreen.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\delete.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="deleteobjecttimer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\deleteobjecttimer.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="destroychat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\destroychat.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="destroyeverychat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\destroyeverychat.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="distance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\distance.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="drop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\drop.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="effect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\effect.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="enchant" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\enchant.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="enchantoff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\enchantoff.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="endgame" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\endgame.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="enforcetalk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\enforcetalk.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="floattostring" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\floattostring.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="follow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\follow.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="frametimer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\frametimer.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="frozen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\frozen.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getanswer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getanswer.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getcaller" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getcaller.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getdirection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getdirection.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getelevatorstatus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getelevatorstatus.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getgold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getgold.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getholder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getholder.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="gethost" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\gethost.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getlastitem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getlastitem.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getobjectx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getobjectx.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getobjecty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getobjecty.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getpreviousitem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getpreviousitem.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getquestboolstatus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getquestboolstatus.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getqueststatus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getqueststatus.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getscore" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getscore.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="gettrigger" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\gettrigger.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getwaypointx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getwaypointx.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="getwaypointy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\getwaypointy.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="givexp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\givexp.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="gobackhome" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\gobackhome.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="groupaggressionlevel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\groupaggressionlevel.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="groupattack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\groupattack.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="groupdamage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\groupdamage.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="groupdelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\groupdelete.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="groupenchant" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\groupenchant.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="groupfollow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\groupfollow.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="grouphitfarlocation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\grouphitfarlocation.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="grouphitlocation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\grouphitlocation.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="groupidlelevel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\groupidlelevel.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="grouplookatdirection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\grouplookatdirection.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="groupmove" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\groupmove.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="grouppauseobject" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\grouppauseobject.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="grouprunaway" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\grouprunaway.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="groupwalk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\groupwalk.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="groupwander" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\groupwander.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="hasenchant" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\hasenchant.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="hasitem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\hasitem.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="hitfarlocation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\hitfarlocation.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="hitlocation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\hitlocation.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="idlelevel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\idlelevel.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="immediateblind" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\immediateblind.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="inttostring" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\inttostring.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="isattackedby" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\isattackedby.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="iscaller" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\iscaller.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="islocked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\islocked.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="ison" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\ison.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="isownedby" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\isownedby.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="isspotted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\isspotted.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="istalking" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\istalking.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="istrigger" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\istrigger.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="iswaypointon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\iswaypointon.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="journaldelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\journaldelete.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="journaledit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\journaledit.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="journalentry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\journalentry.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="lockdoor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\lockdoor.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="lookatdirection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\lookatdirection.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="lookatobject" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\lookatobject.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="lookwithangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\lookwithangle.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="makeenemy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\makeenemy.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="makefriendly" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\makefriendly.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="maxhealth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\maxhealth.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="move" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\move.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="moveobject" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\moveobject.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="movewaypoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\movewaypoint.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="music" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\music.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="nowallsound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\nowallsound.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="objectgroup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\objectgroup.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="objectgroupoff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\objectgroupoff.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="objectgroupon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\objectgroupon.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="objectgrouptoggle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\objectgrouptoggle.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="objectoff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\objectoff.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="objecton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\objecton.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="objecttoggle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\objecttoggle.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="pauseobject" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\pauseobject.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="pickup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\pickup.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="print" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\print.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="printtoall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\printtoall.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="pushobject" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\pushobject.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="pushobjectto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\pushobjectto.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="raise" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\raise.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="raisezombie" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\raisezombie.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="raisezombiegroup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\raisezombiegroup.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="random" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\random.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="randomfloat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\randomfloat.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="resetqueststatus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\resetqueststatus.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="restorehealth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\restorehealth.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="runaway" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\runaway.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="secondtimer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\secondtimer.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="setdialog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\setdialog.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="setgroupguardspot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\setgroupguardspot.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="setgroupowner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\setgroupowner.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="setgrouppathflag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\setgrouppathflag.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="setguardgroupspot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\setguardgroupspot.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="setguardspot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\setguardspot.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="sethalberd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\sethalberd.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="setowner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\setowner.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="setpathflag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\setpathflag.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="setproperty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\setproperty.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="setquestboolstatus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\setquestboolstatus.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="setqueststatus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\setqueststatus.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="setshopkeepertext" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\setshopkeepertext.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="specialtimer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\specialtimer.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="startupscreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\startupscreen.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="stopscript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\stopscript.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="storypic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\storypic.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="tellstory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\tellstory.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="trapspells" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\trapspells.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="unblind" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\unblind.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="unlockdoor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\unlockdoor.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="walk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\walk.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="wall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\wall.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="wallbreak" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\wallbreak.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="wallclose" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\wallclose.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="wallgroup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\wallgroup.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="wallgroupbreak" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\wallgroupbreak.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="wallgroupclose" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\wallgroupclose.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="wallgroupopen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\wallgroupopen.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="wallgrouptoggle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\wallgrouptoggle.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="wallopen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\wallopen.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="walltoggle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\walltoggle.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="wander" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\wander.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="waypoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\waypoint.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="waypointgroup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\waypointgroup.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="waypointgroupoff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\waypointgroupoff.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="waypointgroupon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\waypointgroupon.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="waypointgrouptoggle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\waypointgrouptoggle.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="waypointoff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\waypointoff.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="waypointon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\waypointon.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="waypointtoggle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\waypointtoggle.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="zombiestaydown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\zombiestaydown.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="_object" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\functiondescs\object.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

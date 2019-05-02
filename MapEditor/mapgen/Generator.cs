@@ -19,6 +19,7 @@ namespace MapEditor.mapgen
 		private static IGenerator _GenImpl;
 		public static BackgroundWorker Worker;
 		public static bool IsGenerating = false;
+        public static bool IsCancelled = false;
 		public const int BOUNDARY = 252;
 		
 		public static string GetStatus()
@@ -26,11 +27,21 @@ namespace MapEditor.mapgen
 			if (_GenImpl != null) return _GenImpl.GetAction();
 			return "";
 		}
-		
+		public static void Cancel()
+        {
+            IsCancelled = true;
+            if (Worker != null)
+                Worker.CancelAsync();
+            IsGenerating = false;
+        }
+
 		public static void SetConfig(GeneratorConfig config)
 		{
 			GenConfig = config;
-			GenRandom = new Random(config.RandomSeed);
+            if (config.Randomize)
+                GenRandom = new Random();
+            else
+			    GenRandom = new Random(config.RandomSeed);
 			SetupGenerator();
 		}
 		
@@ -52,6 +63,7 @@ namespace MapEditor.mapgen
 			}
 			Worker = new BackgroundWorker();
 			Worker.WorkerReportsProgress = true;
+            Worker.WorkerSupportsCancellation = true;
 			Worker.DoWork += new DoWorkEventHandler(worker_DoWork);
 		}
 		
@@ -59,6 +71,7 @@ namespace MapEditor.mapgen
 		{
 			if (Worker == null) return;
 			IsGenerating = true;
+            IsCancelled = false;
 			GeneratorUtil.ClearMap(map);
 			Worker.RunWorkerAsync(map);
 		}

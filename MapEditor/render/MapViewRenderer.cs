@@ -24,8 +24,21 @@ namespace MapEditor.render
     /// </summary>
     public class MapViewRenderer
     {
-        const int squareSize = MapView.squareSize;
+        public Dictionary<Point, Map.Wall> FakeWalls = new Dictionary<Point, Map.Wall>();
+        public Dictionary<Point, Map.Tile> FakeTiles = new Dictionary<Point, Map.Tile>();
+        public ColorLay ColorLayout = new ColorLay();
+        public bool proDefault = false;
+        public bool proHand = false;
+        private bool updCanvasObjects = true;
+        private bool updCanvasTiles = true;
+        private bool teleCtrl = true;
+        private const int squareSize = MapView.squareSize;
         private readonly MapView mapView;
+        private readonly Font drawFont;
+        private VideoBagCachedProvider videoBagProvider = null;
+        private readonly ObjectRenderer objectRenderer;
+        private readonly TileRenderer floorRenderer;
+
         internal newgui.MapObjectCollection SelectedObjects
         {
             get
@@ -40,9 +53,6 @@ namespace MapEditor.render
                 return MapInterface.TheMap;
             }
         }
-
-        private readonly Font drawFont;
-        private VideoBagCachedProvider videoBagProvider = null;
         public VideoBagCachedProvider VideoBag
         {
             get
@@ -52,21 +62,15 @@ namespace MapEditor.render
                 return videoBagProvider;
             }
         }
-        private readonly ObjectRenderer objectRenderer;
-        private readonly TileRenderer floorRenderer;
-        public Dictionary<Point, Map.Wall> FakeWalls = new Dictionary<Point, Map.Wall>();
-        public bool proDefault = false;
-        public bool proHand = false;
 
         public MapViewRenderer(MapView mapView)
         {
             this.mapView = mapView;
-            this.drawFont = new Font("Arial", 9.4F);
-            this.objectRenderer = new ObjectRenderer(this);
-            this.floorRenderer = new TileRenderer(this);
+            drawFont = new Font("Arial", 9.4F);
+            objectRenderer = new ObjectRenderer(this);
+            floorRenderer = new TileRenderer(this);
         }
-
-        public ColorLay ColorLayout = new ColorLay();
+        
         public class ColorLay
         {
             public Pen Tiles;
@@ -96,7 +100,6 @@ namespace MapEditor.render
                 Background = Color.White;
                 Objects = Pens.Red;
             }
-
             public void ResetColors()
             {
                 Tiles2 = Pens.Yellow;
@@ -110,9 +113,9 @@ namespace MapEditor.render
                 Selection = Color.Green;
                 Removing = Color.Red;
                 WaypointDis = Pens.Olive;
-                WaypointNorm = new Pen(Color.FromArgb(255, 185, 185, 0));
+                WaypointNorm = new Pen(Color.FromArgb(255, 215, 215, 0));
                 WaypointSel = Pens.Aqua;
-                WaypointTwoPath = Pens.Orange;
+                WaypointTwoPath = new Pen(Color.FromArgb(255, 255, 103, 38));
             }
         }
 
@@ -124,7 +127,7 @@ namespace MapEditor.render
             ThingDb.Wall tt = ThingDb.Walls[wall.matId];
             try
             {
-                int actualVari = (int)wall.Variation * 2;
+                int actualVari = wall.Variation * 2;
                 // для обычных стен все данные берутся отсюда
                 ThingDb.Wall.WallRenderInfo wri = tt.RenderNormal[(int)wall.Facing][actualVari];
                 // если стену можно сломать
@@ -149,35 +152,36 @@ namespace MapEditor.render
                 BitmapShader shader = null;
                 // тонируем если стена необычная
 
-                if (wall.Destructable || wall.Secret || transparent || beingSelected || mapView.picking)
+                if ((EditorSettings.Default.Draw_ColorWalls || (MapInterface.CurrentMode == EditMode.WALL_CHANGE)) && (!MainWindow.Instance.imgMode))
                 {
-                    shader = new BitmapShader(bitmap);
-                    shader.LockBitmap();
-                    if (wall.Destructable)
-                        shader.ColorShade(ColorLayout.WallsBreakable, 0.30F);
-                    if (wall.Secret)
-                        shader.ColorShade(ColorLayout.WallsSecret, 0.40F);
-                    if (wall.Secret_WallState == 4)
-                        shader.MakeSemitransparent(135);
-                    if (beingSelected)
+                    if (wall.Destructable || wall.Secret || wall.Window || transparent || beingSelected || mapView.picking)
                     {
-                        Color selCol = Color.GhostWhite;
-                        if (MapInterface.CurrentMode == EditMode.WALL_PLACE && !mapView.picking)
-                            selCol = ColorLayout.Removing;
+                        shader = new BitmapShader(bitmap);
+                        shader.LockBitmap();
+                        if (wall.Destructable)
+                            shader.ColorShade(ColorLayout.WallsBreakable, 0.30F);
+                        if (wall.Secret)
+                            shader.ColorShade(ColorLayout.WallsSecret, 0.40F);
+                        if (wall.Window)
+                            shader.ColorShade(ColorLayout.WallsWindowed, 0.30F);
+                        if (wall.Secret_WallState == 4)
+                            shader.MakeSemitransparent(135);
+                        if (beingSelected)
+                        {
+                            Color selCol = Color.GhostWhite;
+                            if (MapInterface.CurrentMode == EditMode.WALL_PLACE && !mapView.picking)
+                                selCol = ColorLayout.Removing;
 
-                        if (MapInterface.CurrentMode == EditMode.WALL_CHANGE && !mapView.picking)
-                            selCol = Color.Purple;
+                            if (MapInterface.CurrentMode == EditMode.WALL_CHANGE && !mapView.picking)
+                                selCol = Color.Purple;
 
+                            shader.ColorGradWaves(selCol, 4F, Environment.TickCount);
+                        }
 
-                        shader.ColorGradWaves(selCol, 4F, Environment.TickCount);
-
+                        if (transparent)
+                            shader.MakeSemitransparent();
+                        bitmap = shader.UnlockBitmap();
                     }
-
-
-
-                    if (transparent)
-                        shader.MakeSemitransparent();
-                    bitmap = shader.UnlockBitmap();
                 }
 
                 // допускается что стена одновременно и секретная, и разрушаемая, и с окном
@@ -199,6 +203,173 @@ namespace MapEditor.render
             }
             catch (Exception) { }
         }
+        public void DrawSimpleWall(Graphics g, Map.Wall wall, Pen pen, bool drawText)
+        {
+            bool DrawExtents3D = EditorSettings.Default.Draw_Extents_3D;
+            if (pen == null)
+                pen = new Pen(Color.DarkGray, 2);  // invis pen
+
+            Point pt = wall.Location;
+            int x = pt.X * squareSize, y = pt.Y * squareSize;
+            Point txtPoint = new Point(x, y);
+            //Pen pen = !wall.Window ? (!wall.Material.Contains("Invisible") ? invisPen : fakeWallPen) : windowPen;
+            PointF center = new PointF(x + squareSize / 2f, y + squareSize / 2f);
+            Point nCorner = new Point(x, y);
+            Point sCorner = new Point(x + squareSize, y + squareSize);
+            Point wCorner = new Point(x + squareSize, y);
+            Point eCorner = new Point(x, y + squareSize);
+
+            Point nCornerUp = new Point(x, y - 40);
+            Point sCornerUp = new Point(x + squareSize, y + squareSize - 40);
+            Point wCornerUp = new Point(x + squareSize, y - 40);
+            Point eCornerUp = new Point(x, y + squareSize - 40);
+            PointF centerUp = new PointF(x + squareSize / 2f, (y + squareSize / 2f) - 40);
+
+            switch (wall.Facing)
+            {
+                case WallFacing.NORTH:
+                    g.DrawLine(pen, wCorner, eCorner);
+                    if (!DrawExtents3D)
+                        break;
+                    g.DrawLine(pen, wCornerUp, eCornerUp);
+
+                    g.DrawLine(pen, wCornerUp, wCorner);
+                    g.DrawLine(pen, eCornerUp, eCorner);
+
+                    break;
+                case WallFacing.WEST:
+                    g.DrawLine(pen, nCorner, sCorner);
+                    if (!DrawExtents3D)
+                        break;
+                    g.DrawLine(pen, nCornerUp, sCornerUp);
+
+                    g.DrawLine(pen, nCorner, nCornerUp);
+                    g.DrawLine(pen, sCorner, sCornerUp);
+                    break;
+                case WallFacing.CROSS:
+                    g.DrawLine(pen, wCorner, eCorner);//north wall
+                    g.DrawLine(pen, nCorner, sCorner);//south wall
+                    if (!DrawExtents3D)
+                        break;
+                    g.DrawLine(pen, wCornerUp, eCornerUp);//north wall
+                    g.DrawLine(pen, nCornerUp, sCornerUp);//south wall
+
+                    g.DrawLine(pen, wCorner, wCornerUp);
+                    g.DrawLine(pen, nCorner, nCornerUp);
+                    g.DrawLine(pen, sCorner, sCornerUp);
+                    g.DrawLine(pen, eCorner, eCornerUp);
+
+                    break;
+                case WallFacing.NORTH_T:
+                    g.DrawLine(pen, wCorner, eCorner);//north wall
+                    g.DrawLine(pen, center, sCorner);//tail towards south
+                    if (!DrawExtents3D)
+                        break;
+                    g.DrawLine(pen, wCornerUp, eCornerUp);//north wall
+                    g.DrawLine(pen, centerUp, sCornerUp);//tail towards south
+
+                    g.DrawLine(pen, wCorner, wCornerUp);
+                    g.DrawLine(pen, eCorner, eCornerUp);
+                    g.DrawLine(pen, sCorner, sCornerUp);
+                    g.DrawLine(pen, center, centerUp);
+
+                    break;
+                case WallFacing.SOUTH_T:
+                    g.DrawLine(pen, wCorner, eCorner);//north wall
+                    g.DrawLine(pen, center, nCorner);//tail towards north
+                    if (!DrawExtents3D)
+                        break;
+                    g.DrawLine(pen, wCornerUp, eCornerUp);//north wall
+                    g.DrawLine(pen, centerUp, nCornerUp);//tail towards south
+
+                    g.DrawLine(pen, wCorner, wCornerUp);
+                    g.DrawLine(pen, eCorner, eCornerUp);
+                    g.DrawLine(pen, nCorner, nCornerUp);
+                    g.DrawLine(pen, center, centerUp);
+                    break;
+                case WallFacing.WEST_T:
+                    g.DrawLine(pen, nCorner, sCorner);//west wall
+                    g.DrawLine(pen, center, eCorner);//tail towards east
+                    if (!DrawExtents3D)
+                        break;
+                    g.DrawLine(pen, nCornerUp, sCornerUp);//north wall
+                    g.DrawLine(pen, centerUp, eCornerUp);//tail towards south
+
+                    g.DrawLine(pen, nCorner, nCornerUp);
+                    g.DrawLine(pen, sCorner, sCornerUp);
+                    g.DrawLine(pen, eCorner, eCornerUp);
+                    g.DrawLine(pen, center, centerUp);
+                    break;
+                case WallFacing.EAST_T:
+                    g.DrawLine(pen, nCorner, sCorner);//west wall
+                    g.DrawLine(pen, center, wCorner);//tail towards west
+                    if (!DrawExtents3D)
+                        break;
+                    g.DrawLine(pen, nCornerUp, sCornerUp);//north wall
+                    g.DrawLine(pen, centerUp, wCornerUp);//tail towards south
+
+                    g.DrawLine(pen, wCorner, wCornerUp);
+                    g.DrawLine(pen, nCorner, nCornerUp);
+                    g.DrawLine(pen, sCorner, sCornerUp);
+                    g.DrawLine(pen, center, centerUp);
+                    break;
+                case WallFacing.NE_CORNER:
+                    g.DrawLine(pen, center, eCorner);
+                    g.DrawLine(pen, center, sCorner);
+                    if (!DrawExtents3D)
+                        break;
+                    g.DrawLine(pen, centerUp, eCornerUp);
+                    g.DrawLine(pen, centerUp, sCornerUp);
+
+                    g.DrawLine(pen, centerUp, center);
+                    g.DrawLine(pen, eCornerUp, eCorner);
+                    g.DrawLine(pen, sCornerUp, sCorner);
+                    break;
+                case WallFacing.NW_CORNER:
+                    g.DrawLine(pen, center, wCorner);
+                    g.DrawLine(pen, center, sCorner);
+                    if (!DrawExtents3D)
+                        break;
+                    g.DrawLine(pen, centerUp, wCornerUp);
+                    g.DrawLine(pen, centerUp, sCornerUp);
+
+                    g.DrawLine(pen, centerUp, center);
+                    g.DrawLine(pen, wCornerUp, wCorner);
+                    g.DrawLine(pen, sCornerUp, sCorner);
+                    break;
+                case WallFacing.SW_CORNER:
+                    g.DrawLine(pen, center, nCorner);
+                    g.DrawLine(pen, center, wCorner);
+                    if (!DrawExtents3D)
+                        break;
+                    g.DrawLine(pen, centerUp, nCornerUp);
+                    g.DrawLine(pen, centerUp, wCornerUp);
+
+                    g.DrawLine(pen, centerUp, center);
+                    g.DrawLine(pen, wCornerUp, wCorner);
+                    g.DrawLine(pen, nCornerUp, nCorner);
+                    break;
+                case WallFacing.SE_CORNER:
+                    g.DrawLine(pen, center, nCorner);
+                    g.DrawLine(pen, center, eCorner);
+
+                    if (!DrawExtents3D)
+                        break;
+                    g.DrawLine(pen, centerUp, nCornerUp);
+                    g.DrawLine(pen, centerUp, eCornerUp);
+
+                    g.DrawLine(pen, centerUp, center);
+                    g.DrawLine(pen, eCornerUp, eCorner);
+                    g.DrawLine(pen, nCornerUp, nCorner);
+                    break;
+                default:
+                    g.DrawRectangle(pen, x, y, squareSize, squareSize);
+                    if (drawText) g.DrawString("?", drawFont, Brushes.Red, nCorner);
+                    break;
+            }
+            if (drawText)
+                g.DrawString(wall.Minimap.ToString(), drawFont, Brushes.Red, txtPoint);
+        }
 
         private void RenderPostSelRect(Graphics g)
         {
@@ -216,37 +387,36 @@ namespace MapEditor.render
             g.DrawPolygon(selectAreaPen, MapInterface.selected45Area);
             if (!EditorSettings.Default.Edit_PreviewMode) return;
             g.FillPolygon(blueBrush, MapInterface.selected45Area);
-
-
         }
 
         private void RenderPostWalls(Graphics g)
         {
+            if ((MapInterface.CurrentMode != EditMode.WALL_PLACE) || mapView.picking || Form.ActiveForm != MainWindow.Instance)
+                return;
 
-            if (MapInterface.CurrentMode == EditMode.WALL_PLACE && EditorSettings.Default.Edit_PreviewMode && !mapView.picking)
+            var nearestWallPt = MapView.GetNearestWallPoint(mapView.mouseLocation);
+            // Render the wall being created (if there is no other in place)
+            if (mapView.WallMakeNewCtrl != null && !Map.Walls.ContainsKey(nearestWallPt))
             {
+                var fakeWall = mapView.WallMakeNewCtrl.NewWall(nearestWallPt, true);
 
-                Point pt = MapView.GetNearestWallPoint(mapView.mouseLocation);
-
-                // Render the wall being created (if there is no other in place)
-                if (mapView.WallMakeNewCtrl != null && !Map.Walls.ContainsKey(pt))
-                {
-                    Map.Wall fakeWall = mapView.WallMakeNewCtrl.NewWall(pt, true);
+                if (EditorSettings.Default.Edit_PreviewMode)
                     DrawTexturedWall(g, fakeWall, true, false);
-                }
-
+                else
+                    DrawSimpleWall(g, fakeWall, null, false);
             }
         }
         private void RenderPostLineWalls(Graphics g)
         {
+            if (!EditorSettings.Default.Edit_PreviewMode)
+                return;
+
+            // Draw fake walls if pasting or drawing Rect/Line walls
             Point MouseKeep = mapView.mouseKeep;
-            if (MapInterface.CurrentMode == EditMode.WALL_BRUSH && EditorSettings.Default.Edit_PreviewMode && !mapView.picking && !MouseKeep.IsEmpty)
+            if ((mapView.pasteAreaMode)    || ((MapInterface.CurrentMode == EditMode.WALL_BRUSH) && !mapView.picking && !MouseKeep.IsEmpty))
             {
                 foreach (var wall in FakeWalls)
-                {
-                    //Point pt = wall.Value.Location;
                     DrawTexturedWall(g, wall.Value, true, false);
-                }
             }
         }
         private void RenderHelpMark(Graphics g)
@@ -287,9 +457,6 @@ namespace MapEditor.render
         	}
         }
         */
-
-
-
 
         private void RenderPostObjects(Graphics g)
         {
@@ -349,7 +516,7 @@ namespace MapEditor.render
                         result.NewDefaultExtraData();
                         NoxShared.ObjDataXfer.SentryXfer s = result.GetExtraData<NoxShared.ObjDataXfer.SentryXfer>();
                         float delta = mapView.delta;
-                        s.BasePosRadian = (float)delta;
+                        s.BasePosRadian = delta;
 
                     }
                     List<Map.Object> listone = new List<Map.Object>();
@@ -359,17 +526,16 @@ namespace MapEditor.render
             }
         }
 
-
-        bool updCanvasObjects = true;
-        bool updCanvasTiles = true;
-
-        public void UpdateCanvas(bool objects, bool tiles)
+        public void UpdateCanvas(bool objects, bool tiles, bool tele = true)
         {
             // This is correct logic because we won't override canvas status in the same frame
             if (objects)
                 updCanvasObjects = true;
             if (tiles)
                 updCanvasTiles = true;
+            if (!tele)
+                return;
+            teleCtrl = true;
         }
 
         /// <summary>
@@ -381,16 +547,18 @@ namespace MapEditor.render
             bool DrawTextured = EditorSettings.Default.Edit_PreviewMode;
             bool DrawExtents3D = EditorSettings.Default.Draw_Extents_3D;
             bool DrawText = EditorSettings.Default.Draw_AllText;
-            // enable transparency only in textured preview mode
-            if (DrawTextured) g.CompositingMode = CompositingMode.SourceOver;
-            else g.CompositingMode = CompositingMode.SourceCopy;
             // optimizations
             g.CompositingQuality = CompositingQuality.HighSpeed;
             g.PixelOffsetMode = PixelOffsetMode.HighSpeed;
             g.InterpolationMode = InterpolationMode.Low;
             g.SmoothingMode = SmoothingMode.HighSpeed;
-            proDefault = (!mapView.picking && mapView.mapPanel.Cursor != Cursors.SizeAll && Form.ActiveForm == MainWindow.Instance);
-            proHand = (!mapView.picking && !MapInterface.KeyHelper.ShiftKey && MapInterface.SelectedObjects.Items.Count > 1 && !mapView.contextMenuOpen);
+
+            proDefault = (!mapView.copyAreaMode && !mapView.pasteAreaMode
+                       && !mapView.wallBucket && !mapView.tileBucket && !mapView.picking 
+                       && mapView.mapPanel.Cursor != Cursors.SizeAll && Form.ActiveForm == MainWindow.Instance);
+            proHand = (!mapView.picking && !MapInterface.KeyHelper.ShiftKey 
+                       && MapInterface.SelectedObjects.Items.Count > 1 && !mapView.contextMenuOpen);
+
             // expand clip rectangle a bit
             const int sqSize2 = squareSize * 2;
            
@@ -406,9 +574,17 @@ namespace MapEditor.render
                 objectRenderer.UpdateCanvas(clip);
                 updCanvasObjects = false;
             }
+            if (teleCtrl)
+            {
+                objectRenderer.UpdateTele();
+                teleCtrl = false;
+            }
             if (updCanvasTiles)
             {
                 floorRenderer.UpdateCanvas(clip);
+                if (mapView.pasteAreaMode)
+                    floorRenderer.UpdateCanvasWithFakeTiles(clip);
+                    
                 updCanvasTiles = false;
             }
             // Paint it black
@@ -436,11 +612,11 @@ namespace MapEditor.render
                 }
             }
 
-            if (MapInterface.CurrentMode >= EditMode.FLOOR_PLACE && MapInterface.CurrentMode <= EditMode.EDGE_PLACE)
+            if (MapInterface.CurrentMode >= EditMode.FLOOR_PLACE && MapInterface.CurrentMode <= EditMode.EDGE_PLACE && !MainWindow.Instance.imgMode)
             {
                 // Draw the overlay to show tile location
                 Point pt = new Point(mouseLocation.X, mouseLocation.Y);
-                PointF tilePt = (PointF)MapView.GetNearestTilePoint(pt);
+                PointF tilePt = MapView.GetNearestTilePoint(pt);
                 int squareSize2 = squareSize;
 
                 int bs = (int)MainWindow.Instance.mapView.TileMakeNewCtrl.BrushSize.Value;
@@ -466,6 +642,8 @@ namespace MapEditor.render
 
                 if (mapView.picking)
                     tileOverlayCol = Color.GhostWhite;
+                if (mapView.tileBucket)
+                    tileOverlayCol = Color.DeepSkyBlue;
 
                 tilePt.X *= squareSize;
                 tilePt.Y *= squareSize;
@@ -479,196 +657,33 @@ namespace MapEditor.render
                 g.DrawPolygon(new Pen(tileOverlayCol, 2), new PointF[] { nwCorner, neCorner, seCorner, swCorner });
             }
 
-            Pen destructablePen = new Pen(ColorLayout.WallsBreakable, 2);
-            Pen windowPen = new Pen(ColorLayout.WallsWindowed, 2);
-            Pen secretPen = new Pen(ColorLayout.WallsSecret, 2);
-            Pen invisiblePen = new Pen(Color.DarkGray, 2);
-            Pen FakeWallPen = new Pen(Color.LightGray, 2);
-            Pen OpenPen = new Pen(Color.FromArgb(255, 110, 170, 110), 2);
-            Pen wallPen = new Pen(ColorLayout.Walls, 2);
-
             // Draw [BELOW] objects
             objectRenderer.RenderBelow(g);
 
             // Draw walls
+            Pen destructablePen = new Pen(ColorLayout.WallsBreakable, 2);
+            Pen windowPen = new Pen(ColorLayout.WallsWindowed, 2);
+            Pen secretPen = new Pen(ColorLayout.WallsSecret, 2);
+            Pen invisiblePen = new Pen(Color.DarkGray, 2);
+            Pen fakeWallPen = new Pen(Color.LightGray, 2);
+            Pen openPen = new Pen(Color.FromArgb(255, 110, 170, 110), 2);
+            Pen wallPen = new Pen(ColorLayout.Walls, 2);
+
             if (EditorSettings.Default.Draw_Walls)
             {
-
                 Map.Wall removing = mapView.GetWallUnderCursor();
-
                 Point highlightUndoRedo = mapView.highlightUndoRedo;
-
-
-
 
                 if (MapInterface.CurrentMode == EditMode.WALL_BRUSH && !mapView.picking)
                     removing = null;
 
-
+                // Render simple preview walls (Wall drawing modes)
                 if (FakeWalls.Count > 0 && !EditorSettings.Default.Edit_PreviewMode)
                 {
                     foreach (Map.Wall wall in FakeWalls.Values)
                     {
-                        Point pt = wall.Location;
-                        int x = pt.X * squareSize, y = pt.Y * squareSize;
-                        Point txtPoint = new Point(x, y);
                         pen = invisiblePen;
-                        center = new PointF(x + squareSize / 2f, y + squareSize / 2f);
-                        Point nCorner = new Point(x, y);
-                        Point sCorner = new Point(x + squareSize, y + squareSize);
-                        Point wCorner = new Point(x + squareSize, y);
-                        Point eCorner = new Point(x, y + squareSize);
-
-                        Point nCornerUp = new Point(x, y - 40);
-                        Point sCornerUp = new Point(x + squareSize, y + squareSize - 40);
-                        Point wCornerUp = new Point(x + squareSize, y - 40);
-                        Point eCornerUp = new Point(x, y + squareSize - 40);
-                        PointF centerUp = new PointF(x + squareSize / 2f, (y + squareSize / 2f) - 40);
-
-                        switch (wall.Facing)
-                        {
-                            case Map.Wall.WallFacing.NORTH:
-                                g.DrawLine(pen, wCorner, eCorner);
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, wCornerUp, eCornerUp);
-
-                                g.DrawLine(pen, wCornerUp, wCorner);
-                                g.DrawLine(pen, eCornerUp, eCorner);
-
-                                break;
-                            case Map.Wall.WallFacing.WEST:
-                                g.DrawLine(pen, nCorner, sCorner);
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, nCornerUp, sCornerUp);
-
-                                g.DrawLine(pen, nCorner, nCornerUp);
-                                g.DrawLine(pen, sCorner, sCornerUp);
-                                break;
-                            case Map.Wall.WallFacing.CROSS:
-                                g.DrawLine(pen, wCorner, eCorner);//north wall
-                                g.DrawLine(pen, nCorner, sCorner);//south wall
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, wCornerUp, eCornerUp);//north wall
-                                g.DrawLine(pen, nCornerUp, sCornerUp);//south wall
-
-                                g.DrawLine(pen, wCorner, wCornerUp);
-                                g.DrawLine(pen, nCorner, nCornerUp);
-                                g.DrawLine(pen, sCorner, sCornerUp);
-                                g.DrawLine(pen, eCorner, eCornerUp);
-
-                                break;
-                            case Map.Wall.WallFacing.NORTH_T:
-                                g.DrawLine(pen, wCorner, eCorner);//north wall
-                                g.DrawLine(pen, center, sCorner);//tail towards south
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, wCornerUp, eCornerUp);//north wall
-                                g.DrawLine(pen, centerUp, sCornerUp);//tail towards south
-
-                                g.DrawLine(pen, wCorner, wCornerUp);
-                                g.DrawLine(pen, eCorner, eCornerUp);
-                                g.DrawLine(pen, sCorner, sCornerUp);
-                                g.DrawLine(pen, center, centerUp);
-
-                                break;
-                            case Map.Wall.WallFacing.SOUTH_T:
-                                g.DrawLine(pen, wCorner, eCorner);//north wall
-                                g.DrawLine(pen, center, nCorner);//tail towards north
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, wCornerUp, eCornerUp);//north wall
-                                g.DrawLine(pen, centerUp, nCornerUp);//tail towards south
-
-                                g.DrawLine(pen, wCorner, wCornerUp);
-                                g.DrawLine(pen, eCorner, eCornerUp);
-                                g.DrawLine(pen, nCorner, nCornerUp);
-                                g.DrawLine(pen, center, centerUp);
-                                break;
-                            case Map.Wall.WallFacing.WEST_T:
-                                g.DrawLine(pen, nCorner, sCorner);//west wall
-                                g.DrawLine(pen, center, eCorner);//tail towards east
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, nCornerUp, sCornerUp);//north wall
-                                g.DrawLine(pen, centerUp, eCornerUp);//tail towards south
-
-                                g.DrawLine(pen, nCorner, nCornerUp);
-                                g.DrawLine(pen, sCorner, sCornerUp);
-                                g.DrawLine(pen, eCorner, eCornerUp);
-                                g.DrawLine(pen, center, centerUp);
-                                break;
-                            case Map.Wall.WallFacing.EAST_T:
-                                g.DrawLine(pen, nCorner, sCorner);//west wall
-                                g.DrawLine(pen, center, wCorner);//tail towards west
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, nCornerUp, sCornerUp);//north wall
-                                g.DrawLine(pen, centerUp, wCornerUp);//tail towards south
-
-                                g.DrawLine(pen, wCorner, wCornerUp);
-                                g.DrawLine(pen, nCorner, nCornerUp);
-                                g.DrawLine(pen, sCorner, sCornerUp);
-                                g.DrawLine(pen, center, centerUp);
-                                break;
-                            case Map.Wall.WallFacing.NE_CORNER:
-                                g.DrawLine(pen, center, eCorner);
-                                g.DrawLine(pen, center, sCorner);
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, centerUp, eCornerUp);
-                                g.DrawLine(pen, centerUp, sCornerUp);
-
-                                g.DrawLine(pen, centerUp, center);
-                                g.DrawLine(pen, eCornerUp, eCorner);
-                                g.DrawLine(pen, sCornerUp, sCorner);
-                                break;
-                            case Map.Wall.WallFacing.NW_CORNER:
-                                g.DrawLine(pen, center, wCorner);
-                                g.DrawLine(pen, center, sCorner);
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, centerUp, wCornerUp);
-                                g.DrawLine(pen, centerUp, sCornerUp);
-
-                                g.DrawLine(pen, centerUp, center);
-                                g.DrawLine(pen, wCornerUp, wCorner);
-                                g.DrawLine(pen, sCornerUp, sCorner);
-                                break;
-                            case Map.Wall.WallFacing.SW_CORNER:
-                                g.DrawLine(pen, center, nCorner);
-                                g.DrawLine(pen, center, wCorner);
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, centerUp, nCornerUp);
-                                g.DrawLine(pen, centerUp, wCornerUp);
-
-                                g.DrawLine(pen, centerUp, center);
-                                g.DrawLine(pen, wCornerUp, wCorner);
-                                g.DrawLine(pen, nCornerUp, nCorner);
-                                break;
-                            case Map.Wall.WallFacing.SE_CORNER:
-                                g.DrawLine(pen, center, nCorner);
-                                g.DrawLine(pen, center, eCorner);
-
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, centerUp, nCornerUp);
-                                g.DrawLine(pen, centerUp, eCornerUp);
-
-                                g.DrawLine(pen, centerUp, center);
-                                g.DrawLine(pen, eCornerUp, eCorner);
-                                g.DrawLine(pen, nCornerUp, nCorner);
-                                break;
-                            default:
-                                g.DrawRectangle(pen, x, y, squareSize, squareSize);
-                                if (DrawText) TextRenderer.DrawText(g, "?", drawFont, nCorner, Color.Red);
-                                break;
-                        }
-
-
+                        DrawSimpleWall(g, wall, pen, false);
                     }
                 }
 
@@ -679,198 +694,50 @@ namespace MapEditor.render
                     Point txtPoint = new Point(x, y);
                     if (clip.Contains(x, y))
                     {
+                        // Textured walls
                         if (DrawTextured && !wall.Material.Contains("Invisible"))
                         {
-
                             DrawTexturedWall(g, wall, false, removing == wall);
                             continue;
                         }
 
-                        //TODO: how to draw if a destructable window? is this even possible?
+                        if (MainWindow.Instance.imgMode)
+                            break;
 
-                        if (wall.Secret)
-                            pen = wall.Secret_WallState == 4 ? OpenPen : secretPen;
-                        else if (wall.Destructable)//if (wall.Destructable || MapInterface.GetLastWalls(wall))
-                            pen = destructablePen;
-                        else if (wall.Window)
-                            pen = windowPen;
-                        else if (wall.Material.Contains("Invisible"))
-                            pen = invisiblePen;
-                        else
-                            pen = wallPen;
+                        // Simple walls
+                        pen = wallPen;
+                        if (EditorSettings.Default.Draw_ColorWalls || (MapInterface.CurrentMode == EditMode.WALL_CHANGE))
+                        {
+                            if (wall.Secret)
+                                pen = wall.Secret_WallState == 4 ? openPen : secretPen;
+                            else if (wall.Destructable)//if (wall.Destructable || MapInterface.GetLastWalls(wall))
+                                pen = destructablePen;
+                            else if (wall.Window)
+                                pen = windowPen;
+                            else if (wall.Material.Contains("Invisible"))
+                                pen = invisiblePen;
+                            else
+                                pen = wallPen;
+                        }
 
                         if (removing == wall)
                         {
                             if (mapView.picking) pen = new Pen(Color.Aqua, 3);
                             else if (MapInterface.CurrentMode == EditMode.WALL_CHANGE) pen = new Pen(Color.Purple, 3);
-
                         }
-                        center = new PointF(x + squareSize / 2f, y + squareSize / 2f);
-                        Point nCorner = new Point(x, y);
-                        Point sCorner = new Point(x + squareSize, y + squareSize);
-                        Point wCorner = new Point(x + squareSize, y);
-                        Point eCorner = new Point(x, y + squareSize);
 
-                        Point nCornerUp = new Point(x, y - 40);
-                        Point sCornerUp = new Point(x + squareSize, y + squareSize - 40);
-                        Point wCornerUp = new Point(x + squareSize, y - 40);
-                        Point eCornerUp = new Point(x, y + squareSize - 40);
-                        PointF centerUp = new PointF(x + squareSize / 2f, (y + squareSize / 2f) - 40);
-
-                        switch (wall.Facing)
-                        {
-                            case Map.Wall.WallFacing.NORTH:
-                                g.DrawLine(pen, wCorner, eCorner);
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, wCornerUp, eCornerUp);
-
-                                g.DrawLine(pen, wCornerUp, wCorner);
-                                g.DrawLine(pen, eCornerUp, eCorner);
-
-                                break;
-                            case Map.Wall.WallFacing.WEST:
-                                g.DrawLine(pen, nCorner, sCorner);
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, nCornerUp, sCornerUp);
-
-                                g.DrawLine(pen, nCorner, nCornerUp);
-                                g.DrawLine(pen, sCorner, sCornerUp);
-                                break;
-                            case Map.Wall.WallFacing.CROSS:
-                                g.DrawLine(pen, wCorner, eCorner);//north wall
-                                g.DrawLine(pen, nCorner, sCorner);//south wall
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, wCornerUp, eCornerUp);//north wall
-                                g.DrawLine(pen, nCornerUp, sCornerUp);//south wall
-
-                                g.DrawLine(pen, wCorner, wCornerUp);
-                                g.DrawLine(pen, nCorner, nCornerUp);
-                                g.DrawLine(pen, sCorner, sCornerUp);
-                                g.DrawLine(pen, eCorner, eCornerUp);
-
-                                break;
-                            case Map.Wall.WallFacing.NORTH_T:
-                                g.DrawLine(pen, wCorner, eCorner);//north wall
-                                g.DrawLine(pen, center, sCorner);//tail towards south
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, wCornerUp, eCornerUp);//north wall
-                                g.DrawLine(pen, centerUp, sCornerUp);//tail towards south
-
-                                g.DrawLine(pen, wCorner, wCornerUp);
-                                g.DrawLine(pen, eCorner, eCornerUp);
-                                g.DrawLine(pen, sCorner, sCornerUp);
-                                g.DrawLine(pen, center, centerUp);
-
-                                break;
-                            case Map.Wall.WallFacing.SOUTH_T:
-                                g.DrawLine(pen, wCorner, eCorner);//north wall
-                                g.DrawLine(pen, center, nCorner);//tail towards north
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, wCornerUp, eCornerUp);//north wall
-                                g.DrawLine(pen, centerUp, nCornerUp);//tail towards south
-
-                                g.DrawLine(pen, wCorner, wCornerUp);
-                                g.DrawLine(pen, eCorner, eCornerUp);
-                                g.DrawLine(pen, nCorner, nCornerUp);
-                                g.DrawLine(pen, center, centerUp);
-                                break;
-                            case Map.Wall.WallFacing.WEST_T:
-                                g.DrawLine(pen, nCorner, sCorner);//west wall
-                                g.DrawLine(pen, center, eCorner);//tail towards east
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, nCornerUp, sCornerUp);//north wall
-                                g.DrawLine(pen, centerUp, eCornerUp);//tail towards south
-
-                                g.DrawLine(pen, nCorner, nCornerUp);
-                                g.DrawLine(pen, sCorner, sCornerUp);
-                                g.DrawLine(pen, eCorner, eCornerUp);
-                                g.DrawLine(pen, center, centerUp);
-                                break;
-                            case Map.Wall.WallFacing.EAST_T:
-                                g.DrawLine(pen, nCorner, sCorner);//west wall
-                                g.DrawLine(pen, center, wCorner);//tail towards west
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, nCornerUp, sCornerUp);//north wall
-                                g.DrawLine(pen, centerUp, wCornerUp);//tail towards south
-
-                                g.DrawLine(pen, wCorner, wCornerUp);
-                                g.DrawLine(pen, nCorner, nCornerUp);
-                                g.DrawLine(pen, sCorner, sCornerUp);
-                                g.DrawLine(pen, center, centerUp);
-                                break;
-                            case Map.Wall.WallFacing.NE_CORNER:
-                                g.DrawLine(pen, center, eCorner);
-                                g.DrawLine(pen, center, sCorner);
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, centerUp, eCornerUp);
-                                g.DrawLine(pen, centerUp, sCornerUp);
-
-                                g.DrawLine(pen, centerUp, center);
-                                g.DrawLine(pen, eCornerUp, eCorner);
-                                g.DrawLine(pen, sCornerUp, sCorner);
-                                break;
-                            case Map.Wall.WallFacing.NW_CORNER:
-                                g.DrawLine(pen, center, wCorner);
-                                g.DrawLine(pen, center, sCorner);
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, centerUp, wCornerUp);
-                                g.DrawLine(pen, centerUp, sCornerUp);
-
-                                g.DrawLine(pen, centerUp, center);
-                                g.DrawLine(pen, wCornerUp, wCorner);
-                                g.DrawLine(pen, sCornerUp, sCorner);
-                                break;
-                            case Map.Wall.WallFacing.SW_CORNER:
-                                g.DrawLine(pen, center, nCorner);
-                                g.DrawLine(pen, center, wCorner);
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, centerUp, nCornerUp);
-                                g.DrawLine(pen, centerUp, wCornerUp);
-
-                                g.DrawLine(pen, centerUp, center);
-                                g.DrawLine(pen, wCornerUp, wCorner);
-                                g.DrawLine(pen, nCornerUp, nCorner);
-                                break;
-                            case Map.Wall.WallFacing.SE_CORNER:
-                                g.DrawLine(pen, center, nCorner);
-                                g.DrawLine(pen, center, eCorner);
-
-                                if (!DrawExtents3D)
-                                    break;
-                                g.DrawLine(pen, centerUp, nCornerUp);
-                                g.DrawLine(pen, centerUp, eCornerUp);
-
-                                g.DrawLine(pen, centerUp, center);
-                                g.DrawLine(pen, eCornerUp, eCorner);
-                                g.DrawLine(pen, nCornerUp, nCorner);
-                                break;
-                            default:
-                                g.DrawRectangle(pen, x, y, squareSize, squareSize);
-                                if (DrawText) TextRenderer.DrawText(g, "?", drawFont, nCorner, Color.Red);
-                                break;
-                        }
-                        if (DrawText)
-
-                            TextRenderer.DrawText(g, wall.Minimap.ToString(), drawFont, txtPoint, Color.Red);
+                        DrawSimpleWall(g, wall, pen, DrawText);
                     }
                 }
             }
 
-            RenderPostLineWalls(g);
-
-            RenderPostWalls(g);
-            RenderPostObjects(g);
-            RenderPostSelRect(g);
+            if (!MainWindow.Instance.imgMode)
+            {
+                RenderPostLineWalls(g);
+                RenderPostWalls(g);
+                RenderPostObjects(g);
+                RenderPostSelRect(g);
+            }
 
             // Draw objects
             objectRenderer.RenderNormal(g);
@@ -899,8 +766,6 @@ namespace MapEditor.render
                     }
                     if (poly.Points.Count > 2)
                     {
-
-
                         poly.Points.Add(poly.Points[0]);
 
                         if (MainWindow.Instance.mapView.PolygonEditDlg.ambientColors.Checked)
@@ -927,46 +792,38 @@ namespace MapEditor.render
             {
                 foreach (Map.Waypoint wp in Map.Waypoints)
                 {
-                    // highlight selected waypoint
+                    // Highlight selected waypoint
                     pen = wp.Flags == 1 ? ColorLayout.WaypointNorm : ColorLayout.WaypointDis;
-                    pen = MapInterface.SelectedWaypoint == wp ? ColorLayout.WaypointSel : pen;
-                    // draw waypoint and related pathes
+                    pen = ((MapInterface.SelectedWaypoint == wp) || (MapInterface.SelectedWaypoints.Contains(wp))) ? ColorLayout.WaypointSel : pen;
+                    // Draw waypoint and related pathes
                     center = new PointF(wp.Point.X - MapView.objectSelectionRadius, wp.Point.Y - MapView.objectSelectionRadius);
                     g.DrawEllipse(pen, new RectangleF(center, new Size(2 * MapView.objectSelectionRadius, 2 * MapView.objectSelectionRadius)));
                     pen = ColorLayout.WaypointDis;
                     // Draw paths (code/idea from UndeadZeus)
                     foreach (Map.Waypoint.WaypointConnection wpc in wp.connections)
                     {
-
                         g.DrawLine(pen, wp.Point.X, wp.Point.Y, wpc.wp.Point.X, wpc.wp.Point.Y);
                         foreach (Map.Waypoint.WaypointConnection wpwp in wpc.wp.connections)//Checks if the waypoint connection is connecting to wp
                         {
                             if (wpwp.wp.Equals(wp))
                             {
-                                // if there is two way connection
-                                /*
-                                 if (MapInterface.SelectedWaypoint != wp) pen = ColorLayout.WaypointTwoPath;
-                                 g.DrawLine(pen, wp.Point.X, wp.Point.Y, wpc.wp.Point.X, wpc.wp.Point.Y);
-                                 break;
-                                 */
-
-                                if (MapInterface.SelectedWaypoint != null && wp == MapInterface.SelectedWaypoint)
+                                // Draw connections
+                                if ((MapInterface.SelectedWaypoint != null) && (wp == MapInterface.SelectedWaypoint))
                                     g.DrawLine(ColorLayout.WaypointSel, wp.Point.X, wp.Point.Y, wpc.wp.Point.X, wpc.wp.Point.Y);
                                 else
                                     g.DrawLine(ColorLayout.WaypointTwoPath, wp.Point.X, wp.Point.Y, wpc.wp.Point.X, wpc.wp.Point.Y);
                                 break;
-
                             }
                         }
                     }
-                    Point wayPoint = new Point(Convert.ToInt32(center.X), Convert.ToInt32(center.Y));
-                    // text rendering is slow - as such don't label unseen waypoints
-                    if (DrawText && clip.Contains(wayPoint))
+                    
+                    // Draw text
+                    if (DrawText && clip.Contains(center.ToPoint()))
                     {
                         if (wp.Name.Length > 0)
-                            TextRenderer.DrawText(g, wp.Number + ":" + wp.ShortName, drawFont, wayPoint, Color.YellowGreen);
+                            g.DrawString(wp.Number + ":" + wp.ShortName, drawFont, Brushes.YellowGreen, center);
                         else
-                            TextRenderer.DrawText(g, wp.Number + "", drawFont, wayPoint, Color.MediumPurple);
+                            g.DrawString(wp.Number.ToString(), drawFont, Brushes.MediumPurple, center);
                     }
                 }
             }

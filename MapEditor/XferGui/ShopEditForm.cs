@@ -196,19 +196,21 @@ namespace MapEditor.XferGui
 			"UserMaterialColor31",
 			"UserMaterialColor32"
 		};
-		
-		public ShopEditForm()
+        private static string[] objects;
+
+        public ShopEditForm()
 		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
 			InitializeComponent();
 			
 			enchant1.Items.AddRange(enchants);
 			enchant2.Items.AddRange(enchants);
 			enchant3.Items.AddRange(enchants);
 			enchant4.Items.AddRange(enchants);
-		}
+
+            objects = new string[ThingDb.Things.Count];
+            ThingDb.Things.Keys.CopyTo(objects, 0);
+            lstQuickFind.Items.AddRange(objects);
+        }
 		
 		public void SetShopInfo(MonsterXfer.ShopkeeperInfoStruct sinfo)
 		{
@@ -312,11 +314,13 @@ namespace MapEditor.XferGui
 		void ButtonRemoveClick(object sender, EventArgs e)
 		{
 			int index = itemsListBox.SelectedIndex;
-			
-			if (index >= 0)
-				itemsListBox.Items.RemoveAt(index);
+
+            if (index >= 0)
+            {
+                itemsListBox.Items.RemoveAt(index);
+                objectID.Clear();
+            }
 		}
-		
 		void ButtonAddClick(object sender, EventArgs e)
 		{
 			int index = itemsListBox.SelectedIndex;
@@ -340,6 +344,33 @@ namespace MapEditor.XferGui
 				itemsListBox.Items.Insert(index, item);
 			else
 				itemsListBox.Items.Add(item);
+
+            objectID.Clear();
 		}
-	}
+
+        private void lstQuickFind_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (lstQuickFind.SelectedItem == null)
+                return;
+
+            if (objectID.Text.TrimEnd() == "")
+                objectID.Text = lstQuickFind.SelectedItem.ToString();
+        }
+        private void lstQuickFind_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lstQuickFind.SelectedItem == null)
+                return;
+
+            objectID.Text = lstQuickFind.SelectedItem.ToString();
+        }
+        private void txtQuickFind_TextChanged(object sender, EventArgs e)
+        {
+            lstQuickFind.Items.Clear();
+            if (txtQuickFind.Text.TrimEnd() == "")
+                lstQuickFind.Items.AddRange(objects);
+            foreach (var o in objects)
+                if (o.ToUpper().Contains(txtQuickFind.Text.ToUpper()))
+                    lstQuickFind.Items.Add(o);
+        }
+    }
 }

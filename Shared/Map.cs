@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Text;
+using System.Reflection;
 
 namespace NoxShared
 {
@@ -615,6 +616,26 @@ namespace NoxShared
                 walls = 2
             };
 
+            public string ExtentsToString()
+            {
+                if (Count == 0)
+                    return "";
+
+                var result = "";
+                if (type == GroupTypes.walls)
+                {
+                    foreach (Point p in this)
+                        result += p.X + "," + p.Y + Environment.NewLine;
+                }
+                else
+                {
+                    foreach (int i in this)
+                        result += i + Environment.NewLine;
+                }
+
+                return result.TrimEnd();
+            }
+
             public override string ToString()
             {
                 return String.Format("{0} {1}", name, Enum.GetName(typeof(GroupTypes), type));
@@ -762,6 +783,7 @@ namespace NoxShared
             }
         }
 
+        [Serializable]
         public class Polygon
         {
             public string Name;
@@ -903,6 +925,20 @@ namespace NoxShared
             {
                 return String.Format("{0} {1} {2}, {3}", Name, MinimapGroup, Points[0].X, Points[1].Y);
             }
+
+            public Polygon Clone()
+            {
+                var stream = new MemoryStream();
+                var binFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                binFormatter.Serialize(stream, this);
+
+                stream.Position = 0;
+                object obj = binFormatter.Deserialize(stream);
+                stream.Close();
+
+                return obj as Polygon;
+            }
         }
         public class WaypointList : ArrayList
         {
@@ -985,6 +1021,7 @@ namespace NoxShared
             }
         }
 
+        [Serializable]
         public class Waypoint
         {
             public string Name;
@@ -1039,6 +1076,7 @@ namespace NoxShared
                 wtr.Write(Flags);
                 wtr.Write((byte)(connections.Count));
             }
+            [Serializable]
             public class WaypointConnection
             {
                 public int wp_num;
@@ -1088,6 +1126,19 @@ namespace NoxShared
             {
                 return String.Format("{2}: {3} {0}, {1}", Point.X, Point.Y, Number, Name);
             }
+            public Waypoint Clone()
+            {
+                var stream = new MemoryStream();
+                var binFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                binFormatter.Serialize(stream, this);
+
+                stream.Position = 0;
+                object obj = binFormatter.Deserialize(stream);
+                stream.Close();
+
+                return obj as Waypoint;
+            }
         }
 
 
@@ -1098,9 +1149,9 @@ namespace NoxShared
             return Color.FromArgb(unchecked((int)((uint)a)));
         }
 
+        [Serializable]
         public class Tile
         {
-
             public Color col
             {
                 get
@@ -1166,6 +1217,7 @@ namespace NoxShared
                     edge.Write(stream);
             }
 
+            [Serializable]
             public class EdgeTile//maybe derive from tile?
             {
                 public byte Graphic;
@@ -1234,6 +1286,20 @@ namespace NoxShared
             public override string ToString()
             {
                 return String.Format("{0}, {1} {2}", Location.X, Location.Y, Graphic);
+            }
+
+            public Tile Clone()
+            {
+                var stream = new MemoryStream();
+                var binFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                binFormatter.Serialize(stream, this);
+
+                stream.Position = 0;
+                object obj = binFormatter.Deserialize(stream);
+                stream.Close();
+
+                return obj as Tile;
             }
         }
 
@@ -1653,6 +1719,7 @@ namespace NoxShared
             }
         }
 
+        [Serializable]
         public class Wall : IComparable
         {
             public enum WallFacing : byte
@@ -1775,6 +1842,20 @@ namespace NoxShared
             public override string ToString()
             {
                 return String.Format("{0}, {1}", Location.X, Location.Y);
+            }
+
+            public Wall Clone()
+            {
+                var stream = new MemoryStream();
+                var binFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                binFormatter.Serialize(stream, this);
+
+                stream.Position = 0;
+                object obj = binFormatter.Deserialize(stream);
+                stream.Close();
+
+                return obj as Wall;
             }
         }
 

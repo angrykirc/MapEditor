@@ -34,6 +34,7 @@ namespace MapEditor.mapgen
         private byte usingEdgeMaterial = 0;
         private byte varcount = 0;
         private int incrementObjectExtent = 2;
+        private int nTiles = 0;
 
         public class DirSettings
         {
@@ -247,9 +248,10 @@ namespace MapEditor.mapgen
             if (!map.Tiles.ContainsKey(pt)) return null;
             return map.Tiles[pt];
         }
-
-
-
+        public Map.Tile GetTile(Point p, bool o = false)
+        {
+            return GetTile(p.X, p.Y);
+        }
 
         public int CountNeighborTiles(int x, int y)
         {
@@ -260,7 +262,7 @@ namespace MapEditor.mapgen
             if (GetTile(x - 1, y - 1) != null) count++;
             if (GetTile(x - 2, y) != null) count++;
             if (GetTile(x - 1, y + 1) != null) count++;
-            if (GetTile(x + 2, y) != null) count++;
+            if (GetTile(x, y + 2) != null) count++;
             if (GetTile(x + 1, y + 1) != null) count++;
             return count;
         }
@@ -609,8 +611,6 @@ namespace MapEditor.mapgen
             MapInterface.OpUpdatedTiles = true;
             return true;
         }
-
-
         public bool AddEdge(Point pt, Map.Tile.EdgeTile.Direction dir, byte tileMaterial)
         {
 
@@ -628,10 +628,6 @@ namespace MapEditor.mapgen
             tile.EdgeTiles.Add(new Map.Tile.EdgeTile(tileMaterial, vari, (Map.Tile.EdgeTile.Direction)dir, usingEdgeMaterial));
             return true;
         }
-
-
-
-
 
         public int ReMapVar(int input, bool set = false, int seed = 25)
         {
@@ -778,7 +774,6 @@ namespace MapEditor.mapgen
             RemoveSameEdges(x, y + 2, 15);
             // RemoveSameEdges(x-1, y - 1, 0);
         }
-
         public bool RemoveSameEdges(int x, int y, int dir)
         {
             Map.Tile tile = GetTile(x, y);
@@ -794,7 +789,6 @@ namespace MapEditor.mapgen
             tile.EdgeTiles = list;
             return true;
         }
-
         public bool RemoveTile(int x, int y)
         {
             Point pt = new Point(x, y);
@@ -803,28 +797,31 @@ namespace MapEditor.mapgen
             map.Tiles[pt].EdgeTiles.Clear();
 
             map.Tiles.Remove(pt);
-
+            MapInterface.OpUpdatedTiles = true;
             return true;
-        }
-
-        public void ResetRecursion()
-        {
-            tilesScanned.Clear();
         }
 
         int tileldX, tileldY;
         int tileurX, tileurY;
-        public Rectangle DetermineTileCluster2(int x, int y)
+        public List<Point> DetermineTileCluster2(int x, int y)
         {
+            tilesScanned.Clear();
             tileldX = x; tileldY = y;
             tileurX = x; tileurY = y;
-            FindTileCluster2(x, y);
-            return new Rectangle(tileldX, tileldY, tileurX - tileldX, tileurY - tileldY);
+            FindTileCluster2(x, y); nTiles = 0;
+            return tilesScanned;
+            //return new Rectangle(tileldX, tileldY, tileurX - tileldX, tileurY - tileldY);
         }
-
         private void FindTileCluster2(int x, int y)
         {
+            if (nTiles > 5000) // Recursion is too deep
+            {
+                tilesScanned = new List<Point>();
+                return;
+            }
+
             if (tilesScanned.Contains(new Point(x, y))) return;
+            nTiles++;
             tilesScanned.Add(new Point(x, y));
             bool a = (GetTile(x + 1, y - 1) != null);
             bool b = (GetTile(x - 1, y - 1) != null);
@@ -848,7 +845,6 @@ namespace MapEditor.mapgen
             if (c) FindTileCluster2(x - 1, y + 1);
             if (d) FindTileCluster2(x + 1, y + 1);
         }
-
         public int CountNeighborTiles2(int x, int y)
         {
             int count = 0;
@@ -879,7 +875,6 @@ namespace MapEditor.mapgen
                 y--;
             }
         }
-
         public bool CheckTilesExistIsom(Point leftCorner, Point size)
         {
             Map.Tile result;
@@ -968,10 +963,8 @@ namespace MapEditor.mapgen
             return (float)Math.Sqrt(result);
         }
 
-
         public void AutoEdge(Point pt)
         {
-
             if (GetTile(pt.X, pt.Y) == null) return;
             Point tilePt = pt;//GetNearestTilePoint(pt); varcount < 20
             // Map.Tile.EdgeTile.Direction EdgeDir;
@@ -979,11 +972,8 @@ namespace MapEditor.mapgen
             string tileName = MainWindow.Instance.mapView.TileMakeNewCtrl.comboIgnoreTile.Items[selectedIndex].ToString();
             int indexIgnor = ThingDb.FloorTileNames.IndexOf(tileName);
             autoedgeIgnoreTile = indexIgnor;
-            //tilePt = GetNearestTilePoint(tilePt);
-
 
             //usingTileMaterial
-
             int x = 0; // Holding marker
             int y = 0; // Holding marker
             Point temTile = tilePt; // Tile location reset
@@ -1471,28 +1461,21 @@ namespace MapEditor.mapgen
 
         }
 
-
-
         private bool isEdgeThere(Point tilePt, int dir)
         {
-
             foreach (Map.Tile.EdgeTile edge in map.Tiles[tilePt].EdgeTiles)
             {
                 int edgeDir = ReMapVar((int)edge.Dir);
                 int prop = ReMapVar(dir);
-                //MessageBox.Show("edge.Graphic: " + edge.Edge.ToString() + " te1.graphicId: " + usingEdgeMaterial.ToString());
+
                 if (edgeDir == prop && edge.Edge == usingEdgeMaterial)
-                {
                     return true;
-                }
             }
             return false;
         }
 
         private Map.Tile.EdgeTile getEdge(Map.Tile tile, int dir)
         {
-
-
             int count = tile.EdgeTiles.Count;
             if (count < 1)
                 return null;
@@ -1505,10 +1488,8 @@ namespace MapEditor.mapgen
             if (edgeDir == prop)
                 return edga;
 
-
             return null;
         }
-
 
         private bool IsTileFromDir(Point tilePt, Map.Tile.EdgeTile.Direction EdgeDir)
         {
@@ -1603,14 +1584,5 @@ namespace MapEditor.mapgen
             }
             return temPt;
         }
-
-
-
-
-
-
-
-
-
     }
 }

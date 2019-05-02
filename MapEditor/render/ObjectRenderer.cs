@@ -17,7 +17,7 @@ using MapView = MapEditor.MapView;
 using ImgState = NoxShared.ThingDb.Sprite.State;
 using TextRenderer = System.Windows.Forms.TextRenderer;
 using Sequence = NoxShared.ThingDb.Sprite.Sequence;
-
+using System.Drawing.Drawing2D;
 
 namespace MapEditor.render
 {
@@ -37,12 +37,15 @@ namespace MapEditor.render
         // Canvas
         private readonly List<Map.Object> sortedObjectList = new List<Map.Object>();
         private readonly List<Map.Object> belowObjectList = new List<Map.Object>();
+        private Dictionary<Map.Object, int> telelist = new Dictionary<Map.Object, int>();
+        private AdjustableArrowCap Arrow = new AdjustableArrowCap(9f, 9f);
         // Pens/Brushes
         private readonly Pen objMoveablePen = new Pen(Color.OrangeRed, 1F);
         private readonly Pen extentPen = new Pen(Color.Green, 1F);
         private readonly Pen doorPen = new Pen(Color.Brown, 2F);
         private readonly Pen triggerPen = new Pen(Color.MediumOrchid, 2F);
         private readonly Pen sentryPen = new Pen(Color.DarkViolet, 2F);
+
         public ObjectRenderer(MapViewRenderer mapRenderer)
         {
             this.objectExtentFont = new Font("Arial", 9F, FontStyle.Bold);
@@ -127,7 +130,7 @@ namespace MapEditor.render
         /// <summary>
         /// Responsible for drawing complex object such as NPCs
         /// </summary>
-        private Bitmap GetObjectImageSpecial(Map.Object obj, ThingDb.Thing tt, bool shadow = false)
+        public Bitmap GetObjectImageSpecial(Map.Object obj, ThingDb.Thing tt, bool shadow = false)
         {
             Bitmap result = null;
             int index = -1, monsterSprite = 0;
@@ -251,6 +254,12 @@ namespace MapEditor.render
 
         public Bitmap GetObjectImage(Map.Object obj, bool shadow = false)
         {
+            if (MainWindow.Instance.imgMode)
+            {
+                if (MainWindow.Instance.mapImageFilter.HideObject(obj.Name))
+                    return null;
+            }
+
             Bitmap result = null;
             int index = -1;
             ThingDb.Thing tt = ThingDb.Things[obj.Name];
@@ -504,15 +513,10 @@ namespace MapEditor.render
                 isSelected2 = false;
             }
 
-
             if (isSelected || isSelected2)
             {
-
-
-
                 if (mapRenderer.proHand && isUnderCursor)
                     MainWindow.Instance.mapView.mapPanel.Cursor = Cursors.Hand;
-
             }
 
             int x = (int)obj.Location.X;
@@ -551,6 +555,29 @@ namespace MapEditor.render
             }
         }
 
+        public void UpdateTele()
+        {
+            telelist.Clear();
+            foreach (Map.Object key in mapRenderer.Map.Objects)
+            {
+                if (ThingDb.Things[key.Name].Xfer == "TransporterXfer" && key.Extent != -2)
+                {
+                    TransporterXfer extraData = key.GetExtraData<TransporterXfer>();
+                    if (!telelist.ContainsKey(key))
+                        telelist.Add(key, extraData.ExtentLink);
+                }
+                else if ((ThingDb.Things[key.Name].Xfer == "ElevatorXfer" || ThingDb.Things[key.Name].Xfer == "ElevatorShaftXfer") && key.Extent != -2)
+                {
+                    ElevatorXfer extraData = key.GetExtraData<ElevatorXfer>();
+                    telelist.Add(key, extraData.ExtentLink);
+                }
+                else if (ThingDb.Things[key.Name].Xfer == "HoleXfer" && key.Extent != -2)
+                {
+                    key.GetExtraData<HoleXfer>();
+                    telelist.Add(key, -1);
+                }
+            }
+        }
         public void UpdateCanvas(Rectangle clip)
         {
             sortedObjectList.Clear();
@@ -566,8 +593,64 @@ namespace MapEditor.render
                         sortedObjectList.Add(obj);
                 }
             }
+
+            if (MainWindow.Instance.imgMode)
+            {
+                int wallIndex = 0;
+                foreach (Map.Wall wall in mapRenderer.Map.Walls.Values)
+                {
+                    if (!wall.Material.Contains("Invisible"))
+                    {
+                        sortedObjectList.Add(new FakeWallObject(wallIndex++, wall, mapRenderer));
+                    }
+                }
+            }
+
             sortedObjectList.Sort(new ObjectZComparer());
             belowObjectList.Sort(new ObjectZComparer());
+        }
+
+        public void drawTeleWays(Graphics g)
+        {
+            foreach (KeyValuePair<Map.Object, int> keyValuePair1 in telelist)
+            {
+                bool flag = false;
+                Map.Object key = keyValuePair1.Key;
+                int num = keyValuePair1.Value;
+                float x2 = -1f;
+                float y2 = -1f;
+                if (num > 0)
+                {
+                    foreach (KeyValuePair<Map.Object, int> keyValuePair2 in telelist)
+                    {
+                        if (keyValuePair2.Key.Extent == num)
+                        {
+                            x2 = keyValuePair2.Key.Location.X;
+                            y2 = keyValuePair2.Key.Location.Y;
+                            if (keyValuePair2.Value == key.Extent)
+                                flag = true;
+                        }
+                    }
+                }
+                else if (ThingDb.Things[key.Name].Xfer == "HoleXfer")
+                {
+                    HoleXfer extraData = key.GetExtraData<HoleXfer>();
+                    x2 = extraData.FallX;
+                    y2 = extraData.FallY;
+                }
+                if ((double)x2 >= 0.0 && (double)y2 >= 0.0)
+                {
+                    Color color = Color.FromArgb((int)byte.MaxValue, 237, 204);
+                    if (flag)
+                        color = Color.FromArgb((int)byte.MaxValue, 211, 130);
+                    else
+                        g.FillEllipse(new SolidBrush(color), key.Location.X - 5f, key.Location.Y - 6f, 12f, 12f);
+                    g.DrawLine(new Pen(color, 2f)
+                    {
+                        CustomEndCap = Arrow
+                    }, key.Location.X, key.Location.Y, x2, y2);
+                }
+            }
         }
 
         public void RenderBelow(Graphics g)
@@ -587,315 +670,310 @@ namespace MapEditor.render
 
         private void DrawObjects(Graphics g, List<Map.Object> objects, bool shadow = false)
         {
-            
+            bool drawExtents3D = EditorSettings.Default.Draw_Extents_3D;
             Pen pen; PointF center, ptf, topLeft;
             ThingDb.Thing tt;
-
             Map.Object underCursor = null;
 
             if (MapInterface.CurrentMode == EditMode.OBJECT_SELECT || MainWindow.Instance.mapView.picking)
                 underCursor = MainWindow.Instance.mapView.GetObjectUnderCursor();
 
-
-
-
             if (mapRenderer.proDefault && underCursor == null)
                 MainWindow.Instance.mapView.mapPanel.Cursor = Cursors.Default;
 
+            if (!EditorSettings.Default.Draw_Objects)
+                return;
 
-
-            bool drawExtents3D = EditorSettings.Default.Draw_Extents_3D;
-
-            if (EditorSettings.Default.Draw_Objects)
+            foreach (Map.Object oe in objects)
             {
-
-                foreach (Map.Object oe in objects)
+                if (MainWindow.Instance.imgMode)
                 {
-                    ptf = oe.Location;
-                    float x = ptf.X, y = ptf.Y;
-                    tt = ThingDb.Things[oe.Name];
-
-                    center = new PointF(x, y);
-                    topLeft = new PointF(center.X - objectSelectionRadius, center.Y - objectSelectionRadius);
-                    pen = mapRenderer.ColorLayout.Objects;
-
-
-
-
-                    // Object facing helper
-                    if (EditorSettings.Default.Draw_ObjectFacing)
+                    var customRender = oe as CustomRenderObject;
+                    if (customRender != null)
                     {
+                        customRender.Render(g);
+                        continue;
+                    }
+                }
 
-                        float deg = -1F;
-                        if (tt.Xfer == "MonsterXfer")
-                        {
-                            MonsterXfer xfer = oe.GetExtraData<MonsterXfer>();
-                            deg = (float)MonsterXfer.NOX_DIRECT_VALS[xfer.DirectionId] / 256F * 360F;
-                        }
-                        if (tt.Xfer == "NPCXfer")
-                        {
-                            NPCXfer xfer = oe.GetExtraData<NPCXfer>();
-                            deg = (float)MonsterXfer.NOX_DIRECT_VALS[xfer.DirectionId] / 256F * 360F;
-                        }
-                        if (deg >= 0F)
-                        {
-                            using (var m = new System.Drawing.Drawing2D.Matrix())
-                            {
-                                m.RotateAt(deg, center);
-                                g.Transform = m;
+                ptf = oe.Location;
+                float x = ptf.X, y = ptf.Y;
+                tt = ThingDb.Things[oe.Name];
 
-                                g.DrawLine(objMoveablePen, center.X, center.Y, center.X + 20, center.Y);
-                                g.ResetTransform();
-                            }
-                        }
-                        // Sentry ray
-                        if (tt.Xfer == "SentryXfer")
-                        {
-                            SentryXfer sentry = oe.GetExtraData<SentryXfer>();
-                            float targX = x + ((float)Math.Cos(sentry.BasePosRadian) * 80F);
-                            float targY = y + ((float)Math.Sin(sentry.BasePosRadian) * 80F);
-                            // show sentry ray direction
-                            g.DrawLine(sentryPen, x, y, targX, targY);
+                center = new PointF(x, y);
+                topLeft = new PointF(center.X - objectSelectionRadius, center.Y - objectSelectionRadius);
+                pen = mapRenderer.ColorLayout.Objects;
 
+                // Object facing helper
+                if (EditorSettings.Default.Draw_ObjectFacing)
+                {
+                    float deg = -1F;
+                    if (tt.Xfer == "MonsterXfer")
+                    {
+                        MonsterXfer xfer = oe.GetExtraData<MonsterXfer>();
+                        deg = MonsterXfer.NOX_DIRECT_VALS[xfer.DirectionId] / 256F * 360F;
+                    }
+                    if (tt.Xfer == "NPCXfer")
+                    {
+                        NPCXfer xfer = oe.GetExtraData<NPCXfer>();
+                        deg = MonsterXfer.NOX_DIRECT_VALS[xfer.DirectionId] / 256F * 360F;
+                    }
+                    if (deg >= 0F)
+                    {
+                        using (var m = new Matrix())
+                        {
+                            m.RotateAt(deg, center);
+                            g.Transform = m;
+
+                            g.DrawLine(objMoveablePen, center.X, center.Y, center.X + 20, center.Y);
+                            g.ResetTransform();
                         }
                     }
-
-                        // invisible triggers and pressure plates
-                        if (tt.DrawType == "TriggerDraw" || tt.DrawType == "PressurePlateDraw")
-                        {
-                            if (shadow)
-                                DrawObjectExtent(g, oe, drawExtents3D);
-                            else
-                                DrawTriggerExtent(g, oe, underCursor);
-                            continue;
-                        }
-                        // black powder
-
-                            if (EditorSettings.Default.Edit_PreviewMode) // Visual Preview
+                    // Sentry ray
+                    if (tt.Xfer == "SentryXfer")
                     {
-                        if (tt.DrawType == "BlackPowderDraw")
-                        {
-                            Rectangle bp = new Rectangle((int)x - 2, (int)y - 2, 4, 4);
-                            g.FillRectangle(new SolidBrush(Color.Gray), bp);
+                        SentryXfer sentry = oe.GetExtraData<SentryXfer>();
+                        float targX = x + ((float)Math.Cos(sentry.BasePosRadian) * 80F);
+                        float targY = y + ((float)Math.Sin(sentry.BasePosRadian) * 80F);
+                        // show sentry ray direction
+                        g.DrawLine(sentryPen, x, y, targX, targY);
+
+                    }
+                }
+
+                // invisible triggers and pressure plates
+                if (tt.DrawType == "TriggerDraw" || tt.DrawType == "PressurePlateDraw")
+                {
+                    if (shadow)
+                        DrawObjectExtent(g, oe, drawExtents3D);
+                    else
+                    {
+                        if (!MainWindow.Instance.imgMode)
+                            DrawTriggerExtent(g, oe, underCursor);
+                    }
+                    continue;
+                }
+                // black powder
+                if (EditorSettings.Default.Edit_PreviewMode) // Visual Preview
+                {
+                    if (tt.DrawType == "BlackPowderDraw")
+                    {
+                        if (MainWindow.Instance.imgMode)
                             continue;
-                        }
-                        if (tt.Xfer == "InvisibleLightXfer")
-                        { 
-                            bool isUnderCursor = false;
 
-                            Pen Penlight = new Pen(Color.Yellow, 1);
-                            if (underCursor != null) isUnderCursor = underCursor.Equals(oe);
-
-                            if (isUnderCursor)
-                                Penlight = new Pen(Color.Orange, 1);
-
-                            bool isSelected = mapRenderer.SelectedObjects.Items.Contains(oe);
-                            bool isSelected2 = MapInterface.RecSelected.Contains(oe);
-                            if (isSelected && isSelected2 && MapInterface.KeyHelper.ShiftKey)
-                            {
-                                isSelected = false;
-                                isSelected2 = false;
-                            }
-
-
-                            if (isSelected || isSelected2)
-                            {
-                                Penlight = Pens.DarkOrange;
-                                if (mapRenderer.proHand && isUnderCursor)
-                                    MainWindow.Instance.mapView.mapPanel.Cursor = Cursors.Hand;
-
-                            }
-                          
-                            g.DrawEllipse(Penlight, new RectangleF(center.X - 9, center.Y - 9, 18, 18));
-                            g.DrawEllipse(Penlight, new RectangleF(center.X - 13, center.Y - 13, 26, 26));
-                            g.DrawEllipse(Penlight, new RectangleF(center.X - 17, center.Y - 17, 34, 34));
-                            
+                        Rectangle bp = new Rectangle((int)x - 2, (int)y - 2, 4, 4);
+                        g.FillRectangle(new SolidBrush(Color.Gray), bp);
+                        continue;
+                    }
+                    if (tt.Xfer == "InvisibleLightXfer")
+                    {
+                        if (MainWindow.Instance.imgMode)
                             continue;
-                        }
-                        
-                        Bitmap image = GetObjectImage(oe, shadow);
-                       
-                        if (tt.Name.StartsWith("Amb") && image == null)
+
+                        bool isUnderCursor = false;
+
+                        Pen Penlight = new Pen(Color.Yellow, 1);
+                        if (underCursor != null) isUnderCursor = underCursor.Equals(oe);
+
+                        if (isUnderCursor)
+                            Penlight = new Pen(Color.Orange, 1);
+
+                        bool isSelected = mapRenderer.SelectedObjects.Items.Contains(oe);
+                        bool isSelected2 = MapInterface.RecSelected.Contains(oe);
+                        if (isSelected && isSelected2 && MapInterface.KeyHelper.ShiftKey)
                         {
-                            image = mapRenderer.VideoBag.GetBitmap(tt.SpriteMenuIcon);
-                            drawOffsetX = 82;
-                            drawOffsetY = 122;
+                            isSelected = false;
+                            isSelected2 = false;
                         }
-                   
-                        if (image == null || tt.DrawType == "NoDraw")
+
+                        if (isSelected || isSelected2)
                         {
-                            // in case of failure draw only the extent
+                            Penlight = Pens.DarkOrange;
+                            if (mapRenderer.proHand && isUnderCursor)
+                                MainWindow.Instance.mapView.mapPanel.Cursor = Cursors.Hand;
+                        }
+
+                        g.DrawEllipse(Penlight, new RectangleF(center.X - 9, center.Y - 9, 18, 18));
+                        g.DrawEllipse(Penlight, new RectangleF(center.X - 13, center.Y - 13, 26, 26));
+                        g.DrawEllipse(Penlight, new RectangleF(center.X - 17, center.Y - 17, 34, 34));
+                        continue;
+                    }
+
+                    Bitmap image = GetObjectImage(oe, shadow);
+                    if (tt.Name.StartsWith("Amb") && image == null && !MainWindow.Instance.imgMode)
+                    {
+                        image = mapRenderer.VideoBag.GetBitmap(tt.SpriteMenuIcon);
+                        drawOffsetX = 82;
+                        drawOffsetY = 122;
+                    }
+
+                    if (image == null || tt.DrawType == "NoDraw")
+                    {
+                        // in case of failure draw only the extent
+                        if (!MainWindow.Instance.imgMode)
                             DrawObjectExtent(g, oe, drawExtents3D);
-
-
-                        }
-                        else
-                        {
-                            int sizeX = tt.SizeX / 2;
-                            int sizeY = tt.SizeY / 2;
-                            x -= (sizeX - drawOffsetX);
-                            y -= (sizeY - drawOffsetY) + tt.Z;
-                            // no blurring
-                            int ix = Convert.ToInt32(x);
-                            int iy = Convert.ToInt32(y);
-
-                            // recolor in case it is being selected
-                            bool isSelected = mapRenderer.SelectedObjects.Items.Contains(oe);
-                            bool isSelected2 = MapInterface.RecSelected.Contains(oe);
-
-
-                            if (isSelected && isSelected2 && MapInterface.KeyHelper.ShiftKey)
-                            {
-                                isSelected = false;
-                                isSelected2 = false;
-                            }
-                            bool isUnderCursor = false;
-                            if (underCursor != null) isUnderCursor = underCursor.Equals(oe);
-                            // draw the image
-                            if (isSelected || isUnderCursor || shadow || isSelected2)
-                            {
-                                // highlight selection
-                                var shader = new BitmapShader(image);
-                                shader.LockBitmap();
-
-                                var hltColor = mapRenderer.ColorLayout.Selection;
-
-                                if (isSelected || isSelected2)
-                                {
-                                    if (mapRenderer.proHand && isUnderCursor)
-                                        MainWindow.Instance.mapView.mapPanel.Cursor = Cursors.Hand;
-
-
-
-                                    shader.ColorShade(hltColor, 0.5F);
-
-                                }
-                                else if (isUnderCursor)
-                                { 
-                                   
-                                    hltColor = Color.PaleGreen;
-                                    if (MapInterface.CurrentMode == EditMode.OBJECT_PLACE && !MainWindow.Instance.mapView.picking)
-                                        hltColor = mapRenderer.ColorLayout.Removing;
-
-                                    shader.ColorGradWaves(hltColor, 7F, Environment.TickCount);
-                                }
-                                if (shadow)
-                                    shader.MakeSemitransparent(165);
-
-                                image = shader.UnlockBitmap();
-
-                                g.DrawImage(image, ix, iy, image.Width, image.Height);
-                                image.Dispose();
-                            }
-                            else
-                                g.DrawImage(image, ix, iy, image.Width, image.Height);
-                        }
                     }
                     else
                     {
+                        int sizeX = tt.SizeX / 2;
+                        int sizeY = tt.SizeY / 2;
+                        x -= (sizeX - drawOffsetX);
+                        y -= (sizeY - drawOffsetY) + tt.Z;
+                        // no blurring
+                        int ix = Convert.ToInt32(x);
+                        int iy = Convert.ToInt32(y);
 
+                        // recolor in case it is being selected
+                        bool isSelected = mapRenderer.SelectedObjects.Items.Contains(oe);
+                        bool isSelected2 = MapInterface.RecSelected.Contains(oe);
 
-                        if (mapRenderer.SelectedObjects.Items.Contains(oe)) pen = Pens.Green;
-                        if (MapInterface.RecSelected.Contains(oe)) pen = Pens.Green;
-                        if ((mapRenderer.SelectedObjects.Items.Contains(oe) && MapInterface.RecSelected.Contains(oe))) pen = mapRenderer.ColorLayout.Objects;
-
-                        g.DrawEllipse(pen, new RectangleF(topLeft, new Size(2 * objectSelectionRadius, 2 * objectSelectionRadius)));//55
-
-                        // If is a door
-                        if ((tt.Class & ThingDb.Thing.ClassFlags.DOOR) == ThingDb.Thing.ClassFlags.DOOR)
+                        if (isSelected && isSelected2 && MapInterface.KeyHelper.ShiftKey)
                         {
-                            DoorXfer door = oe.GetExtraData<DoorXfer>();
-                            if (door.Direction == DoorXfer.DOORS_DIR.South)
+                            isSelected = false;
+                            isSelected2 = false;
+                        }
+                        bool isUnderCursor = false;
+                        if (underCursor != null) isUnderCursor = underCursor.Equals(oe);
+                        // draw the image
+                        if ((isSelected || isUnderCursor || shadow || isSelected2) && (!MainWindow.Instance.imgMode))
+                        {
+                            // highlight selection
+                            var shader = new BitmapShader(image);
+                            shader.LockBitmap();
+
+                            var hltColor = mapRenderer.ColorLayout.Selection;
+
+                            if (isSelected || isSelected2)
                             {
-                                g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X - 20, (int)center.Y - 20));
+                                if (mapRenderer.proHand && isUnderCursor)
+                                    MainWindow.Instance.mapView.mapPanel.Cursor = Cursors.Hand;
 
-                                if (drawExtents3D)
-                                {
-                                    g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y - 40), new Point((int)center.X - 20, (int)center.Y - 60));
-                                    g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X - 20, (int)center.Y - 60));
-
-                                    g.DrawLine(doorPen, new Point((int)center.X - 20, (int)center.Y - 20), new Point((int)center.X - 20, (int)center.Y - 60));
-                                }
+                                shader.ColorShade(hltColor, 0.5F);
                             }
-                            else if (door.Direction == DoorXfer.DOORS_DIR.West)
+                            else if (isUnderCursor)
                             {
-                                g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X + 20, (int)center.Y - 20));
+                                hltColor = Color.PaleGreen;
+                                if (MapInterface.CurrentMode == EditMode.OBJECT_PLACE && !MainWindow.Instance.mapView.picking)
+                                    hltColor = mapRenderer.ColorLayout.Removing;
 
-                                if (drawExtents3D)
-                                {
-                                    g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y - 40), new Point((int)center.X + 20, (int)center.Y - 60));
-                                    g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X + 20, (int)center.Y - 60));
-
-                                    g.DrawLine(doorPen, new Point((int)center.X + 20, (int)center.Y - 20), new Point((int)center.X + 20, (int)center.Y - 60));
-                                }
+                                shader.ColorGradWaves(hltColor, 7F, Environment.TickCount);
                             }
-                            else if (door.Direction == DoorXfer.DOORS_DIR.North)
+                            if (shadow)
+                                shader.MakeSemitransparent(165);
+
+                            image = shader.UnlockBitmap();
+
+                            g.DrawImage(image, ix, iy, image.Width, image.Height);
+                            image.Dispose();
+                        }
+                        else
+                            g.DrawImage(image, ix, iy, image.Width, image.Height);
+                    }
+                }
+                else
+                {
+                    if (mapRenderer.SelectedObjects.Items.Contains(oe)) pen = Pens.Green;
+                    if (MapInterface.RecSelected.Contains(oe)) pen = Pens.Green;
+                    if ((mapRenderer.SelectedObjects.Items.Contains(oe) && MapInterface.RecSelected.Contains(oe))) pen = mapRenderer.ColorLayout.Objects;
+
+                    g.DrawEllipse(pen, new RectangleF(topLeft, new Size(2 * objectSelectionRadius, 2 * objectSelectionRadius)));//55
+
+                    // If is a door
+                    if ((tt.Class & ThingDb.Thing.ClassFlags.DOOR) == ThingDb.Thing.ClassFlags.DOOR)
+                    {
+                        DoorXfer door = oe.GetExtraData<DoorXfer>();
+                        if (door.Direction == DoorXfer.DOORS_DIR.South)
+                        {
+                            g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X - 20, (int)center.Y - 20));
+
+                            if (drawExtents3D)
                             {
-                                g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X + 20, (int)center.Y + 20));
+                                g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y - 40), new Point((int)center.X - 20, (int)center.Y - 60));
+                                g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X - 20, (int)center.Y - 60));
 
-                                if (drawExtents3D)
-                                {
-                                    g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y - 40), new Point((int)center.X + 20, (int)center.Y - 20));
-                                    g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X + 20, (int)center.Y - 20));
-
-                                    g.DrawLine(doorPen, new Point((int)center.X + 20, (int)center.Y + 20), new Point((int)center.X + 20, (int)center.Y - 20));
-                                }
-                            }
-                            else if (door.Direction == DoorXfer.DOORS_DIR.East)
-                            {
-                                g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X - 20, (int)center.Y + 20));
-
-                                if (drawExtents3D)
-                                {
-                                    g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y - 40), new Point((int)center.X - 20, (int)center.Y - 20));
-                                    g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X - 20, (int)center.Y - 20));
-
-                                    g.DrawLine(doorPen, new Point((int)center.X - 20, (int)center.Y + 20), new Point((int)center.X - 20, (int)center.Y - 20));
-                                }
+                                g.DrawLine(doorPen, new Point((int)center.X - 20, (int)center.Y - 20), new Point((int)center.X - 20, (int)center.Y - 60));
                             }
                         }
-                    }
-
-                    if (EditorSettings.Default.Draw_Extents)
-                    {
-                        if (!(!EditorSettings.Default.Draw_AllExtents && oe.HasFlag(ThingDb.Thing.FlagsFlags.NO_COLLIDE)))
+                        else if (door.Direction == DoorXfer.DOORS_DIR.West)
                         {
-                            DrawObjectExtent(g, oe, drawExtents3D);
+                            g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X + 20, (int)center.Y - 20));
+
+                            if (drawExtents3D)
+                            {
+                                g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y - 40), new Point((int)center.X + 20, (int)center.Y - 60));
+                                g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X + 20, (int)center.Y - 60));
+
+                                g.DrawLine(doorPen, new Point((int)center.X + 20, (int)center.Y - 20), new Point((int)center.X + 20, (int)center.Y - 60));
+                            }
+                        }
+                        else if (door.Direction == DoorXfer.DOORS_DIR.North)
+                        {
+                            g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X + 20, (int)center.Y + 20));
+
+                            if (drawExtents3D)
+                            {
+                                g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y - 40), new Point((int)center.X + 20, (int)center.Y - 20));
+                                g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X + 20, (int)center.Y - 20));
+
+                                g.DrawLine(doorPen, new Point((int)center.X + 20, (int)center.Y + 20), new Point((int)center.X + 20, (int)center.Y - 20));
+                            }
+                        }
+                        else if (door.Direction == DoorXfer.DOORS_DIR.East)
+                        {
+                            g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X - 20, (int)center.Y + 20));
+
+                            if (drawExtents3D)
+                            {
+                                g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y - 40), new Point((int)center.X - 20, (int)center.Y - 20));
+                                g.DrawLine(doorPen, new Point((int)center.X, (int)center.Y), new Point((int)center.X - 20, (int)center.Y - 20));
+
+                                g.DrawLine(doorPen, new Point((int)center.X - 20, (int)center.Y + 20), new Point((int)center.X - 20, (int)center.Y - 20));
+                            }
                         }
                     }
                 }
 
-                // Draw labels on the separate cycle to prevent layer glitching
-                if (EditorSettings.Default.Draw_AllText)
+                if (EditorSettings.Default.Draw_Extents)
                 {
-                    foreach (Map.Object oe in objects)
+                    if (!(!EditorSettings.Default.Draw_AllExtents && oe.HasFlag(ThingDb.Thing.FlagsFlags.NO_COLLIDE)))
                     {
-                        Point textLocaton = new Point(Convert.ToInt32(oe.Location.X), Convert.ToInt32(oe.Location.Y));
-                        textLocaton.X -= objectSelectionRadius; textLocaton.Y -= objectSelectionRadius;
-
-                        if (EditorSettings.Default.Draw_ObjCustomLabels && oe.Team > 0)
-                        {
-                            // Draw team
-                            Point loc = new Point(textLocaton.X, textLocaton.Y - 12);
-                            TextRenderer.DrawText(g, String.Format(FORMAT_OBJECT_TEAM, oe.Team), objectExtentFont, loc, Color.LightPink);
-                        }
-                        if (EditorSettings.Default.Draw_ObjCustomLabels && oe.Scr_Name.Length > 0)
-                        {
-                            // Draw custom label
-                            Size size = TextRenderer.MeasureText(oe.ScrNameShort, objectExtentFont);
-                            textLocaton.X -= size.Width / 3;
-                            TextRenderer.DrawText(g, oe.ScrNameShort, objectExtentFont, textLocaton, Color.Cyan);
-                        }
-                        else if (EditorSettings.Default.Draw_ObjThingNames)
-                        {
-                            // Draw thing name
-                            Size size = TextRenderer.MeasureText(oe.Name, objectExtentFont);
-                            textLocaton.X -= size.Width / 3;
-                            TextRenderer.DrawText(g, oe.Name, objectExtentFont, textLocaton, Color.Green);
-                        }
-                        else if (!EditorSettings.Default.Edit_PreviewMode && oe.Extent >= 0 && !(EditorSettings.Default.Draw_Extents || EditorSettings.Default.Draw_AllExtents))
-                            TextRenderer.DrawText(g, oe.Extent.ToString(), objectExtentFont, textLocaton, Color.Purple);
+                        DrawObjectExtent(g, oe, drawExtents3D);
                     }
+                }
+            }
+
+            // Draw labels and teleports on the separate cycle to prevent layer glitching
+            if (EditorSettings.Default.Draw_Teleports)
+                this.drawTeleWays(g);
+            if (EditorSettings.Default.Draw_AllText)
+            {
+                foreach (Map.Object oe in objects)
+                {
+                    Point textLocaton = new Point(Convert.ToInt32(oe.Location.X), Convert.ToInt32(oe.Location.Y));
+                    textLocaton.X -= objectSelectionRadius; textLocaton.Y -= objectSelectionRadius;
+
+                    if (EditorSettings.Default.Draw_ObjCustomLabels && oe.Team > 0)
+                    {
+                        // Draw team
+                        Point loc = new Point(textLocaton.X, textLocaton.Y - 12);
+                        g.DrawString(string.Format(FORMAT_OBJECT_TEAM, oe.Team), objectExtentFont, Brushes.LightPink, loc);
+                    }
+                    if (EditorSettings.Default.Draw_ObjCustomLabels && oe.Scr_Name.Length > 0)
+                    {
+                        // Draw custom label
+                        Size size = TextRenderer.MeasureText(oe.ScrNameShort, objectExtentFont);
+                        textLocaton.X -= size.Width / 3;
+                        g.DrawString(oe.ScrNameShort, objectExtentFont, Brushes.Cyan, textLocaton);
+                    }
+                    else if (EditorSettings.Default.Draw_ObjThingNames)
+                    {
+                        // Draw thing name
+                        Size size = TextRenderer.MeasureText(oe.Name, objectExtentFont);
+                        textLocaton.X -= size.Width / 3;
+                        g.DrawString(oe.Name, objectExtentFont, Brushes.Green, textLocaton);
+                    }
+                    else if (!EditorSettings.Default.Edit_PreviewMode && oe.Extent >= 0 && !(EditorSettings.Default.Draw_Extents || EditorSettings.Default.Draw_AllExtents))
+                        g.DrawString(oe.Extent.ToString(), objectExtentFont, Brushes.Purple, textLocaton);
                 }
             }
         }

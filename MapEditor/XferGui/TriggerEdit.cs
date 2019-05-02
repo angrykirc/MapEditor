@@ -5,36 +5,42 @@
  * Дата: 09.11.2014
  */
 using System;
+using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
+using MapEditor.MapInt;
 using NoxShared;
 using NoxShared.ObjDataXfer;
 
 namespace MapEditor.XferGui
 {
-	/// <summary>
-	/// Description of TriggerEdit.
-	/// </summary>
 	public partial class TriggerEdit : XferEditor
 	{
 		private TriggerXfer xfer;
-		
-		public TriggerEdit()
+        internal Map Map
+        {
+            get
+            {
+                return MapInterface.TheMap;
+            }
+        }
+
+        public TriggerEdit()
 		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-
-            
-
-          
-
-
-
-			//
 			InitializeComponent();
 		}
-		
-		public override void SetObject(Map.Object obj)
+
+        public override void SetDefaultData(Map.Object obj)
+        {
+            obj.NewDefaultExtraData();
+            xfer = obj.GetExtraData<TriggerXfer>();
+            if (ThingDb.Things[obj.Name].ExtentType != "BOX")
+            {
+                xfer.BackColor = Color.Black;
+                xfer.EdgeColor = Color.Black;
+            }
+        }
+        public override void SetObject(Map.Object obj)
 		{
 			this.obj = obj;
 			// читаем Xfer
@@ -54,7 +60,6 @@ namespace MapEditor.XferGui
 				plateEdgeColor.BackColor = xfer.EdgeColor;
 			}
 
-           
             flagsBox.SetItemChecked(0, (xfer.AllowedObjClass & 0x2) == 0x2); // NO_UPDATE
             flagsBox.SetItemChecked(1, (xfer.AllowedObjClass & 0x4) == 0x4); // DESTROYED
             flagsBox.SetItemChecked(2, (xfer.AllowedObjClass & 0x1) == 0x1); //MISSILE
@@ -66,13 +71,8 @@ namespace MapEditor.XferGui
             flagsBox.SetItemChecked(8, (xfer.AllowedObjClass & 0x8000000) == 0x8000000); // NO_PUSH_CHARACTERS
             flagsBox.SetItemChecked(9, (xfer.AllowedObjClass & 0x1000) == 0x1000); // wand
             numericUpDown1.Value = xfer.AllowedTeamID;
-           
-
-
-
-
+            LoadScripts();
 		}
-		
 		public override Map.Object GetObject()
 		{
             // записываем все изменения   MISSILE = 0x1
@@ -86,7 +86,6 @@ namespace MapEditor.XferGui
 
             uint[] flags = { 0x2, 0x4, 0x1, 0x8, 0x80000000, 0x10, 0x1000000, 0x2000000, 0x8000000, 0x1000 };
 
-
             uint CreatedFlags = 0;
             foreach (int i in flagsBox.CheckedIndices)
             {
@@ -97,24 +96,29 @@ namespace MapEditor.XferGui
 
 			return obj;
 		}
-		
-		public override void SetDefaultData(Map.Object obj)
-		{
-			obj.NewDefaultExtraData();
-			xfer = obj.GetExtraData<TriggerXfer>();
-			if (ThingDb.Things[obj.Name].ExtentType != "BOX")
-			{
-				xfer.BackColor = Color.Black;
-				xfer.EdgeColor = Color.Black;
-			}
-		}
-		
-		void ButtonOKClick(object sender, EventArgs e)
+        private void LoadScripts()
+        {
+            ArrayList arrayList = new ArrayList();
+            foreach (Map.ScriptFunction func in Map.Scripts.Funcs)
+            {
+                string name = func.name;
+                if (!(name == "MapInitialize") && !(name == "GLOBAL"))
+                    arrayList.Add(name);
+            }
+            arrayList.Sort();
+            scriptActivated.Items.AddRange(arrayList.ToArray());
+            scriptReleased.Items.AddRange(arrayList.ToArray());
+            scriptCollided.Items.AddRange(arrayList.ToArray());
+            scriptActivated.Items.Add("");
+            scriptReleased.Items.Add("");
+            scriptCollided.Items.Add("");
+        }
+
+        void ButtonOKClick(object sender, EventArgs e)
 		{
 			DialogResult = DialogResult.OK;
 			Close();
 		}
-		
 		void PlateEdgeColorClick(object sender, EventArgs e)
 		{
 			ColorDialog colorDlg = new ColorDialog();
@@ -123,25 +127,5 @@ namespace MapEditor.XferGui
 				plateEdgeColor.BackColor = colorDlg.Color;
 			}
 		}
-
-        private void groupBoxArea_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TriggerEdit_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flagsBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 	}
 }
