@@ -94,6 +94,7 @@ Other:
  - Only warns of closing Editor if visible changes are made
  - Moved some menu items around (File, Map, Options, Help)
  - Changed Fast Preview walls from BlackWall to MagicWallSystemUseOnly (less ambiguious)
+ - Window size and maximized mode saved
 
 File Changes:
  - Latest.log file now only saves in MapEditor.exe directory
