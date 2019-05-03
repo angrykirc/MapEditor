@@ -48,7 +48,8 @@ Added mass editing feature to View Objects for: Script Name, Enchants 1-4 (+vali
 
 Added 'Import + Save' option: CTRL + S to reimport latest script(.obj) and save map
 
-Added preview to Equipment Enchantments
+Added preview to Equipment Enchantments:
+ - Added Randomize button
 
 Added 'Map Saved' indicator
 
