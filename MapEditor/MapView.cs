@@ -3591,7 +3591,7 @@ namespace MapEditor
             this.tabObjectWps.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tabObjectWps.Location = new System.Drawing.Point(4, 22);
             this.tabObjectWps.Name = "tabObjectWps";
-            this.tabObjectWps.Size = new System.Drawing.Size(192, 74);
+            this.tabObjectWps.Size = new System.Drawing.Size(228, 615);
             this.tabObjectWps.TabIndex = 2;
             this.tabObjectWps.Text = "Objects/Waypoints";
             // 
@@ -3994,7 +3994,7 @@ namespace MapEditor
             this.groupMapCopy.Controls.Add(this.chkCopyPolygons);
             this.groupMapCopy.Location = new System.Drawing.Point(7, 503);
             this.groupMapCopy.Name = "groupMapCopy";
-            this.groupMapCopy.Size = new System.Drawing.Size(215, 90);
+            this.groupMapCopy.Size = new System.Drawing.Size(215, 99);
             this.groupMapCopy.TabIndex = 38;
             this.groupMapCopy.TabStop = false;
             this.groupMapCopy.Text = "Map Copy";

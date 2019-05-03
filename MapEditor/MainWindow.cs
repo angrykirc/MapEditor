@@ -530,7 +530,7 @@ namespace MapEditor
             // chkServerPlayerLimit
             // 
             this.chkServerPlayerLimit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.chkServerPlayerLimit.Location = new System.Drawing.Point(288, 315);
+            this.chkServerPlayerLimit.Location = new System.Drawing.Point(288, 373);
             this.chkServerPlayerLimit.Name = "chkServerPlayerLimit";
             this.chkServerPlayerLimit.Size = new System.Drawing.Size(104, 24);
             this.chkServerPlayerLimit.TabIndex = 34;
@@ -542,7 +542,7 @@ namespace MapEditor
             // 
             this.label4.AutoSize = true;
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(256, 375);
+            this.label4.Location = new System.Drawing.Point(256, 433);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 33;
@@ -550,7 +550,7 @@ namespace MapEditor
             // 
             // panelAmbientColor
             // 
-            this.panelAmbientColor.Location = new System.Drawing.Point(259, 401);
+            this.panelAmbientColor.Location = new System.Drawing.Point(259, 459);
             this.panelAmbientColor.Name = "panelAmbientColor";
             this.panelAmbientColor.Size = new System.Drawing.Size(69, 36);
             this.panelAmbientColor.TabIndex = 32;
@@ -559,7 +559,7 @@ namespace MapEditor
             // label3
             // 
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(72, 369);
+            this.label3.Location = new System.Drawing.Point(72, 427);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 24);
             this.label3.TabIndex = 31;
@@ -568,7 +568,7 @@ namespace MapEditor
             // 
             // questGraphic
             // 
-            this.questGraphic.Location = new System.Drawing.Point(88, 433);
+            this.questGraphic.Location = new System.Drawing.Point(88, 491);
             this.questGraphic.MaxLength = 512;
             this.questGraphic.Name = "questGraphic";
             this.questGraphic.Size = new System.Drawing.Size(128, 20);
@@ -576,7 +576,7 @@ namespace MapEditor
             // 
             // questTitle
             // 
-            this.questTitle.Location = new System.Drawing.Point(88, 401);
+            this.questTitle.Location = new System.Drawing.Point(88, 459);
             this.questTitle.MaxLength = 512;
             this.questTitle.Name = "questTitle";
             this.questTitle.Size = new System.Drawing.Size(128, 20);
@@ -585,7 +585,7 @@ namespace MapEditor
             // label2
             // 
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(32, 428);
+            this.label2.Location = new System.Drawing.Point(32, 486);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 24);
             this.label2.TabIndex = 28;
@@ -595,7 +595,7 @@ namespace MapEditor
             // label1
             // 
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(32, 399);
+            this.label1.Location = new System.Drawing.Point(32, 457);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 24);
             this.label1.TabIndex = 27;
@@ -625,7 +625,7 @@ namespace MapEditor
             // recommendedLbl
             // 
             this.recommendedLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.recommendedLbl.Location = new System.Drawing.Point(256, 264);
+            this.recommendedLbl.Location = new System.Drawing.Point(256, 322);
             this.recommendedLbl.Name = "recommendedLbl";
             this.recommendedLbl.Size = new System.Drawing.Size(184, 24);
             this.recommendedLbl.TabIndex = 24;
@@ -635,7 +635,7 @@ namespace MapEditor
             // maxRecLbl
             // 
             this.maxRecLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.maxRecLbl.Location = new System.Drawing.Point(328, 288);
+            this.maxRecLbl.Location = new System.Drawing.Point(328, 346);
             this.maxRecLbl.Name = "maxRecLbl";
             this.maxRecLbl.Size = new System.Drawing.Size(32, 24);
             this.maxRecLbl.TabIndex = 23;
@@ -645,7 +645,7 @@ namespace MapEditor
             // minRecLbl
             // 
             this.minRecLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.minRecLbl.Location = new System.Drawing.Point(256, 288);
+            this.minRecLbl.Location = new System.Drawing.Point(256, 346);
             this.minRecLbl.Name = "minRecLbl";
             this.minRecLbl.Size = new System.Drawing.Size(32, 24);
             this.minRecLbl.TabIndex = 22;
@@ -654,7 +654,7 @@ namespace MapEditor
             // 
             // mapMaxRec
             // 
-            this.mapMaxRec.Location = new System.Drawing.Point(360, 288);
+            this.mapMaxRec.Location = new System.Drawing.Point(360, 346);
             this.mapMaxRec.MaxLength = 2;
             this.mapMaxRec.Name = "mapMaxRec";
             this.mapMaxRec.Size = new System.Drawing.Size(32, 20);
@@ -662,7 +662,7 @@ namespace MapEditor
             // 
             // mapMinRec
             // 
-            this.mapMinRec.Location = new System.Drawing.Point(288, 288);
+            this.mapMinRec.Location = new System.Drawing.Point(288, 346);
             this.mapMinRec.MaxLength = 2;
             this.mapMinRec.Name = "mapMinRec";
             this.mapMinRec.Size = new System.Drawing.Size(32, 20);
@@ -670,7 +670,7 @@ namespace MapEditor
             // 
             // mapCopyright
             // 
-            this.mapCopyright.Location = new System.Drawing.Point(88, 290);
+            this.mapCopyright.Location = new System.Drawing.Point(88, 348);
             this.mapCopyright.MaxLength = 128;
             this.mapCopyright.Name = "mapCopyright";
             this.mapCopyright.Size = new System.Drawing.Size(128, 20);
@@ -679,7 +679,7 @@ namespace MapEditor
             // labelCopyright
             // 
             this.labelCopyright.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelCopyright.Location = new System.Drawing.Point(10, 288);
+            this.labelCopyright.Location = new System.Drawing.Point(10, 346);
             this.labelCopyright.Name = "labelCopyright";
             this.labelCopyright.Size = new System.Drawing.Size(72, 24);
             this.labelCopyright.TabIndex = 16;
@@ -688,7 +688,7 @@ namespace MapEditor
             // 
             // mapVersion
             // 
-            this.mapVersion.Location = new System.Drawing.Point(88, 315);
+            this.mapVersion.Location = new System.Drawing.Point(88, 373);
             this.mapVersion.MaxLength = 16;
             this.mapVersion.Name = "mapVersion";
             this.mapVersion.Size = new System.Drawing.Size(128, 20);
@@ -696,7 +696,7 @@ namespace MapEditor
             // 
             // mapDate
             // 
-            this.mapDate.Location = new System.Drawing.Point(88, 265);
+            this.mapDate.Location = new System.Drawing.Point(88, 323);
             this.mapDate.MaxLength = 32;
             this.mapDate.Name = "mapDate";
             this.mapDate.Size = new System.Drawing.Size(128, 20);
@@ -705,7 +705,7 @@ namespace MapEditor
             // labelDate
             // 
             this.labelDate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelDate.Location = new System.Drawing.Point(17, 264);
+            this.labelDate.Location = new System.Drawing.Point(17, 322);
             this.labelDate.Name = "labelDate";
             this.labelDate.Size = new System.Drawing.Size(64, 24);
             this.labelDate.TabIndex = 13;
@@ -714,7 +714,7 @@ namespace MapEditor
             // 
             // mapAuthor2
             // 
-            this.mapAuthor2.Location = new System.Drawing.Point(88, 224);
+            this.mapAuthor2.Location = new System.Drawing.Point(88, 282);
             this.mapAuthor2.MaxLength = 64;
             this.mapAuthor2.Name = "mapAuthor2";
             this.mapAuthor2.Size = new System.Drawing.Size(128, 20);
@@ -722,7 +722,7 @@ namespace MapEditor
             // 
             // mapEmail2
             // 
-            this.mapEmail2.Location = new System.Drawing.Point(288, 224);
+            this.mapEmail2.Location = new System.Drawing.Point(288, 282);
             this.mapEmail2.MaxLength = 192;
             this.mapEmail2.Name = "mapEmail2";
             this.mapEmail2.Size = new System.Drawing.Size(160, 20);
@@ -730,7 +730,7 @@ namespace MapEditor
             // 
             // mapEmail
             // 
-            this.mapEmail.Location = new System.Drawing.Point(288, 192);
+            this.mapEmail.Location = new System.Drawing.Point(288, 250);
             this.mapEmail.MaxLength = 192;
             this.mapEmail.Name = "mapEmail";
             this.mapEmail.Size = new System.Drawing.Size(160, 20);
@@ -738,7 +738,7 @@ namespace MapEditor
             // 
             // mapAuthor
             // 
-            this.mapAuthor.Location = new System.Drawing.Point(88, 192);
+            this.mapAuthor.Location = new System.Drawing.Point(88, 250);
             this.mapAuthor.MaxLength = 64;
             this.mapAuthor.Name = "mapAuthor";
             this.mapAuthor.Size = new System.Drawing.Size(128, 20);
@@ -747,7 +747,7 @@ namespace MapEditor
             // labelEmail2
             // 
             this.labelEmail2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelEmail2.Location = new System.Drawing.Point(248, 224);
+            this.labelEmail2.Location = new System.Drawing.Point(248, 282);
             this.labelEmail2.Name = "labelEmail2";
             this.labelEmail2.Size = new System.Drawing.Size(40, 24);
             this.labelEmail2.TabIndex = 8;
@@ -757,7 +757,7 @@ namespace MapEditor
             // labelEmail
             // 
             this.labelEmail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelEmail.Location = new System.Drawing.Point(248, 192);
+            this.labelEmail.Location = new System.Drawing.Point(248, 250);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(40, 24);
             this.labelEmail.TabIndex = 7;
@@ -767,7 +767,7 @@ namespace MapEditor
             // labelAuthor2
             // 
             this.labelAuthor2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelAuthor2.Location = new System.Drawing.Point(8, 224);
+            this.labelAuthor2.Location = new System.Drawing.Point(8, 282);
             this.labelAuthor2.Name = "labelAuthor2";
             this.labelAuthor2.Size = new System.Drawing.Size(72, 24);
             this.labelAuthor2.TabIndex = 6;
@@ -777,7 +777,7 @@ namespace MapEditor
             // labelAuthor
             // 
             this.labelAuthor.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelAuthor.Location = new System.Drawing.Point(8, 192);
+            this.labelAuthor.Location = new System.Drawing.Point(8, 250);
             this.labelAuthor.Name = "labelAuthor";
             this.labelAuthor.Size = new System.Drawing.Size(72, 24);
             this.labelAuthor.TabIndex = 5;
@@ -787,7 +787,7 @@ namespace MapEditor
             // labelVersion
             // 
             this.labelVersion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelVersion.Location = new System.Drawing.Point(9, 312);
+            this.labelVersion.Location = new System.Drawing.Point(9, 370);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(72, 24);
             this.labelVersion.TabIndex = 4;
@@ -801,7 +801,7 @@ namespace MapEditor
             this.mapDescription.Multiline = true;
             this.mapDescription.Name = "mapDescription";
             this.mapDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.mapDescription.Size = new System.Drawing.Size(360, 88);
+            this.mapDescription.Size = new System.Drawing.Size(360, 156);
             this.mapDescription.TabIndex = 3;
             // 
             // labelDescription
@@ -835,7 +835,7 @@ namespace MapEditor
             // chkAutoIncrement
             // 
             this.chkAutoIncrement.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.chkAutoIncrement.Location = new System.Drawing.Point(88, 334);
+            this.chkAutoIncrement.Location = new System.Drawing.Point(88, 392);
             this.chkAutoIncrement.Name = "chkAutoIncrement";
             this.chkAutoIncrement.Size = new System.Drawing.Size(104, 24);
             this.chkAutoIncrement.TabIndex = 35;
