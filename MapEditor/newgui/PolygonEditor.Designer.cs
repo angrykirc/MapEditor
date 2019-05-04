@@ -38,11 +38,12 @@ namespace MapEditor.newgui
             this.buttonUp = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonCopyMap = new System.Windows.Forms.Button();
             this.buttonPoints = new System.Windows.Forms.Button();
             this.buttonNew = new System.Windows.Forms.Button();
-            this.ambientColors = new System.Windows.Forms.CheckBox();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonModify = new System.Windows.Forms.Button();
+            this.ambientColors = new System.Windows.Forms.CheckBox();
             this.buttonDone = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.LockedBox = new System.Windows.Forms.CheckBox();
@@ -57,10 +58,9 @@ namespace MapEditor.newgui
             this.listBoxPolygons.Location = new System.Drawing.Point(8, 12);
             this.listBoxPolygons.Name = "listBoxPolygons";
             this.listBoxPolygons.ScrollAlwaysVisible = true;
-            this.listBoxPolygons.Size = new System.Drawing.Size(128, 134);
+            this.listBoxPolygons.Size = new System.Drawing.Size(128, 160);
             this.listBoxPolygons.TabIndex = 0;
             this.listBoxPolygons.SelectedIndexChanged += new System.EventHandler(this.listBoxPolygons_SelectedIndexChanged);
-            this.listBoxPolygons.SelectedValueChanged += new System.EventHandler(this.listBoxPolygons_SelectedValueChanged);
             this.listBoxPolygons.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.listBoxPolygons_ControlAdded);
             this.listBoxPolygons.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.listBoxPolygons_ControlRemoved);
             this.listBoxPolygons.DoubleClick += new System.EventHandler(this.ButtonModifyClick);
@@ -98,17 +98,28 @@ namespace MapEditor.newgui
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonCopyMap);
             this.groupBox2.Controls.Add(this.buttonPoints);
             this.groupBox2.Controls.Add(this.buttonNew);
-            this.groupBox2.Controls.Add(this.ambientColors);
             this.groupBox2.Controls.Add(this.buttonDelete);
             this.groupBox2.Controls.Add(this.buttonModify);
             this.groupBox2.Location = new System.Drawing.Point(144, 78);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(120, 80);
+            this.groupBox2.Size = new System.Drawing.Size(120, 106);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Operations";
+            // 
+            // buttonCopyMap
+            // 
+            this.buttonCopyMap.Enabled = false;
+            this.buttonCopyMap.Location = new System.Drawing.Point(10, 77);
+            this.buttonCopyMap.Name = "buttonCopyMap";
+            this.buttonCopyMap.Size = new System.Drawing.Size(100, 23);
+            this.buttonCopyMap.TabIndex = 4;
+            this.buttonCopyMap.Text = "Copy Map";
+            this.buttonCopyMap.UseVisualStyleBackColor = true;
+            this.buttonCopyMap.Click += new System.EventHandler(this.ButtonCopyMapClick);
             // 
             // buttonPoints
             // 
@@ -129,18 +140,6 @@ namespace MapEditor.newgui
             this.buttonNew.Text = "New";
             this.buttonNew.UseVisualStyleBackColor = true;
             this.buttonNew.Click += new System.EventHandler(this.ButtonNewClick);
-            // 
-            // ambientColors
-            // 
-            this.ambientColors.AutoSize = true;
-            this.ambientColors.Location = new System.Drawing.Point(6, 73);
-            this.ambientColors.Name = "ambientColors";
-            this.ambientColors.Size = new System.Drawing.Size(122, 17);
-            this.ambientColors.TabIndex = 9;
-            this.ambientColors.Text = "show ambient colors";
-            this.ambientColors.UseVisualStyleBackColor = true;
-            this.ambientColors.Visible = false;
-            this.ambientColors.CheckedChanged += new System.EventHandler(this.ambientColors_CheckedChanged);
             // 
             // buttonDelete
             // 
@@ -164,9 +163,20 @@ namespace MapEditor.newgui
             this.buttonModify.UseVisualStyleBackColor = true;
             this.buttonModify.Click += new System.EventHandler(this.ButtonModifyClick);
             // 
+            // ambientColors
+            // 
+            this.ambientColors.AutoSize = true;
+            this.ambientColors.Location = new System.Drawing.Point(143, 204);
+            this.ambientColors.Name = "ambientColors";
+            this.ambientColors.Size = new System.Drawing.Size(122, 17);
+            this.ambientColors.TabIndex = 9;
+            this.ambientColors.Text = "show ambient colors";
+            this.ambientColors.UseVisualStyleBackColor = true;
+            this.ambientColors.Visible = false;
+            // 
             // buttonDone
             // 
-            this.buttonDone.Location = new System.Drawing.Point(168, 163);
+            this.buttonDone.Location = new System.Drawing.Point(166, 187);
             this.buttonDone.Name = "buttonDone";
             this.buttonDone.Size = new System.Drawing.Size(72, 23);
             this.buttonDone.TabIndex = 8;
@@ -187,7 +197,7 @@ namespace MapEditor.newgui
             // LockedBox
             // 
             this.LockedBox.AutoSize = true;
-            this.LockedBox.Location = new System.Drawing.Point(8, 171);
+            this.LockedBox.Location = new System.Drawing.Point(8, 199);
             this.LockedBox.Name = "LockedBox";
             this.LockedBox.Size = new System.Drawing.Size(127, 17);
             this.LockedBox.TabIndex = 11;
@@ -198,7 +208,7 @@ namespace MapEditor.newgui
             // snapPoly
             // 
             this.snapPoly.AutoSize = true;
-            this.snapPoly.Location = new System.Drawing.Point(8, 151);
+            this.snapPoly.Location = new System.Drawing.Point(8, 179);
             this.snapPoly.Name = "snapPoly";
             this.snapPoly.Size = new System.Drawing.Size(92, 17);
             this.snapPoly.TabIndex = 12;
@@ -210,7 +220,7 @@ namespace MapEditor.newgui
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(273, 191);
+            this.ClientSize = new System.Drawing.Size(273, 222);
             this.Controls.Add(this.snapPoly);
             this.Controls.Add(this.LockedBox);
             this.Controls.Add(this.label2);
@@ -218,6 +228,7 @@ namespace MapEditor.newgui
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.listBoxPolygons);
+            this.Controls.Add(this.ambientColors);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -229,12 +240,9 @@ namespace MapEditor.newgui
             this.Activated += new System.EventHandler(this.PolygonEditor_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PolygonEditor_FormClosing);
             this.Load += new System.EventHandler(this.PolygonEditorLoad);
-            this.Shown += new System.EventHandler(this.PolygonEditor_Shown);
             this.VisibleChanged += new System.EventHandler(this.PolygonEditor_VisibleChanged);
-            this.MouseLeave += new System.EventHandler(this.PolygonEditor_MouseLeave);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,5 +261,6 @@ namespace MapEditor.newgui
         public System.Windows.Forms.ListBox listBoxPolygons;
         public System.Windows.Forms.CheckBox LockedBox;
         public System.Windows.Forms.CheckBox snapPoly;
-	}
+        private System.Windows.Forms.Button buttonCopyMap;
+    }
 }

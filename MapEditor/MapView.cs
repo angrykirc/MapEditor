@@ -2764,6 +2764,7 @@ namespace MapEditor
         public Point pasteDest;
         public TimeContent CopiedArea;
         public TimeContent CopiedAreaClone;
+        public List<Point> storePoly = new List<Point>();
 
         private void cmdCopyArea_CheckedChanged(object sender, EventArgs e)
         {
@@ -2772,6 +2773,7 @@ namespace MapEditor
                 SelectObjectBtn.PerformClick();
                 mapPanel.Cursor = Cursors.Cross;
                 storeTile = Point.Empty;
+                storePoly = new List<Point>();
             }
             else
                 mapPanel.Cursor = Cursors.Default;
@@ -2802,13 +2804,16 @@ namespace MapEditor
                     MapRenderer.FakeWalls.Add(wall.Wall.Location, wall.Wall);
             }
             else
+            {
                 mapPanel.Cursor = Cursors.Default;
+                storePoly = new List<Point>();
+            }
 
             MapRenderer.UpdateCanvas(false, true, false);
             mapPanel.Invalidate();
             pasteAreaMode = cmdPasteArea.Checked;
         }
-        private void CopyArea(Point[] poly)
+        public void CopyArea(Point[] poly)
         {
             CopiedArea = new TimeContent();
             StoreTiles(poly);
@@ -2821,6 +2826,8 @@ namespace MapEditor
                 storeTile = CopiedArea.StoredTiles[0].Tile.Location;
 
             CopiedAreaClone = CopiedArea.Clone();
+            storePoly = poly.ToList();
+            storePoly.Add(poly[0]);
 
             cmdCopyArea.Checked = false;
             cmdPasteArea.Enabled = true;

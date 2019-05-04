@@ -11,9 +11,6 @@ using NoxShared;
 
 namespace MapEditor.newgui
 {
-    /// <summary>
-    /// Description of PolygonEditor.
-    /// </summary>
     public partial class PolygonEditor : Form
     {
         private Map subjMap
@@ -28,13 +25,39 @@ namespace MapEditor.newgui
         public Map.Polygon SuperPolygon = null;
         public PolygonEditor()
         {
-            //
-            // The InitializeComponent() call is required for Windows Forms designer support.
-            //
             InitializeComponent();
+        }
 
-            
-            
+        private void PolygonEditorLoad(object sender, EventArgs e)
+        {
+            if (subjMap != null)
+            {
+                UpdatePolygonList();
+                StatusChanged();
+            }
+        }
+        private void PolygonEditor_Activated(object sender, EventArgs e)
+        {
+            if (subjMap != null)
+            {
+                UpdatePolygonList();
+                StatusChanged();
+            }
+        }
+        private void PolygonEditor_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
+                MapInterface.CurrentMode = EditMode.POLYGON_RESHAPE;
+            else
+            {
+                SuperPolygon = null;
+                MainWindow.Instance.mapView.TabMapToolsSelectedIndexChanged(sender, e);
+            }
+        }
+        private void PolygonEditor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Visible = false;
         }
 
         private void UpdatePolygonList()
@@ -55,9 +78,8 @@ namespace MapEditor.newgui
             }
 
         }
-        void StatusChanged()
+        private void StatusChanged()
         {
-
             if (listBoxPolygons.Items.Count > 0 && listBoxPolygons.SelectedIndex < 0)
                 listBoxPolygons.SelectedIndex = 0;
 
@@ -66,18 +88,17 @@ namespace MapEditor.newgui
                 buttonPoints.Enabled = false;
                 buttonDelete.Enabled = false;
                 buttonModify.Enabled = false;
+                buttonCopyMap.Enabled = false;
                 return;
             }
             buttonPoints.Enabled = true;
             buttonDelete.Enabled = true;
             buttonModify.Enabled = true;
-            MapInterface.CurrentMode = MapInt.EditMode.POLYGON_RESHAPE;
-            
-                
-
-
+            buttonCopyMap.Enabled = true;
+            MapInterface.CurrentMode = EditMode.POLYGON_RESHAPE;
         }
-       public void ButtonModifyClick(object sender, EventArgs e)
+
+        public void ButtonModifyClick(object sender, EventArgs e)
         {
             if (listBoxPolygons.SelectedIndex < 0) return;
 
@@ -86,10 +107,8 @@ namespace MapEditor.newgui
             subjMap.Polygons[listBoxPolygons.SelectedIndex] = polygonDlg.Polygon;
             UpdatePolygonList();
             StatusChanged();
-
         }
-
-        void ButtonNewClick(object sender, EventArgs e)
+        private void ButtonNewClick(object sender, EventArgs e)
         {
             polygonDlg.Polygon = null;
             if (polygonDlg.ShowDialog() == DialogResult.OK && polygonDlg.Polygon != null)
@@ -99,8 +118,7 @@ namespace MapEditor.newgui
                 listBoxPolygons.SelectedIndex = 0;
             }
         }
-
-        void ButtonDeleteClick(object sender, EventArgs e)
+        private void ButtonDeleteClick(object sender, EventArgs e)
         {
             if (listBoxPolygons.SelectedIndex < 0) return;
 
@@ -113,32 +131,12 @@ namespace MapEditor.newgui
             StatusChanged();
             MainWindow.Instance.Reload();
         }
-
-        void PolygonEditorLoad(object sender, EventArgs e)
-        {
-            if (subjMap != null)
-            {
-                UpdatePolygonList();
-                StatusChanged();
-
-            }
-        }
-
-        void ButtonDoneClick(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
-            this.Hide();
-
-            MainWindow.Instance.Focus();
-            MainWindow.Instance.Reload();
-        }
-
-        void ButtonPointsClick(object sender, EventArgs e)
+        private void ButtonPointsClick(object sender, EventArgs e)
         {
             if (listBoxPolygons.SelectedIndex < 0) return;
 
             // update mapinterface
-            MapInterface.CurrentMode = MapInt.EditMode.POLYGON_RESHAPE;
+            MapInterface.CurrentMode = EditMode.POLYGON_RESHAPE;
             SelectedPolygon = (Map.Polygon)subjMap.Polygons[listBoxPolygons.SelectedIndex];
             MapInterface.SelectedPolyPoint = new PointF();
             MainWindow.Instance.Focus();
@@ -147,7 +145,7 @@ namespace MapEditor.newgui
             MainWindow.Instance.Reload();
         }
 
-        void ButtonUpClick(object sender, EventArgs e)
+        private void ButtonUpClick(object sender, EventArgs e)
         {
             int index = listBoxPolygons.SelectedIndex;
             if (index < 0) return;
@@ -160,8 +158,7 @@ namespace MapEditor.newgui
             listBoxPolygons.SelectedIndex = index;
             UpdatePolygonList();
         }
-
-        void ButtonDownClick(object sender, EventArgs e)
+        private void ButtonDownClick(object sender, EventArgs e)
         {
             int index = listBoxPolygons.SelectedIndex;
             if (index < 0) return;
@@ -174,39 +171,27 @@ namespace MapEditor.newgui
             listBoxPolygons.SelectedIndex = index;
             UpdatePolygonList();
         }
+        private void ButtonDoneClick(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Hide();
+
+            MainWindow.Instance.Focus();
+            MainWindow.Instance.Reload();
+        }
 
         private void listBoxPolygons_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxPolygons.SelectedIndex < 0) return;
 
-            MapInterface.CurrentMode = MapInt.EditMode.POLYGON_RESHAPE;
+            MapInterface.CurrentMode = EditMode.POLYGON_RESHAPE;
             SelectedPolygon = (Map.Polygon)subjMap.Polygons[listBoxPolygons.SelectedIndex];
             MapInterface.SelectedPolyPoint = new PointF();
             if (LockedBox.Checked) SuperPolygon = SelectedPolygon;
-  		else SuperPolygon = null;
+  		    else SuperPolygon = null;
             MainWindow.Instance.Reload();
             StatusChanged();
         }
-
-        private void PolygonEditor_Shown(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PolygonEditor_Activated(object sender, EventArgs e)
-        {
-            if (subjMap != null)
-            {
-                UpdatePolygonList();
-                StatusChanged();
-            }
-        }
-
-        private void ambientColors_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void listBoxPolygons_ControlAdded(object sender, ControlEventArgs e)
         {
             if (listBoxPolygons.SelectedIndex < 0)
@@ -219,17 +204,6 @@ namespace MapEditor.newgui
             buttonDelete.Enabled = true;
             buttonModify.Enabled = true;
         }
-
-        private void PolygonEditor_MouseLeave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBoxPolygons_SelectedValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void listBoxPolygons_ControlRemoved(object sender, ControlEventArgs e)
         {
             if (listBoxPolygons.SelectedIndex < 0)
@@ -242,7 +216,6 @@ namespace MapEditor.newgui
             buttonDelete.Enabled = true;
             buttonModify.Enabled = true;
         }
-
         private void LockedBox_CheckedChanged(object sender, EventArgs e)
         {
             if (LockedBox.Checked)
@@ -251,22 +224,17 @@ namespace MapEditor.newgui
             MainWindow.Instance.Reload();
         }
 
-        private void PolygonEditor_VisibleChanged(object sender, EventArgs e)
+        private void ButtonCopyMapClick(object sender, EventArgs e)
         {
-            if (this.Visible)
-                MapInterface.CurrentMode = MapInt.EditMode.POLYGON_RESHAPE;
-            else
-            {
-                SuperPolygon = null;
-                MainWindow.Instance.mapView.TabMapToolsSelectedIndexChanged(sender, e);
-                
-            }
-        }
+            if (listBoxPolygons.SelectedIndex < 0)
+                return;
 
-        private void PolygonEditor_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            this.Visible = false;
+            var pts = ((Map.Polygon)subjMap.Polygons[listBoxPolygons.SelectedIndex]).Points;
+            var newPts = new System.Collections.Generic.List<Point>();
+            foreach (var p in pts)
+                newPts.Add(p.ToPoint());
+
+            MainWindow.Instance.mapView.CopyArea(newPts.ToArray());
         }
     }
 }

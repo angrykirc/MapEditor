@@ -787,6 +787,15 @@ namespace MapEditor.render
                 }
             }
 
+            // Draw copied selection
+            if (MainWindow.Instance.mapView.storePoly.Count > 2)
+            {
+                var pen1 = new Pen(Brushes.DeepSkyBlue, 4);
+                pen1.DashStyle = DashStyle.Dash;
+
+                g.DrawLines(pen1, MainWindow.Instance.mapView.storePoly.ToArray());
+            }
+
             // Draw waypoints
             if (EditorSettings.Default.Draw_Waypoints)
             {

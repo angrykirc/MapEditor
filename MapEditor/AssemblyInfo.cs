@@ -5,7 +5,7 @@ using System.Reflection;
 [assembly: AssemblyTitle("Nox Map Editor")]
 [assembly: AssemblyDescription("Fan-made nonprofit open source map editor for Nox.")]
 [assembly: AssemblyVersion("1")]
-[assembly: AssemblyFileVersion("1.1")]
+[assembly: AssemblyFileVersion("1.12")]
 
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MapEditor")]
