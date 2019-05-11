@@ -120,13 +120,12 @@ namespace MapEditor.newgui
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(107, 118);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.Size = new System.Drawing.Size(69, 21);
             this.label3.TabIndex = 8;
             this.label3.Text = "Brush size:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // comboIgnoreTile
             // 
@@ -185,12 +184,11 @@ namespace MapEditor.newgui
             // 
             this.checkAutoVari.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkAutoVari.AutoSize = true;
             this.checkAutoVari.Checked = true;
             this.checkAutoVari.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkAutoVari.Location = new System.Drawing.Point(12, 116);
             this.checkAutoVari.Name = "checkAutoVari";
-            this.checkAutoVari.Size = new System.Drawing.Size(91, 17);
+            this.checkAutoVari.Size = new System.Drawing.Size(113, 20);
             this.checkAutoVari.TabIndex = 2;
             this.checkAutoVari.Text = "Auto variation";
             this.checkAutoVari.UseVisualStyleBackColor = true;

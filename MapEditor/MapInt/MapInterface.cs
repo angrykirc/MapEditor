@@ -1077,7 +1077,7 @@ namespace MapEditor.MapInt
             if (TheMap.Tiles.ContainsKey(pt))
             {
                 Map.Tile.EdgeTile edge = mapView.EdgeMakeNewCtrl.GetEdge();
-                if (MainWindow.Instance.mapView.EdgeMakeNewCtrl.AutoEgeBox.Checked)
+                if (MainWindow.Instance.mapView.EdgeMakeNewCtrl.chkAutoEdge.Checked)
                 {
                     _instance._mapHelper.SetTileMaterial(ThingDb.FloorTileNames[edge.Graphic]);
                     _instance._mapHelper.SetEdgeMaterial(ThingDb.EdgeTileNames[edge.Edge]);
@@ -1086,7 +1086,6 @@ namespace MapEditor.MapInt
                 else
                 {
                     Map.Tile tile = TheMap.Tiles[pt];
-
 
                     foreach (Map.Tile.EdgeTile ex in tile.EdgeTiles)
                     {

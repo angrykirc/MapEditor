@@ -535,7 +535,7 @@ namespace MapEditor
                 Point ptAligned = pt;
 
                 // call handlers for some mouse operations
-                if (MapInterface.CurrentMode == Mode.FLOOR_BRUSH || MapInterface.CurrentMode == Mode.FLOOR_PLACE || MapInterface.CurrentMode == Mode.WALL_BRUSH || (EdgeMakeNewCtrl.AutoEgeBox.Checked && MapInterface.CurrentMode == Mode.EDGE_PLACE))
+                if (MapInterface.CurrentMode == Mode.FLOOR_BRUSH || MapInterface.CurrentMode == Mode.FLOOR_PLACE || MapInterface.CurrentMode == Mode.WALL_BRUSH || (EdgeMakeNewCtrl.chkAutoEdge.Checked && MapInterface.CurrentMode == Mode.EDGE_PLACE))
                     MapInterface.HandleLMouseClick(pt);
 
                 // Snap to grid
@@ -1877,7 +1877,6 @@ namespace MapEditor
                     var numCorners = GetNumCorners(t);
                     if ((numWalls2 == 3) && (numCorners == 1))
                         baseFloorMap[t.X, t.Y] = true;
-                    
                 }
             }
         }

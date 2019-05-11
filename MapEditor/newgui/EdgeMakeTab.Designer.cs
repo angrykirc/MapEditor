@@ -38,11 +38,12 @@ namespace MapEditor.newgui
             this.lblEdgeType = new System.Windows.Forms.Label();
             this.listEdgeImages = new System.Windows.Forms.ListView();
             this.ignoreAllBox = new System.Windows.Forms.CheckBox();
-            this.AutoEgeBox = new System.Windows.Forms.CheckBox();
+            this.chkAutoEdge = new System.Windows.Forms.CheckBox();
             this.preserveBox = new System.Windows.Forms.CheckBox();
             this.AutoEdgeGrp = new System.Windows.Forms.GroupBox();
             this.Picker = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.chkAutoVariation = new System.Windows.Forms.CheckBox();
             this.AutoEdgeGrp.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,18 +96,17 @@ namespace MapEditor.newgui
             this.ignoreAllBox.Text = "Ignore all except";
             this.ignoreAllBox.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.ignoreAllBox.UseVisualStyleBackColor = true;
-            this.ignoreAllBox.CheckedChanged += new System.EventHandler(this.ignoreAllBox_CheckedChanged);
             // 
-            // AutoEgeBox
+            // chkAutoEdge
             // 
-            this.AutoEgeBox.AutoSize = true;
-            this.AutoEgeBox.Location = new System.Drawing.Point(10, 47);
-            this.AutoEgeBox.Name = "AutoEgeBox";
-            this.AutoEgeBox.Size = new System.Drawing.Size(76, 17);
-            this.AutoEgeBox.TabIndex = 6;
-            this.AutoEgeBox.Text = "Auto Edge";
-            this.AutoEgeBox.UseVisualStyleBackColor = true;
-            this.AutoEgeBox.CheckedChanged += new System.EventHandler(this.AutoEgeBox_CheckedChanged_1);
+            this.chkAutoEdge.AutoSize = true;
+            this.chkAutoEdge.Location = new System.Drawing.Point(10, 47);
+            this.chkAutoEdge.Name = "chkAutoEdge";
+            this.chkAutoEdge.Size = new System.Drawing.Size(76, 17);
+            this.chkAutoEdge.TabIndex = 6;
+            this.chkAutoEdge.Text = "Auto Edge";
+            this.chkAutoEdge.UseVisualStyleBackColor = true;
+            this.chkAutoEdge.CheckedChanged += new System.EventHandler(this.chkAutoEdge_CheckedChanged);
             // 
             // preserveBox
             // 
@@ -129,7 +129,6 @@ namespace MapEditor.newgui
             this.AutoEdgeGrp.TabIndex = 8;
             this.AutoEdgeGrp.TabStop = false;
             this.AutoEdgeGrp.Text = "Auto Edge options";
-            this.AutoEdgeGrp.Enter += new System.EventHandler(this.AutoEdgeGrp_Enter);
             // 
             // Picker
             // 
@@ -144,19 +143,31 @@ namespace MapEditor.newgui
             this.Picker.UseVisualStyleBackColor = true;
             this.Picker.CheckedChanged += new System.EventHandler(this.Picker_CheckedChanged);
             // 
+            // chkAutoVariation
+            // 
+            this.chkAutoVariation.AutoSize = true;
+            this.chkAutoVariation.Checked = true;
+            this.chkAutoVariation.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAutoVariation.Location = new System.Drawing.Point(83, 47);
+            this.chkAutoVariation.Name = "chkAutoVariation";
+            this.chkAutoVariation.Size = new System.Drawing.Size(92, 17);
+            this.chkAutoVariation.TabIndex = 40;
+            this.chkAutoVariation.Text = "Auto Variation";
+            this.chkAutoVariation.UseVisualStyleBackColor = true;
+            // 
             // EdgeMakeTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Picker);
-            this.Controls.Add(this.AutoEgeBox);
+            this.Controls.Add(this.chkAutoVariation);
+            this.Controls.Add(this.chkAutoEdge);
             this.Controls.Add(this.AutoEdgeGrp);
             this.Controls.Add(this.listEdgeImages);
             this.Controls.Add(this.comboEdgeType);
             this.Controls.Add(this.lblEdgeType);
             this.Name = "EdgeMakeTab";
             this.Size = new System.Drawing.Size(216, 543);
-            this.Load += new System.EventHandler(this.EdgeMakeTab_Load);
             this.AutoEdgeGrp.ResumeLayout(false);
             this.AutoEdgeGrp.PerformLayout();
             this.ResumeLayout(false);
@@ -166,11 +177,12 @@ namespace MapEditor.newgui
 		private System.Windows.Forms.ListView listEdgeImages;
         private System.Windows.Forms.Label lblEdgeType;
         public System.Windows.Forms.CheckBox ignoreAllBox;
-        public System.Windows.Forms.CheckBox AutoEgeBox;
+        public System.Windows.Forms.CheckBox chkAutoEdge;
         public System.Windows.Forms.CheckBox preserveBox;
         private System.Windows.Forms.GroupBox AutoEdgeGrp;
         public System.Windows.Forms.CheckBox Picker;
         private System.Windows.Forms.ToolTip toolTip1;
         public System.Windows.Forms.ComboBox comboEdgeType;
-	}
+        public System.Windows.Forms.CheckBox chkAutoVariation;
+    }
 }

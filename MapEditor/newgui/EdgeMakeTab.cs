@@ -26,9 +26,6 @@ namespace MapEditor.newgui
 
         public EdgeMakeTab()
         {
-            //
-            // The InitializeComponent() call is required for Windows Forms designer support.
-            //
             InitializeComponent();
 
             //blackTileSprite = (int) ThingDb.FloorTiles[ThingDb.FloorTileNames.IndexOf("Black")].Variations[0];
@@ -36,7 +33,7 @@ namespace MapEditor.newgui
             listEdgeImages.RetrieveVirtualItem += new RetrieveVirtualItemEventHandler(listEdgeImages_RetrieveVirtualItem);
         }
 
-        void listEdgeImages_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
+        private void listEdgeImages_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
             ListViewItem item = new ListViewItem("", e.ItemIndex);
             item.BackColor = Color.White;
@@ -67,8 +64,56 @@ namespace MapEditor.newgui
         {
             // как покрытие юзаем тот тайл что выбран во вкладке Tiles
             Map.Tile coverTile = mapView.TileMakeNewCtrl.GetTile(Point.Empty);
-            // MessageBox.Show(edgeDirection.ToString());
-            return new Map.Tile.EdgeTile(coverTile.graphicId, coverTile.Variation, (Map.Tile.EdgeTile.Direction)edgeDirection, (byte)edgeTypeID);
+
+            var edgeDir = (Map.Tile.EdgeTile.Direction)edgeDirection;
+            if ((chkAutoVariation.Checked) && (!chkAutoEdge.Checked))
+                edgeDir = GetRandomVariation(edgeDir);
+
+            return new Map.Tile.EdgeTile(coverTile.graphicId, coverTile.Variation, edgeDir, (byte)edgeTypeID);
+        }
+        private Map.Tile.EdgeTile.Direction GetRandomVariation(Map.Tile.EdgeTile.Direction dir)
+        {
+            // Variation is actually Direction, 3 variations for N, S, E, W
+            var r = new Random();
+
+            switch (dir)
+            {
+                case Map.Tile.EdgeTile.Direction.East:
+                case Map.Tile.EdgeTile.Direction.East_D:
+                case Map.Tile.EdgeTile.Direction.East_E:
+                    return (Map.Tile.EdgeTile.Direction)r.Next(12, 15);
+                case Map.Tile.EdgeTile.Direction.West:
+                case Map.Tile.EdgeTile.Direction.West_02:
+                case Map.Tile.EdgeTile.Direction.West_03:
+                    return (Map.Tile.EdgeTile.Direction)r.Next(1, 4);
+                case Map.Tile.EdgeTile.Direction.North:
+                case Map.Tile.EdgeTile.Direction.North_08:
+                case Map.Tile.EdgeTile.Direction.North_0A:
+                    return OddRandom(true, r);
+                case Map.Tile.EdgeTile.Direction.South:
+                case Map.Tile.EdgeTile.Direction.South_07:
+                case Map.Tile.EdgeTile.Direction.South_09:
+                    return OddRandom(false, r);
+                default:
+                    return dir;
+            }
+        }
+        private Map.Tile.EdgeTile.Direction OddRandom(bool north, Random r)
+        {
+            if (north)
+            {
+                int i = r.Next(1, 4);
+                if (i == 1) return Map.Tile.EdgeTile.Direction.North;
+                if (i == 2) return Map.Tile.EdgeTile.Direction.North_08;
+                return Map.Tile.EdgeTile.Direction.North_0A;
+            }
+            else
+            {
+                int i = r.Next(1, 4);
+                if (i == 1) return Map.Tile.EdgeTile.Direction.South;
+                if (i == 2) return Map.Tile.EdgeTile.Direction.South_07;
+                return Map.Tile.EdgeTile.Direction.South_09;
+            }
         }
 
         public void UpdateListView(object sender, EventArgs e)
@@ -103,45 +148,24 @@ namespace MapEditor.newgui
             }
         }
 
-        void SelectEdgeDirection(object sender, EventArgs e)
+        private void SelectEdgeDirection(object sender, EventArgs e)
         {
             if (listEdgeImages.SelectedIndices.Count > 0)
-            {
                 edgeDirection = listEdgeImages.SelectedIndices[0];
-               
-            }
             
             // update mapinterface
             //mapView.GetMapInt().EdgeSetData((byte) edgeTypeID, (byte) edgeDirection);
         }
 
-       
-
-        private void AutoEgeBox_CheckedChanged_1(object sender, EventArgs e)
+        private void chkAutoEdge_CheckedChanged(object sender, EventArgs e)
         {
-            if (AutoEgeBox.Checked)
-            {
-                AutoEdgeGrp.Enabled = true;
-               // ignoreAllBox.Enabled = true;
-                //preserveBox.Enabled = true;
-            }
-            else
-            {
-                AutoEdgeGrp.Enabled = false;
-                //ignoreAllBox.Enabled = false;
-                //preserveBox.Enabled = false;
-            }
-        
+            AutoEdgeGrp.Enabled = chkAutoEdge.Checked;
+            chkAutoVariation.Enabled = !chkAutoEdge.Checked;
         }
 
         private void listEdgeImages_MouseClick(object sender, MouseEventArgs e)
         {
-            AutoEgeBox.Checked = false;
-        }
-
-        private void AutoEdgeGrp_Enter(object sender, EventArgs e)
-        {
-
+            chkAutoEdge.Checked = false;
         }
 
         private void Picker_CheckedChanged(object sender, EventArgs e)
@@ -152,20 +176,7 @@ namespace MapEditor.newgui
             {
                 mapView.Picker.Checked = false;
                 mapView.picking = false;
-
-
             }
         }
-
-        private void ignoreAllBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EdgeMakeTab_Load(object sender, EventArgs e)
-        {
-
-        }
-
     }   
 }

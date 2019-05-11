@@ -637,7 +637,7 @@ namespace MapEditor.render
                 // Change overlay color depending on editor EditMode
                 Color tileOverlayCol = Color.Yellow;
                 if (MapInterface.CurrentMode == EditMode.EDGE_PLACE)
-                    tileOverlayCol = MainWindow.Instance.mapView.EdgeMakeNewCtrl.AutoEgeBox.Checked ? Color.Green : Color.Aqua;
+                    tileOverlayCol = MainWindow.Instance.mapView.EdgeMakeNewCtrl.chkAutoEdge.Checked ? Color.Green : Color.Aqua;
                 if (MapInterface.CurrentMode == EditMode.FLOOR_BRUSH) tileOverlayCol = Color.LawnGreen;
 
                 if (mapView.picking)
