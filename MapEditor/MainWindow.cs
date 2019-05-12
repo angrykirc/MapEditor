@@ -155,1945 +155,6 @@ namespace MapEditor
             Environment.Exit(0);
         }
         #endregion
-        #region Windows Form Designer generated code
-        private System.ComponentModel.IContainer components;
-        private TabPage largeMap;
-        public TabControl panelTabs;
-        private TabPage mapInfoTab;
-        private Label labelTitle;
-        private GroupBox groupMapInfoTab;
-        private TextBox mapSummary;
-        private Label labelDescription;
-        private Label labelVersion;
-        private TextBox mapDescription;
-        private Label labelAuthor;
-        private Label labelAuthor2;
-        private Label labelEmail;
-        private Label labelEmail2;
-        private TextBox mapAuthor;
-        private TextBox mapEmail;
-        private TextBox mapEmail2;
-        private TextBox mapAuthor2;
-        private Label labelDate;
-        private TextBox mapDate;
-        private TextBox mapVersion;
-        private Label labelCopyright;
-        private Label minRecLbl;
-        private Label maxRecLbl;
-        private Label recommendedLbl;
-        private Label mapTypeLbl;
-        private TextBox mapMinRec;
-        private TextBox mapMaxRec;
-        private ComboBox mapType;
-        private TextBox mapCopyright;
-        private Label label1;
-        private Label label2;
-        private TextBox questTitle;
-        private TextBox questGraphic;
-        private Label label3;
-        private TabPage minimapTab;
-        private Panel MinimapPanel;
-        private GroupBox groupMiniMapTab;
-        private Button cmdGoToCenter;
-        private CheckBox chkDivide;
-        private CheckBox chkDivide2;
-        private Label label4;
-        private Panel panelAmbientColor;
-        private Panel panelInnerMinimap;
-        private NumericUpDown numMinimapZoom;
-        private Label label5;
-        private CheckBox miniEdit;
-        private Panel MiniEditPanel;
-        private Label labelSep2;
-        private RadioButton miniTileBrush;
-        private RadioButton miniTilePLace;
-        private RadioButton miniWallBrush;
-        private NumericUpDown numBrushSize;
-        private Label label8;
-        private Label label7;
-        private Label label6;
-        public CheckBox miniLineWall;
-        public Button miniRedo;
-        public Button miniUndo;
-        private Label label9;
-        private Button cmdPolygons;
-        private Label label10;
-        private CheckBox chkServerPlayerLimit;
-        private CheckBox chkAutoIncrement;
-        private Button cmdDebug;
-
-        private MenuStrip mainMenuStrip;
-        private ToolStripMenuItem menuFile;
-        private ToolStripMenuItem menuNew;
-        private ToolStripMenuItem menuOpen;
-        private ToolStripMenuItem menuInstallMap;
-        private ToolStripMenuItem menuRecent;
-        public ToolStripMenuItem menuSave;
-        private ToolStripMenuItem menuSaveAs;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripMenuItem menuImportSave;
-        private ToolStripMenuItem menuImportScript;
-        private ToolStripMenuItem menuExportScript;
-        private ToolStripMenuItem menuExportNativeScript;
-        private ToolStripSeparator toolStripSeparator2;
-        private ToolStripMenuItem menuExit;
-        private ToolStripMenuItem menuMap;
-        private ToolStripMenuItem menuOptions;
-        private ToolStripMenuItem menuHelp;
-        private ToolStripMenuItem menuShortcuts;
-        private ToolStripMenuItem menuUndo;
-        private ToolStripMenuItem menuRedo;
-        private ToolStripMenuItem menuListObjects;
-        private ToolStripMenuItem menuScripts;
-        private ToolStripMenuItem menuGroups;
-        private ToolStripMenuItem menuPolygons;
-        private ToolStripSeparator toolStripSeparator3;
-        private ToolStripMenuItem menuFixExtents;
-        private ToolStripMenuItem menuMapGenerator;
-        private ToolStripMenuItem menuShowGrid;
-        private ToolStripMenuItem menuShowMinimap;
-        public ToolStripMenuItem menuVisualPreviewMode;
-        private ToolStripMenuItem menuInvertColors;
-        private ToolStripSeparator toolStripSeparator4;
-        public ToolStripMenuItem menuSettings;
-        private ToolStripMenuItem menuHelpLink1;
-        private ToolStripMenuItem menuHelpLink2;
-        private ToolStripSeparator toolStripSeparator5;
-        private ToolStripMenuItem menuHelpLink3;
-        private ToolStripMenuItem menuHelpLink4;
-        private ToolStripSeparator toolStripSeparator6;
-        private ToolStripMenuItem menuAbout;
-        private ToolStripMenuItem menuPicker;
-        private ToolStripMenuItem menuRectangleDraw;
-        private ToolStripMenuItem menuLineDraw;
-        private ToolStripMenuItem menuRotateSelection45;
-        private ToolStripMenuItem menuDrawWalls;
-        private ToolStripMenuItem menuDrawObjects;
-        private ToolStripMenuItem menuDraw3DExtents;
-        private ToolStripMenuItem menuDrawWaypoints;
-        private ToolStripMenuItem menuDrawTeleportPaths;
-        private ToolStripMenuItem menuColorSpecialWalls;
-
-        private TabPage mapImageTab;
-        private PictureBox picMapImage;
-        private GroupBox groupImgExport;
-        private Label lblImgDimensions;
-        private TrackBar trackImgSize;
-        private Label lblImgSize;
-        private NumericUpDown numImgPadding;
-        private Label lblImgPadding;
-        private CheckBox chkImgAutoCrop;
-        private GroupBox groupImgEntities;
-        private CheckBox chkImgBroken;
-        private CheckBox chkImgBoss;
-        private CheckBox chkImgAmbient;
-        private CheckBox chkImgHard;
-        private CheckBox chkImgEasy;
-        private ProgressBar progBarImage;
-        private GroupBox groupImgObjects;
-        private CheckBox chkImgQuest;
-        private CheckBox chkImgChests;
-        private CheckBox chkImgFood;
-        private CheckBox chkImgWeapons;
-        private CheckBox chkImgCrystals;
-        private CheckBox chkImgGold;
-        private CheckBox chkImgPotions;
-        private CheckBox chkImgArmor;
-        private CheckBox chkImgUseCurrentSettings;
-        private Button cmdImgExport;
-        private CheckBox chkImgBackground;
-        private Button cmdImgRender;
-
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.mapInfoTab = new System.Windows.Forms.TabPage();
-            this.groupMapInfoTab = new System.Windows.Forms.GroupBox();
-            this.chkServerPlayerLimit = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panelAmbientColor = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.questGraphic = new System.Windows.Forms.TextBox();
-            this.questTitle = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.mapType = new System.Windows.Forms.ComboBox();
-            this.mapTypeLbl = new System.Windows.Forms.Label();
-            this.recommendedLbl = new System.Windows.Forms.Label();
-            this.maxRecLbl = new System.Windows.Forms.Label();
-            this.minRecLbl = new System.Windows.Forms.Label();
-            this.mapMaxRec = new System.Windows.Forms.TextBox();
-            this.mapMinRec = new System.Windows.Forms.TextBox();
-            this.mapCopyright = new System.Windows.Forms.TextBox();
-            this.labelCopyright = new System.Windows.Forms.Label();
-            this.mapVersion = new System.Windows.Forms.TextBox();
-            this.mapDate = new System.Windows.Forms.TextBox();
-            this.labelDate = new System.Windows.Forms.Label();
-            this.mapAuthor2 = new System.Windows.Forms.TextBox();
-            this.mapEmail2 = new System.Windows.Forms.TextBox();
-            this.mapEmail = new System.Windows.Forms.TextBox();
-            this.mapAuthor = new System.Windows.Forms.TextBox();
-            this.labelEmail2 = new System.Windows.Forms.Label();
-            this.labelEmail = new System.Windows.Forms.Label();
-            this.labelAuthor2 = new System.Windows.Forms.Label();
-            this.labelAuthor = new System.Windows.Forms.Label();
-            this.labelVersion = new System.Windows.Forms.Label();
-            this.mapDescription = new System.Windows.Forms.TextBox();
-            this.labelDescription = new System.Windows.Forms.Label();
-            this.labelTitle = new System.Windows.Forms.Label();
-            this.mapSummary = new System.Windows.Forms.TextBox();
-            this.chkAutoIncrement = new System.Windows.Forms.CheckBox();
-            this.minimapTab = new System.Windows.Forms.TabPage();
-            this.MinimapPanel = new System.Windows.Forms.Panel();
-            this.panelInnerMinimap = new System.Windows.Forms.Panel();
-            this.miniViewPanel = new MapEditor.MainWindow.FlickerFreePanel();
-            this.groupMiniMapTab = new System.Windows.Forms.GroupBox();
-            this.cmdDebug = new System.Windows.Forms.Button();
-            this.MiniEditPanel = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cmdPolygons = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.miniRedo = new System.Windows.Forms.Button();
-            this.miniUndo = new System.Windows.Forms.Button();
-            this.miniLineWall = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.numBrushSize = new System.Windows.Forms.NumericUpDown();
-            this.miniTileBrush = new System.Windows.Forms.RadioButton();
-            this.miniTilePLace = new System.Windows.Forms.RadioButton();
-            this.miniWallBrush = new System.Windows.Forms.RadioButton();
-            this.labelSep2 = new System.Windows.Forms.Label();
-            this.miniEdit = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.numMinimapZoom = new System.Windows.Forms.NumericUpDown();
-            this.chkDivide2 = new System.Windows.Forms.CheckBox();
-            this.chkDivide = new System.Windows.Forms.CheckBox();
-            this.cmdGoToCenter = new System.Windows.Forms.Button();
-            this.largeMap = new System.Windows.Forms.TabPage();
-            this.mapView = new MapEditor.MapView();
-            this.panelTabs = new System.Windows.Forms.TabControl();
-            this.mapImageTab = new System.Windows.Forms.TabPage();
-            this.cmdImgRender = new System.Windows.Forms.Button();
-            this.groupImgExport = new System.Windows.Forms.GroupBox();
-            this.chkImgBackground = new System.Windows.Forms.CheckBox();
-            this.lblImgDimensions = new System.Windows.Forms.Label();
-            this.trackImgSize = new System.Windows.Forms.TrackBar();
-            this.numImgPadding = new System.Windows.Forms.NumericUpDown();
-            this.lblImgPadding = new System.Windows.Forms.Label();
-            this.chkImgAutoCrop = new System.Windows.Forms.CheckBox();
-            this.lblImgSize = new System.Windows.Forms.Label();
-            this.cmdImgExport = new System.Windows.Forms.Button();
-            this.groupImgEntities = new System.Windows.Forms.GroupBox();
-            this.chkImgBroken = new System.Windows.Forms.CheckBox();
-            this.chkImgBoss = new System.Windows.Forms.CheckBox();
-            this.chkImgAmbient = new System.Windows.Forms.CheckBox();
-            this.chkImgHard = new System.Windows.Forms.CheckBox();
-            this.chkImgEasy = new System.Windows.Forms.CheckBox();
-            this.progBarImage = new System.Windows.Forms.ProgressBar();
-            this.groupImgObjects = new System.Windows.Forms.GroupBox();
-            this.chkImgQuest = new System.Windows.Forms.CheckBox();
-            this.chkImgChests = new System.Windows.Forms.CheckBox();
-            this.chkImgFood = new System.Windows.Forms.CheckBox();
-            this.chkImgWeapons = new System.Windows.Forms.CheckBox();
-            this.chkImgCrystals = new System.Windows.Forms.CheckBox();
-            this.chkImgGold = new System.Windows.Forms.CheckBox();
-            this.chkImgPotions = new System.Windows.Forms.CheckBox();
-            this.chkImgArmor = new System.Windows.Forms.CheckBox();
-            this.chkImgUseCurrentSettings = new System.Windows.Forms.CheckBox();
-            this.picMapImage = new System.Windows.Forms.PictureBox();
-            this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuRecent = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuInstallMap = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSaveAs = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuImportSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuImportScript = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuExportScript = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuExportNativeScript = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuMap = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuListObjects = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuScripts = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuGroups = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuPolygons = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuFixExtents = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuMapGenerator = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuOptions = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuShowGrid = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuShowMinimap = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualPreviewMode = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuInvertColors = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelpLink1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelpLink2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuHelpLink3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelpLink4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuShortcuts = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuUndo = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuRedo = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuPicker = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuRectangleDraw = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuLineDraw = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuRotateSelection45 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDrawWalls = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDrawObjects = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDraw3DExtents = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDrawTeleportPaths = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDrawWaypoints = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuColorSpecialWalls = new System.Windows.Forms.ToolStripMenuItem();
-            this.mapInfoTab.SuspendLayout();
-            this.groupMapInfoTab.SuspendLayout();
-            this.minimapTab.SuspendLayout();
-            this.MinimapPanel.SuspendLayout();
-            this.panelInnerMinimap.SuspendLayout();
-            this.groupMiniMapTab.SuspendLayout();
-            this.MiniEditPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numBrushSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numMinimapZoom)).BeginInit();
-            this.largeMap.SuspendLayout();
-            this.panelTabs.SuspendLayout();
-            this.mapImageTab.SuspendLayout();
-            this.groupImgExport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackImgSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numImgPadding)).BeginInit();
-            this.groupImgEntities.SuspendLayout();
-            this.groupImgObjects.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMapImage)).BeginInit();
-            this.mainMenuStrip.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // mapInfoTab
-            // 
-            this.mapInfoTab.Controls.Add(this.groupMapInfoTab);
-            this.mapInfoTab.Location = new System.Drawing.Point(4, 22);
-            this.mapInfoTab.Name = "mapInfoTab";
-            this.mapInfoTab.Size = new System.Drawing.Size(1000, 691);
-            this.mapInfoTab.TabIndex = 0;
-            this.mapInfoTab.Text = "Map Info";
-            this.mapInfoTab.UseVisualStyleBackColor = true;
-            // 
-            // groupMapInfoTab
-            // 
-            this.groupMapInfoTab.Controls.Add(this.chkServerPlayerLimit);
-            this.groupMapInfoTab.Controls.Add(this.label4);
-            this.groupMapInfoTab.Controls.Add(this.panelAmbientColor);
-            this.groupMapInfoTab.Controls.Add(this.label3);
-            this.groupMapInfoTab.Controls.Add(this.questGraphic);
-            this.groupMapInfoTab.Controls.Add(this.questTitle);
-            this.groupMapInfoTab.Controls.Add(this.label2);
-            this.groupMapInfoTab.Controls.Add(this.label1);
-            this.groupMapInfoTab.Controls.Add(this.mapType);
-            this.groupMapInfoTab.Controls.Add(this.mapTypeLbl);
-            this.groupMapInfoTab.Controls.Add(this.recommendedLbl);
-            this.groupMapInfoTab.Controls.Add(this.maxRecLbl);
-            this.groupMapInfoTab.Controls.Add(this.minRecLbl);
-            this.groupMapInfoTab.Controls.Add(this.mapMaxRec);
-            this.groupMapInfoTab.Controls.Add(this.mapMinRec);
-            this.groupMapInfoTab.Controls.Add(this.mapCopyright);
-            this.groupMapInfoTab.Controls.Add(this.labelCopyright);
-            this.groupMapInfoTab.Controls.Add(this.mapVersion);
-            this.groupMapInfoTab.Controls.Add(this.mapDate);
-            this.groupMapInfoTab.Controls.Add(this.labelDate);
-            this.groupMapInfoTab.Controls.Add(this.mapAuthor2);
-            this.groupMapInfoTab.Controls.Add(this.mapEmail2);
-            this.groupMapInfoTab.Controls.Add(this.mapEmail);
-            this.groupMapInfoTab.Controls.Add(this.mapAuthor);
-            this.groupMapInfoTab.Controls.Add(this.labelEmail2);
-            this.groupMapInfoTab.Controls.Add(this.labelEmail);
-            this.groupMapInfoTab.Controls.Add(this.labelAuthor2);
-            this.groupMapInfoTab.Controls.Add(this.labelAuthor);
-            this.groupMapInfoTab.Controls.Add(this.labelVersion);
-            this.groupMapInfoTab.Controls.Add(this.mapDescription);
-            this.groupMapInfoTab.Controls.Add(this.labelDescription);
-            this.groupMapInfoTab.Controls.Add(this.labelTitle);
-            this.groupMapInfoTab.Controls.Add(this.mapSummary);
-            this.groupMapInfoTab.Controls.Add(this.chkAutoIncrement);
-            this.groupMapInfoTab.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupMapInfoTab.Location = new System.Drawing.Point(0, 0);
-            this.groupMapInfoTab.Name = "groupMapInfoTab";
-            this.groupMapInfoTab.Size = new System.Drawing.Size(1000, 560);
-            this.groupMapInfoTab.TabIndex = 2;
-            this.groupMapInfoTab.TabStop = false;
-            // 
-            // chkServerPlayerLimit
-            // 
-            this.chkServerPlayerLimit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.chkServerPlayerLimit.Location = new System.Drawing.Point(288, 373);
-            this.chkServerPlayerLimit.Name = "chkServerPlayerLimit";
-            this.chkServerPlayerLimit.Size = new System.Drawing.Size(104, 24);
-            this.chkServerPlayerLimit.TabIndex = 34;
-            this.chkServerPlayerLimit.Text = "Server Settings";
-            this.chkServerPlayerLimit.UseVisualStyleBackColor = true;
-            this.chkServerPlayerLimit.CheckedChanged += new System.EventHandler(this.chkServerPlayerLimit_CheckedChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(256, 433);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "Ambient Color";
-            // 
-            // panelAmbientColor
-            // 
-            this.panelAmbientColor.Location = new System.Drawing.Point(259, 459);
-            this.panelAmbientColor.Name = "panelAmbientColor";
-            this.panelAmbientColor.Size = new System.Drawing.Size(69, 36);
-            this.panelAmbientColor.TabIndex = 32;
-            this.panelAmbientColor.Click += new System.EventHandler(this.panelAmbientColor_Click);
-            // 
-            // label3
-            // 
-            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(72, 427);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 24);
-            this.label3.TabIndex = 31;
-            this.label3.Text = "Quest Intro";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // questGraphic
-            // 
-            this.questGraphic.Location = new System.Drawing.Point(88, 491);
-            this.questGraphic.MaxLength = 512;
-            this.questGraphic.Name = "questGraphic";
-            this.questGraphic.Size = new System.Drawing.Size(128, 20);
-            this.questGraphic.TabIndex = 30;
-            // 
-            // questTitle
-            // 
-            this.questTitle.Location = new System.Drawing.Point(88, 459);
-            this.questTitle.MaxLength = 512;
-            this.questTitle.Name = "questTitle";
-            this.questTitle.Size = new System.Drawing.Size(128, 20);
-            this.questTitle.TabIndex = 29;
-            // 
-            // label2
-            // 
-            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(32, 486);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 24);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Graphic";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label1
-            // 
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(32, 457);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 24);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "Title";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // mapType
-            // 
-            this.mapType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.mapType.FormattingEnabled = true;
-            this.mapType.ItemHeight = 13;
-            this.mapType.Location = new System.Drawing.Point(88, 24);
-            this.mapType.Name = "mapType";
-            this.mapType.Size = new System.Drawing.Size(88, 21);
-            this.mapType.TabIndex = 26;
-            // 
-            // mapTypeLbl
-            // 
-            this.mapTypeLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.mapTypeLbl.Location = new System.Drawing.Point(24, 24);
-            this.mapTypeLbl.Name = "mapTypeLbl";
-            this.mapTypeLbl.Size = new System.Drawing.Size(64, 24);
-            this.mapTypeLbl.TabIndex = 25;
-            this.mapTypeLbl.Text = "Map Type";
-            this.mapTypeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // recommendedLbl
-            // 
-            this.recommendedLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.recommendedLbl.Location = new System.Drawing.Point(256, 322);
-            this.recommendedLbl.Name = "recommendedLbl";
-            this.recommendedLbl.Size = new System.Drawing.Size(184, 24);
-            this.recommendedLbl.TabIndex = 24;
-            this.recommendedLbl.Text = "Recommended Number of Players";
-            this.recommendedLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // maxRecLbl
-            // 
-            this.maxRecLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.maxRecLbl.Location = new System.Drawing.Point(328, 346);
-            this.maxRecLbl.Name = "maxRecLbl";
-            this.maxRecLbl.Size = new System.Drawing.Size(32, 24);
-            this.maxRecLbl.TabIndex = 23;
-            this.maxRecLbl.Text = "Max";
-            this.maxRecLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // minRecLbl
-            // 
-            this.minRecLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.minRecLbl.Location = new System.Drawing.Point(256, 346);
-            this.minRecLbl.Name = "minRecLbl";
-            this.minRecLbl.Size = new System.Drawing.Size(32, 24);
-            this.minRecLbl.TabIndex = 22;
-            this.minRecLbl.Text = "Min";
-            this.minRecLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // mapMaxRec
-            // 
-            this.mapMaxRec.Location = new System.Drawing.Point(360, 346);
-            this.mapMaxRec.MaxLength = 2;
-            this.mapMaxRec.Name = "mapMaxRec";
-            this.mapMaxRec.Size = new System.Drawing.Size(32, 20);
-            this.mapMaxRec.TabIndex = 21;
-            // 
-            // mapMinRec
-            // 
-            this.mapMinRec.Location = new System.Drawing.Point(288, 346);
-            this.mapMinRec.MaxLength = 2;
-            this.mapMinRec.Name = "mapMinRec";
-            this.mapMinRec.Size = new System.Drawing.Size(32, 20);
-            this.mapMinRec.TabIndex = 20;
-            // 
-            // mapCopyright
-            // 
-            this.mapCopyright.Location = new System.Drawing.Point(88, 348);
-            this.mapCopyright.MaxLength = 128;
-            this.mapCopyright.Name = "mapCopyright";
-            this.mapCopyright.Size = new System.Drawing.Size(128, 20);
-            this.mapCopyright.TabIndex = 17;
-            // 
-            // labelCopyright
-            // 
-            this.labelCopyright.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelCopyright.Location = new System.Drawing.Point(10, 346);
-            this.labelCopyright.Name = "labelCopyright";
-            this.labelCopyright.Size = new System.Drawing.Size(72, 24);
-            this.labelCopyright.TabIndex = 16;
-            this.labelCopyright.Text = "Copyright";
-            this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // mapVersion
-            // 
-            this.mapVersion.Location = new System.Drawing.Point(88, 373);
-            this.mapVersion.MaxLength = 16;
-            this.mapVersion.Name = "mapVersion";
-            this.mapVersion.Size = new System.Drawing.Size(128, 20);
-            this.mapVersion.TabIndex = 15;
-            // 
-            // mapDate
-            // 
-            this.mapDate.Location = new System.Drawing.Point(88, 323);
-            this.mapDate.MaxLength = 32;
-            this.mapDate.Name = "mapDate";
-            this.mapDate.Size = new System.Drawing.Size(128, 20);
-            this.mapDate.TabIndex = 14;
-            // 
-            // labelDate
-            // 
-            this.labelDate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelDate.Location = new System.Drawing.Point(17, 322);
-            this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(64, 24);
-            this.labelDate.TabIndex = 13;
-            this.labelDate.Text = "Date";
-            this.labelDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // mapAuthor2
-            // 
-            this.mapAuthor2.Location = new System.Drawing.Point(88, 282);
-            this.mapAuthor2.MaxLength = 64;
-            this.mapAuthor2.Name = "mapAuthor2";
-            this.mapAuthor2.Size = new System.Drawing.Size(128, 20);
-            this.mapAuthor2.TabIndex = 12;
-            // 
-            // mapEmail2
-            // 
-            this.mapEmail2.Location = new System.Drawing.Point(288, 282);
-            this.mapEmail2.MaxLength = 192;
-            this.mapEmail2.Name = "mapEmail2";
-            this.mapEmail2.Size = new System.Drawing.Size(160, 20);
-            this.mapEmail2.TabIndex = 11;
-            // 
-            // mapEmail
-            // 
-            this.mapEmail.Location = new System.Drawing.Point(288, 250);
-            this.mapEmail.MaxLength = 192;
-            this.mapEmail.Name = "mapEmail";
-            this.mapEmail.Size = new System.Drawing.Size(160, 20);
-            this.mapEmail.TabIndex = 10;
-            // 
-            // mapAuthor
-            // 
-            this.mapAuthor.Location = new System.Drawing.Point(88, 250);
-            this.mapAuthor.MaxLength = 64;
-            this.mapAuthor.Name = "mapAuthor";
-            this.mapAuthor.Size = new System.Drawing.Size(128, 20);
-            this.mapAuthor.TabIndex = 9;
-            // 
-            // labelEmail2
-            // 
-            this.labelEmail2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelEmail2.Location = new System.Drawing.Point(248, 282);
-            this.labelEmail2.Name = "labelEmail2";
-            this.labelEmail2.Size = new System.Drawing.Size(40, 24);
-            this.labelEmail2.TabIndex = 8;
-            this.labelEmail2.Text = "Email";
-            this.labelEmail2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelEmail
-            // 
-            this.labelEmail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelEmail.Location = new System.Drawing.Point(248, 250);
-            this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(40, 24);
-            this.labelEmail.TabIndex = 7;
-            this.labelEmail.Text = "Email";
-            this.labelEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelAuthor2
-            // 
-            this.labelAuthor2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelAuthor2.Location = new System.Drawing.Point(8, 282);
-            this.labelAuthor2.Name = "labelAuthor2";
-            this.labelAuthor2.Size = new System.Drawing.Size(72, 24);
-            this.labelAuthor2.TabIndex = 6;
-            this.labelAuthor2.Text = "Secondary Author";
-            this.labelAuthor2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelAuthor
-            // 
-            this.labelAuthor.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelAuthor.Location = new System.Drawing.Point(8, 250);
-            this.labelAuthor.Name = "labelAuthor";
-            this.labelAuthor.Size = new System.Drawing.Size(72, 24);
-            this.labelAuthor.TabIndex = 5;
-            this.labelAuthor.Text = "Author";
-            this.labelAuthor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelVersion
-            // 
-            this.labelVersion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelVersion.Location = new System.Drawing.Point(9, 370);
-            this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(72, 24);
-            this.labelVersion.TabIndex = 4;
-            this.labelVersion.Text = "Version";
-            this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // mapDescription
-            // 
-            this.mapDescription.Location = new System.Drawing.Point(88, 88);
-            this.mapDescription.MaxLength = 512;
-            this.mapDescription.Multiline = true;
-            this.mapDescription.Name = "mapDescription";
-            this.mapDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.mapDescription.Size = new System.Drawing.Size(360, 156);
-            this.mapDescription.TabIndex = 3;
-            // 
-            // labelDescription
-            // 
-            this.labelDescription.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelDescription.Location = new System.Drawing.Point(8, 88);
-            this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(80, 24);
-            this.labelDescription.TabIndex = 2;
-            this.labelDescription.Text = "Description";
-            this.labelDescription.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelTitle
-            // 
-            this.labelTitle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelTitle.Location = new System.Drawing.Point(8, 56);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(80, 24);
-            this.labelTitle.TabIndex = 0;
-            this.labelTitle.Text = "Title/Summary";
-            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // mapSummary
-            // 
-            this.mapSummary.Location = new System.Drawing.Point(88, 56);
-            this.mapSummary.MaxLength = 64;
-            this.mapSummary.Name = "mapSummary";
-            this.mapSummary.Size = new System.Drawing.Size(360, 20);
-            this.mapSummary.TabIndex = 1;
-            // 
-            // chkAutoIncrement
-            // 
-            this.chkAutoIncrement.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.chkAutoIncrement.Location = new System.Drawing.Point(88, 392);
-            this.chkAutoIncrement.Name = "chkAutoIncrement";
-            this.chkAutoIncrement.Size = new System.Drawing.Size(104, 24);
-            this.chkAutoIncrement.TabIndex = 35;
-            this.chkAutoIncrement.Text = "Auto Increment";
-            this.chkAutoIncrement.UseVisualStyleBackColor = true;
-            this.chkAutoIncrement.CheckedChanged += new System.EventHandler(this.chkAutoIncrement_CheckedChanged);
-            // 
-            // minimapTab
-            // 
-            this.minimapTab.Controls.Add(this.MinimapPanel);
-            this.minimapTab.Location = new System.Drawing.Point(4, 22);
-            this.minimapTab.Name = "minimapTab";
-            this.minimapTab.Size = new System.Drawing.Size(1000, 691);
-            this.minimapTab.TabIndex = 0;
-            this.minimapTab.Text = "Mini Map";
-            this.minimapTab.UseVisualStyleBackColor = true;
-            // 
-            // MinimapPanel
-            // 
-            this.MinimapPanel.Controls.Add(this.panelInnerMinimap);
-            this.MinimapPanel.Controls.Add(this.groupMiniMapTab);
-            this.MinimapPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MinimapPanel.Location = new System.Drawing.Point(0, 0);
-            this.MinimapPanel.Name = "MinimapPanel";
-            this.MinimapPanel.Size = new System.Drawing.Size(1000, 691);
-            this.MinimapPanel.TabIndex = 0;
-            // 
-            // panelInnerMinimap
-            // 
-            this.panelInnerMinimap.AutoScroll = true;
-            this.panelInnerMinimap.Controls.Add(this.miniViewPanel);
-            this.panelInnerMinimap.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelInnerMinimap.Location = new System.Drawing.Point(120, 0);
-            this.panelInnerMinimap.Name = "panelInnerMinimap";
-            this.panelInnerMinimap.Size = new System.Drawing.Size(880, 691);
-            this.panelInnerMinimap.TabIndex = 3;
-            this.panelInnerMinimap.Scroll += new System.Windows.Forms.ScrollEventHandler(this.panelInnerMinimap_Scroll);
-            this.panelInnerMinimap.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelInnerMinimap_MouseUp);
-            // 
-            // miniViewPanel
-            // 
-            this.miniViewPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.miniViewPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.miniViewPanel.Location = new System.Drawing.Point(3, 3);
-            this.miniViewPanel.Name = "miniViewPanel";
-            this.miniViewPanel.Size = new System.Drawing.Size(561, 534);
-            this.miniViewPanel.TabIndex = 1;
-            this.miniViewPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.miniViewPanel_Paint);
-            this.miniViewPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.miniViewPanel_MouseDoubleClick);
-            this.miniViewPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.miniViewPanel_MouseDown);
-            this.miniViewPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.miniViewPanel_MouseMove);
-            this.miniViewPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.miniViewPanel_MouseUp);
-            this.miniViewPanel.Resize += new System.EventHandler(this.miniViewPanel_Resize);
-            // 
-            // groupMiniMapTab
-            // 
-            this.groupMiniMapTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.groupMiniMapTab.Controls.Add(this.cmdDebug);
-            this.groupMiniMapTab.Controls.Add(this.MiniEditPanel);
-            this.groupMiniMapTab.Controls.Add(this.miniEdit);
-            this.groupMiniMapTab.Controls.Add(this.label5);
-            this.groupMiniMapTab.Controls.Add(this.numMinimapZoom);
-            this.groupMiniMapTab.Controls.Add(this.chkDivide2);
-            this.groupMiniMapTab.Controls.Add(this.chkDivide);
-            this.groupMiniMapTab.Controls.Add(this.cmdGoToCenter);
-            this.groupMiniMapTab.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupMiniMapTab.Location = new System.Drawing.Point(0, 0);
-            this.groupMiniMapTab.Name = "groupMiniMapTab";
-            this.groupMiniMapTab.Size = new System.Drawing.Size(120, 691);
-            this.groupMiniMapTab.TabIndex = 0;
-            this.groupMiniMapTab.TabStop = false;
-            // 
-            // cmdDebug
-            // 
-            this.cmdDebug.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cmdDebug.Location = new System.Drawing.Point(14, 652);
-            this.cmdDebug.Name = "cmdDebug";
-            this.cmdDebug.Size = new System.Drawing.Size(84, 23);
-            this.cmdDebug.TabIndex = 14;
-            this.cmdDebug.Text = "Debug";
-            this.cmdDebug.UseVisualStyleBackColor = true;
-            this.cmdDebug.Visible = false;
-            // 
-            // MiniEditPanel
-            // 
-            this.MiniEditPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.MiniEditPanel.Controls.Add(this.label10);
-            this.MiniEditPanel.Controls.Add(this.cmdPolygons);
-            this.MiniEditPanel.Controls.Add(this.label9);
-            this.MiniEditPanel.Controls.Add(this.miniRedo);
-            this.MiniEditPanel.Controls.Add(this.miniUndo);
-            this.MiniEditPanel.Controls.Add(this.miniLineWall);
-            this.MiniEditPanel.Controls.Add(this.label8);
-            this.MiniEditPanel.Controls.Add(this.label7);
-            this.MiniEditPanel.Controls.Add(this.label6);
-            this.MiniEditPanel.Controls.Add(this.numBrushSize);
-            this.MiniEditPanel.Controls.Add(this.miniTileBrush);
-            this.MiniEditPanel.Controls.Add(this.miniTilePLace);
-            this.MiniEditPanel.Controls.Add(this.miniWallBrush);
-            this.MiniEditPanel.Controls.Add(this.labelSep2);
-            this.MiniEditPanel.Enabled = false;
-            this.MiniEditPanel.Location = new System.Drawing.Point(8, 78);
-            this.MiniEditPanel.Name = "MiniEditPanel";
-            this.MiniEditPanel.Size = new System.Drawing.Size(102, 287);
-            this.MiniEditPanel.TabIndex = 12;
-            // 
-            // label10
-            // 
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label10.Location = new System.Drawing.Point(0, 241);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(99, 2);
-            this.label10.TabIndex = 35;
-            // 
-            // cmdPolygons
-            // 
-            this.cmdPolygons.Location = new System.Drawing.Point(16, 252);
-            this.cmdPolygons.Name = "cmdPolygons";
-            this.cmdPolygons.Size = new System.Drawing.Size(66, 23);
-            this.cmdPolygons.TabIndex = 34;
-            this.cmdPolygons.Text = "Polygons";
-            this.cmdPolygons.UseVisualStyleBackColor = true;
-            this.cmdPolygons.Click += new System.EventHandler(this.cmdPolygons_Click);
-            // 
-            // label9
-            // 
-            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label9.Location = new System.Drawing.Point(0, 29);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(99, 2);
-            this.label9.TabIndex = 33;
-            // 
-            // miniRedo
-            // 
-            this.miniRedo.BackgroundImage = global::MapEditor.Properties.Resources.redoDisabled;
-            this.miniRedo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.miniRedo.Enabled = false;
-            this.miniRedo.Location = new System.Drawing.Point(49, 1);
-            this.miniRedo.Name = "miniRedo";
-            this.miniRedo.Size = new System.Drawing.Size(25, 25);
-            this.miniRedo.TabIndex = 32;
-            this.miniRedo.UseVisualStyleBackColor = true;
-            this.miniRedo.EnabledChanged += new System.EventHandler(this.miniRedo_EnabledChanged);
-            this.miniRedo.Click += new System.EventHandler(this.miniRedo_Click);
-            // 
-            // miniUndo
-            // 
-            this.miniUndo.BackgroundImage = global::MapEditor.Properties.Resources.undoDisabled;
-            this.miniUndo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.miniUndo.Enabled = false;
-            this.miniUndo.Location = new System.Drawing.Point(25, 1);
-            this.miniUndo.Name = "miniUndo";
-            this.miniUndo.Size = new System.Drawing.Size(25, 25);
-            this.miniUndo.TabIndex = 31;
-            this.miniUndo.UseVisualStyleBackColor = true;
-            this.miniUndo.EnabledChanged += new System.EventHandler(this.miniUndo_EnabledChanged);
-            this.miniUndo.Click += new System.EventHandler(this.miniUndo_Click);
-            // 
-            // miniLineWall
-            // 
-            this.miniLineWall.Appearance = System.Windows.Forms.Appearance.Button;
-            this.miniLineWall.BackgroundImage = global::MapEditor.Properties.Resources.LineWall;
-            this.miniLineWall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.miniLineWall.Location = new System.Drawing.Point(10, 79);
-            this.miniLineWall.Name = "miniLineWall";
-            this.miniLineWall.Size = new System.Drawing.Size(25, 25);
-            this.miniLineWall.TabIndex = 27;
-            this.miniLineWall.UseVisualStyleBackColor = true;
-            this.miniLineWall.Visible = false;
-            this.miniLineWall.CheckedChanged += new System.EventHandler(this.miniLineWall_CheckedChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(22, 196);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 13);
-            this.label8.TabIndex = 26;
-            this.label8.Text = "Brush size:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 117);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 13);
-            this.label7.TabIndex = 25;
-            this.label7.Text = "Tile editing";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 34);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 13);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Wall editing";
-            // 
-            // numBrushSize
-            // 
-            this.numBrushSize.Location = new System.Drawing.Point(28, 213);
-            this.numBrushSize.Maximum = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            this.numBrushSize.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numBrushSize.Name = "numBrushSize";
-            this.numBrushSize.Size = new System.Drawing.Size(48, 20);
-            this.numBrushSize.TabIndex = 23;
-            this.numBrushSize.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numBrushSize.ValueChanged += new System.EventHandler(this.numBrushSize_ValueChanged);
-            // 
-            // miniTileBrush
-            // 
-            this.miniTileBrush.Appearance = System.Windows.Forms.Appearance.Button;
-            this.miniTileBrush.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.miniTileBrush.Location = new System.Drawing.Point(10, 162);
-            this.miniTileBrush.Name = "miniTileBrush";
-            this.miniTileBrush.Size = new System.Drawing.Size(80, 25);
-            this.miniTileBrush.TabIndex = 22;
-            this.miniTileBrush.TabStop = true;
-            this.miniTileBrush.Text = "Tile Brush";
-            this.miniTileBrush.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.miniTileBrush.UseVisualStyleBackColor = true;
-            this.miniTileBrush.CheckedChanged += new System.EventHandler(this.miniTileBrush_CheckedChanged);
-            // 
-            // miniTilePLace
-            // 
-            this.miniTilePLace.Appearance = System.Windows.Forms.Appearance.Button;
-            this.miniTilePLace.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.miniTilePLace.Location = new System.Drawing.Point(10, 135);
-            this.miniTilePLace.Name = "miniTilePLace";
-            this.miniTilePLace.Size = new System.Drawing.Size(80, 25);
-            this.miniTilePLace.TabIndex = 21;
-            this.miniTilePLace.TabStop = true;
-            this.miniTilePLace.Text = "Tile Place";
-            this.miniTilePLace.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.miniTilePLace.UseVisualStyleBackColor = true;
-            this.miniTilePLace.CheckedChanged += new System.EventHandler(this.miniTilePLace_CheckedChanged);
-            // 
-            // miniWallBrush
-            // 
-            this.miniWallBrush.Appearance = System.Windows.Forms.Appearance.Button;
-            this.miniWallBrush.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.miniWallBrush.Location = new System.Drawing.Point(10, 52);
-            this.miniWallBrush.Name = "miniWallBrush";
-            this.miniWallBrush.Size = new System.Drawing.Size(80, 25);
-            this.miniWallBrush.TabIndex = 20;
-            this.miniWallBrush.TabStop = true;
-            this.miniWallBrush.Text = "Wall Brush";
-            this.miniWallBrush.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.miniWallBrush.UseVisualStyleBackColor = true;
-            this.miniWallBrush.CheckedChanged += new System.EventHandler(this.miniWallBrush_CheckedChanged);
-            // 
-            // labelSep2
-            // 
-            this.labelSep2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelSep2.Location = new System.Drawing.Point(0, 111);
-            this.labelSep2.Name = "labelSep2";
-            this.labelSep2.Size = new System.Drawing.Size(99, 2);
-            this.labelSep2.TabIndex = 18;
-            // 
-            // miniEdit
-            // 
-            this.miniEdit.AutoSize = true;
-            this.miniEdit.Location = new System.Drawing.Point(12, 55);
-            this.miniEdit.Name = "miniEdit";
-            this.miniEdit.Size = new System.Drawing.Size(87, 17);
-            this.miniEdit.TabIndex = 10;
-            this.miniEdit.Text = "Editing mode";
-            this.miniEdit.UseVisualStyleBackColor = true;
-            this.miniEdit.CheckedChanged += new System.EventHandler(this.miniEdit_CheckedChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 26);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Zoom:";
-            // 
-            // numMinimapZoom
-            // 
-            this.numMinimapZoom.Location = new System.Drawing.Point(52, 23);
-            this.numMinimapZoom.Maximum = new decimal(new int[] {
-            7,
-            0,
-            0,
-            0});
-            this.numMinimapZoom.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numMinimapZoom.Name = "numMinimapZoom";
-            this.numMinimapZoom.Size = new System.Drawing.Size(48, 20);
-            this.numMinimapZoom.TabIndex = 4;
-            this.numMinimapZoom.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numMinimapZoom.ValueChanged += new System.EventHandler(this.numMinimapZoom_ValueChanged);
-            // 
-            // chkDivide2
-            // 
-            this.chkDivide2.AutoSize = true;
-            this.chkDivide2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.chkDivide2.Location = new System.Drawing.Point(14, 403);
-            this.chkDivide2.Name = "chkDivide2";
-            this.chkDivide2.Size = new System.Drawing.Size(62, 17);
-            this.chkDivide2.TabIndex = 7;
-            this.chkDivide2.Text = "Divide2";
-            this.chkDivide2.UseVisualStyleBackColor = true;
-            this.chkDivide2.CheckedChanged += new System.EventHandler(this.chkDivide2_CheckedChanged);
-            // 
-            // chkDivide
-            // 
-            this.chkDivide.AutoSize = true;
-            this.chkDivide.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.chkDivide.Location = new System.Drawing.Point(14, 380);
-            this.chkDivide.Name = "chkDivide";
-            this.chkDivide.Size = new System.Drawing.Size(62, 17);
-            this.chkDivide.TabIndex = 6;
-            this.chkDivide.Text = "Divide1";
-            this.chkDivide.UseVisualStyleBackColor = true;
-            this.chkDivide.CheckedChanged += new System.EventHandler(this.chkDivide_CheckedChanged);
-            // 
-            // cmdGoToCenter
-            // 
-            this.cmdGoToCenter.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cmdGoToCenter.Location = new System.Drawing.Point(8, 426);
-            this.cmdGoToCenter.Name = "cmdGoToCenter";
-            this.cmdGoToCenter.Size = new System.Drawing.Size(84, 23);
-            this.cmdGoToCenter.TabIndex = 2;
-            this.cmdGoToCenter.Text = "Go to Center";
-            this.cmdGoToCenter.UseVisualStyleBackColor = true;
-            this.cmdGoToCenter.Click += new System.EventHandler(this.cmdGoToCenter_Click);
-            // 
-            // largeMap
-            // 
-            this.largeMap.Controls.Add(this.mapView);
-            this.largeMap.Location = new System.Drawing.Point(4, 22);
-            this.largeMap.Name = "largeMap";
-            this.largeMap.Size = new System.Drawing.Size(1000, 691);
-            this.largeMap.TabIndex = 0;
-            this.largeMap.Text = "Large Map";
-            this.largeMap.UseVisualStyleBackColor = true;
-            // 
-            // mapView
-            // 
-            this.mapView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mapView.Location = new System.Drawing.Point(0, 0);
-            this.mapView.Name = "mapView";
-            this.mapView.Size = new System.Drawing.Size(1000, 691);
-            this.mapView.TabIndex = 0;
-            // 
-            // panelTabs
-            // 
-            this.panelTabs.Controls.Add(this.largeMap);
-            this.panelTabs.Controls.Add(this.minimapTab);
-            this.panelTabs.Controls.Add(this.mapInfoTab);
-            this.panelTabs.Controls.Add(this.mapImageTab);
-            this.panelTabs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTabs.ItemSize = new System.Drawing.Size(63, 18);
-            this.panelTabs.Location = new System.Drawing.Point(0, 24);
-            this.panelTabs.Name = "panelTabs";
-            this.panelTabs.SelectedIndex = 0;
-            this.panelTabs.Size = new System.Drawing.Size(1008, 717);
-            this.panelTabs.TabIndex = 0;
-            this.panelTabs.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panelTabs_MouseClick);
-            // 
-            // mapImageTab
-            // 
-            this.mapImageTab.Controls.Add(this.cmdImgRender);
-            this.mapImageTab.Controls.Add(this.groupImgExport);
-            this.mapImageTab.Controls.Add(this.cmdImgExport);
-            this.mapImageTab.Controls.Add(this.groupImgEntities);
-            this.mapImageTab.Controls.Add(this.progBarImage);
-            this.mapImageTab.Controls.Add(this.groupImgObjects);
-            this.mapImageTab.Controls.Add(this.chkImgUseCurrentSettings);
-            this.mapImageTab.Controls.Add(this.picMapImage);
-            this.mapImageTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mapImageTab.Location = new System.Drawing.Point(4, 22);
-            this.mapImageTab.Name = "mapImageTab";
-            this.mapImageTab.Padding = new System.Windows.Forms.Padding(3);
-            this.mapImageTab.Size = new System.Drawing.Size(1000, 691);
-            this.mapImageTab.TabIndex = 1;
-            this.mapImageTab.Text = "Map Image";
-            this.mapImageTab.UseVisualStyleBackColor = true;
-            // 
-            // cmdImgRender
-            // 
-            this.cmdImgRender.Location = new System.Drawing.Point(9, 47);
-            this.cmdImgRender.Name = "cmdImgRender";
-            this.cmdImgRender.Size = new System.Drawing.Size(103, 35);
-            this.cmdImgRender.TabIndex = 9;
-            this.cmdImgRender.Text = "Render";
-            this.cmdImgRender.UseVisualStyleBackColor = true;
-            this.cmdImgRender.Click += new System.EventHandler(this.cmdImgRender_Click);
-            // 
-            // groupImgExport
-            // 
-            this.groupImgExport.Controls.Add(this.chkImgBackground);
-            this.groupImgExport.Controls.Add(this.lblImgDimensions);
-            this.groupImgExport.Controls.Add(this.trackImgSize);
-            this.groupImgExport.Controls.Add(this.numImgPadding);
-            this.groupImgExport.Controls.Add(this.lblImgPadding);
-            this.groupImgExport.Controls.Add(this.chkImgAutoCrop);
-            this.groupImgExport.Controls.Add(this.lblImgSize);
-            this.groupImgExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupImgExport.Location = new System.Drawing.Point(5, 88);
-            this.groupImgExport.Name = "groupImgExport";
-            this.groupImgExport.Size = new System.Drawing.Size(220, 155);
-            this.groupImgExport.TabIndex = 5;
-            this.groupImgExport.TabStop = false;
-            this.groupImgExport.Text = " Image ";
-            // 
-            // chkImgBackground
-            // 
-            this.chkImgBackground.AutoSize = true;
-            this.chkImgBackground.Checked = true;
-            this.chkImgBackground.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgBackground.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgBackground.Location = new System.Drawing.Point(97, 25);
-            this.chkImgBackground.Name = "chkImgBackground";
-            this.chkImgBackground.Size = new System.Drawing.Size(100, 20);
-            this.chkImgBackground.TabIndex = 7;
-            this.chkImgBackground.Text = "Background";
-            this.chkImgBackground.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkImgBackground.UseVisualStyleBackColor = true;
-            // 
-            // lblImgDimensions
-            // 
-            this.lblImgDimensions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImgDimensions.Location = new System.Drawing.Point(54, 78);
-            this.lblImgDimensions.Name = "lblImgDimensions";
-            this.lblImgDimensions.Size = new System.Drawing.Size(152, 18);
-            this.lblImgDimensions.TabIndex = 6;
-            this.lblImgDimensions.Text = "5880 x 5880  (100%)";
-            this.lblImgDimensions.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // trackImgSize
-            // 
-            this.trackImgSize.Location = new System.Drawing.Point(12, 97);
-            this.trackImgSize.Maximum = 100;
-            this.trackImgSize.Minimum = 1;
-            this.trackImgSize.Name = "trackImgSize";
-            this.trackImgSize.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.trackImgSize.Size = new System.Drawing.Size(194, 45);
-            this.trackImgSize.TabIndex = 5;
-            this.trackImgSize.TickFrequency = 5;
-            this.trackImgSize.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackImgSize.Value = 100;
-            this.trackImgSize.Scroll += new System.EventHandler(this.trackImgSize_Scroll);
-            // 
-            // numImgPadding
-            // 
-            this.numImgPadding.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numImgPadding.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numImgPadding.Location = new System.Drawing.Point(104, 50);
-            this.numImgPadding.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numImgPadding.Name = "numImgPadding";
-            this.numImgPadding.Size = new System.Drawing.Size(64, 22);
-            this.numImgPadding.TabIndex = 3;
-            this.numImgPadding.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // lblImgPadding
-            // 
-            this.lblImgPadding.AutoSize = true;
-            this.lblImgPadding.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImgPadding.Location = new System.Drawing.Point(43, 52);
-            this.lblImgPadding.Name = "lblImgPadding";
-            this.lblImgPadding.Size = new System.Drawing.Size(62, 16);
-            this.lblImgPadding.TabIndex = 2;
-            this.lblImgPadding.Text = "Padding:";
-            // 
-            // chkImgAutoCrop
-            // 
-            this.chkImgAutoCrop.AutoSize = true;
-            this.chkImgAutoCrop.Checked = true;
-            this.chkImgAutoCrop.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgAutoCrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgAutoCrop.Location = new System.Drawing.Point(34, 25);
-            this.chkImgAutoCrop.Name = "chkImgAutoCrop";
-            this.chkImgAutoCrop.Size = new System.Drawing.Size(56, 20);
-            this.chkImgAutoCrop.TabIndex = 1;
-            this.chkImgAutoCrop.Text = "Crop";
-            this.chkImgAutoCrop.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkImgAutoCrop.UseVisualStyleBackColor = true;
-            this.chkImgAutoCrop.CheckedChanged += new System.EventHandler(this.chkImgAutoCrop_CheckedChanged);
-            // 
-            // lblImgSize
-            // 
-            this.lblImgSize.AutoSize = true;
-            this.lblImgSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImgSize.Location = new System.Drawing.Point(21, 78);
-            this.lblImgSize.Name = "lblImgSize";
-            this.lblImgSize.Size = new System.Drawing.Size(37, 16);
-            this.lblImgSize.TabIndex = 4;
-            this.lblImgSize.Text = "Size:";
-            // 
-            // cmdImgExport
-            // 
-            this.cmdImgExport.Enabled = false;
-            this.cmdImgExport.Location = new System.Drawing.Point(114, 47);
-            this.cmdImgExport.Name = "cmdImgExport";
-            this.cmdImgExport.Size = new System.Drawing.Size(103, 35);
-            this.cmdImgExport.TabIndex = 8;
-            this.cmdImgExport.Text = "Export";
-            this.cmdImgExport.UseVisualStyleBackColor = true;
-            this.cmdImgExport.Click += new System.EventHandler(this.cmdImgExport_Click);
-            // 
-            // groupImgEntities
-            // 
-            this.groupImgEntities.Controls.Add(this.chkImgBroken);
-            this.groupImgEntities.Controls.Add(this.chkImgBoss);
-            this.groupImgEntities.Controls.Add(this.chkImgAmbient);
-            this.groupImgEntities.Controls.Add(this.chkImgHard);
-            this.groupImgEntities.Controls.Add(this.chkImgEasy);
-            this.groupImgEntities.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupImgEntities.Location = new System.Drawing.Point(5, 410);
-            this.groupImgEntities.Name = "groupImgEntities";
-            this.groupImgEntities.Size = new System.Drawing.Size(220, 95);
-            this.groupImgEntities.TabIndex = 4;
-            this.groupImgEntities.TabStop = false;
-            this.groupImgEntities.Text = " Entities ";
-            // 
-            // chkImgBroken
-            // 
-            this.chkImgBroken.AutoSize = true;
-            this.chkImgBroken.Checked = true;
-            this.chkImgBroken.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgBroken.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgBroken.Location = new System.Drawing.Point(111, 25);
-            this.chkImgBroken.Name = "chkImgBroken";
-            this.chkImgBroken.Size = new System.Drawing.Size(70, 20);
-            this.chkImgBroken.TabIndex = 4;
-            this.chkImgBroken.Text = "Broken";
-            this.chkImgBroken.UseVisualStyleBackColor = true;
-            // 
-            // chkImgBoss
-            // 
-            this.chkImgBoss.AutoSize = true;
-            this.chkImgBoss.Checked = true;
-            this.chkImgBoss.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgBoss.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgBoss.Location = new System.Drawing.Point(25, 65);
-            this.chkImgBoss.Name = "chkImgBoss";
-            this.chkImgBoss.Size = new System.Drawing.Size(58, 20);
-            this.chkImgBoss.TabIndex = 3;
-            this.chkImgBoss.Text = "Boss";
-            this.chkImgBoss.UseVisualStyleBackColor = true;
-            // 
-            // chkImgAmbient
-            // 
-            this.chkImgAmbient.AutoSize = true;
-            this.chkImgAmbient.Checked = true;
-            this.chkImgAmbient.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgAmbient.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgAmbient.Location = new System.Drawing.Point(111, 45);
-            this.chkImgAmbient.Name = "chkImgAmbient";
-            this.chkImgAmbient.Size = new System.Drawing.Size(76, 20);
-            this.chkImgAmbient.TabIndex = 2;
-            this.chkImgAmbient.Text = "Ambient";
-            this.chkImgAmbient.UseVisualStyleBackColor = true;
-            // 
-            // chkImgHard
-            // 
-            this.chkImgHard.AutoSize = true;
-            this.chkImgHard.Checked = true;
-            this.chkImgHard.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgHard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgHard.Location = new System.Drawing.Point(25, 45);
-            this.chkImgHard.Name = "chkImgHard";
-            this.chkImgHard.Size = new System.Drawing.Size(57, 20);
-            this.chkImgHard.TabIndex = 1;
-            this.chkImgHard.Text = "Hard";
-            this.chkImgHard.UseVisualStyleBackColor = true;
-            // 
-            // chkImgEasy
-            // 
-            this.chkImgEasy.AutoSize = true;
-            this.chkImgEasy.Checked = true;
-            this.chkImgEasy.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgEasy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgEasy.Location = new System.Drawing.Point(25, 25);
-            this.chkImgEasy.Name = "chkImgEasy";
-            this.chkImgEasy.Size = new System.Drawing.Size(58, 20);
-            this.chkImgEasy.TabIndex = 0;
-            this.chkImgEasy.Text = "Easy";
-            this.chkImgEasy.UseVisualStyleBackColor = true;
-            // 
-            // progBarImage
-            // 
-            this.progBarImage.Location = new System.Drawing.Point(3, 10);
-            this.progBarImage.Name = "progBarImage";
-            this.progBarImage.Size = new System.Drawing.Size(222, 28);
-            this.progBarImage.Step = 1;
-            this.progBarImage.TabIndex = 3;
-            // 
-            // groupImgObjects
-            // 
-            this.groupImgObjects.Controls.Add(this.chkImgQuest);
-            this.groupImgObjects.Controls.Add(this.chkImgChests);
-            this.groupImgObjects.Controls.Add(this.chkImgFood);
-            this.groupImgObjects.Controls.Add(this.chkImgWeapons);
-            this.groupImgObjects.Controls.Add(this.chkImgCrystals);
-            this.groupImgObjects.Controls.Add(this.chkImgGold);
-            this.groupImgObjects.Controls.Add(this.chkImgPotions);
-            this.groupImgObjects.Controls.Add(this.chkImgArmor);
-            this.groupImgObjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupImgObjects.Location = new System.Drawing.Point(5, 288);
-            this.groupImgObjects.Name = "groupImgObjects";
-            this.groupImgObjects.Size = new System.Drawing.Size(220, 116);
-            this.groupImgObjects.TabIndex = 2;
-            this.groupImgObjects.TabStop = false;
-            this.groupImgObjects.Text = " Objects ";
-            // 
-            // chkImgQuest
-            // 
-            this.chkImgQuest.AutoSize = true;
-            this.chkImgQuest.Checked = true;
-            this.chkImgQuest.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgQuest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgQuest.Location = new System.Drawing.Point(111, 85);
-            this.chkImgQuest.Name = "chkImgQuest";
-            this.chkImgQuest.Size = new System.Drawing.Size(62, 20);
-            this.chkImgQuest.TabIndex = 7;
-            this.chkImgQuest.Text = "Quest";
-            this.chkImgQuest.UseVisualStyleBackColor = true;
-            // 
-            // chkImgChests
-            // 
-            this.chkImgChests.AutoSize = true;
-            this.chkImgChests.Checked = true;
-            this.chkImgChests.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgChests.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgChests.Location = new System.Drawing.Point(111, 65);
-            this.chkImgChests.Name = "chkImgChests";
-            this.chkImgChests.Size = new System.Drawing.Size(68, 20);
-            this.chkImgChests.TabIndex = 6;
-            this.chkImgChests.Text = "Chests";
-            this.chkImgChests.UseVisualStyleBackColor = true;
-            // 
-            // chkImgFood
-            // 
-            this.chkImgFood.AutoSize = true;
-            this.chkImgFood.Checked = true;
-            this.chkImgFood.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgFood.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgFood.Location = new System.Drawing.Point(111, 45);
-            this.chkImgFood.Name = "chkImgFood";
-            this.chkImgFood.Size = new System.Drawing.Size(59, 20);
-            this.chkImgFood.TabIndex = 5;
-            this.chkImgFood.Text = "Food";
-            this.chkImgFood.UseVisualStyleBackColor = true;
-            // 
-            // chkImgWeapons
-            // 
-            this.chkImgWeapons.AutoSize = true;
-            this.chkImgWeapons.Checked = true;
-            this.chkImgWeapons.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgWeapons.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgWeapons.Location = new System.Drawing.Point(111, 25);
-            this.chkImgWeapons.Name = "chkImgWeapons";
-            this.chkImgWeapons.Size = new System.Drawing.Size(86, 20);
-            this.chkImgWeapons.TabIndex = 4;
-            this.chkImgWeapons.Text = "Weapons";
-            this.chkImgWeapons.UseVisualStyleBackColor = true;
-            // 
-            // chkImgCrystals
-            // 
-            this.chkImgCrystals.AutoSize = true;
-            this.chkImgCrystals.Checked = true;
-            this.chkImgCrystals.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgCrystals.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgCrystals.Location = new System.Drawing.Point(25, 65);
-            this.chkImgCrystals.Name = "chkImgCrystals";
-            this.chkImgCrystals.Size = new System.Drawing.Size(75, 20);
-            this.chkImgCrystals.TabIndex = 3;
-            this.chkImgCrystals.Text = "Crystals";
-            this.chkImgCrystals.UseVisualStyleBackColor = true;
-            // 
-            // chkImgGold
-            // 
-            this.chkImgGold.AutoSize = true;
-            this.chkImgGold.Checked = true;
-            this.chkImgGold.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgGold.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgGold.Location = new System.Drawing.Point(25, 85);
-            this.chkImgGold.Name = "chkImgGold";
-            this.chkImgGold.Size = new System.Drawing.Size(56, 20);
-            this.chkImgGold.TabIndex = 2;
-            this.chkImgGold.Text = "Gold";
-            this.chkImgGold.UseVisualStyleBackColor = true;
-            // 
-            // chkImgPotions
-            // 
-            this.chkImgPotions.AutoSize = true;
-            this.chkImgPotions.Checked = true;
-            this.chkImgPotions.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgPotions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgPotions.Location = new System.Drawing.Point(25, 45);
-            this.chkImgPotions.Name = "chkImgPotions";
-            this.chkImgPotions.Size = new System.Drawing.Size(72, 20);
-            this.chkImgPotions.TabIndex = 1;
-            this.chkImgPotions.Text = "Potions";
-            this.chkImgPotions.UseVisualStyleBackColor = true;
-            // 
-            // chkImgArmor
-            // 
-            this.chkImgArmor.AutoSize = true;
-            this.chkImgArmor.Checked = true;
-            this.chkImgArmor.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImgArmor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgArmor.Location = new System.Drawing.Point(25, 25);
-            this.chkImgArmor.Name = "chkImgArmor";
-            this.chkImgArmor.Size = new System.Drawing.Size(63, 20);
-            this.chkImgArmor.TabIndex = 0;
-            this.chkImgArmor.Text = "Armor";
-            this.chkImgArmor.UseVisualStyleBackColor = true;
-            // 
-            // chkImgUseCurrentSettings
-            // 
-            this.chkImgUseCurrentSettings.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkImgUseCurrentSettings.AutoSize = true;
-            this.chkImgUseCurrentSettings.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkImgUseCurrentSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImgUseCurrentSettings.Location = new System.Drawing.Point(40, 255);
-            this.chkImgUseCurrentSettings.Name = "chkImgUseCurrentSettings";
-            this.chkImgUseCurrentSettings.Size = new System.Drawing.Size(139, 26);
-            this.chkImgUseCurrentSettings.TabIndex = 1;
-            this.chkImgUseCurrentSettings.Text = "Use Current Settings";
-            this.chkImgUseCurrentSettings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkImgUseCurrentSettings.UseVisualStyleBackColor = true;
-            this.chkImgUseCurrentSettings.CheckedChanged += new System.EventHandler(this.chkImgUseCurrentSettings_CheckedChanged);
-            // 
-            // picMapImage
-            // 
-            this.picMapImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.picMapImage.BackgroundImage = global::MapEditor.Properties.Resources.transTile;
-            this.picMapImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picMapImage.Location = new System.Drawing.Point(234, 4);
-            this.picMapImage.Name = "picMapImage";
-            this.picMapImage.Size = new System.Drawing.Size(763, 682);
-            this.picMapImage.TabIndex = 0;
-            this.picMapImage.TabStop = false;
-            // 
-            // mainMenuStrip
-            // 
-            this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuFile,
-            this.menuMap,
-            this.menuOptions,
-            this.menuHelp,
-            this.menuShortcuts});
-            this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
-            this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(1008, 24);
-            this.mainMenuStrip.TabIndex = 1;
-            this.mainMenuStrip.Text = "menuStrip1";
-            // 
-            // menuFile
-            // 
-            this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuNew,
-            this.menuOpen,
-            this.menuRecent,
-            this.menuInstallMap,
-            this.menuSave,
-            this.menuSaveAs,
-            this.toolStripSeparator1,
-            this.menuImportSave,
-            this.menuImportScript,
-            this.menuExportScript,
-            this.menuExportNativeScript,
-            this.toolStripSeparator2,
-            this.menuExit});
-            this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(37, 20);
-            this.menuFile.Text = "&File";
-            // 
-            // menuNew
-            // 
-            this.menuNew.Name = "menuNew";
-            this.menuNew.Size = new System.Drawing.Size(189, 22);
-            this.menuNew.Text = "New";
-            this.menuNew.Click += new System.EventHandler(this.menuNew_Click);
-            // 
-            // menuOpen
-            // 
-            this.menuOpen.Name = "menuOpen";
-            this.menuOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.menuOpen.Size = new System.Drawing.Size(189, 22);
-            this.menuOpen.Text = "Open...";
-            this.menuOpen.Click += new System.EventHandler(this.menuOpen_Click);
-            // 
-            // menuRecent
-            // 
-            this.menuRecent.Name = "menuRecent";
-            this.menuRecent.Size = new System.Drawing.Size(189, 22);
-            this.menuRecent.Text = "Recent";
-            this.menuRecent.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuRecent_DropDownItemClicked);
-            // 
-            // menuInstallMap
-            // 
-            this.menuInstallMap.Name = "menuInstallMap";
-            this.menuInstallMap.Size = new System.Drawing.Size(189, 22);
-            this.menuInstallMap.Text = "Install Map";
-            this.menuInstallMap.Click += new System.EventHandler(this.menuInstallMap_Click);
-            // 
-            // menuSave
-            // 
-            this.menuSave.Name = "menuSave";
-            this.menuSave.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.menuSave.Size = new System.Drawing.Size(189, 22);
-            this.menuSave.Text = "Save";
-            this.menuSave.Click += new System.EventHandler(this.menuSave_Click);
-            // 
-            // menuSaveAs
-            // 
-            this.menuSaveAs.Name = "menuSaveAs";
-            this.menuSaveAs.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.menuSaveAs.Size = new System.Drawing.Size(189, 22);
-            this.menuSaveAs.Text = "Save As...";
-            this.menuSaveAs.Click += new System.EventHandler(this.menuSaveAs_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(186, 6);
-            // 
-            // menuImportSave
-            // 
-            this.menuImportSave.Enabled = false;
-            this.menuImportSave.Name = "menuImportSave";
-            this.menuImportSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.menuImportSave.Size = new System.Drawing.Size(189, 22);
-            this.menuImportSave.Text = "Import + Save";
-            this.menuImportSave.Click += new System.EventHandler(this.menuImportSave_Click);
-            // 
-            // menuImportScript
-            // 
-            this.menuImportScript.Name = "menuImportScript";
-            this.menuImportScript.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.menuImportScript.Size = new System.Drawing.Size(189, 22);
-            this.menuImportScript.Text = "Import Script...";
-            this.menuImportScript.Click += new System.EventHandler(this.menuImportScript_Click);
-            // 
-            // menuExportScript
-            // 
-            this.menuExportScript.Name = "menuExportScript";
-            this.menuExportScript.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.menuExportScript.Size = new System.Drawing.Size(189, 22);
-            this.menuExportScript.Text = "Export Script...";
-            this.menuExportScript.Click += new System.EventHandler(this.menuExportScript_Click);
-            // 
-            // menuExportNativeScript
-            // 
-            this.menuExportNativeScript.Name = "menuExportNativeScript";
-            this.menuExportNativeScript.Size = new System.Drawing.Size(189, 22);
-            this.menuExportNativeScript.Text = "Export Native Script...";
-            this.menuExportNativeScript.Click += new System.EventHandler(this.menuExportNativeScript_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(186, 6);
-            // 
-            // menuExit
-            // 
-            this.menuExit.Name = "menuExit";
-            this.menuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.menuExit.Size = new System.Drawing.Size(189, 22);
-            this.menuExit.Text = "Exit";
-            this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
-            // 
-            // menuMap
-            // 
-            this.menuMap.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuListObjects,
-            this.menuScripts,
-            this.menuGroups,
-            this.menuPolygons,
-            this.toolStripSeparator3,
-            this.menuFixExtents,
-            this.menuMapGenerator});
-            this.menuMap.Name = "menuMap";
-            this.menuMap.Size = new System.Drawing.Size(43, 20);
-            this.menuMap.Text = "&Map";
-            // 
-            // menuListObjects
-            // 
-            this.menuListObjects.Name = "menuListObjects";
-            this.menuListObjects.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.L)));
-            this.menuListObjects.Size = new System.Drawing.Size(207, 22);
-            this.menuListObjects.Text = "List Objects";
-            this.menuListObjects.Click += new System.EventHandler(this.menuListObjects_Click);
-            // 
-            // menuScripts
-            // 
-            this.menuScripts.Name = "menuScripts";
-            this.menuScripts.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.S)));
-            this.menuScripts.Size = new System.Drawing.Size(207, 22);
-            this.menuScripts.Text = "Scripts";
-            this.menuScripts.Click += new System.EventHandler(this.menuScripts_Click);
-            // 
-            // menuGroups
-            // 
-            this.menuGroups.Name = "menuGroups";
-            this.menuGroups.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.G)));
-            this.menuGroups.Size = new System.Drawing.Size(207, 22);
-            this.menuGroups.Text = "Groups";
-            this.menuGroups.Click += new System.EventHandler(this.menuGroups_Click);
-            // 
-            // menuPolygons
-            // 
-            this.menuPolygons.Name = "menuPolygons";
-            this.menuPolygons.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.P)));
-            this.menuPolygons.Size = new System.Drawing.Size(207, 22);
-            this.menuPolygons.Text = "Polygons";
-            this.menuPolygons.Click += new System.EventHandler(this.menuPolygons_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(204, 6);
-            // 
-            // menuFixExtents
-            // 
-            this.menuFixExtents.Name = "menuFixExtents";
-            this.menuFixExtents.Size = new System.Drawing.Size(207, 22);
-            this.menuFixExtents.Text = "Fix Extents";
-            this.menuFixExtents.Click += new System.EventHandler(this.menuFixExtents_Click);
-            // 
-            // menuMapGenerator
-            // 
-            this.menuMapGenerator.Name = "menuMapGenerator";
-            this.menuMapGenerator.Size = new System.Drawing.Size(207, 22);
-            this.menuMapGenerator.Text = "Map Generator...";
-            this.menuMapGenerator.Click += new System.EventHandler(this.menuMapGenerator_Click);
-            // 
-            // menuOptions
-            // 
-            this.menuOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuShowGrid,
-            this.menuShowMinimap,
-            this.menuVisualPreviewMode,
-            this.menuInvertColors,
-            this.toolStripSeparator4,
-            this.menuSettings});
-            this.menuOptions.Name = "menuOptions";
-            this.menuOptions.Size = new System.Drawing.Size(61, 20);
-            this.menuOptions.Text = "&Options";
-            // 
-            // menuShowGrid
-            // 
-            this.menuShowGrid.Checked = true;
-            this.menuShowGrid.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuShowGrid.Name = "menuShowGrid";
-            this.menuShowGrid.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.menuShowGrid.Size = new System.Drawing.Size(223, 22);
-            this.menuShowGrid.Text = "Show Grid";
-            this.menuShowGrid.Click += new System.EventHandler(this.menuShowGrid_Click);
-            // 
-            // menuShowMinimap
-            // 
-            this.menuShowMinimap.Checked = true;
-            this.menuShowMinimap.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuShowMinimap.Name = "menuShowMinimap";
-            this.menuShowMinimap.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.menuShowMinimap.Size = new System.Drawing.Size(223, 22);
-            this.menuShowMinimap.Text = "Show Minimap";
-            this.menuShowMinimap.Click += new System.EventHandler(this.menuShowMinimap_Click);
-            // 
-            // menuVisualPreviewMode
-            // 
-            this.menuVisualPreviewMode.Checked = true;
-            this.menuVisualPreviewMode.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuVisualPreviewMode.Name = "menuVisualPreviewMode";
-            this.menuVisualPreviewMode.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.menuVisualPreviewMode.Size = new System.Drawing.Size(223, 22);
-            this.menuVisualPreviewMode.Text = "Visual Preview Mode";
-            this.menuVisualPreviewMode.Click += new System.EventHandler(this.menuVisualPreviewMode_Click);
-            // 
-            // menuInvertColors
-            // 
-            this.menuInvertColors.Name = "menuInvertColors";
-            this.menuInvertColors.Size = new System.Drawing.Size(223, 22);
-            this.menuInvertColors.Text = "Invert Colors";
-            this.menuInvertColors.Click += new System.EventHandler(this.menuInvertColors_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(220, 6);
-            // 
-            // menuSettings
-            // 
-            this.menuSettings.Name = "menuSettings";
-            this.menuSettings.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
-            this.menuSettings.Size = new System.Drawing.Size(223, 22);
-            this.menuSettings.Text = "Settings...";
-            this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
-            // 
-            // menuHelp
-            // 
-            this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuHelpLink1,
-            this.menuHelpLink2,
-            this.toolStripSeparator5,
-            this.menuHelpLink3,
-            this.menuHelpLink4,
-            this.toolStripSeparator6,
-            this.menuAbout});
-            this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(44, 20);
-            this.menuHelp.Text = "&Help";
-            // 
-            // menuHelpLink1
-            // 
-            this.menuHelpLink1.Name = "menuHelpLink1";
-            this.menuHelpLink1.Size = new System.Drawing.Size(159, 22);
-            this.menuHelpLink1.Text = "Nox Forum";
-            this.menuHelpLink1.Click += new System.EventHandler(this.menuHelpLink1_Click);
-            // 
-            // menuHelpLink2
-            // 
-            this.menuHelpLink2.Name = "menuHelpLink2";
-            this.menuHelpLink2.Size = new System.Drawing.Size(159, 22);
-            this.menuHelpLink2.Text = "Nox Discord";
-            this.menuHelpLink2.Click += new System.EventHandler(this.menuHelpLink2_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(156, 6);
-            // 
-            // menuHelpLink3
-            // 
-            this.menuHelpLink3.Name = "menuHelpLink3";
-            this.menuHelpLink3.Size = new System.Drawing.Size(159, 22);
-            this.menuHelpLink3.Text = "Game Texts";
-            this.menuHelpLink3.Click += new System.EventHandler(this.menuHelpLink3_Click);
-            // 
-            // menuHelpLink4
-            // 
-            this.menuHelpLink4.Name = "menuHelpLink4";
-            this.menuHelpLink4.Size = new System.Drawing.Size(159, 22);
-            this.menuHelpLink4.Text = "Script Functions";
-            this.menuHelpLink4.Click += new System.EventHandler(this.menuHelpLink4_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(156, 6);
-            // 
-            // menuAbout
-            // 
-            this.menuAbout.Name = "menuAbout";
-            this.menuAbout.Size = new System.Drawing.Size(159, 22);
-            this.menuAbout.Text = "About";
-            this.menuAbout.Click += new System.EventHandler(this.menuAbout_Click);
-            // 
-            // menuShortcuts
-            // 
-            this.menuShortcuts.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuUndo,
-            this.menuRedo,
-            this.menuPicker,
-            this.menuRectangleDraw,
-            this.menuLineDraw,
-            this.menuRotateSelection45,
-            this.menuDrawWalls,
-            this.menuDrawObjects,
-            this.menuDraw3DExtents,
-            this.menuDrawTeleportPaths,
-            this.menuDrawWaypoints,
-            this.menuColorSpecialWalls});
-            this.menuShortcuts.Name = "menuShortcuts";
-            this.menuShortcuts.Size = new System.Drawing.Size(69, 20);
-            this.menuShortcuts.Text = "Shortcuts";
-            this.menuShortcuts.Visible = false;
-            // 
-            // menuUndo
-            // 
-            this.menuUndo.Name = "menuUndo";
-            this.menuUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.menuUndo.Size = new System.Drawing.Size(216, 22);
-            this.menuUndo.Text = "Undo";
-            this.menuUndo.Click += new System.EventHandler(this.menuUndo_Click);
-            // 
-            // menuRedo
-            // 
-            this.menuRedo.Name = "menuRedo";
-            this.menuRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.menuRedo.Size = new System.Drawing.Size(216, 22);
-            this.menuRedo.Text = "Redo";
-            this.menuRedo.Click += new System.EventHandler(this.menuRedo_Click);
-            // 
-            // menuPicker
-            // 
-            this.menuPicker.Name = "menuPicker";
-            this.menuPicker.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.menuPicker.Size = new System.Drawing.Size(216, 22);
-            this.menuPicker.Text = "Picker";
-            this.menuPicker.Click += new System.EventHandler(this.menuPicker_Click);
-            // 
-            // menuRectangleDraw
-            // 
-            this.menuRectangleDraw.Name = "menuRectangleDraw";
-            this.menuRectangleDraw.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.menuRectangleDraw.Size = new System.Drawing.Size(216, 22);
-            this.menuRectangleDraw.Text = "Rectangle Draw";
-            this.menuRectangleDraw.Click += new System.EventHandler(this.menuRectangleDraw_Click);
-            // 
-            // menuLineDraw
-            // 
-            this.menuLineDraw.Name = "menuLineDraw";
-            this.menuLineDraw.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.menuLineDraw.Size = new System.Drawing.Size(216, 22);
-            this.menuLineDraw.Text = "Line Draw";
-            this.menuLineDraw.Click += new System.EventHandler(this.menuLineDraw_Click);
-            // 
-            // menuRotateSelection45
-            // 
-            this.menuRotateSelection45.Name = "menuRotateSelection45";
-            this.menuRotateSelection45.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.menuRotateSelection45.Size = new System.Drawing.Size(216, 22);
-            this.menuRotateSelection45.Text = "Rotate Selection 45";
-            this.menuRotateSelection45.Click += new System.EventHandler(this.menuRotateSelection45_Click);
-            // 
-            // menuDrawWalls
-            // 
-            this.menuDrawWalls.Name = "menuDrawWalls";
-            this.menuDrawWalls.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.menuDrawWalls.Size = new System.Drawing.Size(216, 22);
-            this.menuDrawWalls.Text = "Draw Walls";
-            this.menuDrawWalls.Click += new System.EventHandler(this.menuDrawWalls_Click);
-            // 
-            // menuDrawObjects
-            // 
-            this.menuDrawObjects.Name = "menuDrawObjects";
-            this.menuDrawObjects.ShortcutKeys = System.Windows.Forms.Keys.F7;
-            this.menuDrawObjects.Size = new System.Drawing.Size(216, 22);
-            this.menuDrawObjects.Text = "Draw Objects";
-            this.menuDrawObjects.Click += new System.EventHandler(this.menuDrawObjects_Click);
-            // 
-            // menuDraw3DExtents
-            // 
-            this.menuDraw3DExtents.Name = "menuDraw3DExtents";
-            this.menuDraw3DExtents.ShortcutKeys = System.Windows.Forms.Keys.F8;
-            this.menuDraw3DExtents.Size = new System.Drawing.Size(216, 22);
-            this.menuDraw3DExtents.Text = "Draw 3D Extents";
-            this.menuDraw3DExtents.Click += new System.EventHandler(this.menuDraw3DExtents_Click);
-            // 
-            // menuDrawTeleportPaths
-            // 
-            this.menuDrawTeleportPaths.Name = "menuDrawTeleportPaths";
-            this.menuDrawTeleportPaths.ShortcutKeys = System.Windows.Forms.Keys.F9;
-            this.menuDrawTeleportPaths.Size = new System.Drawing.Size(216, 22);
-            this.menuDrawTeleportPaths.Text = "Draw Teleport Paths";
-            this.menuDrawTeleportPaths.Click += new System.EventHandler(this.menuDrawTeleportPaths_Click);
-            // 
-            // menuDrawWaypoints
-            // 
-            this.menuDrawWaypoints.Name = "menuDrawWaypoints";
-            this.menuDrawWaypoints.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.menuDrawWaypoints.Size = new System.Drawing.Size(216, 22);
-            this.menuDrawWaypoints.Text = "Draw Waypoints";
-            this.menuDrawWaypoints.Click += new System.EventHandler(this.menuDrawWaypoints_Click);
-            // 
-            // menuColorSpecialWalls
-            // 
-            this.menuColorSpecialWalls.Name = "menuColorSpecialWalls";
-            this.menuColorSpecialWalls.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.menuColorSpecialWalls.Size = new System.Drawing.Size(216, 22);
-            this.menuColorSpecialWalls.Text = "Color Special Walls";
-            this.menuColorSpecialWalls.Click += new System.EventHandler(this.menuColorSpecialWalls_Click);
-            // 
-            // MainWindow
-            // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(1008, 741);
-            this.Controls.Add(this.panelTabs);
-            this.Controls.Add(this.mainMenuStrip);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.KeyPreview = true;
-            this.MainMenuStrip = this.mainMenuStrip;
-            this.MinimumSize = new System.Drawing.Size(400, 400);
-            this.Name = "MainWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
-            this.SizeChanged += new System.EventHandler(this.miniViewPanel_Resize);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
-            this.Move += new System.EventHandler(this.miniViewPanel_Resize);
-            this.Resize += new System.EventHandler(this.MainWindow_Resize);
-            this.mapInfoTab.ResumeLayout(false);
-            this.groupMapInfoTab.ResumeLayout(false);
-            this.groupMapInfoTab.PerformLayout();
-            this.minimapTab.ResumeLayout(false);
-            this.MinimapPanel.ResumeLayout(false);
-            this.panelInnerMinimap.ResumeLayout(false);
-            this.groupMiniMapTab.ResumeLayout(false);
-            this.groupMiniMapTab.PerformLayout();
-            this.MiniEditPanel.ResumeLayout(false);
-            this.MiniEditPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numBrushSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numMinimapZoom)).EndInit();
-            this.largeMap.ResumeLayout(false);
-            this.panelTabs.ResumeLayout(false);
-            this.mapImageTab.ResumeLayout(false);
-            this.mapImageTab.PerformLayout();
-            this.groupImgExport.ResumeLayout(false);
-            this.groupImgExport.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackImgSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numImgPadding)).EndInit();
-            this.groupImgEntities.ResumeLayout(false);
-            this.groupImgEntities.PerformLayout();
-            this.groupImgObjects.ResumeLayout(false);
-            this.groupImgObjects.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMapImage)).EndInit();
-            this.mainMenuStrip.ResumeLayout(false);
-            this.mainMenuStrip.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
-        }
-        #endregion
 
         /* ####  MENUS  #### */
         #region File Menu
@@ -3616,5 +1677,1945 @@ namespace MapEditor
             }
             return list;
         }
+
+        #region Windows Form Designer generated code
+        private System.ComponentModel.IContainer components;
+        private TabPage largeMap;
+        public TabControl panelTabs;
+        private TabPage mapInfoTab;
+        private Label labelTitle;
+        private GroupBox groupMapInfoTab;
+        private TextBox mapSummary;
+        private Label labelDescription;
+        private Label labelVersion;
+        private TextBox mapDescription;
+        private Label labelAuthor;
+        private Label labelAuthor2;
+        private Label labelEmail;
+        private Label labelEmail2;
+        private TextBox mapAuthor;
+        private TextBox mapEmail;
+        private TextBox mapEmail2;
+        private TextBox mapAuthor2;
+        private Label labelDate;
+        private TextBox mapDate;
+        private TextBox mapVersion;
+        private Label labelCopyright;
+        private Label minRecLbl;
+        private Label maxRecLbl;
+        private Label recommendedLbl;
+        private Label mapTypeLbl;
+        private TextBox mapMinRec;
+        private TextBox mapMaxRec;
+        private ComboBox mapType;
+        private TextBox mapCopyright;
+        private Label label1;
+        private Label label2;
+        private TextBox questTitle;
+        private TextBox questGraphic;
+        private Label label3;
+        private TabPage minimapTab;
+        private Panel MinimapPanel;
+        private GroupBox groupMiniMapTab;
+        private Button cmdGoToCenter;
+        private CheckBox chkDivide;
+        private CheckBox chkDivide2;
+        private Label label4;
+        private Panel panelAmbientColor;
+        private Panel panelInnerMinimap;
+        private NumericUpDown numMinimapZoom;
+        private Label label5;
+        private CheckBox miniEdit;
+        private Panel MiniEditPanel;
+        private Label labelSep2;
+        private RadioButton miniTileBrush;
+        private RadioButton miniTilePLace;
+        private RadioButton miniWallBrush;
+        private NumericUpDown numBrushSize;
+        private Label label8;
+        private Label label7;
+        private Label label6;
+        public CheckBox miniLineWall;
+        public Button miniRedo;
+        public Button miniUndo;
+        private Label label9;
+        private Button cmdPolygons;
+        private Label label10;
+        private CheckBox chkServerPlayerLimit;
+        private CheckBox chkAutoIncrement;
+        private Button cmdDebug;
+
+        private MenuStrip mainMenuStrip;
+        private ToolStripMenuItem menuFile;
+        private ToolStripMenuItem menuNew;
+        private ToolStripMenuItem menuOpen;
+        private ToolStripMenuItem menuInstallMap;
+        private ToolStripMenuItem menuRecent;
+        public ToolStripMenuItem menuSave;
+        private ToolStripMenuItem menuSaveAs;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem menuImportSave;
+        private ToolStripMenuItem menuImportScript;
+        private ToolStripMenuItem menuExportScript;
+        private ToolStripMenuItem menuExportNativeScript;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem menuExit;
+        private ToolStripMenuItem menuMap;
+        private ToolStripMenuItem menuOptions;
+        private ToolStripMenuItem menuHelp;
+        private ToolStripMenuItem menuShortcuts;
+        private ToolStripMenuItem menuUndo;
+        private ToolStripMenuItem menuRedo;
+        private ToolStripMenuItem menuListObjects;
+        private ToolStripMenuItem menuScripts;
+        private ToolStripMenuItem menuGroups;
+        private ToolStripMenuItem menuPolygons;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem menuFixExtents;
+        private ToolStripMenuItem menuMapGenerator;
+        private ToolStripMenuItem menuShowGrid;
+        private ToolStripMenuItem menuShowMinimap;
+        public ToolStripMenuItem menuVisualPreviewMode;
+        private ToolStripMenuItem menuInvertColors;
+        private ToolStripSeparator toolStripSeparator4;
+        public ToolStripMenuItem menuSettings;
+        private ToolStripMenuItem menuHelpLink1;
+        private ToolStripMenuItem menuHelpLink2;
+        private ToolStripSeparator toolStripSeparator5;
+        private ToolStripMenuItem menuHelpLink3;
+        private ToolStripMenuItem menuHelpLink4;
+        private ToolStripSeparator toolStripSeparator6;
+        private ToolStripMenuItem menuAbout;
+        private ToolStripMenuItem menuPicker;
+        private ToolStripMenuItem menuRectangleDraw;
+        private ToolStripMenuItem menuLineDraw;
+        private ToolStripMenuItem menuRotateSelection45;
+        private ToolStripMenuItem menuDrawWalls;
+        private ToolStripMenuItem menuDrawObjects;
+        private ToolStripMenuItem menuDraw3DExtents;
+        private ToolStripMenuItem menuDrawWaypoints;
+        private ToolStripMenuItem menuDrawTeleportPaths;
+        private ToolStripMenuItem menuColorSpecialWalls;
+
+        private TabPage mapImageTab;
+        private PictureBox picMapImage;
+        private GroupBox groupImgExport;
+        private Label lblImgDimensions;
+        private TrackBar trackImgSize;
+        private Label lblImgSize;
+        private NumericUpDown numImgPadding;
+        private Label lblImgPadding;
+        private CheckBox chkImgAutoCrop;
+        private GroupBox groupImgEntities;
+        private CheckBox chkImgBroken;
+        private CheckBox chkImgBoss;
+        private CheckBox chkImgAmbient;
+        private CheckBox chkImgHard;
+        private CheckBox chkImgEasy;
+        private ProgressBar progBarImage;
+        private GroupBox groupImgObjects;
+        private CheckBox chkImgQuest;
+        private CheckBox chkImgChests;
+        private CheckBox chkImgFood;
+        private CheckBox chkImgWeapons;
+        private CheckBox chkImgCrystals;
+        private CheckBox chkImgGold;
+        private CheckBox chkImgPotions;
+        private CheckBox chkImgArmor;
+        private CheckBox chkImgUseCurrentSettings;
+        private Button cmdImgExport;
+        private CheckBox chkImgBackground;
+        private Button cmdImgRender;
+
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
+            this.mapInfoTab = new System.Windows.Forms.TabPage();
+            this.groupMapInfoTab = new System.Windows.Forms.GroupBox();
+            this.chkServerPlayerLimit = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panelAmbientColor = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.questGraphic = new System.Windows.Forms.TextBox();
+            this.questTitle = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.mapType = new System.Windows.Forms.ComboBox();
+            this.mapTypeLbl = new System.Windows.Forms.Label();
+            this.recommendedLbl = new System.Windows.Forms.Label();
+            this.maxRecLbl = new System.Windows.Forms.Label();
+            this.minRecLbl = new System.Windows.Forms.Label();
+            this.mapMaxRec = new System.Windows.Forms.TextBox();
+            this.mapMinRec = new System.Windows.Forms.TextBox();
+            this.mapCopyright = new System.Windows.Forms.TextBox();
+            this.labelCopyright = new System.Windows.Forms.Label();
+            this.mapVersion = new System.Windows.Forms.TextBox();
+            this.mapDate = new System.Windows.Forms.TextBox();
+            this.labelDate = new System.Windows.Forms.Label();
+            this.mapAuthor2 = new System.Windows.Forms.TextBox();
+            this.mapEmail2 = new System.Windows.Forms.TextBox();
+            this.mapEmail = new System.Windows.Forms.TextBox();
+            this.mapAuthor = new System.Windows.Forms.TextBox();
+            this.labelEmail2 = new System.Windows.Forms.Label();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.labelAuthor2 = new System.Windows.Forms.Label();
+            this.labelAuthor = new System.Windows.Forms.Label();
+            this.labelVersion = new System.Windows.Forms.Label();
+            this.mapDescription = new System.Windows.Forms.TextBox();
+            this.labelDescription = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
+            this.mapSummary = new System.Windows.Forms.TextBox();
+            this.chkAutoIncrement = new System.Windows.Forms.CheckBox();
+            this.minimapTab = new System.Windows.Forms.TabPage();
+            this.MinimapPanel = new System.Windows.Forms.Panel();
+            this.panelInnerMinimap = new System.Windows.Forms.Panel();
+            this.miniViewPanel = new MapEditor.MainWindow.FlickerFreePanel();
+            this.groupMiniMapTab = new System.Windows.Forms.GroupBox();
+            this.cmdDebug = new System.Windows.Forms.Button();
+            this.MiniEditPanel = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cmdPolygons = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.miniRedo = new System.Windows.Forms.Button();
+            this.miniUndo = new System.Windows.Forms.Button();
+            this.miniLineWall = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numBrushSize = new System.Windows.Forms.NumericUpDown();
+            this.miniTileBrush = new System.Windows.Forms.RadioButton();
+            this.miniTilePLace = new System.Windows.Forms.RadioButton();
+            this.miniWallBrush = new System.Windows.Forms.RadioButton();
+            this.labelSep2 = new System.Windows.Forms.Label();
+            this.miniEdit = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.numMinimapZoom = new System.Windows.Forms.NumericUpDown();
+            this.chkDivide2 = new System.Windows.Forms.CheckBox();
+            this.chkDivide = new System.Windows.Forms.CheckBox();
+            this.cmdGoToCenter = new System.Windows.Forms.Button();
+            this.largeMap = new System.Windows.Forms.TabPage();
+            this.mapView = new MapEditor.MapView();
+            this.panelTabs = new System.Windows.Forms.TabControl();
+            this.mapImageTab = new System.Windows.Forms.TabPage();
+            this.cmdImgRender = new System.Windows.Forms.Button();
+            this.groupImgExport = new System.Windows.Forms.GroupBox();
+            this.chkImgBackground = new System.Windows.Forms.CheckBox();
+            this.lblImgDimensions = new System.Windows.Forms.Label();
+            this.trackImgSize = new System.Windows.Forms.TrackBar();
+            this.numImgPadding = new System.Windows.Forms.NumericUpDown();
+            this.lblImgPadding = new System.Windows.Forms.Label();
+            this.chkImgAutoCrop = new System.Windows.Forms.CheckBox();
+            this.lblImgSize = new System.Windows.Forms.Label();
+            this.cmdImgExport = new System.Windows.Forms.Button();
+            this.groupImgEntities = new System.Windows.Forms.GroupBox();
+            this.chkImgBroken = new System.Windows.Forms.CheckBox();
+            this.chkImgBoss = new System.Windows.Forms.CheckBox();
+            this.chkImgAmbient = new System.Windows.Forms.CheckBox();
+            this.chkImgHard = new System.Windows.Forms.CheckBox();
+            this.chkImgEasy = new System.Windows.Forms.CheckBox();
+            this.progBarImage = new System.Windows.Forms.ProgressBar();
+            this.groupImgObjects = new System.Windows.Forms.GroupBox();
+            this.chkImgQuest = new System.Windows.Forms.CheckBox();
+            this.chkImgChests = new System.Windows.Forms.CheckBox();
+            this.chkImgFood = new System.Windows.Forms.CheckBox();
+            this.chkImgWeapons = new System.Windows.Forms.CheckBox();
+            this.chkImgCrystals = new System.Windows.Forms.CheckBox();
+            this.chkImgGold = new System.Windows.Forms.CheckBox();
+            this.chkImgPotions = new System.Windows.Forms.CheckBox();
+            this.chkImgArmor = new System.Windows.Forms.CheckBox();
+            this.chkImgUseCurrentSettings = new System.Windows.Forms.CheckBox();
+            this.picMapImage = new System.Windows.Forms.PictureBox();
+            this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuRecent = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuInstallMap = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuImportSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuImportScript = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuExportScript = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuExportNativeScript = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMap = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuListObjects = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuScripts = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGroups = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuPolygons = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuFixExtents = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMapGenerator = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuShowGrid = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuShowMinimap = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuVisualPreviewMode = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuInvertColors = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelpLink1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelpLink2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuHelpLink3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelpLink4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuShortcuts = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuUndo = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuRedo = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuPicker = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuRectangleDraw = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLineDraw = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuRotateSelection45 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDrawWalls = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDrawObjects = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDraw3DExtents = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDrawTeleportPaths = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDrawWaypoints = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuColorSpecialWalls = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapInfoTab.SuspendLayout();
+            this.groupMapInfoTab.SuspendLayout();
+            this.minimapTab.SuspendLayout();
+            this.MinimapPanel.SuspendLayout();
+            this.panelInnerMinimap.SuspendLayout();
+            this.groupMiniMapTab.SuspendLayout();
+            this.MiniEditPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numBrushSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMinimapZoom)).BeginInit();
+            this.largeMap.SuspendLayout();
+            this.panelTabs.SuspendLayout();
+            this.mapImageTab.SuspendLayout();
+            this.groupImgExport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackImgSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numImgPadding)).BeginInit();
+            this.groupImgEntities.SuspendLayout();
+            this.groupImgObjects.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMapImage)).BeginInit();
+            this.mainMenuStrip.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // mapInfoTab
+            // 
+            this.mapInfoTab.Controls.Add(this.groupMapInfoTab);
+            this.mapInfoTab.Location = new System.Drawing.Point(4, 22);
+            this.mapInfoTab.Name = "mapInfoTab";
+            this.mapInfoTab.Size = new System.Drawing.Size(1000, 691);
+            this.mapInfoTab.TabIndex = 0;
+            this.mapInfoTab.Text = "Map Info";
+            this.mapInfoTab.UseVisualStyleBackColor = true;
+            // 
+            // groupMapInfoTab
+            // 
+            this.groupMapInfoTab.Controls.Add(this.chkServerPlayerLimit);
+            this.groupMapInfoTab.Controls.Add(this.label4);
+            this.groupMapInfoTab.Controls.Add(this.panelAmbientColor);
+            this.groupMapInfoTab.Controls.Add(this.label3);
+            this.groupMapInfoTab.Controls.Add(this.questGraphic);
+            this.groupMapInfoTab.Controls.Add(this.questTitle);
+            this.groupMapInfoTab.Controls.Add(this.label2);
+            this.groupMapInfoTab.Controls.Add(this.label1);
+            this.groupMapInfoTab.Controls.Add(this.mapType);
+            this.groupMapInfoTab.Controls.Add(this.mapTypeLbl);
+            this.groupMapInfoTab.Controls.Add(this.recommendedLbl);
+            this.groupMapInfoTab.Controls.Add(this.maxRecLbl);
+            this.groupMapInfoTab.Controls.Add(this.minRecLbl);
+            this.groupMapInfoTab.Controls.Add(this.mapMaxRec);
+            this.groupMapInfoTab.Controls.Add(this.mapMinRec);
+            this.groupMapInfoTab.Controls.Add(this.mapCopyright);
+            this.groupMapInfoTab.Controls.Add(this.labelCopyright);
+            this.groupMapInfoTab.Controls.Add(this.mapVersion);
+            this.groupMapInfoTab.Controls.Add(this.mapDate);
+            this.groupMapInfoTab.Controls.Add(this.labelDate);
+            this.groupMapInfoTab.Controls.Add(this.mapAuthor2);
+            this.groupMapInfoTab.Controls.Add(this.mapEmail2);
+            this.groupMapInfoTab.Controls.Add(this.mapEmail);
+            this.groupMapInfoTab.Controls.Add(this.mapAuthor);
+            this.groupMapInfoTab.Controls.Add(this.labelEmail2);
+            this.groupMapInfoTab.Controls.Add(this.labelEmail);
+            this.groupMapInfoTab.Controls.Add(this.labelAuthor2);
+            this.groupMapInfoTab.Controls.Add(this.labelAuthor);
+            this.groupMapInfoTab.Controls.Add(this.labelVersion);
+            this.groupMapInfoTab.Controls.Add(this.mapDescription);
+            this.groupMapInfoTab.Controls.Add(this.labelDescription);
+            this.groupMapInfoTab.Controls.Add(this.labelTitle);
+            this.groupMapInfoTab.Controls.Add(this.mapSummary);
+            this.groupMapInfoTab.Controls.Add(this.chkAutoIncrement);
+            this.groupMapInfoTab.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupMapInfoTab.Location = new System.Drawing.Point(0, 0);
+            this.groupMapInfoTab.Name = "groupMapInfoTab";
+            this.groupMapInfoTab.Size = new System.Drawing.Size(1000, 560);
+            this.groupMapInfoTab.TabIndex = 2;
+            this.groupMapInfoTab.TabStop = false;
+            // 
+            // chkServerPlayerLimit
+            // 
+            this.chkServerPlayerLimit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkServerPlayerLimit.Location = new System.Drawing.Point(288, 373);
+            this.chkServerPlayerLimit.Name = "chkServerPlayerLimit";
+            this.chkServerPlayerLimit.Size = new System.Drawing.Size(104, 24);
+            this.chkServerPlayerLimit.TabIndex = 34;
+            this.chkServerPlayerLimit.Text = "Server Settings";
+            this.chkServerPlayerLimit.UseVisualStyleBackColor = true;
+            this.chkServerPlayerLimit.CheckedChanged += new System.EventHandler(this.chkServerPlayerLimit_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label4.Location = new System.Drawing.Point(256, 433);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "Ambient Color";
+            // 
+            // panelAmbientColor
+            // 
+            this.panelAmbientColor.Location = new System.Drawing.Point(259, 459);
+            this.panelAmbientColor.Name = "panelAmbientColor";
+            this.panelAmbientColor.Size = new System.Drawing.Size(69, 36);
+            this.panelAmbientColor.TabIndex = 32;
+            this.panelAmbientColor.Click += new System.EventHandler(this.panelAmbientColor_Click);
+            // 
+            // label3
+            // 
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(72, 427);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 24);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Quest Intro";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // questGraphic
+            // 
+            this.questGraphic.Location = new System.Drawing.Point(88, 491);
+            this.questGraphic.MaxLength = 512;
+            this.questGraphic.Name = "questGraphic";
+            this.questGraphic.Size = new System.Drawing.Size(128, 20);
+            this.questGraphic.TabIndex = 30;
+            // 
+            // questTitle
+            // 
+            this.questTitle.Location = new System.Drawing.Point(88, 459);
+            this.questTitle.MaxLength = 512;
+            this.questTitle.Name = "questTitle";
+            this.questTitle.Size = new System.Drawing.Size(128, 20);
+            this.questTitle.TabIndex = 29;
+            // 
+            // label2
+            // 
+            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label2.Location = new System.Drawing.Point(32, 486);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 24);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Graphic";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label1
+            // 
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(32, 457);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 24);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Title";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // mapType
+            // 
+            this.mapType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mapType.FormattingEnabled = true;
+            this.mapType.ItemHeight = 13;
+            this.mapType.Location = new System.Drawing.Point(88, 24);
+            this.mapType.Name = "mapType";
+            this.mapType.Size = new System.Drawing.Size(88, 21);
+            this.mapType.TabIndex = 26;
+            // 
+            // mapTypeLbl
+            // 
+            this.mapTypeLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.mapTypeLbl.Location = new System.Drawing.Point(24, 24);
+            this.mapTypeLbl.Name = "mapTypeLbl";
+            this.mapTypeLbl.Size = new System.Drawing.Size(64, 24);
+            this.mapTypeLbl.TabIndex = 25;
+            this.mapTypeLbl.Text = "Map Type";
+            this.mapTypeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // recommendedLbl
+            // 
+            this.recommendedLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.recommendedLbl.Location = new System.Drawing.Point(256, 322);
+            this.recommendedLbl.Name = "recommendedLbl";
+            this.recommendedLbl.Size = new System.Drawing.Size(184, 24);
+            this.recommendedLbl.TabIndex = 24;
+            this.recommendedLbl.Text = "Recommended Number of Players";
+            this.recommendedLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // maxRecLbl
+            // 
+            this.maxRecLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.maxRecLbl.Location = new System.Drawing.Point(328, 346);
+            this.maxRecLbl.Name = "maxRecLbl";
+            this.maxRecLbl.Size = new System.Drawing.Size(32, 24);
+            this.maxRecLbl.TabIndex = 23;
+            this.maxRecLbl.Text = "Max";
+            this.maxRecLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // minRecLbl
+            // 
+            this.minRecLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.minRecLbl.Location = new System.Drawing.Point(256, 346);
+            this.minRecLbl.Name = "minRecLbl";
+            this.minRecLbl.Size = new System.Drawing.Size(32, 24);
+            this.minRecLbl.TabIndex = 22;
+            this.minRecLbl.Text = "Min";
+            this.minRecLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // mapMaxRec
+            // 
+            this.mapMaxRec.Location = new System.Drawing.Point(360, 346);
+            this.mapMaxRec.MaxLength = 2;
+            this.mapMaxRec.Name = "mapMaxRec";
+            this.mapMaxRec.Size = new System.Drawing.Size(32, 20);
+            this.mapMaxRec.TabIndex = 21;
+            // 
+            // mapMinRec
+            // 
+            this.mapMinRec.Location = new System.Drawing.Point(288, 346);
+            this.mapMinRec.MaxLength = 2;
+            this.mapMinRec.Name = "mapMinRec";
+            this.mapMinRec.Size = new System.Drawing.Size(32, 20);
+            this.mapMinRec.TabIndex = 20;
+            // 
+            // mapCopyright
+            // 
+            this.mapCopyright.Location = new System.Drawing.Point(88, 348);
+            this.mapCopyright.MaxLength = 128;
+            this.mapCopyright.Name = "mapCopyright";
+            this.mapCopyright.Size = new System.Drawing.Size(128, 20);
+            this.mapCopyright.TabIndex = 17;
+            // 
+            // labelCopyright
+            // 
+            this.labelCopyright.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelCopyright.Location = new System.Drawing.Point(10, 346);
+            this.labelCopyright.Name = "labelCopyright";
+            this.labelCopyright.Size = new System.Drawing.Size(72, 24);
+            this.labelCopyright.TabIndex = 16;
+            this.labelCopyright.Text = "Copyright";
+            this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // mapVersion
+            // 
+            this.mapVersion.Location = new System.Drawing.Point(88, 373);
+            this.mapVersion.MaxLength = 16;
+            this.mapVersion.Name = "mapVersion";
+            this.mapVersion.Size = new System.Drawing.Size(128, 20);
+            this.mapVersion.TabIndex = 15;
+            // 
+            // mapDate
+            // 
+            this.mapDate.Location = new System.Drawing.Point(88, 323);
+            this.mapDate.MaxLength = 32;
+            this.mapDate.Name = "mapDate";
+            this.mapDate.Size = new System.Drawing.Size(128, 20);
+            this.mapDate.TabIndex = 14;
+            // 
+            // labelDate
+            // 
+            this.labelDate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelDate.Location = new System.Drawing.Point(17, 322);
+            this.labelDate.Name = "labelDate";
+            this.labelDate.Size = new System.Drawing.Size(64, 24);
+            this.labelDate.TabIndex = 13;
+            this.labelDate.Text = "Date";
+            this.labelDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // mapAuthor2
+            // 
+            this.mapAuthor2.Location = new System.Drawing.Point(88, 282);
+            this.mapAuthor2.MaxLength = 64;
+            this.mapAuthor2.Name = "mapAuthor2";
+            this.mapAuthor2.Size = new System.Drawing.Size(128, 20);
+            this.mapAuthor2.TabIndex = 12;
+            // 
+            // mapEmail2
+            // 
+            this.mapEmail2.Location = new System.Drawing.Point(288, 282);
+            this.mapEmail2.MaxLength = 192;
+            this.mapEmail2.Name = "mapEmail2";
+            this.mapEmail2.Size = new System.Drawing.Size(160, 20);
+            this.mapEmail2.TabIndex = 11;
+            // 
+            // mapEmail
+            // 
+            this.mapEmail.Location = new System.Drawing.Point(288, 250);
+            this.mapEmail.MaxLength = 192;
+            this.mapEmail.Name = "mapEmail";
+            this.mapEmail.Size = new System.Drawing.Size(160, 20);
+            this.mapEmail.TabIndex = 10;
+            // 
+            // mapAuthor
+            // 
+            this.mapAuthor.Location = new System.Drawing.Point(88, 250);
+            this.mapAuthor.MaxLength = 64;
+            this.mapAuthor.Name = "mapAuthor";
+            this.mapAuthor.Size = new System.Drawing.Size(128, 20);
+            this.mapAuthor.TabIndex = 9;
+            // 
+            // labelEmail2
+            // 
+            this.labelEmail2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelEmail2.Location = new System.Drawing.Point(248, 282);
+            this.labelEmail2.Name = "labelEmail2";
+            this.labelEmail2.Size = new System.Drawing.Size(40, 24);
+            this.labelEmail2.TabIndex = 8;
+            this.labelEmail2.Text = "Email";
+            this.labelEmail2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelEmail.Location = new System.Drawing.Point(248, 250);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(40, 24);
+            this.labelEmail.TabIndex = 7;
+            this.labelEmail.Text = "Email";
+            this.labelEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelAuthor2
+            // 
+            this.labelAuthor2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelAuthor2.Location = new System.Drawing.Point(8, 282);
+            this.labelAuthor2.Name = "labelAuthor2";
+            this.labelAuthor2.Size = new System.Drawing.Size(72, 24);
+            this.labelAuthor2.TabIndex = 6;
+            this.labelAuthor2.Text = "Secondary Author";
+            this.labelAuthor2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelAuthor
+            // 
+            this.labelAuthor.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelAuthor.Location = new System.Drawing.Point(8, 250);
+            this.labelAuthor.Name = "labelAuthor";
+            this.labelAuthor.Size = new System.Drawing.Size(72, 24);
+            this.labelAuthor.TabIndex = 5;
+            this.labelAuthor.Text = "Author";
+            this.labelAuthor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelVersion
+            // 
+            this.labelVersion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelVersion.Location = new System.Drawing.Point(9, 370);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(72, 24);
+            this.labelVersion.TabIndex = 4;
+            this.labelVersion.Text = "Version";
+            this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // mapDescription
+            // 
+            this.mapDescription.Location = new System.Drawing.Point(88, 88);
+            this.mapDescription.MaxLength = 512;
+            this.mapDescription.Multiline = true;
+            this.mapDescription.Name = "mapDescription";
+            this.mapDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.mapDescription.Size = new System.Drawing.Size(360, 156);
+            this.mapDescription.TabIndex = 3;
+            // 
+            // labelDescription
+            // 
+            this.labelDescription.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelDescription.Location = new System.Drawing.Point(8, 88);
+            this.labelDescription.Name = "labelDescription";
+            this.labelDescription.Size = new System.Drawing.Size(80, 24);
+            this.labelDescription.TabIndex = 2;
+            this.labelDescription.Text = "Description";
+            this.labelDescription.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelTitle
+            // 
+            this.labelTitle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelTitle.Location = new System.Drawing.Point(8, 56);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(80, 24);
+            this.labelTitle.TabIndex = 0;
+            this.labelTitle.Text = "Title/Summary";
+            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // mapSummary
+            // 
+            this.mapSummary.Location = new System.Drawing.Point(88, 56);
+            this.mapSummary.MaxLength = 64;
+            this.mapSummary.Name = "mapSummary";
+            this.mapSummary.Size = new System.Drawing.Size(360, 20);
+            this.mapSummary.TabIndex = 1;
+            // 
+            // chkAutoIncrement
+            // 
+            this.chkAutoIncrement.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkAutoIncrement.Location = new System.Drawing.Point(88, 392);
+            this.chkAutoIncrement.Name = "chkAutoIncrement";
+            this.chkAutoIncrement.Size = new System.Drawing.Size(104, 24);
+            this.chkAutoIncrement.TabIndex = 35;
+            this.chkAutoIncrement.Text = "Auto Increment";
+            this.chkAutoIncrement.UseVisualStyleBackColor = true;
+            this.chkAutoIncrement.CheckedChanged += new System.EventHandler(this.chkAutoIncrement_CheckedChanged);
+            // 
+            // minimapTab
+            // 
+            this.minimapTab.Controls.Add(this.MinimapPanel);
+            this.minimapTab.Location = new System.Drawing.Point(4, 22);
+            this.minimapTab.Name = "minimapTab";
+            this.minimapTab.Size = new System.Drawing.Size(1000, 691);
+            this.minimapTab.TabIndex = 0;
+            this.minimapTab.Text = "Mini Map";
+            this.minimapTab.UseVisualStyleBackColor = true;
+            // 
+            // MinimapPanel
+            // 
+            this.MinimapPanel.Controls.Add(this.panelInnerMinimap);
+            this.MinimapPanel.Controls.Add(this.groupMiniMapTab);
+            this.MinimapPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MinimapPanel.Location = new System.Drawing.Point(0, 0);
+            this.MinimapPanel.Name = "MinimapPanel";
+            this.MinimapPanel.Size = new System.Drawing.Size(1000, 691);
+            this.MinimapPanel.TabIndex = 0;
+            // 
+            // panelInnerMinimap
+            // 
+            this.panelInnerMinimap.AutoScroll = true;
+            this.panelInnerMinimap.Controls.Add(this.miniViewPanel);
+            this.panelInnerMinimap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelInnerMinimap.Location = new System.Drawing.Point(120, 0);
+            this.panelInnerMinimap.Name = "panelInnerMinimap";
+            this.panelInnerMinimap.Size = new System.Drawing.Size(880, 691);
+            this.panelInnerMinimap.TabIndex = 3;
+            this.panelInnerMinimap.Scroll += new System.Windows.Forms.ScrollEventHandler(this.panelInnerMinimap_Scroll);
+            this.panelInnerMinimap.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelInnerMinimap_MouseUp);
+            // 
+            // miniViewPanel
+            // 
+            this.miniViewPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.miniViewPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.miniViewPanel.Location = new System.Drawing.Point(3, 3);
+            this.miniViewPanel.Name = "miniViewPanel";
+            this.miniViewPanel.Size = new System.Drawing.Size(561, 534);
+            this.miniViewPanel.TabIndex = 1;
+            this.miniViewPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.miniViewPanel_Paint);
+            this.miniViewPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.miniViewPanel_MouseDoubleClick);
+            this.miniViewPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.miniViewPanel_MouseDown);
+            this.miniViewPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.miniViewPanel_MouseMove);
+            this.miniViewPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.miniViewPanel_MouseUp);
+            this.miniViewPanel.Resize += new System.EventHandler(this.miniViewPanel_Resize);
+            // 
+            // groupMiniMapTab
+            // 
+            this.groupMiniMapTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.groupMiniMapTab.Controls.Add(this.cmdDebug);
+            this.groupMiniMapTab.Controls.Add(this.MiniEditPanel);
+            this.groupMiniMapTab.Controls.Add(this.miniEdit);
+            this.groupMiniMapTab.Controls.Add(this.label5);
+            this.groupMiniMapTab.Controls.Add(this.numMinimapZoom);
+            this.groupMiniMapTab.Controls.Add(this.chkDivide2);
+            this.groupMiniMapTab.Controls.Add(this.chkDivide);
+            this.groupMiniMapTab.Controls.Add(this.cmdGoToCenter);
+            this.groupMiniMapTab.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupMiniMapTab.Location = new System.Drawing.Point(0, 0);
+            this.groupMiniMapTab.Name = "groupMiniMapTab";
+            this.groupMiniMapTab.Size = new System.Drawing.Size(120, 691);
+            this.groupMiniMapTab.TabIndex = 0;
+            this.groupMiniMapTab.TabStop = false;
+            // 
+            // cmdDebug
+            // 
+            this.cmdDebug.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cmdDebug.Location = new System.Drawing.Point(14, 652);
+            this.cmdDebug.Name = "cmdDebug";
+            this.cmdDebug.Size = new System.Drawing.Size(84, 23);
+            this.cmdDebug.TabIndex = 14;
+            this.cmdDebug.Text = "Debug";
+            this.cmdDebug.UseVisualStyleBackColor = true;
+            this.cmdDebug.Visible = false;
+            // 
+            // MiniEditPanel
+            // 
+            this.MiniEditPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.MiniEditPanel.Controls.Add(this.label10);
+            this.MiniEditPanel.Controls.Add(this.cmdPolygons);
+            this.MiniEditPanel.Controls.Add(this.label9);
+            this.MiniEditPanel.Controls.Add(this.miniRedo);
+            this.MiniEditPanel.Controls.Add(this.miniUndo);
+            this.MiniEditPanel.Controls.Add(this.miniLineWall);
+            this.MiniEditPanel.Controls.Add(this.label8);
+            this.MiniEditPanel.Controls.Add(this.label7);
+            this.MiniEditPanel.Controls.Add(this.label6);
+            this.MiniEditPanel.Controls.Add(this.numBrushSize);
+            this.MiniEditPanel.Controls.Add(this.miniTileBrush);
+            this.MiniEditPanel.Controls.Add(this.miniTilePLace);
+            this.MiniEditPanel.Controls.Add(this.miniWallBrush);
+            this.MiniEditPanel.Controls.Add(this.labelSep2);
+            this.MiniEditPanel.Enabled = false;
+            this.MiniEditPanel.Location = new System.Drawing.Point(8, 78);
+            this.MiniEditPanel.Name = "MiniEditPanel";
+            this.MiniEditPanel.Size = new System.Drawing.Size(102, 287);
+            this.MiniEditPanel.TabIndex = 12;
+            // 
+            // label10
+            // 
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label10.Location = new System.Drawing.Point(0, 241);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(99, 2);
+            this.label10.TabIndex = 35;
+            // 
+            // cmdPolygons
+            // 
+            this.cmdPolygons.Location = new System.Drawing.Point(16, 252);
+            this.cmdPolygons.Name = "cmdPolygons";
+            this.cmdPolygons.Size = new System.Drawing.Size(66, 23);
+            this.cmdPolygons.TabIndex = 34;
+            this.cmdPolygons.Text = "Polygons";
+            this.cmdPolygons.UseVisualStyleBackColor = true;
+            this.cmdPolygons.Click += new System.EventHandler(this.cmdPolygons_Click);
+            // 
+            // label9
+            // 
+            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label9.Location = new System.Drawing.Point(0, 29);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(99, 2);
+            this.label9.TabIndex = 33;
+            // 
+            // miniRedo
+            // 
+            this.miniRedo.BackgroundImage = global::MapEditor.Properties.Resources.redoDisabled;
+            this.miniRedo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.miniRedo.Enabled = false;
+            this.miniRedo.Location = new System.Drawing.Point(49, 1);
+            this.miniRedo.Name = "miniRedo";
+            this.miniRedo.Size = new System.Drawing.Size(25, 25);
+            this.miniRedo.TabIndex = 32;
+            this.miniRedo.UseVisualStyleBackColor = true;
+            this.miniRedo.EnabledChanged += new System.EventHandler(this.miniRedo_EnabledChanged);
+            this.miniRedo.Click += new System.EventHandler(this.miniRedo_Click);
+            // 
+            // miniUndo
+            // 
+            this.miniUndo.BackgroundImage = global::MapEditor.Properties.Resources.undoDisabled;
+            this.miniUndo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.miniUndo.Enabled = false;
+            this.miniUndo.Location = new System.Drawing.Point(25, 1);
+            this.miniUndo.Name = "miniUndo";
+            this.miniUndo.Size = new System.Drawing.Size(25, 25);
+            this.miniUndo.TabIndex = 31;
+            this.miniUndo.UseVisualStyleBackColor = true;
+            this.miniUndo.EnabledChanged += new System.EventHandler(this.miniUndo_EnabledChanged);
+            this.miniUndo.Click += new System.EventHandler(this.miniUndo_Click);
+            // 
+            // miniLineWall
+            // 
+            this.miniLineWall.Appearance = System.Windows.Forms.Appearance.Button;
+            this.miniLineWall.BackgroundImage = global::MapEditor.Properties.Resources.LineWall;
+            this.miniLineWall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.miniLineWall.Location = new System.Drawing.Point(10, 79);
+            this.miniLineWall.Name = "miniLineWall";
+            this.miniLineWall.Size = new System.Drawing.Size(25, 25);
+            this.miniLineWall.TabIndex = 27;
+            this.miniLineWall.UseVisualStyleBackColor = true;
+            this.miniLineWall.Visible = false;
+            this.miniLineWall.CheckedChanged += new System.EventHandler(this.miniLineWall_CheckedChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(22, 196);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "Brush size:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 117);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Tile editing";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(17, 34);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 13);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Wall editing";
+            // 
+            // numBrushSize
+            // 
+            this.numBrushSize.Location = new System.Drawing.Point(28, 213);
+            this.numBrushSize.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.numBrushSize.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numBrushSize.Name = "numBrushSize";
+            this.numBrushSize.Size = new System.Drawing.Size(48, 20);
+            this.numBrushSize.TabIndex = 23;
+            this.numBrushSize.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numBrushSize.ValueChanged += new System.EventHandler(this.numBrushSize_ValueChanged);
+            // 
+            // miniTileBrush
+            // 
+            this.miniTileBrush.Appearance = System.Windows.Forms.Appearance.Button;
+            this.miniTileBrush.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.miniTileBrush.Location = new System.Drawing.Point(10, 162);
+            this.miniTileBrush.Name = "miniTileBrush";
+            this.miniTileBrush.Size = new System.Drawing.Size(80, 25);
+            this.miniTileBrush.TabIndex = 22;
+            this.miniTileBrush.TabStop = true;
+            this.miniTileBrush.Text = "Tile Brush";
+            this.miniTileBrush.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.miniTileBrush.UseVisualStyleBackColor = true;
+            this.miniTileBrush.CheckedChanged += new System.EventHandler(this.miniTileBrush_CheckedChanged);
+            // 
+            // miniTilePLace
+            // 
+            this.miniTilePLace.Appearance = System.Windows.Forms.Appearance.Button;
+            this.miniTilePLace.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.miniTilePLace.Location = new System.Drawing.Point(10, 135);
+            this.miniTilePLace.Name = "miniTilePLace";
+            this.miniTilePLace.Size = new System.Drawing.Size(80, 25);
+            this.miniTilePLace.TabIndex = 21;
+            this.miniTilePLace.TabStop = true;
+            this.miniTilePLace.Text = "Tile Place";
+            this.miniTilePLace.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.miniTilePLace.UseVisualStyleBackColor = true;
+            this.miniTilePLace.CheckedChanged += new System.EventHandler(this.miniTilePLace_CheckedChanged);
+            // 
+            // miniWallBrush
+            // 
+            this.miniWallBrush.Appearance = System.Windows.Forms.Appearance.Button;
+            this.miniWallBrush.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.miniWallBrush.Location = new System.Drawing.Point(10, 52);
+            this.miniWallBrush.Name = "miniWallBrush";
+            this.miniWallBrush.Size = new System.Drawing.Size(80, 25);
+            this.miniWallBrush.TabIndex = 20;
+            this.miniWallBrush.TabStop = true;
+            this.miniWallBrush.Text = "Wall Brush";
+            this.miniWallBrush.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.miniWallBrush.UseVisualStyleBackColor = true;
+            this.miniWallBrush.CheckedChanged += new System.EventHandler(this.miniWallBrush_CheckedChanged);
+            // 
+            // labelSep2
+            // 
+            this.labelSep2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelSep2.Location = new System.Drawing.Point(0, 111);
+            this.labelSep2.Name = "labelSep2";
+            this.labelSep2.Size = new System.Drawing.Size(99, 2);
+            this.labelSep2.TabIndex = 18;
+            // 
+            // miniEdit
+            // 
+            this.miniEdit.AutoSize = true;
+            this.miniEdit.Location = new System.Drawing.Point(12, 55);
+            this.miniEdit.Name = "miniEdit";
+            this.miniEdit.Size = new System.Drawing.Size(87, 17);
+            this.miniEdit.TabIndex = 10;
+            this.miniEdit.Text = "Editing mode";
+            this.miniEdit.UseVisualStyleBackColor = true;
+            this.miniEdit.CheckedChanged += new System.EventHandler(this.miniEdit_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(37, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Zoom:";
+            // 
+            // numMinimapZoom
+            // 
+            this.numMinimapZoom.Location = new System.Drawing.Point(52, 23);
+            this.numMinimapZoom.Maximum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.numMinimapZoom.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numMinimapZoom.Name = "numMinimapZoom";
+            this.numMinimapZoom.Size = new System.Drawing.Size(48, 20);
+            this.numMinimapZoom.TabIndex = 4;
+            this.numMinimapZoom.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numMinimapZoom.ValueChanged += new System.EventHandler(this.numMinimapZoom_ValueChanged);
+            // 
+            // chkDivide2
+            // 
+            this.chkDivide2.AutoSize = true;
+            this.chkDivide2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkDivide2.Location = new System.Drawing.Point(14, 403);
+            this.chkDivide2.Name = "chkDivide2";
+            this.chkDivide2.Size = new System.Drawing.Size(62, 17);
+            this.chkDivide2.TabIndex = 7;
+            this.chkDivide2.Text = "Divide2";
+            this.chkDivide2.UseVisualStyleBackColor = true;
+            this.chkDivide2.CheckedChanged += new System.EventHandler(this.chkDivide2_CheckedChanged);
+            // 
+            // chkDivide
+            // 
+            this.chkDivide.AutoSize = true;
+            this.chkDivide.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkDivide.Location = new System.Drawing.Point(14, 380);
+            this.chkDivide.Name = "chkDivide";
+            this.chkDivide.Size = new System.Drawing.Size(62, 17);
+            this.chkDivide.TabIndex = 6;
+            this.chkDivide.Text = "Divide1";
+            this.chkDivide.UseVisualStyleBackColor = true;
+            this.chkDivide.CheckedChanged += new System.EventHandler(this.chkDivide_CheckedChanged);
+            // 
+            // cmdGoToCenter
+            // 
+            this.cmdGoToCenter.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cmdGoToCenter.Location = new System.Drawing.Point(8, 426);
+            this.cmdGoToCenter.Name = "cmdGoToCenter";
+            this.cmdGoToCenter.Size = new System.Drawing.Size(84, 23);
+            this.cmdGoToCenter.TabIndex = 2;
+            this.cmdGoToCenter.Text = "Go to Center";
+            this.cmdGoToCenter.UseVisualStyleBackColor = true;
+            this.cmdGoToCenter.Click += new System.EventHandler(this.cmdGoToCenter_Click);
+            // 
+            // largeMap
+            // 
+            this.largeMap.Controls.Add(this.mapView);
+            this.largeMap.Location = new System.Drawing.Point(4, 22);
+            this.largeMap.Name = "largeMap";
+            this.largeMap.Size = new System.Drawing.Size(1000, 691);
+            this.largeMap.TabIndex = 0;
+            this.largeMap.Text = "Large Map";
+            this.largeMap.UseVisualStyleBackColor = true;
+            // 
+            // mapView
+            // 
+            this.mapView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapView.Location = new System.Drawing.Point(0, 0);
+            this.mapView.Name = "mapView";
+            this.mapView.Size = new System.Drawing.Size(1000, 691);
+            this.mapView.TabIndex = 0;
+            // 
+            // panelTabs
+            // 
+            this.panelTabs.Controls.Add(this.largeMap);
+            this.panelTabs.Controls.Add(this.minimapTab);
+            this.panelTabs.Controls.Add(this.mapInfoTab);
+            this.panelTabs.Controls.Add(this.mapImageTab);
+            this.panelTabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTabs.ItemSize = new System.Drawing.Size(63, 18);
+            this.panelTabs.Location = new System.Drawing.Point(0, 24);
+            this.panelTabs.Name = "panelTabs";
+            this.panelTabs.SelectedIndex = 0;
+            this.panelTabs.Size = new System.Drawing.Size(1008, 717);
+            this.panelTabs.TabIndex = 0;
+            this.panelTabs.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panelTabs_MouseClick);
+            // 
+            // mapImageTab
+            // 
+            this.mapImageTab.Controls.Add(this.cmdImgRender);
+            this.mapImageTab.Controls.Add(this.groupImgExport);
+            this.mapImageTab.Controls.Add(this.cmdImgExport);
+            this.mapImageTab.Controls.Add(this.groupImgEntities);
+            this.mapImageTab.Controls.Add(this.progBarImage);
+            this.mapImageTab.Controls.Add(this.groupImgObjects);
+            this.mapImageTab.Controls.Add(this.chkImgUseCurrentSettings);
+            this.mapImageTab.Controls.Add(this.picMapImage);
+            this.mapImageTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mapImageTab.Location = new System.Drawing.Point(4, 22);
+            this.mapImageTab.Name = "mapImageTab";
+            this.mapImageTab.Padding = new System.Windows.Forms.Padding(3);
+            this.mapImageTab.Size = new System.Drawing.Size(1000, 691);
+            this.mapImageTab.TabIndex = 1;
+            this.mapImageTab.Text = "Map Image";
+            this.mapImageTab.UseVisualStyleBackColor = true;
+            // 
+            // cmdImgRender
+            // 
+            this.cmdImgRender.Location = new System.Drawing.Point(9, 47);
+            this.cmdImgRender.Name = "cmdImgRender";
+            this.cmdImgRender.Size = new System.Drawing.Size(103, 35);
+            this.cmdImgRender.TabIndex = 9;
+            this.cmdImgRender.Text = "Render";
+            this.cmdImgRender.UseVisualStyleBackColor = true;
+            this.cmdImgRender.Click += new System.EventHandler(this.cmdImgRender_Click);
+            // 
+            // groupImgExport
+            // 
+            this.groupImgExport.Controls.Add(this.chkImgBackground);
+            this.groupImgExport.Controls.Add(this.lblImgDimensions);
+            this.groupImgExport.Controls.Add(this.trackImgSize);
+            this.groupImgExport.Controls.Add(this.numImgPadding);
+            this.groupImgExport.Controls.Add(this.lblImgPadding);
+            this.groupImgExport.Controls.Add(this.chkImgAutoCrop);
+            this.groupImgExport.Controls.Add(this.lblImgSize);
+            this.groupImgExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupImgExport.Location = new System.Drawing.Point(5, 88);
+            this.groupImgExport.Name = "groupImgExport";
+            this.groupImgExport.Size = new System.Drawing.Size(220, 155);
+            this.groupImgExport.TabIndex = 5;
+            this.groupImgExport.TabStop = false;
+            this.groupImgExport.Text = " Image ";
+            // 
+            // chkImgBackground
+            // 
+            this.chkImgBackground.AutoSize = true;
+            this.chkImgBackground.Checked = true;
+            this.chkImgBackground.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgBackground.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgBackground.Location = new System.Drawing.Point(97, 25);
+            this.chkImgBackground.Name = "chkImgBackground";
+            this.chkImgBackground.Size = new System.Drawing.Size(100, 20);
+            this.chkImgBackground.TabIndex = 7;
+            this.chkImgBackground.Text = "Background";
+            this.chkImgBackground.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkImgBackground.UseVisualStyleBackColor = true;
+            // 
+            // lblImgDimensions
+            // 
+            this.lblImgDimensions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImgDimensions.Location = new System.Drawing.Point(54, 78);
+            this.lblImgDimensions.Name = "lblImgDimensions";
+            this.lblImgDimensions.Size = new System.Drawing.Size(152, 18);
+            this.lblImgDimensions.TabIndex = 6;
+            this.lblImgDimensions.Text = "5880 x 5880  (100%)";
+            this.lblImgDimensions.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // trackImgSize
+            // 
+            this.trackImgSize.Location = new System.Drawing.Point(12, 97);
+            this.trackImgSize.Maximum = 100;
+            this.trackImgSize.Minimum = 1;
+            this.trackImgSize.Name = "trackImgSize";
+            this.trackImgSize.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.trackImgSize.Size = new System.Drawing.Size(194, 45);
+            this.trackImgSize.TabIndex = 5;
+            this.trackImgSize.TickFrequency = 5;
+            this.trackImgSize.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackImgSize.Value = 100;
+            this.trackImgSize.Scroll += new System.EventHandler(this.trackImgSize_Scroll);
+            // 
+            // numImgPadding
+            // 
+            this.numImgPadding.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numImgPadding.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numImgPadding.Location = new System.Drawing.Point(104, 50);
+            this.numImgPadding.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numImgPadding.Name = "numImgPadding";
+            this.numImgPadding.Size = new System.Drawing.Size(64, 22);
+            this.numImgPadding.TabIndex = 3;
+            this.numImgPadding.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // lblImgPadding
+            // 
+            this.lblImgPadding.AutoSize = true;
+            this.lblImgPadding.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImgPadding.Location = new System.Drawing.Point(43, 52);
+            this.lblImgPadding.Name = "lblImgPadding";
+            this.lblImgPadding.Size = new System.Drawing.Size(62, 16);
+            this.lblImgPadding.TabIndex = 2;
+            this.lblImgPadding.Text = "Padding:";
+            // 
+            // chkImgAutoCrop
+            // 
+            this.chkImgAutoCrop.AutoSize = true;
+            this.chkImgAutoCrop.Checked = true;
+            this.chkImgAutoCrop.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgAutoCrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgAutoCrop.Location = new System.Drawing.Point(34, 25);
+            this.chkImgAutoCrop.Name = "chkImgAutoCrop";
+            this.chkImgAutoCrop.Size = new System.Drawing.Size(56, 20);
+            this.chkImgAutoCrop.TabIndex = 1;
+            this.chkImgAutoCrop.Text = "Crop";
+            this.chkImgAutoCrop.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkImgAutoCrop.UseVisualStyleBackColor = true;
+            this.chkImgAutoCrop.CheckedChanged += new System.EventHandler(this.chkImgAutoCrop_CheckedChanged);
+            // 
+            // lblImgSize
+            // 
+            this.lblImgSize.AutoSize = true;
+            this.lblImgSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImgSize.Location = new System.Drawing.Point(21, 78);
+            this.lblImgSize.Name = "lblImgSize";
+            this.lblImgSize.Size = new System.Drawing.Size(37, 16);
+            this.lblImgSize.TabIndex = 4;
+            this.lblImgSize.Text = "Size:";
+            // 
+            // cmdImgExport
+            // 
+            this.cmdImgExport.Enabled = false;
+            this.cmdImgExport.Location = new System.Drawing.Point(114, 47);
+            this.cmdImgExport.Name = "cmdImgExport";
+            this.cmdImgExport.Size = new System.Drawing.Size(103, 35);
+            this.cmdImgExport.TabIndex = 8;
+            this.cmdImgExport.Text = "Export";
+            this.cmdImgExport.UseVisualStyleBackColor = true;
+            this.cmdImgExport.Click += new System.EventHandler(this.cmdImgExport_Click);
+            // 
+            // groupImgEntities
+            // 
+            this.groupImgEntities.Controls.Add(this.chkImgBroken);
+            this.groupImgEntities.Controls.Add(this.chkImgBoss);
+            this.groupImgEntities.Controls.Add(this.chkImgAmbient);
+            this.groupImgEntities.Controls.Add(this.chkImgHard);
+            this.groupImgEntities.Controls.Add(this.chkImgEasy);
+            this.groupImgEntities.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupImgEntities.Location = new System.Drawing.Point(5, 410);
+            this.groupImgEntities.Name = "groupImgEntities";
+            this.groupImgEntities.Size = new System.Drawing.Size(220, 95);
+            this.groupImgEntities.TabIndex = 4;
+            this.groupImgEntities.TabStop = false;
+            this.groupImgEntities.Text = " Entities ";
+            // 
+            // chkImgBroken
+            // 
+            this.chkImgBroken.AutoSize = true;
+            this.chkImgBroken.Checked = true;
+            this.chkImgBroken.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgBroken.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgBroken.Location = new System.Drawing.Point(111, 25);
+            this.chkImgBroken.Name = "chkImgBroken";
+            this.chkImgBroken.Size = new System.Drawing.Size(70, 20);
+            this.chkImgBroken.TabIndex = 4;
+            this.chkImgBroken.Text = "Broken";
+            this.chkImgBroken.UseVisualStyleBackColor = true;
+            // 
+            // chkImgBoss
+            // 
+            this.chkImgBoss.AutoSize = true;
+            this.chkImgBoss.Checked = true;
+            this.chkImgBoss.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgBoss.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgBoss.Location = new System.Drawing.Point(25, 65);
+            this.chkImgBoss.Name = "chkImgBoss";
+            this.chkImgBoss.Size = new System.Drawing.Size(58, 20);
+            this.chkImgBoss.TabIndex = 3;
+            this.chkImgBoss.Text = "Boss";
+            this.chkImgBoss.UseVisualStyleBackColor = true;
+            // 
+            // chkImgAmbient
+            // 
+            this.chkImgAmbient.AutoSize = true;
+            this.chkImgAmbient.Checked = true;
+            this.chkImgAmbient.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgAmbient.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgAmbient.Location = new System.Drawing.Point(111, 45);
+            this.chkImgAmbient.Name = "chkImgAmbient";
+            this.chkImgAmbient.Size = new System.Drawing.Size(76, 20);
+            this.chkImgAmbient.TabIndex = 2;
+            this.chkImgAmbient.Text = "Ambient";
+            this.chkImgAmbient.UseVisualStyleBackColor = true;
+            // 
+            // chkImgHard
+            // 
+            this.chkImgHard.AutoSize = true;
+            this.chkImgHard.Checked = true;
+            this.chkImgHard.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgHard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgHard.Location = new System.Drawing.Point(25, 45);
+            this.chkImgHard.Name = "chkImgHard";
+            this.chkImgHard.Size = new System.Drawing.Size(57, 20);
+            this.chkImgHard.TabIndex = 1;
+            this.chkImgHard.Text = "Hard";
+            this.chkImgHard.UseVisualStyleBackColor = true;
+            // 
+            // chkImgEasy
+            // 
+            this.chkImgEasy.AutoSize = true;
+            this.chkImgEasy.Checked = true;
+            this.chkImgEasy.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgEasy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgEasy.Location = new System.Drawing.Point(25, 25);
+            this.chkImgEasy.Name = "chkImgEasy";
+            this.chkImgEasy.Size = new System.Drawing.Size(58, 20);
+            this.chkImgEasy.TabIndex = 0;
+            this.chkImgEasy.Text = "Easy";
+            this.chkImgEasy.UseVisualStyleBackColor = true;
+            // 
+            // progBarImage
+            // 
+            this.progBarImage.Location = new System.Drawing.Point(3, 10);
+            this.progBarImage.Name = "progBarImage";
+            this.progBarImage.Size = new System.Drawing.Size(222, 28);
+            this.progBarImage.Step = 1;
+            this.progBarImage.TabIndex = 3;
+            // 
+            // groupImgObjects
+            // 
+            this.groupImgObjects.Controls.Add(this.chkImgQuest);
+            this.groupImgObjects.Controls.Add(this.chkImgChests);
+            this.groupImgObjects.Controls.Add(this.chkImgFood);
+            this.groupImgObjects.Controls.Add(this.chkImgWeapons);
+            this.groupImgObjects.Controls.Add(this.chkImgCrystals);
+            this.groupImgObjects.Controls.Add(this.chkImgGold);
+            this.groupImgObjects.Controls.Add(this.chkImgPotions);
+            this.groupImgObjects.Controls.Add(this.chkImgArmor);
+            this.groupImgObjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupImgObjects.Location = new System.Drawing.Point(5, 288);
+            this.groupImgObjects.Name = "groupImgObjects";
+            this.groupImgObjects.Size = new System.Drawing.Size(220, 116);
+            this.groupImgObjects.TabIndex = 2;
+            this.groupImgObjects.TabStop = false;
+            this.groupImgObjects.Text = " Objects ";
+            // 
+            // chkImgQuest
+            // 
+            this.chkImgQuest.AutoSize = true;
+            this.chkImgQuest.Checked = true;
+            this.chkImgQuest.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgQuest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgQuest.Location = new System.Drawing.Point(111, 85);
+            this.chkImgQuest.Name = "chkImgQuest";
+            this.chkImgQuest.Size = new System.Drawing.Size(62, 20);
+            this.chkImgQuest.TabIndex = 7;
+            this.chkImgQuest.Text = "Quest";
+            this.chkImgQuest.UseVisualStyleBackColor = true;
+            // 
+            // chkImgChests
+            // 
+            this.chkImgChests.AutoSize = true;
+            this.chkImgChests.Checked = true;
+            this.chkImgChests.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgChests.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgChests.Location = new System.Drawing.Point(111, 65);
+            this.chkImgChests.Name = "chkImgChests";
+            this.chkImgChests.Size = new System.Drawing.Size(68, 20);
+            this.chkImgChests.TabIndex = 6;
+            this.chkImgChests.Text = "Chests";
+            this.chkImgChests.UseVisualStyleBackColor = true;
+            // 
+            // chkImgFood
+            // 
+            this.chkImgFood.AutoSize = true;
+            this.chkImgFood.Checked = true;
+            this.chkImgFood.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgFood.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgFood.Location = new System.Drawing.Point(111, 45);
+            this.chkImgFood.Name = "chkImgFood";
+            this.chkImgFood.Size = new System.Drawing.Size(59, 20);
+            this.chkImgFood.TabIndex = 5;
+            this.chkImgFood.Text = "Food";
+            this.chkImgFood.UseVisualStyleBackColor = true;
+            // 
+            // chkImgWeapons
+            // 
+            this.chkImgWeapons.AutoSize = true;
+            this.chkImgWeapons.Checked = true;
+            this.chkImgWeapons.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgWeapons.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgWeapons.Location = new System.Drawing.Point(111, 25);
+            this.chkImgWeapons.Name = "chkImgWeapons";
+            this.chkImgWeapons.Size = new System.Drawing.Size(86, 20);
+            this.chkImgWeapons.TabIndex = 4;
+            this.chkImgWeapons.Text = "Weapons";
+            this.chkImgWeapons.UseVisualStyleBackColor = true;
+            // 
+            // chkImgCrystals
+            // 
+            this.chkImgCrystals.AutoSize = true;
+            this.chkImgCrystals.Checked = true;
+            this.chkImgCrystals.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgCrystals.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgCrystals.Location = new System.Drawing.Point(25, 65);
+            this.chkImgCrystals.Name = "chkImgCrystals";
+            this.chkImgCrystals.Size = new System.Drawing.Size(75, 20);
+            this.chkImgCrystals.TabIndex = 3;
+            this.chkImgCrystals.Text = "Crystals";
+            this.chkImgCrystals.UseVisualStyleBackColor = true;
+            // 
+            // chkImgGold
+            // 
+            this.chkImgGold.AutoSize = true;
+            this.chkImgGold.Checked = true;
+            this.chkImgGold.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgGold.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgGold.Location = new System.Drawing.Point(25, 85);
+            this.chkImgGold.Name = "chkImgGold";
+            this.chkImgGold.Size = new System.Drawing.Size(56, 20);
+            this.chkImgGold.TabIndex = 2;
+            this.chkImgGold.Text = "Gold";
+            this.chkImgGold.UseVisualStyleBackColor = true;
+            // 
+            // chkImgPotions
+            // 
+            this.chkImgPotions.AutoSize = true;
+            this.chkImgPotions.Checked = true;
+            this.chkImgPotions.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgPotions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgPotions.Location = new System.Drawing.Point(25, 45);
+            this.chkImgPotions.Name = "chkImgPotions";
+            this.chkImgPotions.Size = new System.Drawing.Size(72, 20);
+            this.chkImgPotions.TabIndex = 1;
+            this.chkImgPotions.Text = "Potions";
+            this.chkImgPotions.UseVisualStyleBackColor = true;
+            // 
+            // chkImgArmor
+            // 
+            this.chkImgArmor.AutoSize = true;
+            this.chkImgArmor.Checked = true;
+            this.chkImgArmor.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImgArmor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgArmor.Location = new System.Drawing.Point(25, 25);
+            this.chkImgArmor.Name = "chkImgArmor";
+            this.chkImgArmor.Size = new System.Drawing.Size(63, 20);
+            this.chkImgArmor.TabIndex = 0;
+            this.chkImgArmor.Text = "Armor";
+            this.chkImgArmor.UseVisualStyleBackColor = true;
+            // 
+            // chkImgUseCurrentSettings
+            // 
+            this.chkImgUseCurrentSettings.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkImgUseCurrentSettings.AutoSize = true;
+            this.chkImgUseCurrentSettings.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkImgUseCurrentSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImgUseCurrentSettings.Location = new System.Drawing.Point(40, 255);
+            this.chkImgUseCurrentSettings.Name = "chkImgUseCurrentSettings";
+            this.chkImgUseCurrentSettings.Size = new System.Drawing.Size(139, 26);
+            this.chkImgUseCurrentSettings.TabIndex = 1;
+            this.chkImgUseCurrentSettings.Text = "Use Current Settings";
+            this.chkImgUseCurrentSettings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkImgUseCurrentSettings.UseVisualStyleBackColor = true;
+            this.chkImgUseCurrentSettings.CheckedChanged += new System.EventHandler(this.chkImgUseCurrentSettings_CheckedChanged);
+            // 
+            // picMapImage
+            // 
+            this.picMapImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.picMapImage.BackgroundImage = global::MapEditor.Properties.Resources.transTile;
+            this.picMapImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picMapImage.Location = new System.Drawing.Point(234, 4);
+            this.picMapImage.Name = "picMapImage";
+            this.picMapImage.Size = new System.Drawing.Size(763, 682);
+            this.picMapImage.TabIndex = 0;
+            this.picMapImage.TabStop = false;
+            // 
+            // mainMenuStrip
+            // 
+            this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuFile,
+            this.menuMap,
+            this.menuOptions,
+            this.menuHelp,
+            this.menuShortcuts});
+            this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.mainMenuStrip.Name = "mainMenuStrip";
+            this.mainMenuStrip.Size = new System.Drawing.Size(1008, 24);
+            this.mainMenuStrip.TabIndex = 1;
+            this.mainMenuStrip.Text = "menuStrip1";
+            // 
+            // menuFile
+            // 
+            this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuNew,
+            this.menuOpen,
+            this.menuRecent,
+            this.menuInstallMap,
+            this.menuSave,
+            this.menuSaveAs,
+            this.toolStripSeparator1,
+            this.menuImportSave,
+            this.menuImportScript,
+            this.menuExportScript,
+            this.menuExportNativeScript,
+            this.toolStripSeparator2,
+            this.menuExit});
+            this.menuFile.Name = "menuFile";
+            this.menuFile.Size = new System.Drawing.Size(37, 20);
+            this.menuFile.Text = "&File";
+            // 
+            // menuNew
+            // 
+            this.menuNew.Name = "menuNew";
+            this.menuNew.Size = new System.Drawing.Size(189, 22);
+            this.menuNew.Text = "New";
+            this.menuNew.Click += new System.EventHandler(this.menuNew_Click);
+            // 
+            // menuOpen
+            // 
+            this.menuOpen.Name = "menuOpen";
+            this.menuOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.menuOpen.Size = new System.Drawing.Size(189, 22);
+            this.menuOpen.Text = "Open...";
+            this.menuOpen.Click += new System.EventHandler(this.menuOpen_Click);
+            // 
+            // menuRecent
+            // 
+            this.menuRecent.Name = "menuRecent";
+            this.menuRecent.Size = new System.Drawing.Size(189, 22);
+            this.menuRecent.Text = "Recent";
+            this.menuRecent.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuRecent_DropDownItemClicked);
+            // 
+            // menuInstallMap
+            // 
+            this.menuInstallMap.Name = "menuInstallMap";
+            this.menuInstallMap.Size = new System.Drawing.Size(189, 22);
+            this.menuInstallMap.Text = "Install Map";
+            this.menuInstallMap.Click += new System.EventHandler(this.menuInstallMap_Click);
+            // 
+            // menuSave
+            // 
+            this.menuSave.Name = "menuSave";
+            this.menuSave.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.menuSave.Size = new System.Drawing.Size(189, 22);
+            this.menuSave.Text = "Save";
+            this.menuSave.Click += new System.EventHandler(this.menuSave_Click);
+            // 
+            // menuSaveAs
+            // 
+            this.menuSaveAs.Name = "menuSaveAs";
+            this.menuSaveAs.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.menuSaveAs.Size = new System.Drawing.Size(189, 22);
+            this.menuSaveAs.Text = "Save As...";
+            this.menuSaveAs.Click += new System.EventHandler(this.menuSaveAs_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(186, 6);
+            // 
+            // menuImportSave
+            // 
+            this.menuImportSave.Enabled = false;
+            this.menuImportSave.Name = "menuImportSave";
+            this.menuImportSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.menuImportSave.Size = new System.Drawing.Size(189, 22);
+            this.menuImportSave.Text = "Import + Save";
+            this.menuImportSave.Click += new System.EventHandler(this.menuImportSave_Click);
+            // 
+            // menuImportScript
+            // 
+            this.menuImportScript.Name = "menuImportScript";
+            this.menuImportScript.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.menuImportScript.Size = new System.Drawing.Size(189, 22);
+            this.menuImportScript.Text = "Import Script...";
+            this.menuImportScript.Click += new System.EventHandler(this.menuImportScript_Click);
+            // 
+            // menuExportScript
+            // 
+            this.menuExportScript.Name = "menuExportScript";
+            this.menuExportScript.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.menuExportScript.Size = new System.Drawing.Size(189, 22);
+            this.menuExportScript.Text = "Export Script...";
+            this.menuExportScript.Click += new System.EventHandler(this.menuExportScript_Click);
+            // 
+            // menuExportNativeScript
+            // 
+            this.menuExportNativeScript.Name = "menuExportNativeScript";
+            this.menuExportNativeScript.Size = new System.Drawing.Size(189, 22);
+            this.menuExportNativeScript.Text = "Export Native Script...";
+            this.menuExportNativeScript.Click += new System.EventHandler(this.menuExportNativeScript_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(186, 6);
+            // 
+            // menuExit
+            // 
+            this.menuExit.Name = "menuExit";
+            this.menuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.menuExit.Size = new System.Drawing.Size(189, 22);
+            this.menuExit.Text = "Exit";
+            this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
+            // 
+            // menuMap
+            // 
+            this.menuMap.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuListObjects,
+            this.menuScripts,
+            this.menuGroups,
+            this.menuPolygons,
+            this.toolStripSeparator3,
+            this.menuFixExtents,
+            this.menuMapGenerator});
+            this.menuMap.Name = "menuMap";
+            this.menuMap.Size = new System.Drawing.Size(43, 20);
+            this.menuMap.Text = "&Map";
+            // 
+            // menuListObjects
+            // 
+            this.menuListObjects.Name = "menuListObjects";
+            this.menuListObjects.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            | System.Windows.Forms.Keys.L)));
+            this.menuListObjects.Size = new System.Drawing.Size(207, 22);
+            this.menuListObjects.Text = "List Objects";
+            this.menuListObjects.Click += new System.EventHandler(this.menuListObjects_Click);
+            // 
+            // menuScripts
+            // 
+            this.menuScripts.Name = "menuScripts";
+            this.menuScripts.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            | System.Windows.Forms.Keys.S)));
+            this.menuScripts.Size = new System.Drawing.Size(207, 22);
+            this.menuScripts.Text = "Scripts";
+            this.menuScripts.Click += new System.EventHandler(this.menuScripts_Click);
+            // 
+            // menuGroups
+            // 
+            this.menuGroups.Name = "menuGroups";
+            this.menuGroups.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            | System.Windows.Forms.Keys.G)));
+            this.menuGroups.Size = new System.Drawing.Size(207, 22);
+            this.menuGroups.Text = "Groups";
+            this.menuGroups.Click += new System.EventHandler(this.menuGroups_Click);
+            // 
+            // menuPolygons
+            // 
+            this.menuPolygons.Name = "menuPolygons";
+            this.menuPolygons.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            | System.Windows.Forms.Keys.P)));
+            this.menuPolygons.Size = new System.Drawing.Size(207, 22);
+            this.menuPolygons.Text = "Polygons";
+            this.menuPolygons.Click += new System.EventHandler(this.menuPolygons_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(204, 6);
+            // 
+            // menuFixExtents
+            // 
+            this.menuFixExtents.Name = "menuFixExtents";
+            this.menuFixExtents.Size = new System.Drawing.Size(207, 22);
+            this.menuFixExtents.Text = "Fix Extents";
+            this.menuFixExtents.Click += new System.EventHandler(this.menuFixExtents_Click);
+            // 
+            // menuMapGenerator
+            // 
+            this.menuMapGenerator.Name = "menuMapGenerator";
+            this.menuMapGenerator.Size = new System.Drawing.Size(207, 22);
+            this.menuMapGenerator.Text = "Map Generator...";
+            this.menuMapGenerator.Click += new System.EventHandler(this.menuMapGenerator_Click);
+            // 
+            // menuOptions
+            // 
+            this.menuOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuShowGrid,
+            this.menuShowMinimap,
+            this.menuVisualPreviewMode,
+            this.menuInvertColors,
+            this.toolStripSeparator4,
+            this.menuSettings});
+            this.menuOptions.Name = "menuOptions";
+            this.menuOptions.Size = new System.Drawing.Size(61, 20);
+            this.menuOptions.Text = "&Options";
+            // 
+            // menuShowGrid
+            // 
+            this.menuShowGrid.Checked = true;
+            this.menuShowGrid.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuShowGrid.Name = "menuShowGrid";
+            this.menuShowGrid.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.menuShowGrid.Size = new System.Drawing.Size(223, 22);
+            this.menuShowGrid.Text = "Show Grid";
+            this.menuShowGrid.Click += new System.EventHandler(this.menuShowGrid_Click);
+            // 
+            // menuShowMinimap
+            // 
+            this.menuShowMinimap.Checked = true;
+            this.menuShowMinimap.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuShowMinimap.Name = "menuShowMinimap";
+            this.menuShowMinimap.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.menuShowMinimap.Size = new System.Drawing.Size(223, 22);
+            this.menuShowMinimap.Text = "Show Minimap";
+            this.menuShowMinimap.Click += new System.EventHandler(this.menuShowMinimap_Click);
+            // 
+            // menuVisualPreviewMode
+            // 
+            this.menuVisualPreviewMode.Checked = true;
+            this.menuVisualPreviewMode.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuVisualPreviewMode.Name = "menuVisualPreviewMode";
+            this.menuVisualPreviewMode.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.menuVisualPreviewMode.Size = new System.Drawing.Size(223, 22);
+            this.menuVisualPreviewMode.Text = "Visual Preview Mode";
+            this.menuVisualPreviewMode.Click += new System.EventHandler(this.menuVisualPreviewMode_Click);
+            // 
+            // menuInvertColors
+            // 
+            this.menuInvertColors.Name = "menuInvertColors";
+            this.menuInvertColors.Size = new System.Drawing.Size(223, 22);
+            this.menuInvertColors.Text = "Invert Colors";
+            this.menuInvertColors.Click += new System.EventHandler(this.menuInvertColors_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(220, 6);
+            // 
+            // menuSettings
+            // 
+            this.menuSettings.Name = "menuSettings";
+            this.menuSettings.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
+            this.menuSettings.Size = new System.Drawing.Size(223, 22);
+            this.menuSettings.Text = "Settings...";
+            this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
+            // 
+            // menuHelp
+            // 
+            this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuHelpLink1,
+            this.menuHelpLink2,
+            this.toolStripSeparator5,
+            this.menuHelpLink3,
+            this.menuHelpLink4,
+            this.toolStripSeparator6,
+            this.menuAbout});
+            this.menuHelp.Name = "menuHelp";
+            this.menuHelp.Size = new System.Drawing.Size(44, 20);
+            this.menuHelp.Text = "&Help";
+            // 
+            // menuHelpLink1
+            // 
+            this.menuHelpLink1.Name = "menuHelpLink1";
+            this.menuHelpLink1.Size = new System.Drawing.Size(159, 22);
+            this.menuHelpLink1.Text = "Nox Forum";
+            this.menuHelpLink1.Click += new System.EventHandler(this.menuHelpLink1_Click);
+            // 
+            // menuHelpLink2
+            // 
+            this.menuHelpLink2.Name = "menuHelpLink2";
+            this.menuHelpLink2.Size = new System.Drawing.Size(159, 22);
+            this.menuHelpLink2.Text = "Nox Discord";
+            this.menuHelpLink2.Click += new System.EventHandler(this.menuHelpLink2_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(156, 6);
+            // 
+            // menuHelpLink3
+            // 
+            this.menuHelpLink3.Name = "menuHelpLink3";
+            this.menuHelpLink3.Size = new System.Drawing.Size(159, 22);
+            this.menuHelpLink3.Text = "Game Texts";
+            this.menuHelpLink3.Click += new System.EventHandler(this.menuHelpLink3_Click);
+            // 
+            // menuHelpLink4
+            // 
+            this.menuHelpLink4.Name = "menuHelpLink4";
+            this.menuHelpLink4.Size = new System.Drawing.Size(159, 22);
+            this.menuHelpLink4.Text = "Script Functions";
+            this.menuHelpLink4.Click += new System.EventHandler(this.menuHelpLink4_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(156, 6);
+            // 
+            // menuAbout
+            // 
+            this.menuAbout.Name = "menuAbout";
+            this.menuAbout.Size = new System.Drawing.Size(159, 22);
+            this.menuAbout.Text = "About";
+            this.menuAbout.Click += new System.EventHandler(this.menuAbout_Click);
+            // 
+            // menuShortcuts
+            // 
+            this.menuShortcuts.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuUndo,
+            this.menuRedo,
+            this.menuPicker,
+            this.menuRectangleDraw,
+            this.menuLineDraw,
+            this.menuRotateSelection45,
+            this.menuDrawWalls,
+            this.menuDrawObjects,
+            this.menuDraw3DExtents,
+            this.menuDrawTeleportPaths,
+            this.menuDrawWaypoints,
+            this.menuColorSpecialWalls});
+            this.menuShortcuts.Name = "menuShortcuts";
+            this.menuShortcuts.Size = new System.Drawing.Size(69, 20);
+            this.menuShortcuts.Text = "Shortcuts";
+            this.menuShortcuts.Visible = false;
+            // 
+            // menuUndo
+            // 
+            this.menuUndo.Name = "menuUndo";
+            this.menuUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.menuUndo.Size = new System.Drawing.Size(216, 22);
+            this.menuUndo.Text = "Undo";
+            this.menuUndo.Click += new System.EventHandler(this.menuUndo_Click);
+            // 
+            // menuRedo
+            // 
+            this.menuRedo.Name = "menuRedo";
+            this.menuRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.menuRedo.Size = new System.Drawing.Size(216, 22);
+            this.menuRedo.Text = "Redo";
+            this.menuRedo.Click += new System.EventHandler(this.menuRedo_Click);
+            // 
+            // menuPicker
+            // 
+            this.menuPicker.Name = "menuPicker";
+            this.menuPicker.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.menuPicker.Size = new System.Drawing.Size(216, 22);
+            this.menuPicker.Text = "Picker";
+            this.menuPicker.Click += new System.EventHandler(this.menuPicker_Click);
+            // 
+            // menuRectangleDraw
+            // 
+            this.menuRectangleDraw.Name = "menuRectangleDraw";
+            this.menuRectangleDraw.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.menuRectangleDraw.Size = new System.Drawing.Size(216, 22);
+            this.menuRectangleDraw.Text = "Rectangle Draw";
+            this.menuRectangleDraw.Click += new System.EventHandler(this.menuRectangleDraw_Click);
+            // 
+            // menuLineDraw
+            // 
+            this.menuLineDraw.Name = "menuLineDraw";
+            this.menuLineDraw.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.menuLineDraw.Size = new System.Drawing.Size(216, 22);
+            this.menuLineDraw.Text = "Line Draw";
+            this.menuLineDraw.Click += new System.EventHandler(this.menuLineDraw_Click);
+            // 
+            // menuRotateSelection45
+            // 
+            this.menuRotateSelection45.Name = "menuRotateSelection45";
+            this.menuRotateSelection45.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.menuRotateSelection45.Size = new System.Drawing.Size(216, 22);
+            this.menuRotateSelection45.Text = "Rotate Selection 45";
+            this.menuRotateSelection45.Click += new System.EventHandler(this.menuRotateSelection45_Click);
+            // 
+            // menuDrawWalls
+            // 
+            this.menuDrawWalls.Name = "menuDrawWalls";
+            this.menuDrawWalls.ShortcutKeys = System.Windows.Forms.Keys.F6;
+            this.menuDrawWalls.Size = new System.Drawing.Size(216, 22);
+            this.menuDrawWalls.Text = "Draw Walls";
+            this.menuDrawWalls.Click += new System.EventHandler(this.menuDrawWalls_Click);
+            // 
+            // menuDrawObjects
+            // 
+            this.menuDrawObjects.Name = "menuDrawObjects";
+            this.menuDrawObjects.ShortcutKeys = System.Windows.Forms.Keys.F7;
+            this.menuDrawObjects.Size = new System.Drawing.Size(216, 22);
+            this.menuDrawObjects.Text = "Draw Objects";
+            this.menuDrawObjects.Click += new System.EventHandler(this.menuDrawObjects_Click);
+            // 
+            // menuDraw3DExtents
+            // 
+            this.menuDraw3DExtents.Name = "menuDraw3DExtents";
+            this.menuDraw3DExtents.ShortcutKeys = System.Windows.Forms.Keys.F8;
+            this.menuDraw3DExtents.Size = new System.Drawing.Size(216, 22);
+            this.menuDraw3DExtents.Text = "Draw 3D Extents";
+            this.menuDraw3DExtents.Click += new System.EventHandler(this.menuDraw3DExtents_Click);
+            // 
+            // menuDrawTeleportPaths
+            // 
+            this.menuDrawTeleportPaths.Name = "menuDrawTeleportPaths";
+            this.menuDrawTeleportPaths.ShortcutKeys = System.Windows.Forms.Keys.F9;
+            this.menuDrawTeleportPaths.Size = new System.Drawing.Size(216, 22);
+            this.menuDrawTeleportPaths.Text = "Draw Teleport Paths";
+            this.menuDrawTeleportPaths.Click += new System.EventHandler(this.menuDrawTeleportPaths_Click);
+            // 
+            // menuDrawWaypoints
+            // 
+            this.menuDrawWaypoints.Name = "menuDrawWaypoints";
+            this.menuDrawWaypoints.ShortcutKeys = System.Windows.Forms.Keys.F10;
+            this.menuDrawWaypoints.Size = new System.Drawing.Size(216, 22);
+            this.menuDrawWaypoints.Text = "Draw Waypoints";
+            this.menuDrawWaypoints.Click += new System.EventHandler(this.menuDrawWaypoints_Click);
+            // 
+            // menuColorSpecialWalls
+            // 
+            this.menuColorSpecialWalls.Name = "menuColorSpecialWalls";
+            this.menuColorSpecialWalls.ShortcutKeys = System.Windows.Forms.Keys.F11;
+            this.menuColorSpecialWalls.Size = new System.Drawing.Size(216, 22);
+            this.menuColorSpecialWalls.Text = "Color Special Walls";
+            this.menuColorSpecialWalls.Click += new System.EventHandler(this.menuColorSpecialWalls_Click);
+            // 
+            // MainWindow
+            // 
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.ClientSize = new System.Drawing.Size(1008, 741);
+            this.Controls.Add(this.panelTabs);
+            this.Controls.Add(this.mainMenuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
+            this.MainMenuStrip = this.mainMenuStrip;
+            this.MinimumSize = new System.Drawing.Size(400, 400);
+            this.Name = "MainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
+            this.SizeChanged += new System.EventHandler(this.miniViewPanel_Resize);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
+            this.Move += new System.EventHandler(this.miniViewPanel_Resize);
+            this.Resize += new System.EventHandler(this.MainWindow_Resize);
+            this.mapInfoTab.ResumeLayout(false);
+            this.groupMapInfoTab.ResumeLayout(false);
+            this.groupMapInfoTab.PerformLayout();
+            this.minimapTab.ResumeLayout(false);
+            this.MinimapPanel.ResumeLayout(false);
+            this.panelInnerMinimap.ResumeLayout(false);
+            this.groupMiniMapTab.ResumeLayout(false);
+            this.groupMiniMapTab.PerformLayout();
+            this.MiniEditPanel.ResumeLayout(false);
+            this.MiniEditPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numBrushSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMinimapZoom)).EndInit();
+            this.largeMap.ResumeLayout(false);
+            this.panelTabs.ResumeLayout(false);
+            this.mapImageTab.ResumeLayout(false);
+            this.mapImageTab.PerformLayout();
+            this.groupImgExport.ResumeLayout(false);
+            this.groupImgExport.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackImgSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numImgPadding)).EndInit();
+            this.groupImgEntities.ResumeLayout(false);
+            this.groupImgEntities.PerformLayout();
+            this.groupImgObjects.ResumeLayout(false);
+            this.groupImgObjects.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMapImage)).EndInit();
+            this.mainMenuStrip.ResumeLayout(false);
+            this.mainMenuStrip.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+        #endregion
     }
 }

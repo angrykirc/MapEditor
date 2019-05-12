@@ -2734,6 +2734,7 @@ namespace MapEditor
             public Mode Mode;
             public TimeEvent Event;
             public PointF Location;
+            public Point StoreTile = Point.Empty;
             public List<TimeWall> StoredWalls = new List<TimeWall>();
             public List<TimeTile> StoredTiles = new List<TimeTile>();
             public List<TimeWaypoint> StoredWPs = new List<TimeWaypoint>();
@@ -2759,11 +2760,9 @@ namespace MapEditor
         #region Copy/Paste Area
         public bool copyAreaMode = false;
         public bool pasteAreaMode = false;
-        private Point storeTile;
         public Point pasteDest;
         public TimeContent CopiedArea;
-        public TimeContent CopiedAreaClone;
-        public List<Point> storePoly = new List<Point>();
+        public List<Point> selectionPoly = new List<Point>();
 
         private void cmdCopyArea_CheckedChanged(object sender, EventArgs e)
         {
@@ -2771,8 +2770,7 @@ namespace MapEditor
             {
                 SelectObjectBtn.PerformClick();
                 mapPanel.Cursor = Cursors.Cross;
-                storeTile = Point.Empty;
-                storePoly = new List<Point>();
+                selectionPoly = new List<Point>();
             }
             else
                 mapPanel.Cursor = Cursors.Default;
@@ -2795,8 +2793,19 @@ namespace MapEditor
 
             if (cmdPasteArea.Checked)
             {
+                if (Clipboard.ContainsData("MapCopy"))
+                    CopiedArea = (TimeContent)Clipboard.GetData("MapCopy");
+                
+                if (CopiedArea == null)
+                {
+                    MessageBox.Show("Nothing to paste.", "Error", MessageBoxButtons.OK);
+                    cmdPasteArea.Checked = false;
+                    return;
+                }
+
                 SelectObjectBtn.PerformClick();
                 mapPanel.Cursor = Cursors.SizeAll;
+
                 foreach (var tile in CopiedArea.StoredTiles)
                     MapRenderer.FakeTiles.Add(tile.Tile.Location, tile.Tile);
                 foreach (var wall in CopiedArea.StoredWalls)
@@ -2805,28 +2814,30 @@ namespace MapEditor
             else
             {
                 mapPanel.Cursor = Cursors.Default;
-                storePoly = new List<Point>();
+                selectionPoly = new List<Point>();
             }
 
             MapRenderer.UpdateCanvas(false, true, false);
             mapPanel.Invalidate();
             pasteAreaMode = cmdPasteArea.Checked;
         }
-        public void CopyArea(Point[] poly)
+        public void CopyArea(Point[] poly, int polyIndex = -1)
         {
+            Clipboard.Clear();
+            GC.Collect();
             CopiedArea = new TimeContent();
             StoreTiles(poly);
             StoreWalls(poly);
             StoreObjects(poly);
             StoreWaypoints(poly);
-            StorePolygons(poly);
+            StorePolygons(poly, polyIndex);
 
             if (CopiedArea.StoredTiles.Count != 0)
-                storeTile = CopiedArea.StoredTiles[0].Tile.Location;
+                CopiedArea.StoreTile = CopiedArea.StoredTiles[0].Tile.Location;
 
-            CopiedAreaClone = CopiedArea.Clone();
-            storePoly = poly.ToList();
-            storePoly.Add(poly[0]);
+            Clipboard.SetData("MapCopy", CopiedArea.Clone());
+            selectionPoly = poly.ToList();
+            selectionPoly.Add(poly[0]);
 
             cmdCopyArea.Checked = false;
             cmdPasteArea.Enabled = true;
@@ -2852,7 +2863,6 @@ namespace MapEditor
                 OffsetPolygons(mouseCoords);
                 ReleasePolygons();
             }
-            CopiedArea = CopiedAreaClone.Clone();
 
             cmdPasteArea.Checked = false;
             MapRenderer.UpdateCanvas(true, true, true);
@@ -2892,7 +2902,7 @@ namespace MapEditor
                 return;
 
             var movedTile = CopiedArea.StoredTiles[0].Tile.Location;
-            var tileOffset = new Point(movedTile.X - storeTile.X, movedTile.Y - storeTile.Y);
+            var tileOffset = new Point(movedTile.X - CopiedArea.StoreTile.X, movedTile.Y - CopiedArea.StoreTile.Y);
 
             // Offset Objects
             foreach (var obj in CopiedArea.StoredObjects)
@@ -2914,7 +2924,7 @@ namespace MapEditor
                 return;
 
             var movedTile = CopiedArea.StoredTiles[0].Tile.Location;
-            var tileOffset = new Point(movedTile.X - storeTile.X, movedTile.Y - storeTile.Y);
+            var tileOffset = new Point(movedTile.X - CopiedArea.StoreTile.X, movedTile.Y - CopiedArea.StoreTile.Y);
 
             foreach (var wp in CopiedArea.StoredWPs)
             {
@@ -2933,7 +2943,7 @@ namespace MapEditor
                 return;
 
             var movedTile = CopiedArea.StoredTiles[0].Tile.Location;
-            var tileOffset = new Point(movedTile.X - storeTile.X, movedTile.Y - storeTile.Y);
+            var tileOffset = new Point(movedTile.X - CopiedArea.StoreTile.X, movedTile.Y - CopiedArea.StoreTile.Y);
 
             foreach (var poly in CopiedArea.StoredPolygons)
             {
@@ -3006,14 +3016,75 @@ namespace MapEditor
                 if (!MapInterface.PointInPolygon(GetWallMapCoords(wall.Location), poly))
                     continue;
 
-                TimeWall subject = new TimeWall();
-                subject.Wall = wall.Clone();
-                subject.Facing = wall.Facing;
-                CopiedArea.StoredWalls.Add(subject);
+                StoreWall(wall);
             }
+            // Make another pass around the points
+            for (int i = 0; i < poly.Length; i++)
+            {
+                var w = GetNearestWallPoint(poly[i]);
+                if (!Map.Walls.ContainsKey(w))
+                    continue;
+                if (CopiedArea.StoredWalls.Select(x => x.Wall.Location).Contains(w))
+                    continue;
+
+                StoreWall(Map.Walls[w]);
+            }
+            // Make one final pass between the points
+            for (int i = 0; i < poly.Length; i++)
+            {
+                var a = poly[i];
+                Point b;
+                if (i == poly.Length - 1)
+                    b = poly[0];
+                else
+                    b = poly[i + 1];
+
+                var xDif = b.X - a.X;
+                var yDif = b.Y - a.Y;
+                // If distance is more than 1 tile
+                if ((Math.Abs(xDif) > squareSize) || (Math.Abs(yDif) > squareSize))
+                {
+                    var numXPts = Math.Abs(xDif) / 2;
+                    var numYPts = Math.Abs(yDif) / 2;
+
+                    var numPts = numXPts;
+                    if (numYPts > numXPts)
+                        numPts = numYPts;
+
+                    float xInc = (numPts != 0) ? (float)xDif / numPts : 0;
+                    float yInc = (numPts != 0) ? (float)yDif / numPts : 0;
+
+                    float x = a.X;
+                    float y = a.Y;
+                    for (int j = 0; j < numPts; j++)
+                    {
+                        x += xInc;
+                        y += yInc;
+                        var nextPt = new PointF(x, y);
+
+                        var w = GetNearestWallPoint(nextPt.ToPoint());
+                        if (!Map.Walls.ContainsKey(w))
+                            continue;
+                        if (CopiedArea.StoredWalls.Select(z => z.Wall.Location).Contains(w))
+                            continue;
+
+                        StoreWall(Map.Walls[w]);
+                    }
+                }
+            }
+        }
+        private void StoreWall(Map.Wall wall)
+        {
+            TimeWall subject = new TimeWall();
+            subject.Wall = wall.Clone();
+            subject.Facing = wall.Facing;
+            CopiedArea.StoredWalls.Add(subject);
         }
         private void ReleaseWalls()
         {
+            if (CopiedArea.StoredWalls.Count == 0)
+                return;
+
             Store(Mode.WALL_PLACE, TimeEvent.PRE, true);
             foreach (TimeWall wall in CopiedArea.StoredWalls)
             {
@@ -3033,18 +3104,81 @@ namespace MapEditor
         {
             foreach (Map.Tile tile in Map.Tiles.Values)
             {
-                if (!MapInterface.PointInPolygon(GetWallMapCoords(tile.Location), poly))
+                var shiftTile = tile.Location;
+                shiftTile.Offset(1, 1);
+                if (!MapInterface.PointInPolygon(GetWallMapCoords(shiftTile), poly))
                     continue;
 
-                TimeTile subject = new TimeTile();
-                subject.Tile = tile.Clone();
-                subject.EdgeTiles = tile.EdgeTiles;
-                subject.Tile.Location = tile.Location;
-                CopiedArea.StoredTiles.Add(subject);
+                StoreTile(tile);
             }
+            // Make another pass around the points
+            for (int i = 0; i < poly.Length; i++)
+            {
+                var t = GetNearestTilePoint(poly[i]);
+                if (!Map.Tiles.ContainsKey(t))
+                    continue;
+                if (CopiedArea.StoredTiles.Select(x => x.Tile.Location).Contains(t))
+                    continue;
+                    
+                StoreTile(Map.Tiles[t]);
+            }
+            // Make one final pass between the points
+            for (int i = 0; i < poly.Length; i++)
+            {
+                var a = poly[i];
+                Point b;
+                if (i == poly.Length - 1)
+                    b = poly[0];
+                else
+                    b = poly[i + 1];
+
+                var xDif = b.X - a.X;
+                var yDif = b.Y - a.Y;
+                // If distance is more than 1 tile
+                if ((Math.Abs(xDif) > squareSize) || (Math.Abs(yDif) > squareSize))
+                {
+                    var numXPts = Math.Abs(xDif) / 2;
+                    var numYPts = Math.Abs(yDif) / 2;
+                    
+                    var numPts = numXPts;
+                    if (numYPts > numXPts)
+                        numPts = numYPts;
+
+                    float xInc = (numPts != 0) ? (float)xDif / numPts : 0;
+                    float yInc = (numPts != 0) ? (float)yDif / numPts : 0;
+
+                    float x = a.X;
+                    float y = a.Y;
+                    for (int j = 0; j < numPts; j++)
+                    {
+                        x += xInc;
+                        y += yInc;
+                        var nextPt = new PointF(x, y);
+
+                        var t = GetNearestTilePoint(nextPt.ToPoint());
+                        if (!Map.Tiles.ContainsKey(t))
+                            continue;
+                        if (CopiedArea.StoredTiles.Select(z => z.Tile.Location).Contains(t))
+                            continue;
+
+                        StoreTile(Map.Tiles[t]);
+                    }
+                }
+            }
+        }
+        private void StoreTile(Map.Tile tile)
+        {
+            TimeTile subject = new TimeTile();
+            subject.Tile = tile.Clone();
+            subject.EdgeTiles = tile.EdgeTiles;
+            subject.Tile.Location = tile.Location;
+            CopiedArea.StoredTiles.Add(subject);
         }
         private void ReleaseTiles()
         {
+            if (CopiedArea.StoredTiles.Count == 0)
+                return;
+
             Store(Mode.FLOOR_PLACE, TimeEvent.PRE, true);
             foreach (TimeTile tile in CopiedArea.StoredTiles)
             {
@@ -3075,6 +3209,9 @@ namespace MapEditor
         }
         private void ReleaseObjects()
         {
+            if (CopiedArea.StoredObjects.Count == 0)
+                return;
+
             Store(Mode.OBJECT_SELECT, TimeEvent.PRE, true);
             foreach (TimeObject item in CopiedArea.StoredObjects)
             {
@@ -3102,6 +3239,9 @@ namespace MapEditor
         }
         private void ReleaseWaypoints()
         {
+            if (CopiedArea.StoredWPs.Count == 0)
+                return;
+
             FixTimeWaypointExtents();
 
             Store(Mode.WAYPOINT_PLACE, TimeEvent.PRE, true);
@@ -3156,16 +3296,18 @@ namespace MapEditor
 
             return null;
         }
-        private void StorePolygons(Point[] poly)
+        private void StorePolygons(Point[] poly, int polyIndex = -1)
         {
+            int i = -1;
             foreach (Map.Polygon polygon in Map.Polygons)
             {
+                i++;
                 var isInside = true;
                 foreach (PointF point in polygon.Points)
                     if (!MapInterface.PointInPolygon(new Point((int)point.X, (int)point.Y), poly))
                         isInside = false;
 
-                if (!isInside)
+                if ((!isInside) && (i != polyIndex))
                     continue;
 
                 TimePolygon subject = new TimePolygon();
@@ -3175,6 +3317,9 @@ namespace MapEditor
         }
         private void ReleasePolygons()
         {
+            if (CopiedArea.StoredPolygons.Count == 0)
+                return;
+            Store(Mode.POLYGON_RESHAPE, TimeEvent.PRE, true);
             foreach (TimePolygon polygon in CopiedArea.StoredPolygons)
             {
                 var isInside = true;
@@ -3185,6 +3330,7 @@ namespace MapEditor
                 if (isInside)
                     Map.Polygons.Add(polygon.Polygon);
             }
+            Store(Mode.POLYGON_RESHAPE, TimeEvent.POST, true);
         }
         #endregion
 
@@ -4034,7 +4180,6 @@ namespace MapEditor
             // cmdPasteArea
             // 
             this.cmdPasteArea.Appearance = System.Windows.Forms.Appearance.Button;
-            this.cmdPasteArea.Enabled = false;
             this.cmdPasteArea.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmdPasteArea.Location = new System.Drawing.Point(144, 20);
             this.cmdPasteArea.Name = "cmdPasteArea";

@@ -234,7 +234,7 @@ namespace MapEditor.newgui
             foreach (var p in pts)
                 newPts.Add(p.ToPoint());
 
-            MainWindow.Instance.mapView.CopyArea(newPts.ToArray());
+            MainWindow.Instance.mapView.CopyArea(newPts.ToArray(), listBoxPolygons.SelectedIndex);
         }
     }
 }

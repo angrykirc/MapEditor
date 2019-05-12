@@ -788,12 +788,12 @@ namespace MapEditor.render
             }
 
             // Draw copied selection
-            if (MainWindow.Instance.mapView.storePoly.Count > 2)
+            if (MainWindow.Instance.mapView.selectionPoly.Count > 2)
             {
                 var pen1 = new Pen(Brushes.DeepSkyBlue, 4);
                 pen1.DashStyle = DashStyle.Dash;
 
-                g.DrawLines(pen1, MainWindow.Instance.mapView.storePoly.ToArray());
+                g.DrawLines(pen1, MainWindow.Instance.mapView.selectionPoly.ToArray());
             }
 
             // Draw waypoints
