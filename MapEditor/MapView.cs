@@ -359,8 +359,10 @@ namespace MapEditor
 
                     if (MapInterface.KeyHelper.ShiftKey == true)
                     {
+                        int numPoints = PolygonEditDlg.SelectedPolygon.Points.Count;
+                        if (arrowPoly > numPoints) arrowPoly = numPoints;
                         PolygonEditDlg.SelectedPolygon.Points.Insert(arrowPoly, new PointF(ptAligned.X, ptAligned.Y));
-                        if (PolygonEditDlg.SelectedPolygon.Points.Count > 2) MapInterface.OpUpdatedPolygons = true;
+                        if (numPoints > 2) MapInterface.OpUpdatedPolygons = true;
                     }
                     else
                         arrowPoly = MapInterface.PolyPointSelect(pt);

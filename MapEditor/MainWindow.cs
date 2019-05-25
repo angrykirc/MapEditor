@@ -279,6 +279,12 @@ namespace MapEditor
         {
             OpenFileDialog fd = new OpenFileDialog();
             fd.Filter = "Nox Script Objects (*.obj)|*.obj";
+            fd.DefaultExt = ".obj";
+            if (!string.IsNullOrEmpty(map.FileName))
+            {
+                fd.FileName = Path.GetFileNameWithoutExtension(map.FileName) + ".obj";
+                fd.InitialDirectory = Path.GetDirectoryName(map.FileName);
+            }
 
             if (fd.ShowDialog() == DialogResult.OK)
             {
@@ -293,6 +299,12 @@ namespace MapEditor
         {
             SaveFileDialog fd = new SaveFileDialog();
             fd.Filter = "Nox Script Source (*.ns)|*.ns";
+            fd.DefaultExt = ".ns";
+            if (!string.IsNullOrEmpty(map.FileName))
+            {
+                fd.FileName = Path.GetFileNameWithoutExtension(map.FileName);
+                fd.InitialDirectory = Path.GetDirectoryName(map.FileName);
+            }
 
             if (map.Scripts.SctStr.Count > 0 && map.Scripts.SctStr[0].StartsWith("NOXSCRIPT3.0"))
             {
@@ -394,6 +406,11 @@ namespace MapEditor
                 DefaultExt = ".txt",
                 Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*"
             };
+            if (!string.IsNullOrEmpty(map.FileName))
+            {
+                sfd.FileName = Path.GetFileNameWithoutExtension(map.FileName);
+                sfd.InitialDirectory = Path.GetDirectoryName(map.FileName);
+            }
 
             var scriptDialog = new ScriptFunctionDialog();
             scriptDialog.Scripts = map.Scripts;
