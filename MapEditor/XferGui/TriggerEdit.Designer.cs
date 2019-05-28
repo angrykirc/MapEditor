@@ -35,6 +35,7 @@ namespace MapEditor.XferGui
 		private void InitializeComponent()
 		{
             this.groupBoxArea = new System.Windows.Forms.GroupBox();
+            this.plateBackColor = new System.Windows.Forms.Button();
             this.plateEdgeColor = new System.Windows.Forms.Button();
             this.sizeY = new System.Windows.Forms.NumericUpDown();
             this.sizeX = new System.Windows.Forms.NumericUpDown();
@@ -62,6 +63,7 @@ namespace MapEditor.XferGui
             // 
             // groupBoxArea
             // 
+            this.groupBoxArea.Controls.Add(this.plateBackColor);
             this.groupBoxArea.Controls.Add(this.plateEdgeColor);
             this.groupBoxArea.Controls.Add(this.sizeY);
             this.groupBoxArea.Controls.Add(this.sizeX);
@@ -74,13 +76,24 @@ namespace MapEditor.XferGui
             this.groupBoxArea.TabStop = false;
             this.groupBoxArea.Text = "Trigger/PressurePlate only";
             // 
+            // plateBackColor
+            // 
+            this.plateBackColor.ForeColor = System.Drawing.Color.White;
+            this.plateBackColor.Location = new System.Drawing.Point(106, 73);
+            this.plateBackColor.Name = "plateBackColor";
+            this.plateBackColor.Size = new System.Drawing.Size(95, 23);
+            this.plateBackColor.TabIndex = 1;
+            this.plateBackColor.Text = "Secondary";
+            this.plateBackColor.UseVisualStyleBackColor = true;
+            this.plateBackColor.Click += new System.EventHandler(this.PlateBackColorClick);
+            // 
             // plateEdgeColor
             // 
-            this.plateEdgeColor.Location = new System.Drawing.Point(36, 71);
+            this.plateEdgeColor.Location = new System.Drawing.Point(9, 73);
             this.plateEdgeColor.Name = "plateEdgeColor";
-            this.plateEdgeColor.Size = new System.Drawing.Size(130, 23);
+            this.plateEdgeColor.Size = new System.Drawing.Size(95, 23);
             this.plateEdgeColor.TabIndex = 1;
-            this.plateEdgeColor.Text = "PressurePlate Color";
+            this.plateEdgeColor.Text = "Primary Color";
             this.plateEdgeColor.UseVisualStyleBackColor = true;
             this.plateEdgeColor.Click += new System.EventHandler(this.PlateEdgeColorClick);
             // 
@@ -310,5 +323,6 @@ namespace MapEditor.XferGui
         private System.Windows.Forms.ComboBox scriptCollided;
         private System.Windows.Forms.ComboBox scriptReleased;
         private System.Windows.Forms.ComboBox scriptActivated;
+        private System.Windows.Forms.Button plateBackColor;
     }
 }

@@ -1713,6 +1713,11 @@ namespace MapEditor
             if (!Map.Tiles.ContainsKey(tilePt)) return Map.Tiles[tilePt].Location;
             return new Point();
         }
+        public Point GetNearestTile(Point pt)
+        {
+            pt.Offset(0, -squareSize);
+            return GetNearestWallPoint(pt);
+        }
 
         public static Point GetNearestTilePoint(Point pt)
         {

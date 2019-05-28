@@ -133,9 +133,8 @@ namespace MapEditor.newgui
             }
         }
 
-        public Map.Tile GetTile(Point loc, bool fake = false)
+        public Map.Tile GetTile(Point loc)
         {
-            
             // проверяем координаты
             if (loc.X < 0 || loc.Y < 0 || loc.X > 252 || loc.Y > 252) return null;
 

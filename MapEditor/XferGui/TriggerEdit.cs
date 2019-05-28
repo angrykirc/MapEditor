@@ -58,6 +58,7 @@ namespace MapEditor.XferGui
 				sizeX.Value = xfer.SizeX;
 				sizeY.Value = xfer.SizeY;
 				plateEdgeColor.BackColor = xfer.EdgeColor;
+                plateBackColor.BackColor = xfer.BackColor;
 			}
 
             flagsBox.SetItemChecked(0, (xfer.AllowedObjClass & 0x2) == 0x2); // NO_UPDATE
@@ -82,6 +83,7 @@ namespace MapEditor.XferGui
 			xfer.SizeX = (int) sizeX.Value;
 			xfer.SizeY = (int) sizeY.Value;
 			xfer.EdgeColor = plateEdgeColor.BackColor;
+            xfer.BackColor = plateBackColor.BackColor;
             xfer.AllowedTeamID = (byte)numericUpDown1.Value;
 
             uint[] flags = { 0x2, 0x4, 0x1, 0x8, 0x80000000, 0x10, 0x1000000, 0x2000000, 0x8000000, 0x1000 };
@@ -127,5 +129,13 @@ namespace MapEditor.XferGui
 				plateEdgeColor.BackColor = colorDlg.Color;
 			}
 		}
-	}
+        void PlateBackColorClick(object sender, EventArgs e)
+        {
+            ColorDialog colorDlg = new ColorDialog();
+            if (colorDlg.ShowDialog() == DialogResult.OK)
+            {
+                plateBackColor.BackColor = colorDlg.Color;
+            }
+        }
+    }
 }

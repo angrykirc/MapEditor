@@ -63,7 +63,8 @@ namespace MapEditor.newgui
         public Map.Tile.EdgeTile GetEdge()
         {
             // как покрытие юзаем тот тайл что выбран во вкладке Tiles
-            Map.Tile coverTile = mapView.TileMakeNewCtrl.GetTile(Point.Empty);
+            var tile = mapView.GetNearestTile(mapView.mouseLocation);
+            Map.Tile coverTile = mapView.TileMakeNewCtrl.GetTile(tile);
 
             var edgeDir = (Map.Tile.EdgeTile.Direction)edgeDirection;
             if ((chkAutoVariation.Checked) && (!chkAutoEdge.Checked))
@@ -134,7 +135,7 @@ namespace MapEditor.newgui
             imglist.Images.Clear();
             imglist.ImageSize = new Size(46, 46);
             // update ImageList showing edge type selected by user
-            Map.Tile coverTile = mapView.TileMakeNewCtrl.GetTile(Point.Empty, true);
+            Map.Tile coverTile = mapView.TileMakeNewCtrl.GetTile(Point.Empty);
             int coverSprite = (int)coverTile.Variations[coverTile.Variation];
             int varns = variations.Count;
             if (mapView.TileMakeNewCtrl.edgeBox.Items.Count > 0)
