@@ -1,11 +1,14 @@
 # MapEditor
-Nox Map Editor 1.10 by KITTY
+Nox Map Editor 1.16 by KITTY
 
 Added Copy Map features:
  - Copy Area mode: select an area on the map to copy
  - Copy All: copy everything on the map
+ - Copy Polygon: copy an existing Polygon
  - Paste Area: place copied area anywhere on current/new/existing map (no limit)
  - Can specify which elements get pasted
+ - Highlights selection area
+ - Stores in Clipboard (can use cross-application)
  - (credit to panic and Schizz for the idea)
  
 Added Map Image tab (replacing Export Image)
@@ -96,6 +99,8 @@ Other:
  - Moved some menu items around (File, Map, Options, Help)
  - Changed Fast Preview walls from BlackWall to MagicWallSystemUseOnly (less ambiguious)
  - Window size and maximized mode saved
+ - Implemented Secondary color for PressurePlate
+ - Edge Tool now has auto variation
 
 File Changes:
  - Latest.log file now only saves in MapEditor.exe directory
