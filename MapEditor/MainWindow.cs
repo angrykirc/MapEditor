@@ -9,7 +9,6 @@ using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using NoxShared;
 using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Drawing.Drawing2D;

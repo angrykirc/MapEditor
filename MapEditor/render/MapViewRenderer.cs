@@ -1,22 +1,15 @@
-﻿/*
- * MapEditor
- * 
- * 
- * Пользователь: AngryKirC
- * Copyleft - PUBLIC DOMAIN
- * Дата: 09.10.2014
- */
-using System;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Windows;
 using System.Collections.Generic;
-using NoxShared;
 using MapEditor.videobag;
 using MapEditor.MapInt;
-using WallFacing = NoxShared.Map.Wall.WallFacing;
+using WallFacing = OpenNoxLibrary.Files.NoxMap.Wall.WallFacing;
+using OpenNoxLibrary.Files;
 using MapEditor.XferGui;
+
 namespace MapEditor.render
 {
     /// <summary>
@@ -24,8 +17,8 @@ namespace MapEditor.render
     /// </summary>
     public class MapViewRenderer
     {
-        public Dictionary<Point, Map.Wall> FakeWalls = new Dictionary<Point, Map.Wall>();
-        public Dictionary<Point, Map.Tile> FakeTiles = new Dictionary<Point, Map.Tile>();
+        public Dictionary<Point, NoxMap.Wall> FakeWalls = new Dictionary<Point, NoxMap.Wall>();
+        public Dictionary<Point, NoxMap.Tile> FakeTiles = new Dictionary<Point, NoxMap.Tile>();
         public ColorLay ColorLayout = new ColorLay();
         public bool proDefault = false;
         public bool proHand = false;

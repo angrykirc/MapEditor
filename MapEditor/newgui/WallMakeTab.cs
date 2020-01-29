@@ -7,9 +7,10 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using NoxShared;
 using MapEditor.MapInt;
 using MapEditor.videobag;
+
+using OpenNoxLibrary.Files;
 
 namespace MapEditor.newgui
 {
@@ -18,7 +19,6 @@ namespace MapEditor.newgui
     /// </summary>
     public partial class WallMakeTab : UserControl
     {
-       // private Map.Wall wall;
         public byte flags;
         public RadioButton[] buttons = new RadioButton[2];
         private MapView mapView;
@@ -119,7 +119,8 @@ namespace MapEditor.newgui
 
             comboWallSet.SelectedIndex = 0;
         }
-        public void SetWall(Map.Wall wall, bool read = false)
+
+        public void UpdateWall(NoxMap.Wall wall, bool read = false)
         {
             // Flags
             if (read)
@@ -174,8 +175,8 @@ namespace MapEditor.newgui
                     wall.Window = checkWindow.Checked;
                 }
             }
-
         }
+
         public byte GetSelWallTypeIndex()
         {
             int selectedIndex = comboWallSet.SelectedIndex;

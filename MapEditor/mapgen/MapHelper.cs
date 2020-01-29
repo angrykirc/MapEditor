@@ -8,13 +8,13 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using NoxShared;
-
 using System.Windows.Forms;
 using System.Xml;
 using System.Reflection;
-using MapEditor.MapInt;
 using System.IO;
+
+using MapEditor.MapInt;
+using OpenNoxLibrary.Files;
 
 namespace MapEditor.mapgen
 {
@@ -23,7 +23,7 @@ namespace MapEditor.mapgen
     /// </summary>
     public class MapHelper
     {
-        private Map map;
+        private NoxMap map;
         private string[] wallMaterialNames = ThingDb.WallNames.ToArray();
         private string[] tileMaterialNames = ThingDb.FloorTileNames.ToArray();
         private string[] edgeMaterialNames = ThingDb.EdgeTileNames.ToArray();
@@ -64,7 +64,7 @@ namespace MapEditor.mapgen
 
         };
 
-        public MapHelper(Map map)
+        public MapHelper(NoxMap map)
         {
             this.map = map;
         }
@@ -75,7 +75,6 @@ namespace MapEditor.mapgen
         public void SetTileMaterial(string materialString)
         {
             usingTileMaterial = (byte)Array.IndexOf(tileMaterialNames, materialString);
-
         }
 
         /// <summary>
@@ -92,8 +91,7 @@ namespace MapEditor.mapgen
         public void SetEdgeMaterial(string materialString)
         {
             usingEdgeMaterial = (byte)Array.IndexOf(edgeMaterialNames, materialString);
-            varcount = (byte)ThingDb.EdgeTiles[usingEdgeMaterial].Variations.Count;
-
+            varcount = (byte)ThingDb.EdgeTiles[usingEdgeMaterial].Variations.Length;
         }
 
         /// <summary>
@@ -109,7 +107,7 @@ namespace MapEditor.mapgen
             autoedgeIgnoreTile = (byte)Array.IndexOf(tileMaterialNames, materialString);
         }
 
-        public Map.Wall GetWallSnap(int x, int y)
+        public NoxMap.Wall GetWallSnap(int x, int y)
         {
             // fix coordinates
             int div1 = x % 2;
@@ -122,7 +120,7 @@ namespace MapEditor.mapgen
         /// Search for Wall on the map at specified coordinates
         /// </summary>
         /// <returns>null if there is no wall</returns>
-        public Map.Wall GetWall(int x, int y)
+        public NoxMap.Wall GetWall(int x, int y)
         {
             // check coordinates
             if (x >= 255) return null;
@@ -531,7 +529,7 @@ namespace MapEditor.mapgen
             if (GetTile(x, y) == null) return;
             // Enforce using single tile type, because we don't want to blend into tiles with same ID
             //if (GetTile(x, y).graphicId != usingTileMaterial) return;
-            Map.Tile nUp, nDown, nLeft, nRight, ncUR, ncUL, ncDR, ncDL;
+            NoxMap.Tile nUp, nDown, nLeft, nRight, ncUR, ncUL, ncDR, ncDL;
             bool enUp = false, encUR = false, enDown = false, encDL = false, enLeft = false, encUL = false, enRight = false, encDR = false;
 
             nUp = GetTile(x, y + 2);
@@ -600,7 +598,6 @@ namespace MapEditor.mapgen
         /// </summary>
         public bool AddTileEdge(int x, int y, int dir)
         {
-
             Map.Tile tile = GetTile(x, y);
             if (tile == null) return false;
             // No need to check coords here, they are already checked in GetTileNoSnap

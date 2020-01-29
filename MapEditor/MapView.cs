@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using NoxShared;
-//using TileEdgeDirection = NoxShared.Map.Tile.EdgeTile.Direction;
 using Mode = MapEditor.MapInt.EditMode;
 using MapEditor.render;
 using MapEditor.newgui;
 using MapEditor.objgroups;
 using MapEditor.MapInt;
-using NoxShared.ObjDataXfer;
 using System.Collections.Generic;
 using System.Collections;
 using MapEditor.mapgen;
 using System.Linq;
+
+using OpenNoxLibrary.Util;
+using OpenNoxLibrary.Files;
 
 namespace MapEditor
 {
@@ -26,10 +26,9 @@ namespace MapEditor
         private int WidthMod = 0;
         private int winX = 0;
         private int winY = 0;
-        public List<Map.Wall> LastWalls = new List<Map.Wall>();
         public bool picking = false;
-        public Point mouseKeep;
-        public Point mouseKeepOff;
+        public PointS32 MouseDragStart;
+        public PointS32 MouseDragEnd;
         public int arrowPoly = 0;
         private float relXX = 0;
         private float relYY = 0;
@@ -38,7 +37,7 @@ namespace MapEditor
         public const int squareSize = 23;
         public const int objectSelectionRadius = 8;
         protected Button currentButton;
-        public MapObjectCollection SelectedObjects { get { return MapInterface.SelectedObjects; } }
+        //public MapObjectCollection SelectedObjects { get { return MapInterface.SelectedObjects; } }
         public MapViewRenderer MapRenderer;
         public PolygonEditor PolygonEditDlg = null;
         public ScriptFunctionDialog strSd = new ScriptFunctionDialog();
@@ -53,12 +52,20 @@ namespace MapEditor
         public bool UpdateCanvasOKMiniMap = true;
         public static int[] directions = new int[8] { 0, 6, 2, 7, 1, 4, 5, 3 };
         public List<PointF> PolyPointOffset = new List<PointF>();
-        private Map Map
+
+        /// <summary>
+        /// Current editing mode/operation.
+        /// </summary>
+        public EditMode CurrentMode
+        { 
+            get; 
+            set; 
+        }
+
+        protected NoxMap Map
         {
-            get
-            {
-                return MapInterface.TheMap;
-            }
+            get;
+            set;
         }
 
         public class FlickerFreePanel : Panel
@@ -219,6 +226,7 @@ namespace MapEditor
             else
                 MapInterface.CurrentMode = (Mode)GetSelectedMode(buttons).Tag;
         }
+
         private void tabEdges_Enter(object sender, EventArgs e)
         {
             int selectedIndex = MainWindow.Instance.mapView.TileMakeNewCtrl.comboTileType.SelectedIndex;
@@ -237,19 +245,19 @@ namespace MapEditor
 
             if (picking)
             {
-                Map.Object obj = MapInterface.ObjectSelect(mouseCoords);
+                var obj = MapInterface.ObjectSelect(mouseCoords);
 
                 // Alter current mode depending on the tab testudo
                 if (page == tabTiles || page == tabEdges)
                 {
-                    Map.Tile tile = Map.Tiles.ContainsKey(GetNearestTilePoint(mouseCoords)) ? Map.Tiles[MapView.GetNearestTilePoint(mouseCoords)] : null;
+                    NoxMap.Tile tile = Map.Tiles.ContainsKey(GetNearestTilePoint(mouseCoords)) ? Map.Tiles[MapView.GetNearestTilePoint(mouseCoords)] : null;
                     if (tile == null) return;
-                    TileMakeNewCtrl.findTileInList(tile.Graphic);
+                    TileMakeNewCtrl.findTileInList(tile.TileDef.Name);
                     if (page == tabEdges) tabEdges_Enter(sender, e);
                 }
                 else if (page == tabWalls)
                 {
-                    Map.Wall wall = Map.Walls.ContainsKey(GetNearestWallPoint(mouseCoords)) ? Map.Walls[MapView.GetNearestWallPoint(mouseCoords)] : null;
+                    NoxMap.Wall wall = Map.Walls.ContainsKey(GetNearestWallPoint(mouseCoords)) ? Map.Walls[MapView.GetNearestWallPoint(mouseCoords)] : null;
                     if (wall == null) return;
                     if (MapInterface.KeyHelper.ShiftKey)
                     {
@@ -257,7 +265,7 @@ namespace MapEditor
                         o.PerformClick();
                         o.Focus();
                     }
-                    WallMakeNewCtrl.FindWallInList(wall.Material);
+                    WallMakeNewCtrl.FindWallInList(wall.WallDef.Name);
                     if (MapInterface.KeyHelper.ShiftKey)
                         WallMakeNewCtrl.numWallVari.Value = wall.Variation;
                 }
@@ -268,7 +276,7 @@ namespace MapEditor
                 else
                 {
                     if (MapInterface.CurrentMode > Mode.OBJECT_SELECT) return;
-                    Map.Object obj0 = MapInterface.ObjectSelect(mouseCoords);
+                    NoxMap.Object obj0 = MapInterface.ObjectSelect(mouseCoords);
                     if (obj0 == null) return;
                     FindObjectInList(obj0.Name);
                 }
@@ -583,7 +591,7 @@ namespace MapEditor
                         if (PolygonEditDlg.snapPoly.Checked)
                             AlignedPt = MapInterface.PolyPointSnap(mouseLocation).IsEmpty ? ptAligned : MapInterface.PolyPointSnap(mouseLocation);
 
-                        Map.Polygon poly = PolygonEditDlg.SelectedPolygon;
+                        NoxMap.Polygon poly = PolygonEditDlg.SelectedPolygon;
                         poly.Points[arrowPoly] = AlignedPt;
                         MapInterface.SelectedPolyPoint = AlignedPt;
                         mapPanel.Invalidate();
@@ -1659,525 +1667,6 @@ namespace MapEditor
             MapRenderer.FakeWalls.Clear();
             MapRenderer.UpdateCanvas(false, true);
         }
-
-        #region Wall/Tile Position Functions
-        public Map.Tile GetCurrentTileVar(Point tilePt)
-        {
-            return TileMakeNewCtrl.GetTile(tilePt);
-        }
-        public Map.Object GetObjectUnderCursor()
-        {
-            if (MapInterface.CurrentMode != Mode.OBJECT_SELECT && MapInterface.CurrentMode != Mode.OBJECT_PLACE) return null;
-            return MapInterface.ObjectSelect(mouseLocation);
-        }
-        public Map.Waypoint GetWPUnderCursor()
-        {
-            if (MapInterface.CurrentMode != Mode.WAYPOINT_PLACE && MapInterface.CurrentMode != Mode.WAYPOINT_PLACE) return null;
-            return MapInterface.WaypointSelect(mouseLocation);
-        }
-        public Map.Wall GetWallUnderCursor(Point proxyPt = new Point())
-        {
-            Point pt;
-            if (proxyPt.IsEmpty)
-                pt = mouseLocation;
-            else
-                pt = proxyPt;
-
-            if (picking && MapInterface.CurrentMode == Mode.WALL_BRUSH) goto nocheck;
-
-            if (MapInterface.CurrentMode != Mode.WALL_PLACE && MapInterface.CurrentMode != Mode.WALL_CHANGE && MapInterface.CurrentMode != Mode.WALL_BRUSH) return null;
-        nocheck:
-            Point wallPt = GetNearestWallPoint(pt);
-            if (!Map.Walls.ContainsKey(wallPt)) return null;
-            return Map.Walls[wallPt];
-        }
-        public bool GetTileUnderCursor()
-        {
-            if (MapInterface.CurrentMode != Mode.FLOOR_BRUSH && MapInterface.CurrentMode != Mode.FLOOR_PLACE && MapInterface.CurrentMode != Mode.EDGE_PLACE) return false;
-            Point tilePt = GetNearestTilePoint(mouseLocation);
-            if (!Map.Tiles.ContainsKey(tilePt)) return false;
-            return true;
-        }
-        public bool GetEdgeUnderCursor()
-        {
-            if (MapInterface.CurrentMode != Mode.EDGE_PLACE) return false;
-            Point tilePt = GetNearestTilePoint(mouseLocation);
-            if (!Map.Tiles.ContainsKey(tilePt)) return false;
-            if (Map.Tiles[tilePt].EdgeTiles.Count <= 0) return false;
-
-            return true;
-        }
-        public Point GetPosTileUnderCursor2()
-        {
-            Point tilePt = GetNearestTilePoint(mouseLocation);
-            if (!Map.Tiles.ContainsKey(tilePt)) return Map.Tiles[tilePt].Location;
-            return new Point();
-        }
-        public Point GetNearestTile(Point pt)
-        {
-            pt.Offset(0, -squareSize);
-            return GetNearestWallPoint(pt);
-        }
-
-        public static Point GetNearestTilePoint(Point pt)
-        {
-            pt.Offset(0, -squareSize);
-            return GetNearestWallPoint(pt);
-        }
-        public static Point GetCenterPoint(Point pt, bool wallPt = false)
-        {
-            Point pti = GetNearestTilePoint(pt);
-            int x = (pti.X * squareSize);
-            int y = (pti.Y * squareSize) + squareSize / 2;
-
-            if (!wallPt)
-                return new Point(x + squareSize / 2, y + (3 / 2) * squareSize);
-            else
-                return new Point((x + squareSize / 2) / squareSize, (y + (3 / 2) * squareSize) / squareSize);
-        }
-        public static Point GetNearestWallPoint(Point pt, bool cart = false)
-        {
-            int sqSize = squareSize;
-            if (cart) sqSize = 1;
-
-            Point tl = new Point((pt.X / squareSize) * squareSize, (pt.Y / squareSize) * squareSize);
-            if (tl.X / squareSize % 2 == tl.Y / squareSize % 2)
-                return new Point(tl.X / sqSize, tl.Y / sqSize);
-            else
-            {
-                Point left = new Point(tl.X, tl.Y + squareSize / 2);
-                Point right = new Point(tl.X + squareSize, tl.Y + squareSize / 2);
-                Point top = new Point(tl.X + squareSize / 2, tl.Y);
-                Point bottom = new Point(tl.X + squareSize / 2, tl.Y + squareSize);
-                Point closest = left;
-                foreach (Point point in new Point[] { left, right, top, bottom })
-                    if (Distance(point, pt) < Distance(closest, pt))
-                        closest = point;
-
-                if (closest == left)
-                    return new Point(tl.X / sqSize - 1, tl.Y / sqSize);
-                else if (closest == right)
-                    return new Point(tl.X / sqSize + 1, tl.Y / sqSize);
-                else if (closest == top)
-                    return new Point(tl.X / sqSize, tl.Y / sqSize - 1);
-                else
-                    return new Point(tl.X / sqSize, tl.Y / sqSize + 1);
-            }
-        }
-        public static Point GetWallMapCoords(Point wallCoords)
-        {
-            // Works with both walls and tiles; i.e. 10, 15 => 230, 345
-            var x = wallCoords.X * squareSize;
-            var y = wallCoords.Y * squareSize;
-            return new Point(x, y);
-        }
-        #endregion
-
-        #region Paint Bucket
-        public bool tileBucket = false;
-        public bool wallBucket = false;
-        private bool[,] baseFloorMap; 
-        private bool tileOverflow;
-        private int nTiles;
-        private int dir;
-
-        // Tile Bucket
-        private void TileBucketPaint(Point origin)
-        {
-            var selTile = GetNearestTilePoint(origin);
-            if (Map.Tiles.ContainsKey(selTile))
-                return;
-
-            baseFloorMap = new bool[Generator.BOUNDARY, Generator.BOUNDARY];
-            var hmap = new MapHelper(Map);
-            hmap.SetTileMaterial(TileMakeNewCtrl.comboTileType.SelectedItem.ToString());
-            // Populate baseFloorMap with points
-            dir = 0;
-            do
-            {
-                var skip = tileOverflow;
-                nTiles = 0;
-                tileOverflow = false;
-                PaintTilesFromOrigin(selTile, skip);
-                dir++;
-                if (dir == 4)
-                    break;
-            }
-            while (tileOverflow);
-
-            ApplyStore();
-            // Copy floor onto map
-            for (int x = 0; x < Generator.BOUNDARY; x++)
-                for (int y = 0; y < Generator.BOUNDARY; y++)
-                    if (baseFloorMap[x, y])
-                        hmap.PlaceTileSnap(x, y);
-
-            MapRenderer.UpdateCanvas(MapInterface.OpUpdatedObjects, MapInterface.OpUpdatedTiles);
-        }
-        private void TileBucketDelete(Point origin)
-        {
-            var selTile = GetNearestTilePoint(origin);
-            if (!Map.Tiles.ContainsKey(selTile))
-                return;
-
-            baseFloorMap = new bool[Generator.BOUNDARY, Generator.BOUNDARY];
-            var hmap = new MapHelper(Map);
-
-            // Populate baseFloorMap with points
-            dir = 0;
-            do
-            {
-                var skip = tileOverflow;
-                nTiles = 0;
-                tileOverflow = false;
-                DeleteTilesFromOrigin(selTile, skip);
-                dir++;
-                if (dir == 4)
-                    break;
-            }
-            while (tileOverflow);
-
-            ApplyStore();
-            // Copy floor onto map
-            for (int x = 0; x < Generator.BOUNDARY; x++)
-                for (int y = 0; y < Generator.BOUNDARY; y++)
-                    if (baseFloorMap[x, y])
-                        hmap.RemoveTile(x, y);
-
-            MapRenderer.UpdateCanvas(MapInterface.OpUpdatedObjects, MapInterface.OpUpdatedTiles);
-        }
-        private void PaintTilesFromOrigin(Point tile, bool skipCheck = false)
-        {
-            if (nTiles > 3500)
-            {
-                tileOverflow = true;
-                return;
-            }
-            if (!skipCheck)
-            {
-                if ((tile.X < 0) || (tile.Y < 0)
-                    || (tile.X >= Generator.BOUNDARY) || (tile.Y >= Generator.BOUNDARY)
-                    || (baseFloorMap[tile.X, tile.Y]) || Map.Tiles.ContainsKey(tile))
-                    return;
-            }
-
-            var numWalls = GetNumAdjacentWalls(tile);
-            var branchOut = GetAdjacentTiles(tile, dir);
-            // No walls nearby, paint tile unless already one there, then branch out in S-W-N-E fashion
-            if (numWalls < 2)
-            {
-                baseFloorMap[tile.X, tile.Y] = true;
-                nTiles++;
-
-                foreach (var t in branchOut)
-                    PaintTilesFromOrigin(t);
-            }
-            // Too many walls, don't branch out
-            else
-            {
-                baseFloorMap[tile.X, tile.Y] = true;
-                nTiles++;
-
-                foreach (var t in branchOut)
-                {
-                    var numWalls2 = GetNumAdjacentWalls(t);
-                    var numCorners = GetNumCorners(t);
-                    if ((numWalls2 == 3) && (numCorners == 1))
-                        baseFloorMap[t.X, t.Y] = true;
-                }
-            }
-        }
-        private void DeleteTilesFromOrigin(Point tile, bool skipCheck = false)
-        {
-            if (nTiles > 3500)
-            {
-                tileOverflow = true;
-                return;
-            }
-            if (!skipCheck)
-            {
-                if ((tile.X < 0) || (tile.Y < 0)
-                    || (tile.X >= Generator.BOUNDARY) || (tile.Y >= Generator.BOUNDARY)
-                    || (baseFloorMap[tile.X, tile.Y]) || !Map.Tiles.ContainsKey(tile))
-                    return;
-            }
-
-            var numWalls = GetNumAdjacentWalls(tile);
-            var branchOut = GetAdjacentTiles(tile, dir);
-            if (numWalls < 2)
-            {
-                baseFloorMap[tile.X, tile.Y] = true;
-                nTiles++;
-
-                foreach (var t in branchOut)
-                    DeleteTilesFromOrigin(t);
-            }
-            else
-            {
-                baseFloorMap[tile.X, tile.Y] = true;
-                nTiles++;
-
-                foreach (var t in branchOut)
-                {
-                    var numWalls2 = GetNumAdjacentWalls(t);
-                    var numCorners = GetNumCorners(t);
-                    if ((numWalls2 == 3) && (numCorners == 1))
-                        baseFloorMap[t.X, t.Y] = true;
-
-                }
-            }
-        }
-        private bool IsCornerWall(Point wallPt)
-        {
-            if (!Map.Walls.ContainsKey(wallPt))
-                return false;
-
-            switch (Map.Walls[wallPt].Facing)
-            {
-                case Map.Wall.WallFacing.NE_CORNER:
-                case Map.Wall.WallFacing.NW_CORNER:
-                case Map.Wall.WallFacing.SE_CORNER:
-                case Map.Wall.WallFacing.SW_CORNER:
-                case Map.Wall.WallFacing.CROSS:
-                    return true;
-            }
-            return false;
-        }
-        private int GetNumCorners(Point tilePt)
-        {
-            var walls = GetAdjacentWalls(tilePt);
-            int count = 0;
-
-            if (IsCornerWall(walls[0]))
-                count++;
-            if (IsCornerWall(walls[1]))
-                count++;
-            if (IsCornerWall(walls[2]))
-                count++;
-            if (IsCornerWall(walls[3]))
-                count++;
-
-            return count;
-        }    
-        private int GetNumAdjacentWalls(Point tilePt)
-        {
-            int count = 0;
-            if (Map.Walls.ContainsKey(tilePt))                                      // Top Wall
-                count++;
-            if (Map.Walls.ContainsKey(new Point(tilePt.X - 1, tilePt.Y + 1)))       // Left
-                count++;
-            if (Map.Walls.ContainsKey(new Point(tilePt.X + 1, tilePt.Y + 1)))       // Right
-                count++;
-            if (Map.Walls.ContainsKey(new Point(tilePt.X, tilePt.Y + 2)))           // Bottom
-                count++;
-
-            return count;
-        }
-        private Point[] GetAdjacentWalls(Point tile)
-        {
-            return new Point[]
-            {
-                tile,                                    // Top Wall
-                new Point(tile.X, tile.Y + 2),           // Bottom
-                new Point(tile.X - 1, tile.Y + 1),       // Left
-                new Point(tile.X + 1, tile.Y + 1)        // Right
-            };
-        }
-        private Point[] GetAdjacentTiles(Point tile, int firstDirection = 0)
-        {
-            var result = new List<Point>();
-            var tileSE = new Point(tile.X + 1, tile.Y + 1);
-            var tileSW = new Point(tile.X - 1, tile.Y + 1);
-            var tileNW = new Point(tile.X - 1, tile.Y - 1);
-            var tileNE = new Point(tile.X + 1, tile.Y - 1);
-
-            if (firstDirection == 0)
-                result.AddRange(new Point[] { tileSE, tileSW, tileNW, tileNE });
-            if (firstDirection == 1)
-                result.AddRange(new Point[] { tileSW, tileNW, tileNE, tileSE });
-            else if (firstDirection == 2)
-                result.AddRange(new Point[] { tileNW, tileNE, tileSE, tileSW });
-            else if (firstDirection == 3)
-                result.AddRange(new Point[] { tileNE, tileSE, tileSW, tileNW });
-
-            // Cardinal
-            //return new Point[] {
-            //    new Point(tile.X, tile.Y + 2),   // S
-            //    new Point(tile.X - 2, tile.Y),   // W
-            //    new Point(tile.X, tile.Y - 2),   // N
-            //    new Point(tile.X + 2, tile.Y),   // E
-            //};
-
-            return result.ToArray();
-        }
-
-        // Wall Bucket
-        private void WallBucketPaint(Point coords)
-        {
-            var selTile = GetNearestTilePoint(coords);
-            if (!Map.Tiles.ContainsKey(selTile))
-                return;
-
-            ApplyStore();
-            Map saveMap = MapInterface.TheMap;
-
-            var newMap = new MapHelper(saveMap);
-            var tileGroup = newMap.DetermineTileCluster2(selTile.X, selTile.Y);
-            if (tileGroup.Count == 0)
-            {
-                MessageBox.Show("Selection too large. Try a smaller tile cluster.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            var outerEdge = GetOuterEdgeTiles(newMap, tileGroup);
-            outerEdge.AddRange(tileGroup);
-            outerEdge = outerEdge.Distinct().ToList();
-            newMap.SetWallMaterial(WallMakeNewCtrl.comboWallSet.SelectedItem.ToString());
-            MakeWallsAroundTiles(newMap, tileGroup);
-            ReorientWalls(newMap, outerEdge);
-            MapInterface.TheMap = saveMap;
-            Store(MapInterface.CurrentMode, TimeEvent.POST);
-            MapRenderer.UpdateCanvas(MapInterface.OpUpdatedObjects, MapInterface.OpUpdatedTiles);
-        }
-        private void MakeWallsAroundTiles(MapHelper hmap, List<Point> tiles)
-        {
-            Map.Tile tile;
-            foreach (var t in tiles)
-            {
-                var x = t.X; var y = t.Y;
-                tile = hmap.GetTile(x, y);
-                if (tile != null)
-                {
-                    // Simple logic: if there is no tile from specified direction, place wall
-                    bool tileLeft = (hmap.GetTile(x - 2, y) == null);
-                    bool tileRight = (hmap.GetTile(x + 2, y) == null);
-                    bool tileUp = (hmap.GetTile(x, y - 2) == null);
-                    bool tileDown = (hmap.GetTile(x, y + 2) == null);
-
-                    if (tileLeft) hmap.PlaceWall(x - 1, y + 1);
-                    if (tileRight) hmap.PlaceWall(x + 1, y + 1);
-                    if (tileUp) hmap.PlaceWall(x, y);
-                    if (tileDown) hmap.PlaceWall(x, y + 2);
-
-                    // There are some few special cases however that need attention
-                    if (!tileLeft && hmap.GetTile(x - 1, y + 1) == null && hmap.GetTile(x - 1, y - 1) == null)
-                        hmap.PlaceWall(x - 1, y + 1);
-                    if (!tileDown && hmap.GetTile(x - 1, y + 1) == null && hmap.GetTile(x + 1, y + 1) == null)
-                        hmap.PlaceWall(x, y + 2);
-                }
-            }
-        }
-        private void ReorientWalls(MapHelper hmap, List<Point> tiles, bool allowTri = false)
-        {
-            Map.Wall wall;
-            foreach (var t in tiles)
-            {
-                var x = t.X; var y = t.Y;
-                wall = hmap.GetWall(x, y);
-
-                if (wall != null)
-                {
-                    bool tileLeft = (hmap.GetTile(x - 1, y - 1) != null);
-                    bool tileRight = (hmap.GetTile(x + 1, y - 1) != null);
-                    bool tileUp = (hmap.GetTile(x, y - 2) != null);
-                    bool tileDown = (hmap.GetTile(x, y) != null);
-                    int facing = -1;
-
-                    if (!tileLeft)
-                    {
-                        if (tileUp && tileRight && tileDown) facing = 10;
-                        else if (tileDown && tileRight)
-                        {
-                            if (hmap.GetWall(x - 1, y - 1) != null && allowTri) facing = 3;
-                            else facing = 0;
-                        }
-                        else if (tileUp && tileRight)
-                        {
-                            if (hmap.GetWall(x - 1, y + 1) != null && allowTri) facing = 6;
-                            else facing = 1;
-                        }
-                        else if (!tileUp && !tileDown) facing = 8;
-                    }
-                    if (!tileUp && facing < 0)
-                    {
-                        if (tileLeft && tileRight && tileDown) facing = 7;
-                        else if (tileDown && tileLeft)
-                        {
-                            if (hmap.GetWall(x + 1, y - 1) != null && allowTri) facing = 4;
-                            else facing = 1;
-                        }
-                        else if (tileDown && tileRight)
-                        {
-                            if (hmap.GetWall(x + 1, y + 1) != null && allowTri) facing = 5;
-                            else facing = 0;
-                        }
-                        else if (!tileLeft && !tileRight) facing = 9;
-                    }
-                    if (!tileDown && facing < 0)
-                    {
-                        if (tileLeft && tileRight && tileUp) facing = 9;
-                        else if (tileUp && tileLeft)
-                        {
-                            if (hmap.GetWall(x + 1, y + 1) != null && allowTri) facing = 5;
-                            else facing = 0;
-                        }
-                        else if (tileUp && tileRight)
-                        {
-                            if (hmap.GetWall(x - 1, y + 1) != null && allowTri) facing = 6;
-                            else facing = 1;
-                        }
-                        else if (!tileLeft && !tileRight) facing = 7;
-                    }
-                    if (!tileRight && facing < 0)
-                    {
-                        if (tileUp && tileLeft && tileDown) facing = 8;
-                        else if (tileDown && tileLeft)
-                        {
-                            if (hmap.GetWall(x + 1, y - 1) != null && allowTri) facing = 4;
-                            else facing = 1;
-                        }
-                        else if (tileUp && tileLeft)
-                        {
-                            if (hmap.GetWall(x + 1, y + 1) != null && allowTri) facing = 5;
-                            else facing = 0;
-                        }
-                        else if (!tileUp && !tileDown) facing = 10;
-                    }
-
-                    if (facing < 0) facing = 2;
-                    wall.Facing = (Map.Wall.WallFacing)facing;
-                }
-            }
-        }
-        private Point[] GetAllAdjacentTiles(Point tile)
-        {
-            var x = tile.X; var y = tile.Y;
-            return new Point[]
-            {
-                new Point(x + 2, y),
-                new Point(x + 1, y - 1),
-                new Point(x, y - 2),
-                new Point(x - 1, y - 1),
-                new Point(x - 2, y),
-                new Point(x - 1, y + 1),
-                new Point(x, y + 2),
-                new Point(x + 1, y + 1)
-            };
-        }
-        private List<Point> GetOuterEdgeTiles(MapHelper hmap, List<Point> tileGroup)
-        {
-            var result = new List<Point>();
-            foreach (var tile in tileGroup)
-            {
-                var borderTiles = GetAllAdjacentTiles(tile);
-                foreach (var b in borderTiles)
-                {
-                    if ((hmap.GetTile(b) == null) && (!result.Contains(b)))
-                        result.Add(b);
-                }
-            }
-            return result;
-        }
-        #endregion
 
         #region Undo/Redo
         public int currentStep = 0;
@@ -4426,23 +3915,5 @@ namespace MapEditor
 
         }
         #endregion
-    }
-    public static class ExtensionColor
-    {
-        public static Color Interpolate(this Color source, Color target, double percent)
-        {
-            var r = (byte)(source.R + (target.R - source.R) * percent);
-            var g = (byte)(source.G + (target.G - source.G) * percent);
-            var b = (byte)(source.B + (target.B - source.B) * percent);
-
-            return Color.FromArgb(255, r, g, b);
-        }
-    }
-    public static class ExtensionPointF
-    {
-        public static Point ToPoint(this PointF source)
-        {
-            return new Point((int)source.X, (int)source.Y);
-        }
     }
 }

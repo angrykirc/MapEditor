@@ -105,10 +105,6 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Shared\NoxShared.csproj">
-      <Project>{46c56a6c-8c45-4f2b-b7ff-93dd5c61faab}</Project>
-      <Name>NoxShared</Name>
-    </ProjectReference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -156,7 +152,9 @@
     <Compile Include="mapgen\MapHelper.cs" />
     <Compile Include="mapgen\mapsets\DungeonGenerator.cs" />
     <Compile Include="mapgen\populate\Populate.cs" />
+    <Compile Include="MapInt\EditableNoxMap.cs" />
     <Compile Include="MapInt\EditModes.cs" />
+    <Compile Include="MapInt\Extensions.cs" />
     <Compile Include="MapInt\KeyHelper.cs" />
     <Compile Include="MapInt\MapInterface.cs" />
     <Compile Include="MapView.cs">
@@ -871,6 +869,12 @@
     <Folder Include="SyntaxHighlighter\obj\Debug\TempPE\" />
     <Folder Include="WizardForm\bin\Debug\" />
     <Folder Include="WizardForm\obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenNoxLibrary\OpenNoxLibrary.csproj">
+      <Project>{d5e8f8ea-20d5-4d87-b174-412e22f890dc}</Project>
+      <Name>OpenNoxLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <PropertyGroup>

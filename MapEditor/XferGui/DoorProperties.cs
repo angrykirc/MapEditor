@@ -3,8 +3,8 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
-using NoxShared;
-using NoxShared.ObjDataXfer;
+using OpenNoxLibrary.Files;
+using OpenNoxLibrary.Xfer;
 
 namespace MapEditor.XferGui
 {
@@ -133,7 +133,7 @@ namespace MapEditor.XferGui
             Close();
 		}
 		
-		public override void SetObject(Map.Object obj)
+		public override void SetObject(NoxMap.Object obj)
 		{
 			this.obj = obj;
 			DoorXfer xfer = obj.GetExtraData<DoorXfer>();
