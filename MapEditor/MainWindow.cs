@@ -14,7 +14,6 @@ using System.CodeDom.Compiler;
 using System.Drawing.Drawing2D;
 using System.Collections.Generic;
 using MapEditor.render;
-//using MapEditor.noxscript2;
 using MapEditor.newgui;
 using MapEditor.MapInt;
 using System.Linq;

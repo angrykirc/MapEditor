@@ -7,16 +7,13 @@
 using System;
 using System.Drawing;
 using System.Collections.Generic;
-using NoxShared;
 using System.Windows.Forms;
-using NoxShared.ObjDataXfer;
 using MapEditor.MapInt;
 using System.Reflection;
 
+using OpenNoxLibrary.Files;
 using MapView = MapEditor.MapView;
-using ImgState = NoxShared.ThingDb.Sprite.State;
 using TextRenderer = System.Windows.Forms.TextRenderer;
-using Sequence = NoxShared.ThingDb.Sprite.Sequence;
 using System.Drawing.Drawing2D;
 
 namespace MapEditor.render
@@ -35,9 +32,9 @@ namespace MapEditor.render
         private int drawOffsetX = 0;
         private int drawOffsetY = 0;
         // Canvas
-        private readonly List<Map.Object> sortedObjectList = new List<Map.Object>();
-        private readonly List<Map.Object> belowObjectList = new List<Map.Object>();
-        private Dictionary<Map.Object, int> telelist = new Dictionary<Map.Object, int>();
+        private readonly List<EditableNoxMap.Object> sortedObjectList = new List<EditableNoxMap.Object>();
+        private readonly List<EditableNoxMap.Object> belowObjectList = new List<EditableNoxMap.Object>();
+        private Dictionary<EditableNoxMap.Object, int> telelist = new Dictionary<EditableNoxMap.Object, int>();
         private AdjustableArrowCap Arrow = new AdjustableArrowCap(9f, 9f);
         // Pens/Brushes
         private readonly Pen objMoveablePen = new Pen(Color.OrangeRed, 1F);
@@ -65,10 +62,9 @@ namespace MapEditor.render
             // Fetch digit on the end of the string (COLOR#)
             return int.Parse(colname.Substring(colname.Length - 1)) - 1;
         }
+
         public static PointF Rotate(PointF point, PointF pivot, double angleDegree)
         {
-
-
             double angle = angleDegree * Math.PI / 180;
             double cos = Math.Cos(angle);
             double sin = Math.Sin(angle);
@@ -252,7 +248,7 @@ namespace MapEditor.render
             return result;
         }
 
-        public Bitmap GetObjectImage(Map.Object obj, bool shadow = false)
+        public Bitmap GetObjectImage(EditableNoxMap.Object obj, bool shadow = false)
         {
             if (MainWindow.Instance.imgMode)
             {
@@ -263,7 +259,7 @@ namespace MapEditor.render
             Bitmap result = null;
             int index = -1;
             ThingDb.Thing tt = ThingDb.Things[obj.Name];
-            // достаем картинку соответственно типу обьекта и его состоянию
+
             switch (tt.DrawType)
             {
                 case "StaticDraw":

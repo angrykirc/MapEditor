@@ -54,6 +54,8 @@ namespace MapEditor.newgui
         private static Color btnColorBadWall = Color.LightGray;
         private static Color btnColorGoodWall = Color.White;
 
+        protected EditorState EdState { get { return EditorState.Instance; } }
+
         public WallMakeTab()
         {
             //
@@ -63,10 +65,10 @@ namespace MapEditor.newgui
             //
             numMapGroup.Value = 100;
             blackWallIndex = ThingDb.WallNames.IndexOf("MagicWallSystemUseOnly");
-            // названия стен сортируем по алфавиту
+            // Sort the wall names by alphabet
             sortedWallNames = new List<string>(ThingDb.WallNames.ToArray());
             sortedWallNames.Sort();
-            // кнопочки в массив
+            // Buttons into array
             WallSelectButtons = new Button[] { wallBtn1, wallBtn2, wallBtn3, wallBtn4, wallBtn5, wallBtn6, wallBtn7, wallBtn8, wallBtn9, wallBtn10, wallBtn11, wallBtn12, wallBtn13 };
             foreach (Button b in this.WallSelectButtons)
             {
@@ -79,7 +81,6 @@ namespace MapEditor.newgui
 
             buttons[0] = PlaceWalltBtn;
             buttons[1] = AutoWalltBtn;
-
         }
 
         /// <summary>
@@ -97,7 +98,7 @@ namespace MapEditor.newgui
                 wallWindowed = true;
             }
             if (wallFacing < 0) wallFacing = 0;
-            if (MapInterface.CurrentMode == EditMode.WALL_CHANGE)
+            if (EditorState.Instance.CurrentMode == EditMode.WALL_CHANGE)
             {
                 //exitProp();
                 WallProp.Visible = false;
@@ -110,7 +111,6 @@ namespace MapEditor.newgui
 
         public void SetMapView(MapView view)
         {
-            
             mapView = view;
             // provide videobag access
             videoBag = mapView.MapRenderer.VideoBag;
@@ -189,14 +189,14 @@ namespace MapEditor.newgui
         }
 
         /// <summary>
-        /// Создаем новую стену, в соответствии с тем что указал пользователь
+        /// Create a new wall, with user specified parameters
         /// </summary>
-        public Map.Wall NewWall(Point location, bool fake = false)
+        public EditableNoxMap.Wall NewWall(Point location, bool fake = false)
         {
             byte material = GetSelWallTypeIndex();
-            Map.Wall.WallFacing facing = (Map.Wall.WallFacing)wallFacing;
+            var facing = (EditableNoxMap.Wall.WallFacing) wallFacing;
 
-            Map.Wall wall = new Map.Wall(location, facing, material, (byte)MinimapGroup, (byte)numWallVari.Value);
+            var wall = new EditableNoxMap.Wall(location.ToLibPoint(), facing, material, (byte)MinimapGroup, (byte)numWallVari.Value);
 
             //wall.Destructable = checkBreakableWall.Checked;
             wall.Window = wallWindowed;
@@ -254,10 +254,10 @@ namespace MapEditor.newgui
                 numWallVariMax.Value = numWallVari.Value;
 
             ThingDb.Wall wall = ThingDb.Walls[GetSelWallTypeIndex()];
-            // в движке Нокса зачем-то так
+            // That's how Nox engine does this
             int vari = (int)numWallVari.Value * 2;
-            ThingDb.Wall.WallRenderInfo[] ria;
-            Bitmap bitmap; int sprite; Button wallButton;
+            ThingDb.Wall.RenderInfo[] ria;
+            Bitmap bitmap; uint sprite; Button wallButton;
 
             byte material = GetSelWallTypeIndex();
 
@@ -270,7 +270,7 @@ namespace MapEditor.newgui
             if (numWallVariMax.Value < numWallVari.Value)
                 numWallVariMax.Value = numWallVari.Value;
 
-            // для каждого направления добавляем картинку
+            // For each wall direction, get a picture
             if (WallSelectButtons != null)
             {
                 for (int facing = 0; facing < 13; facing++)
@@ -310,7 +310,7 @@ namespace MapEditor.newgui
                             return;
                         }
 
-                        // значит что стены с такими парамиетрами не существует
+                        // Tells us that there is no wall with such parameters
                         wallButton.BackgroundImage = null;
                         wallButton.Enabled = false;
                         wallButton.BackColor = btnColorBadWall;
@@ -335,8 +335,9 @@ namespace MapEditor.newgui
                 RecLinePanel.Visible = true;
 
             radioButton.Font = new Font(radioButton.Font.Name, radioButton.Font.Size, FontStyle.Bold);
-            MapInterface.CurrentMode = (EditMode)radioButton.Tag;
+            EdState.CurrentMode = (EditMode)radioButton.Tag;
         }
+
         private void Picker_CheckedChanged(object sender, EventArgs e)
         {
             if (Picker.Checked)
@@ -348,6 +349,7 @@ namespace MapEditor.newgui
                 mapView.mapPanel.Cursor = Cursors.Default;
             }
         }
+
         private void Bucket_CheckedChanged(object sender, EventArgs e)
         {
             if (Bucket.Checked)
@@ -374,6 +376,7 @@ namespace MapEditor.newgui
                 mapView.mapPanel.Cursor = Cursors.Default;
             }
         }
+
         private void RecWall_CheckedChanged(object sender, EventArgs e)
         {
             mapView.mouseKeepOff = new Point();
@@ -416,8 +419,9 @@ namespace MapEditor.newgui
             WallProp.Visible = true;
             WallProp.BringToFront();
             polygonGroup.Value = numMapGroup.Value;
-            MapInterface.CurrentMode = EditMode.WALL_CHANGE;
+            EdState.CurrentMode = EditMode.WALL_CHANGE;
         }
+
         private void cmdCancel_Click(object sender, EventArgs e)
         {
             ExitProperties();

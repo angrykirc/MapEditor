@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D5E8F8EA-20D5-4D87-B174-412E22F890DC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenNoxLibrary</RootNamespace>
+    <AssemblyName>OpenNoxLibrary</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums\Monsters.cs" />
+    <Compile Include="Enums\ObjectClass.cs" />
+    <Compile Include="Enums\ObjectFlags.cs" />
+    <Compile Include="Encryption\CryptStreamIO.cs" />
+    <Compile Include="Files\NoxMap.cs" />
+    <Compile Include="Files\Media\AudioBagIndex.cs" />
+    <Compile Include="Files\Media\AudioBagReader.cs" />
+    <Compile Include="Files\Media\FontFile.cs" />
+    <Compile Include="Files\Media\GenericBagIndex.cs" />
+    <Compile Include="Files\ThingDb.cs" />
+    <Compile Include="Log\LightLog.cs" />
+    <Compile Include="Log\LogHandlerFile.cs" />
+    <Compile Include="Enums\Materials.cs" />
+    <Compile Include="Util\Extensions.cs" />
+    <Compile Include="Util\FastBytes.cs" />
+    <Compile Include="Xfer\AbilityRewardXfer.cs" />
+    <Compile Include="Xfer\AmmoXfer.cs" />
+    <Compile Include="Xfer\ArmorXfer.cs" />
+    <Compile Include="Xfer\DoorXfer.cs" />
+    <Compile Include="Xfer\ElevatorXfer.cs" />
+    <Compile Include="Xfer\ExitXfer.cs" />
+    <Compile Include="Xfer\FieldGuideXfer.cs" />
+    <Compile Include="Xfer\GlyphXfer.cs" />
+    <Compile Include="Xfer\GoldXfer.cs" />
+    <Compile Include="Xfer\HoleXfer.cs" />
+    <Compile Include="Xfer\InvisibleLightXfer.cs" />
+    <Compile Include="Xfer\MonsterGeneratorXfer.cs" />
+    <Compile Include="Xfer\MonsterXfer.cs" />
+    <Compile Include="Xfer\MoverXfer.cs" />
+    <Compile Include="Xfer\NPCXfer.cs" />
+    <Compile Include="Xfer\ObeliskXfer.cs" />
+    <Compile Include="Xfer\DefaultXfer.cs" />
+    <Compile Include="Xfer\ReadableXfer.cs" />
+    <Compile Include="Xfer\RewardMarkerXfer.cs" />
+    <Compile Include="Xfer\SentryXfer.cs" />
+    <Compile Include="Xfer\SpellPagePedestalXfer.cs" />
+    <Compile Include="Xfer\SpellRewardXfer.cs" />
+    <Compile Include="Xfer\TeamXfer.cs" />
+    <Compile Include="Xfer\ToxicCloudXfer.cs" />
+    <Compile Include="Xfer\TransporterXfer.cs" />
+    <Compile Include="Xfer\TriggerXfer.cs" />
+    <Compile Include="Xfer\WeaponXfer.cs" />
+    <Compile Include="Util\ADPCMDecoder.cs" />
+    <Compile Include="Util\Primitives.cs" />
+    <Compile Include="Encryption\CryptApi.cs" />
+    <Compile Include="Util\MRUMemoryCache.cs" />
+    <Compile Include="Files\Media\VideoBagIndex.cs" />
+    <Compile Include="Util\MFUMemoryCache.cs" />
+    <Compile Include="Compression\BitwiseIO.cs" />
+    <Compile Include="Files\Media\VideoBagCached.cs" />
+    <Compile Include="Compression\NoxLz.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\CRC32.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

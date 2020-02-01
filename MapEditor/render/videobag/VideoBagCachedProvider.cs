@@ -1,161 +1,217 @@
-﻿/*
- * MapEditor
- * Пользователь: AngryKirC
- * Copyleft - PUBLIC DOMAIN
- * Дата: 09.10.2014
- */
-using System;
+﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Collections.Generic;
+
+using OpenNoxLibrary.Files;
+using OpenNoxLibrary.Files.Media;
+using OpenNoxLibrary.Util;
 
 namespace MapEditor.videobag
 {
 	/// <summary>
-	/// Layer2 cache for prepared Bitmap objects
+	/// Layer2 cache for Bitmap objects
 	/// </summary>
 	public class VideoBagCachedProvider
 	{
-		readonly VideoBagStream videoBag;
-		
-		/// <summary>
-		/// Array of prepared Bitmaps
-		/// </summary>
-		Bitmap[] cachedBitmapArray;
-		
-		/// <summary>
-		/// Array of stored offsets
-		/// </summary>
-		public int[][] DrawOffsets;
-		
-		/// <summary>
-		/// Currently cached bitmaps counter
-		/// </summary>
-		uint activeCachedBitmaps = 0;
-		
-		/// <summary>
-		/// Limit of max cached bitmaps
-		/// </summary>
-		const uint CACHED_BITMAPS_MAX_ACTIVE = 3200;
-		
-		/// <summary>
-		/// List of cached dynamic-color Bitmaps
-		/// </summary>
-		List<CachedDynamicBitmap> cachedDynamicBitmaps = new List<CachedDynamicBitmap>();
-		
-		/// <summary>
-		/// Placeholder for dynamic-color requests
-		/// </summary>
-		static int[] PLACEHOLDER_COLORS = { 0x00FF0000, 0x00FF0000, 0x00FF0000, 0x00FF0000, 0x00FF0000, 0x00FF0000 };
-		
-		private struct CachedDynamicBitmap : IEquatable<CachedDynamicBitmap>
+		protected readonly VideoBagCached _VideoBag;
+
+        protected MRUMemoryCache<CachedBitmap> _NormalBitmapCache;
+        protected MRUMemoryCache<Bitmap> _TileBitmapCache;
+
+		public uint[] Type46Colors = { 0x00FF0000, 0x00FF0000, 0x00FF0000, 0x00FF0000, 0x00FF0000, 0x00FF0000 };
+
+        protected static int CalculateBitmapHash(int index, int color1, int color2, int color3, int color4)
+        {
+            int result = 37;
+
+            result *= 397;
+            result += index;
+
+            result *= 397;
+            result += color1;
+
+            result *= 397;
+            result += color2;
+
+            result *= 397;
+            result += color3;
+
+            result *= 397;
+            result += color4;
+
+            return result;
+        }
+
+		protected class CachedBitmap : IEquatable<CachedBitmap>
 		{
-			public readonly int index;
-			public Bitmap result;
-			public int[] colors;
+			public readonly int Index;
+			public Bitmap BitCaps;
+			public uint[] Colors;
+            public int OffX, OffY;
+
+            public CachedBitmap(int index, Bitmap result, int offX, int offY)
+            {
+                this.Index = index;
+                this.BitCaps = result;
+                this.Colors = null;
+                this.OffX = offX;
+                this.OffY = offY;
+            }
 			
-			public CachedDynamicBitmap(int index, Bitmap result, int[] colors)
+			public bool Equals(CachedBitmap other)
 			{
-				this.index = index;
-				this.result = result;
-				this.colors = colors;
-			}
-			
-			public bool Equals(CachedDynamicBitmap other)
-			{
-				if (other.index != index) return false;
-				
-				for (int i = 0; i < 6; i++)
-				{
-					if (other.colors[i] != colors[i])
-						return false;
-				}
+				if (other.Index != Index) return false;
+                if (other.OffX != OffX || other.OffY != OffY) return false;
+
+                if (other.Colors != null && Colors != null)
+                {
+                    for (int i = 0; i < 6; i++)
+                    {
+                        if (other.Colors[i] != Colors[i])
+                            return false;
+                    }
+                }
 				
 				return true;
 			}
-		}
-		
-		public VideoBagCachedProvider()
-		{
-			videoBag = new VideoBagStream();
-			cachedBitmapArray = new Bitmap[videoBag.GetAllEntries().Length];
-			DrawOffsets = new int[cachedBitmapArray.Length][];
-		}
-		
-		private void ClearCachedLists()
-		{
-			activeCachedBitmaps = 0;
-			// Clear dynamic-color bitmaps list
-			cachedDynamicBitmaps.Clear();
-			// Remove pointers to normal bitmaps
-			for (int i = 0; i < cachedBitmapArray.Length; i++)
-			{
-				//cachedBitmapArray[i].Dispose();
-				// GC should finalize everything on its own
-				cachedBitmapArray[i] = null;
-			}
-			GC.Collect(1);
-		}
-		
-		private Bitmap CacheBitmap(int index)
-		{
-			// Check for overflow
-			if (activeCachedBitmaps > CACHED_BITMAPS_MAX_ACTIVE) ClearCachedLists();
-			activeCachedBitmaps++;
-			
-			VideoBagStream.FileEntry[] entries = videoBag.GetAllEntries();
-			// Read bitmap from stream
-			int ox, oy;
-			Bitmap bit = videoBag.GetBitmap(entries[index], out ox, out oy);
-			
-			// Store offset and bitmap pointer
-			DrawOffsets[index] = new int[] { ox, oy };
-			cachedBitmapArray[index] = bit;
-			
-			return bit;
-		}
-		
-		/// <summary>
-		/// Retrieves a normal Bitmap from videobag by its index, using cached approach.
-		/// </summary>
-		public Bitmap GetBitmap(int index)
-		{
-			Bitmap result = cachedBitmapArray[index];
-			if (result == null)
-			{
-				videoBag.Type46Colors = PLACEHOLDER_COLORS;
-				result = CacheBitmap(index);
-			}
 
-			return result;
+            public override int GetHashCode()
+            {
+                int col1 = 0, col2 = 0, col3 = 0, col4 = 0;
+                if (Colors != null)
+                {
+                    col1 = (int)Colors[0];
+                    col2 = (int)Colors[1];
+                    col3 = (int)Colors[2];
+                    col4 = (int)Colors[3];
+                }
+                return CalculateBitmapHash(Index, col1, col2, col3, col4);
+            }
+		}
+		
+		public VideoBagCachedProvider(string path)
+		{
+            int TileCacheSize = 300;
+            int ObjectCacheSize = 300;
+
+			_VideoBag = new VideoBagCached(path + ".idx", path + ".bag");
+            _NormalBitmapCache = new MRUMemoryCache<CachedBitmap>(ObjectCacheSize);
+            _TileBitmapCache = new MRUMemoryCache<Bitmap>(TileCacheSize);
+		}
+		
+		protected unsafe CachedBitmap ReadBitmap(int index, int edgeTile = 0)
+		{
+            var info = _VideoBag.PullFileIndex(index);
+
+            _VideoBag.Type46Colors = Type46Colors;
+
+            var data = _VideoBag.PullImageData(index, edgeTile);
+
+            int stride = data.Width * 4 + ((data.Width * 4) % 4);
+            Bitmap bitmap;
+            fixed (void* ptr = data.ColorData)
+            {
+                IntPtr iptr = new IntPtr(ptr);
+                bitmap = new Bitmap(data.Width, data.Height, stride, PixelFormat.Format32bppArgb, iptr);
+            }
+
+            var cbit = new CachedBitmap(index, bitmap, data.OffsX, data.OffsY);
+            // DYNAMIC
+            if (info.DataType == 4 || info.DataType == 6) 
+                cbit.Colors = Type46Colors;
+            // EDGE
+            if (info.DataType == 1)
+                cbit.OffX = edgeTile;
+			
+			return cbit;
 		}
 		
 		/// <summary>
 		/// Retrieves a dynamic-color Bitmap from videobag by its index, using cached approach.
 		/// </summary>
-		public Bitmap GetBitmapDynamic(int index, int[] cols)
+		public Bitmap GetBitmapDynamic(int index, out int offX, out int offY, uint[] cols = null)
 		{
-			CachedDynamicBitmap newc = new CachedDynamicBitmap(index, null, cols);
-			
-			// Check if same bitmap is already present
-			foreach (CachedDynamicBitmap bit in cachedDynamicBitmaps)
-			{
-				if (bit.Equals(newc)) return bit.result;
-			}
-			
-			// Else add new entry
-			videoBag.Type46Colors = cols;
-			newc.result = CacheBitmap(index);
-			cachedDynamicBitmaps.Add(newc);
-			
-			return newc.result;
+            int col1 = 0, col2 = 0, col3 = 0, col4 = 0;
+            if (cols != null)
+            {
+                col1 = (int)cols[0];
+                col2 = (int)cols[1];
+                col3 = (int)cols[2];
+                col4 = (int)cols[3];
+            }
+            int hash = CalculateBitmapHash(index, col1, col2, col3, col4);
+            var cached = _NormalBitmapCache.Fetch(hash);
+
+            // Found one
+            if (cached != null)
+            {
+                offX = cached.OffX;
+                offY = cached.OffY;
+                return cached.BitCaps;
+            }
+
+			// Else pull and cache a new entry
+            Type46Colors = new uint[] { cols[0], cols[1], cols[2], cols[3] };
+            cached = ReadBitmap(index, 0);
+            _NormalBitmapCache.Add(hash, cached);
+
+            offX = cached.OffX;
+            offY = cached.OffY;
+            return cached.BitCaps;
 		}
-		
-		/// <summary>
-		/// Builds an tile+edge pair on specified Bitmap.
-		/// </summary>
-		public void ApplyEdgeMask(Bitmap bit, int edgeEntryID, int coverEntryID)
-		{
-			videoBag.ApplyEdgeMask(bit, edgeEntryID, coverEntryID);
-		}
+
+        protected static int CalculateTileHash(MapInt.EditableNoxMap.Tile tile)
+        {
+            int result = 37;
+
+            result *= 397;
+            result += tile.TypeId;
+
+            result *= 397;
+            result += tile.Variation;
+
+            foreach (var edge in tile.EdgeTiles)
+            {
+                result *= 397;
+                result += edge.EdgeTileMat;
+
+                result *= 397;
+                result += edge.EdgeTileVar;
+
+                result *= 397;
+                result += edge.TypeId;
+
+                result *= 397;
+                result += (byte)edge.Dir;
+            }
+            return result;
+        }
+
+        public unsafe Bitmap CacheTile(MapInt.EditableNoxMap.Tile tile)
+        {
+            // The lowest part of the tile
+            Bitmap surface = ReadBitmap((int)tile.TileDef.Variations[tile.Variation]).BitCaps;
+
+            // Now for edges...
+            var lockedBD = surface.LockBits(new Rectangle(Point.Empty, surface.Size), ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
+            uint* ptr = (uint*) lockedBD.Scan0;
+            foreach (var edge in tile.EdgeTiles)
+            {
+                var edgeSprite = ThingDb.EdgeTiles[edge.TypeId].Variations[(byte)edge.Dir];
+                var coverSprite = ThingDb.FloorTiles[edge.EdgeTileMat].Variations[edge.EdgeTileVar];
+                uint[] data = _VideoBag.PullImageData(edgeSprite, coverSprite).ColorData;
+                for (int i = 0; i < data.Length; i++)
+                {
+                    if ((data[i] & 0xFF000000) > 0) // Non-transparent
+                        ptr[i] = data[i];
+                }
+            }
+            surface.UnlockBits(lockedBD);
+
+            _TileBitmapCache.Add(CalculateTileHash(tile), surface);
+
+            return surface;
+        }
 	}
 }
